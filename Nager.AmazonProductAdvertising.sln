@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nager.AmazonProductAdvertising.TestConsole", "Nager.AmazonProductAdvertising.TestConsole\Nager.AmazonProductAdvertising.TestConsole.csproj", "{5B406042-6FC7-4655-8FC3-3528919468FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nager.AmazonProductAdvertising", "Nager.AmazonProductAdvertising\Nager.AmazonProductAdvertising.csproj", "{52BC1BDB-2733-485D-BF61-FF22D7A5B98F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B406042-6FC7-4655-8FC3-3528919468FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B406042-6FC7-4655-8FC3-3528919468FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B406042-6FC7-4655-8FC3-3528919468FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B406042-6FC7-4655-8FC3-3528919468FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52BC1BDB-2733-485D-BF61-FF22D7A5B98F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52BC1BDB-2733-485D-BF61-FF22D7A5B98F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52BC1BDB-2733-485D-BF61-FF22D7A5B98F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52BC1BDB-2733-485D-BF61-FF22D7A5B98F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
