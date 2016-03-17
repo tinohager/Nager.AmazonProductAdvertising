@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Xml.Serialization;
+using Nager.AmazonProductAdvertising.Extension;
 
 namespace Nager.AmazonProductAdvertising
 {
@@ -16,7 +17,7 @@ namespace Nager.AmazonProductAdvertising
             this._authentication = amazonAuthentication;
         }
 
-        private Dictionary<string, string> ItemLookupOperation(string asin, string associateTag, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        public IDictionary<string, string> ItemLookupOperation(string asin, string associateTag, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
         {
             var requestArgs = new Dictionary<string, string>
             {
@@ -29,13 +30,12 @@ namespace Nager.AmazonProductAdvertising
             return requestArgs;
         }
 
-        private Dictionary<string, string> ItemSearchOperation(string search, string associateTag, AmazonSearchIndex amazonSearchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        public IDictionary<string, string> ItemSearchOperation(string search, string associateTag, AmazonSearchIndex amazonSearchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
         {
             var requestArgs = new Dictionary<string, string>
             {
                 { "Operation", "ItemSearch" },
                 { "ResponseGroup", amazonResponseGroup.ToString() },
-                { "Availability", "Available" },
                 { "Keywords", search },
                 { "SearchIndex", amazonSearchIndex.ToString() },
                 { "AssociateTag", associateTag },
@@ -59,6 +59,7 @@ namespace Nager.AmazonProductAdvertising
         public ItemSearchResponse Search(string search, AmazonEndpoint amazonEndpoint, string associateTag, AmazonSearchIndex amazonSearchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
         {
             var requestParams = ItemSearchOperation(search, associateTag, amazonSearchIndex, amazonResponseGroup);
+            requestParams = requestParams.Sort(AmazonSearchSort.Price, AmazonSearchSortOrder.Descending);
 
             using (var amazonSign = new AmazonSign(this._authentication, amazonEndpoint))
             {
@@ -79,10 +80,17 @@ namespace Nager.AmazonProductAdvertising
 
         private T ParseXml<T>(string xml)
         {
-            var serializer = new XmlSerializer(typeof(T));
-            using (var reader = new StringReader(xml))
+            try
             {
-                return (T)(serializer.Deserialize(reader));
+                var serializer = new XmlSerializer(typeof(T));
+                using (var reader = new StringReader(xml))
+                {
+                    return (T)(serializer.Deserialize(reader));
+                }
+            }
+            catch (Exception exception)
+            {
+                return default(T);
             }
         }
 

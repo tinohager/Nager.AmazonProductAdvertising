@@ -16,13 +16,12 @@ namespace Nager.AmazonProductAdvertising.TestConsole
 
         static void SearchRequest()
         {
-            var config = new AmazonAuthentication();
-            config.AccessKey = "accesskey";
-            config.SecretKey = "secretkey";
+            var authentication = new AmazonAuthentication();
+            authentication.AccessKey = "accesskey";
+            authentication.SecretKey = "secretkey";
 
-            var wrapper = new AmazonWrapper(config);
+            var wrapper = new AmazonWrapper(authentication);
             var result = wrapper.Search("canon eos", AmazonEndpoint.DE, "nagerat-21", AmazonSearchIndex.Electronics, AmazonResponseGroup.Large);
-
 
             foreach(var item in result.Items.Item)
             {
@@ -34,11 +33,11 @@ namespace Nager.AmazonProductAdvertising.TestConsole
 
         static void LookupRequest()
         {
-            var config = new AmazonAuthentication();
-            config.AccessKey = "accesskey";
-            config.SecretKey = "secretkey";
+            var authentication = new AmazonAuthentication();
+            authentication.AccessKey = "accesskey";
+            authentication.SecretKey = "secretkey";
 
-            var wrapper = new AmazonWrapper(config);
+            var wrapper = new AmazonWrapper(authentication);
             var result = wrapper.Lookup("B007KKKJYK", AmazonEndpoint.DE, "nagerat-21");
 
             Console.WriteLine("{0}", result.Items.Item.ItemAttributes.Title);
