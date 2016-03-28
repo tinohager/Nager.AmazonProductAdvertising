@@ -31,20 +31,46 @@ namespace Nager.AmazonProductAdvertising.Monitor
             return authentication;
         }
 
+        private bool IsValidAuthentication(AmazonAuthentication authentication)
+        {
+            if (String.IsNullOrEmpty(authentication.AccessKey) || String.IsNullOrEmpty(authentication.SecretKey))
+            {
+                this.textBoxAccessKey.BackColor = Color.OrangeRed;
+                this.textBoxSecretKey.BackColor = Color.OrangeRed;
+                return false;
+            }
+
+            this.textBoxAccessKey.BackColor = Color.White;
+            this.textBoxSecretKey.BackColor = Color.White;
+            return true;
+        }
+
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             var search = this.textBoxSearch.Text;
             var authentication = this.GetAuthentication();
 
+            if (!this.IsValidAuthentication(authentication))
+            {
+                MessageBox.Show("Authentication invalid", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             var wrapper = new AmazonWrapper(authentication);
-            var result = wrapper.Search(search, AmazonEndpoint.DE, "nagerat-21", AmazonSearchIndex.Electronics, AmazonResponseGroup.Large);
+            var result = wrapper.Search(search, AmazonEndpoint.DE, "nagerat-21", AmazonSearchIndex.All, AmazonResponseGroup.Large);
+
+            if (result == null)
+            {
+                MessageBox.Show("Request error");
+                return;
+            }
 
             this.dataGridViewResult.DataSource = result.Items.Item;
         }
 
         private void dataGridViewResult_SelectionChanged(object sender, EventArgs e)
         {
-            var item = this.dataGridViewResult.CurrentRow.DataBoundItem as ItemSearchResponseItemsItem;
+            var item = this.dataGridViewResult.CurrentRow.DataBoundItem as Item;
             if (item == null)
             {
                 return;

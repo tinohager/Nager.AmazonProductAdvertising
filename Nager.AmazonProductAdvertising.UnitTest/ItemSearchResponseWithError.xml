@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" ?>
+<ItemSearchResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01">
+  <OperationRequest>
+    <HTTPHeaders>
+      <Header Name="UserAgent" Value="Nager.AmazonProductAdvertising"></Header>
+    </HTTPHeaders>
+    <RequestId>5577248f-5ef0-4a7e-9d9c-6fb5e9f605b3</RequestId>
+    <Arguments>
+      <Argument Name="AWSAccessKeyId" Value="AWSAccessKeyId"></Argument>
+      <Argument Name="AssociateTag" Value="nagerat-21"></Argument>
+      <Argument Name="Keywords" Value="die ärzte"></Argument>
+      <Argument Name="Operation" Value="ItemSearch"></Argument>
+      <Argument Name="ResponseGroup" Value="Large"></Argument>
+      <Argument Name="SearchIndex" Value="All"></Argument>
+      <Argument Name="Service" Value="AWSECommerceService"></Argument>
+      <Argument Name="Sort" Value="-price"></Argument>
+      <Argument Name="Timestamp" Value="2016-03-28T08:43:55Z"></Argument>
+      <Argument Name="Version" Value="2009-03-31"></Argument>
+      <Argument Name="Signature" Value="CPYjbwvRPbuaeaV51Jq2sfp8h8u3gmy2eR7/iV9hBYw="></Argument>
+    </Arguments>
+    <RequestProcessingTime>0.0023120000000000</RequestProcessingTime>
+  </OperationRequest>
+  <Items>
+    <Request>
+      <IsValid>False</IsValid>
+      <ItemSearchRequest>
+        <Keywords>die ärzte</Keywords>
+        <ResponseGroup>Large</ResponseGroup>
+        <SearchIndex>All</SearchIndex>
+        <Sort>-price</Sort>
+      </ItemSearchRequest>
+      <Errors>
+        <Error>
+          <Code>AWS.RestrictedParameterValueCombination</Code>
+          <Message>Your request contained a restricted parameter combination.  When SearchIndex equals All, Sort cannot be present.</Message>
+        </Error>
+      </Errors>
+    </Request>
+  </Items>
+</ItemSearchResponse>

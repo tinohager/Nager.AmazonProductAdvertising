@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nager.AmazonProductAdvertis
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nager.AmazonProductAdvertising.Monitor", "Nager.AmazonProductAdvertising.Monitor\Nager.AmazonProductAdvertising.Monitor.csproj", "{C0046C9F-8B2A-4943-B010-DBA38B10EC8F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nager.AmazonProductAdvertising.UnitTest", "Nager.AmazonProductAdvertising.UnitTest\Nager.AmazonProductAdvertising.UnitTest.csproj", "{7F12AB6D-CCEA-41DA-B316-AFB5C80F83F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{C0046C9F-8B2A-4943-B010-DBA38B10EC8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0046C9F-8B2A-4943-B010-DBA38B10EC8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0046C9F-8B2A-4943-B010-DBA38B10EC8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F12AB6D-CCEA-41DA-B316-AFB5C80F83F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F12AB6D-CCEA-41DA-B316-AFB5C80F83F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F12AB6D-CCEA-41DA-B316-AFB5C80F83F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F12AB6D-CCEA-41DA-B316-AFB5C80F83F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
