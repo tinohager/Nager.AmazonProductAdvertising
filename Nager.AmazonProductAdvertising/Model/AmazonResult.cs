@@ -306,6 +306,7 @@ namespace Nager.AmazonProductAdvertising.Model
         public string[] EISBN { get; set; }
         public string EpisodeSequence { get; set; }
         public string ESRBAgeRating { get; set; }
+        [XmlElement("Feature")]
         public string[] Feature { get; set; }
         public string[] Format { get; set; }
         public string Genre { get; set; }
@@ -347,6 +348,7 @@ namespace Nager.AmazonProductAdvertising.Model
         public string PackageQuantity { get; set; }
         public string PartNumber { get; set; }
         public string[] PictureFormat { get; set; }
+        [XmlElement("Platform")]
         public string[] Platform { get; set; }
         public string ProductGroup { get; set; }
         public string ProductTypeName { get; set; }

@@ -37,14 +37,27 @@ namespace Nager.AmazonProductAdvertising.UnitTest
         }
 
         [TestMethod]
-        public void ParseItemLookupResponse()
+        public void ParseItemLookupResponse1()
         {
-            var xml = File.ReadAllText("ItemLookupResponse.xml");
+            var xml = File.ReadAllText("ItemLookupResponse1.xml");
             var result = XmlHelper.ParseXml<ItemLookupResponse>(xml);
             Assert.AreNotEqual(result, null);
             Assert.AreEqual(result.Items.Item.Length, 1);
             Assert.AreEqual(result.Items.Item[0].ASIN, "B007KKKJYK");
             Assert.AreEqual(result.Items.Item[0].ItemAttributes.Title, "Canon EOS 5D Mark III SLR-Digitalkamera (22 Megapixel, CMOS-Sensor, 8,1 cm (3,2 Zoll) Display, DIGIC 5+ Prozessor) Gehäuse schwarz");
+            Assert.AreEqual(result.Items.Item[0].ItemAttributes.Feature.Length, 5);
+        }
+
+        [TestMethod]
+        public void ParseItemLookupResponse2()
+        {
+            var xml = File.ReadAllText("ItemLookupResponse2.xml");
+            var result = XmlHelper.ParseXml<ItemLookupResponse>(xml);
+            Assert.AreNotEqual(result, null);
+            Assert.AreEqual(result.Items.Item.Length, 1);
+            Assert.AreEqual(result.Items.Item[0].ASIN, "B00BYPW00I");
+            Assert.AreEqual(result.Items.Item[0].ItemAttributes.Title, "Canon EOS 700D SLR-Digitalkamera (18 Megapixel, 7,6 cm (3 Zoll) Touchscreen, Full HD, Live-View) Kit inkl. EF-S 18-55mm 1:3,5-5,6 IS STM");
+            Assert.AreEqual(result.Items.Item[0].ItemAttributes.Platform.Length, 12);
         }
 
         [TestMethod]

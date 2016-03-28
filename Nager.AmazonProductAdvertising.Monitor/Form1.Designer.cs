@@ -30,7 +30,7 @@
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.buttonLookup = new System.Windows.Forms.Button();
-            this.textBoxLookup = new System.Windows.Forms.TextBox();
+            this.textBoxAsin = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,10 +42,14 @@
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewResult = new System.Windows.Forms.DataGridView();
-            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.ColumnAsin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesRank = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.textBoxXml = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -54,6 +58,9 @@
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -68,7 +75,7 @@
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.buttonLookup);
-            this.splitContainer1.Panel1.Controls.Add(this.textBoxLookup);
+            this.splitContainer1.Panel1.Controls.Add(this.textBoxAsin);
             this.splitContainer1.Panel1.Controls.Add(this.label4);
             this.splitContainer1.Panel1.Controls.Add(this.buttonSearch);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
@@ -77,7 +84,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
+            this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
             this.splitContainer1.Size = new System.Drawing.Size(868, 536);
             this.splitContainer1.SplitterDistance = 103;
             this.splitContainer1.TabIndex = 0;
@@ -90,14 +97,15 @@
             this.buttonLookup.TabIndex = 8;
             this.buttonLookup.Text = "Lookup";
             this.buttonLookup.UseVisualStyleBackColor = true;
+            this.buttonLookup.Click += new System.EventHandler(this.buttonLookup_Click);
             // 
-            // textBoxLookup
+            // textBoxAsin
             // 
-            this.textBoxLookup.Location = new System.Drawing.Point(68, 54);
-            this.textBoxLookup.Name = "textBoxLookup";
-            this.textBoxLookup.Size = new System.Drawing.Size(143, 20);
-            this.textBoxLookup.TabIndex = 7;
-            this.textBoxLookup.Text = "B00BYPW00I";
+            this.textBoxAsin.Location = new System.Drawing.Point(68, 54);
+            this.textBoxAsin.Name = "textBoxAsin";
+            this.textBoxAsin.Size = new System.Drawing.Size(143, 20);
+            this.textBoxAsin.TabIndex = 7;
+            this.textBoxAsin.Text = "B00BYPW00I";
             // 
             // label4
             // 
@@ -191,12 +199,12 @@
             this.tableLayoutPanel1.Controls.Add(this.propertyGrid1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(868, 429);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(854, 397);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // dataGridViewResult
@@ -215,17 +223,9 @@
             this.dataGridViewResult.ReadOnly = true;
             this.dataGridViewResult.RowHeadersVisible = false;
             this.dataGridViewResult.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewResult.Size = new System.Drawing.Size(244, 423);
+            this.dataGridViewResult.Size = new System.Drawing.Size(244, 391);
             this.dataGridViewResult.TabIndex = 0;
             this.dataGridViewResult.SelectionChanged += new System.EventHandler(this.dataGridViewResult_SelectionChanged);
-            // 
-            // propertyGrid1
-            // 
-            this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGrid1.Location = new System.Drawing.Point(253, 3);
-            this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(412, 423);
-            this.propertyGrid1.TabIndex = 1;
             // 
             // ColumnAsin
             // 
@@ -242,14 +242,65 @@
             this.ColumnSalesRank.Name = "ColumnSalesRank";
             this.ColumnSalesRank.ReadOnly = true;
             // 
+            // propertyGrid1
+            // 
+            this.propertyGrid1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.propertyGrid1.Location = new System.Drawing.Point(253, 3);
+            this.propertyGrid1.Name = "propertyGrid1";
+            this.propertyGrid1.Size = new System.Drawing.Size(398, 391);
+            this.propertyGrid1.TabIndex = 1;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(671, 3);
+            this.pictureBox1.Location = new System.Drawing.Point(657, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(194, 423);
+            this.pictureBox1.Size = new System.Drawing.Size(194, 391);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(868, 429);
+            this.tabControl1.TabIndex = 9;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.tableLayoutPanel1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(860, 403);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Common";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.textBoxXml);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(860, 403);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "XML";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // textBoxXml
+            // 
+            this.textBoxXml.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxXml.Location = new System.Drawing.Point(3, 3);
+            this.textBoxXml.Multiline = true;
+            this.textBoxXml.Name = "textBoxXml";
+            this.textBoxXml.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxXml.Size = new System.Drawing.Size(854, 397);
+            this.textBoxXml.TabIndex = 0;
             // 
             // Form1
             // 
@@ -269,6 +320,10 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -281,7 +336,7 @@
         private System.Windows.Forms.TextBox textBoxSecretKey;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonLookup;
-        private System.Windows.Forms.TextBox textBoxLookup;
+        private System.Windows.Forms.TextBox textBoxAsin;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Label label3;
@@ -293,6 +348,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAsin;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesRank;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TextBox textBoxXml;
     }
 }
 

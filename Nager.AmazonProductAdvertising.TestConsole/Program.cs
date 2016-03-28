@@ -21,8 +21,8 @@ namespace Nager.AmazonProductAdvertising.TestConsole
 
         static void SearchRequest(AmazonAuthentication authentication)
         {
-            var wrapper = new AmazonWrapper(authentication);
-            var result = wrapper.Search("canon eos", AmazonEndpoint.DE, "nagerat-21", AmazonSearchIndex.Electronics, AmazonResponseGroup.Large);
+            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE, "nagerat-21");
+            var result = wrapper.Search("canon eos", AmazonSearchIndex.Electronics, AmazonResponseGroup.Large);
 
             foreach(var item in result.Items.Item)
             {
@@ -34,18 +34,18 @@ namespace Nager.AmazonProductAdvertising.TestConsole
 
         static void LookupRequest(AmazonAuthentication authentication)
         {
-            var wrapper = new AmazonWrapper(authentication);
-            var result = wrapper.Lookup("B007KKKJYK", AmazonEndpoint.DE, "nagerat-21");
+            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE, "nagerat-21");
+            var result = wrapper.Lookup("B007KKKJYK");
 
             Console.WriteLine("{0}", result.Items.Item[0].ItemAttributes.Title);
         }
 
         static void CustomRequest(AmazonAuthentication authentication)
         {
-            var wrapper = new AmazonWrapper(authentication);
-            var searchQuery = wrapper.ItemSearchOperation("canon eos", "nagerat-21", AmazonSearchIndex.Electronics);
+            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE, "nagerat-21");
+            var searchQuery = wrapper.ItemSearchOperation("canon eos", AmazonSearchIndex.Electronics);
             searchQuery.Sort(AmazonSearchSort.Price, AmazonSearchSortOrder.Descending);
-            var xml = wrapper.Request(searchQuery, AmazonEndpoint.DE);
+            var xml = wrapper.Request(searchQuery);
 
             var result = XmlHelper.ParseXml<ItemSearchResponse>(xml);
 

@@ -10,26 +10,37 @@ namespace Nager.AmazonProductAdvertising
     public class AmazonWrapper
     {
         private AmazonAuthentication _authentication;
+        private AmazonEndpoint _endpoint;
+        private string _associateTag;
 
-        public AmazonWrapper(AmazonAuthentication amazonAuthentication)
+        public event Action<string> XmlReceived;
+
+        public AmazonWrapper(AmazonAuthentication authentication, AmazonEndpoint endpoint, string associateTag = "nagerat-21")
         {
-            this._authentication = amazonAuthentication;
+            this._authentication = authentication;
+            this._endpoint = endpoint;
+            this._associateTag = associateTag;
         }
 
-        public IDictionary<string, string> ItemLookupOperation(string asin, string associateTag, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        public void SetEndpoint(AmazonEndpoint amazonEndpoint)
+        {
+            this._endpoint = amazonEndpoint;
+        }
+
+        public IDictionary<string, string> ItemLookupOperation(string asin, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
         {
             var requestArgs = new Dictionary<string, string>
             {
                 { "Operation", "ItemLookup" },
                 { "ResponseGroup", amazonResponseGroup.ToString() },
                 { "ItemId", asin },
-                { "AssociateTag", associateTag },
+                { "AssociateTag", this._associateTag },
             };
 
             return requestArgs;
         }
 
-        public IDictionary<string, string> ItemSearchOperation(string search, string associateTag, AmazonSearchIndex amazonSearchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        public IDictionary<string, string> ItemSearchOperation(string search, AmazonSearchIndex amazonSearchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
         {
             var requestArgs = new Dictionary<string, string>
             {
@@ -37,39 +48,39 @@ namespace Nager.AmazonProductAdvertising
                 { "ResponseGroup", amazonResponseGroup.ToString() },
                 { "Keywords", search },
                 { "SearchIndex", amazonSearchIndex.ToString() },
-                { "AssociateTag", associateTag },
+                { "AssociateTag", this._associateTag },
             };
 
             return requestArgs;
         }
 
-        public ItemLookupResponse Lookup(string asin, AmazonEndpoint amazonEndpoint, string associateTag, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        public ItemLookupResponse Lookup(string asin, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
-            var requestParams = ItemLookupOperation(asin, associateTag, amazonResponseGroup);
+            var requestParams = ItemLookupOperation(asin, responseGroup);
 
-            using (var amazonSign = new AmazonSign(this._authentication, amazonEndpoint))
+            using (var amazonSign = new AmazonSign(this._authentication, this._endpoint))
             {
                 var requestUri = amazonSign.Sign(requestParams);
-                var result = SendRequest(requestUri);
-                return XmlHelper.ParseXml<ItemLookupResponse>(result);
+                var xml = SendRequest(requestUri);
+                return XmlHelper.ParseXml<ItemLookupResponse>(xml);
             }
         }
 
-        public ItemSearchResponse Search(string search, AmazonEndpoint amazonEndpoint, string associateTag, AmazonSearchIndex amazonSearchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        public ItemSearchResponse Search(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
         {
-            var requestParams = ItemSearchOperation(search, associateTag, amazonSearchIndex, amazonResponseGroup);
+            var requestParams = ItemSearchOperation(search, searchIndex, amazonResponseGroup);
 
-            using (var amazonSign = new AmazonSign(this._authentication, amazonEndpoint))
+            using (var amazonSign = new AmazonSign(this._authentication, this._endpoint))
             {
                 var requestUri = amazonSign.Sign(requestParams);
-                var result = SendRequest(requestUri);
-                return XmlHelper.ParseXml<ItemSearchResponse>(result);
+                var xml = SendRequest(requestUri);
+                return XmlHelper.ParseXml<ItemSearchResponse>(xml);
             }
         }
 
-        public string Request(IDictionary<string, string> requestParams, AmazonEndpoint amazonEndpoint)
+        public string Request(IDictionary<string, string> requestParams)
         {
-            using (var amazonSign = new AmazonSign(this._authentication, amazonEndpoint))
+            using (var amazonSign = new AmazonSign(this._authentication, this._endpoint))
             {
                 var requestUri = amazonSign.Sign(requestParams);
                 return SendRequest(requestUri);
@@ -85,9 +96,15 @@ namespace Nager.AmazonProductAdvertising
             {
                 using (var response = (HttpWebResponse)request.GetResponse())
                 {
-                    using (var sr = new StreamReader(response.GetResponseStream()))
+                    using (var streamReader = new StreamReader(response.GetResponseStream()))
                     {
-                        return sr.ReadToEnd();
+                        var xml = streamReader.ReadToEnd();
+                        if (this.XmlReceived != null)
+                        {
+                            this.XmlReceived(xml);
+                        }
+
+                        return xml;
                     }
                 }
             }

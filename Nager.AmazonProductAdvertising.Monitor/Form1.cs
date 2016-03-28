@@ -1,12 +1,7 @@
 ﻿using Nager.AmazonProductAdvertising.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace Nager.AmazonProductAdvertising.Monitor
@@ -15,9 +10,9 @@ namespace Nager.AmazonProductAdvertising.Monitor
     {
         public Form1()
         {
-            var version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
-
             this.InitializeComponent();
+
+            var version = Assembly.GetExecutingAssembly().GetName().Version;
             this.Text = String.Format("Nager - AmazonProductAdvertising {0}", version);
 
             this.dataGridViewResult.AutoGenerateColumns = false;
@@ -56,8 +51,10 @@ namespace Nager.AmazonProductAdvertising.Monitor
                 return;
             }
 
-            var wrapper = new AmazonWrapper(authentication);
-            var result = wrapper.Search(search, AmazonEndpoint.DE, "nagerat-21", AmazonSearchIndex.All, AmazonResponseGroup.Large);
+            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE, "nagerat-21");
+            wrapper.XmlReceived += XmlReceived;
+            var result = wrapper.Search(search, AmazonSearchIndex.All, AmazonResponseGroup.Large);
+            wrapper.XmlReceived -= XmlReceived;
 
             if (result == null)
             {
@@ -66,6 +63,36 @@ namespace Nager.AmazonProductAdvertising.Monitor
             }
 
             this.dataGridViewResult.DataSource = result.Items.Item;
+        }
+
+        private void buttonLookup_Click(object sender, EventArgs e)
+        {
+            var asin = this.textBoxAsin.Text;
+            var authentication = this.GetAuthentication();
+
+            if (!this.IsValidAuthentication(authentication))
+            {
+                MessageBox.Show("Authentication invalid", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE, "nagerat-21");
+            wrapper.XmlReceived += XmlReceived;
+            var result = wrapper.Lookup(asin);
+            wrapper.XmlReceived -= XmlReceived;
+
+            if (result == null)
+            {
+                MessageBox.Show("Request error");
+                return;
+            }
+
+            this.dataGridViewResult.DataSource = result.Items.Item;
+        }
+
+        private void XmlReceived(string xml)
+        {
+            this.textBoxXml.Text = xml.Replace("><", ">\r\n<");
         }
 
         private void dataGridViewResult_SelectionChanged(object sender, EventArgs e)
