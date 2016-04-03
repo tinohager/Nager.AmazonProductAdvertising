@@ -8,9 +8,17 @@ namespace Nager.AmazonProductAdvertising.Monitor
 {
     public partial class Form1 : Form
     {
+        private AmazonAuthentication _authentication;
+
         public Form1()
         {
             this.InitializeComponent();
+            var dialog = new AuthenticationDialog();
+            var dialogResult = dialog.ShowDialog(this);
+            if (dialogResult == System.Windows.Forms.DialogResult.OK)
+            {
+                this._authentication = dialog.Authentication;
+            }
 
             var version = Assembly.GetExecutingAssembly().GetName().Version;
             this.Text = String.Format("Nager - AmazonProductAdvertising {0}", version);
@@ -18,40 +26,11 @@ namespace Nager.AmazonProductAdvertising.Monitor
             this.dataGridViewResult.AutoGenerateColumns = false;
         }
 
-        private AmazonAuthentication GetAuthentication()
-        {
-            var authentication = new AmazonAuthentication();
-            authentication.AccessKey = this.textBoxAccessKey.Text;
-            authentication.SecretKey = this.textBoxSecretKey.Text;
-            return authentication;
-        }
-
-        private bool IsValidAuthentication(AmazonAuthentication authentication)
-        {
-            if (String.IsNullOrEmpty(authentication.AccessKey) || String.IsNullOrEmpty(authentication.SecretKey))
-            {
-                this.textBoxAccessKey.BackColor = Color.OrangeRed;
-                this.textBoxSecretKey.BackColor = Color.OrangeRed;
-                return false;
-            }
-
-            this.textBoxAccessKey.BackColor = Color.White;
-            this.textBoxSecretKey.BackColor = Color.White;
-            return true;
-        }
-
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             var search = this.textBoxSearch.Text;
-            var authentication = this.GetAuthentication();
 
-            if (!this.IsValidAuthentication(authentication))
-            {
-                MessageBox.Show("Authentication invalid", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE, "nagerat-21");
+            var wrapper = new AmazonWrapper(this._authentication, AmazonEndpoint.DE, "nagerat-21");
             wrapper.XmlReceived += XmlReceived;
             var result = wrapper.Search(search, AmazonSearchIndex.All, AmazonResponseGroup.Large);
             wrapper.XmlReceived -= XmlReceived;
@@ -68,15 +47,8 @@ namespace Nager.AmazonProductAdvertising.Monitor
         private void buttonLookup_Click(object sender, EventArgs e)
         {
             var asin = this.textBoxAsin.Text;
-            var authentication = this.GetAuthentication();
 
-            if (!this.IsValidAuthentication(authentication))
-            {
-                MessageBox.Show("Authentication invalid", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE, "nagerat-21");
+            var wrapper = new AmazonWrapper(this._authentication, AmazonEndpoint.DE, "nagerat-21");
             wrapper.XmlReceived += XmlReceived;
             var result = wrapper.Lookup(asin);
             wrapper.XmlReceived -= XmlReceived;
@@ -103,15 +75,28 @@ namespace Nager.AmazonProductAdvertising.Monitor
                 return;
             }
 
-            this.propertyGrid1.SelectedObject = item.ItemAttributes;
-            if (item.MediumImage == null)
+            this.propertyGridItem.SelectedObject = item;
+            this.propertyGridDetail.SelectedObject = item.ItemAttributes;
+
+            this.ShowImage(item.LargeImage);
+        }
+
+        private void ShowImage(Nager.AmazonProductAdvertising.Model.Image image)
+        {
+            if (image == null)
             {
                 this.pictureBox1.Image = null;
             }
             else
             {
-                this.pictureBox1.ImageLocation = item.MediumImage.URL;
+                this.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+                this.pictureBox1.ImageLocation = image.URL;
             }
+        }
+
+        private void propertyGridItem_SelectedGridItemChanged(object sender, SelectedGridItemChangedEventArgs e)
+        {
+            this.propertyGridCommon.SelectedObject = this.propertyGridItem.SelectedGridItem.Value;
         }
     }
 }
