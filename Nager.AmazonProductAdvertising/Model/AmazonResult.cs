@@ -210,6 +210,7 @@ namespace Nager.AmazonProductAdvertising.Model
     {
         public Merchant Merchant { get; set; }
         public OfferAttributes OfferAttributes { get; set; }
+        [XmlElement("OfferListing")]
         public OfferListing[] OfferListing { get; set; }
         public LoyaltyPoints LoyaltyPoints { get; set; }
         public Promotion[] Promotions { get; set; }
@@ -222,6 +223,7 @@ namespace Nager.AmazonProductAdvertising.Model
         [XmlElement(DataType = "nonNegativeInteger")]
         public string TotalOfferPages { get; set; }
         public string MoreOffersUrl { get; set; }
+        [XmlElement("Offer")]
         public Offer[] Offer { get; set; }
     }
 

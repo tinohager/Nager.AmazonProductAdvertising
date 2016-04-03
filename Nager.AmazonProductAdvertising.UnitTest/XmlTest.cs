@@ -58,6 +58,7 @@ namespace Nager.AmazonProductAdvertising.UnitTest
             Assert.AreEqual(result.Items.Item[0].ASIN, "B00BYPW00I");
             Assert.AreEqual(result.Items.Item[0].ItemAttributes.Title, "Canon EOS 700D SLR-Digitalkamera (18 Megapixel, 7,6 cm (3 Zoll) Touchscreen, Full HD, Live-View) Kit inkl. EF-S 18-55mm 1:3,5-5,6 IS STM");
             Assert.AreEqual(result.Items.Item[0].ItemAttributes.Platform.Length, 12);
+            Assert.AreEqual(result.Items.Item[0].Offers.Offer[0].OfferListing[0].Price.FormattedPrice, "EUR 538,18");
         }
 
         [TestMethod]
