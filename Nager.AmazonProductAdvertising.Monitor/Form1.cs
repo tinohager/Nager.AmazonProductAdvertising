@@ -26,6 +26,8 @@ namespace Nager.AmazonProductAdvertising.Monitor
             this.dataGridViewResult.AutoGenerateColumns = false;
         }
 
+        #region Buttons
+
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             var search = this.textBoxSearch.Text;
@@ -62,6 +64,8 @@ namespace Nager.AmazonProductAdvertising.Monitor
             this.dataGridViewResult.DataSource = result.Items.Item;
         }
 
+        #endregion
+
         private void XmlReceived(string xml)
         {
             this.textBoxXml.Text = xml.Replace("><", ">\r\n<");
@@ -75,28 +79,7 @@ namespace Nager.AmazonProductAdvertising.Monitor
                 return;
             }
 
-            this.propertyGridItem.SelectedObject = item;
-            this.propertyGridDetail.SelectedObject = item.ItemAttributes;
-
-            this.ShowImage(item.LargeImage);
-        }
-
-        private void ShowImage(Nager.AmazonProductAdvertising.Model.Image image)
-        {
-            if (image == null)
-            {
-                this.pictureBox1.Image = null;
-            }
-            else
-            {
-                this.pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-                this.pictureBox1.ImageLocation = image.URL;
-            }
-        }
-
-        private void propertyGridItem_SelectedGridItemChanged(object sender, SelectedGridItemChangedEventArgs e)
-        {
-            this.propertyGridCommon.SelectedObject = this.propertyGridItem.SelectedGridItem.Value;
+            this.userControlItem1.ShowItem(item);
         }
     }
 }

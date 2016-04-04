@@ -58,6 +58,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControlItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlItem.Designer.cs">
+      <DependentUpon>UserControlItem.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AuthenticationDialog.resx">
       <DependentUpon>AuthenticationDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -73,6 +79,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControlItem.resx">
+      <DependentUpon>UserControlItem.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

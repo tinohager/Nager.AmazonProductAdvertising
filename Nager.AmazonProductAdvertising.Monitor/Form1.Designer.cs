@@ -36,27 +36,26 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.propertyGridItem = new System.Windows.Forms.PropertyGrid();
-            this.propertyGridCommon = new System.Windows.Forms.PropertyGrid();
+            this.tabPageCommon = new System.Windows.Forms.TabPage();
+            this.splitContainerItems = new System.Windows.Forms.SplitContainer();
             this.dataGridViewResult = new System.Windows.Forms.DataGridView();
             this.ColumnAsin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesRank = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.propertyGridDetail = new System.Windows.Forms.PropertyGrid();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.userControlItem1 = new Nager.AmazonProductAdvertising.Monitor.UserControlItem();
+            this.tabPageXml = new System.Windows.Forms.TabPage();
             this.textBoxXml = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tabPageCommon.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerItems)).BeginInit();
+            this.splitContainerItems.Panel1.SuspendLayout();
+            this.splitContainerItems.Panel2.SuspendLayout();
+            this.splitContainerItems.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.tabPage2.SuspendLayout();
+            this.tabPageXml.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -140,8 +139,8 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPageCommon);
+            this.tabControl1.Controls.Add(this.tabPageXml);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -149,55 +148,35 @@
             this.tabControl1.Size = new System.Drawing.Size(868, 429);
             this.tabControl1.TabIndex = 9;
             // 
-            // tabPage1
+            // tabPageCommon
             // 
-            this.tabPage1.Controls.Add(this.tableLayoutPanel1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(860, 403);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Common";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPageCommon.Controls.Add(this.splitContainerItems);
+            this.tabPageCommon.Location = new System.Drawing.Point(4, 22);
+            this.tabPageCommon.Name = "tabPageCommon";
+            this.tabPageCommon.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCommon.Size = new System.Drawing.Size(860, 403);
+            this.tabPageCommon.TabIndex = 0;
+            this.tabPageCommon.Text = "Common";
+            this.tabPageCommon.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanel1
+            // splitContainerItems
             // 
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.Controls.Add(this.propertyGridItem, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.propertyGridCommon, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.dataGridViewResult, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.propertyGridDetail, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 3, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(854, 397);
-            this.tableLayoutPanel1.TabIndex = 1;
+            this.splitContainerItems.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerItems.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerItems.IsSplitterFixed = true;
+            this.splitContainerItems.Location = new System.Drawing.Point(3, 3);
+            this.splitContainerItems.Name = "splitContainerItems";
             // 
-            // propertyGridItem
+            // splitContainerItems.Panel1
             // 
-            this.propertyGridItem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGridItem.Location = new System.Drawing.Point(253, 241);
-            this.propertyGridItem.Name = "propertyGridItem";
-            this.propertyGridItem.Size = new System.Drawing.Size(235, 153);
-            this.propertyGridItem.TabIndex = 4;
-            this.propertyGridItem.SelectedGridItemChanged += new System.Windows.Forms.SelectedGridItemChangedEventHandler(this.propertyGridItem_SelectedGridItemChanged);
+            this.splitContainerItems.Panel1.Controls.Add(this.dataGridViewResult);
             // 
-            // propertyGridCommon
+            // splitContainerItems.Panel2
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.propertyGridCommon, 2);
-            this.propertyGridCommon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGridCommon.Location = new System.Drawing.Point(494, 241);
-            this.propertyGridCommon.Name = "propertyGridCommon";
-            this.propertyGridCommon.Size = new System.Drawing.Size(357, 153);
-            this.propertyGridCommon.TabIndex = 3;
+            this.splitContainerItems.Panel2.Controls.Add(this.userControlItem1);
+            this.splitContainerItems.Size = new System.Drawing.Size(854, 397);
+            this.splitContainerItems.SplitterDistance = 220;
+            this.splitContainerItems.TabIndex = 1;
             // 
             // dataGridViewResult
             // 
@@ -210,13 +189,12 @@
             this.ColumnAsin,
             this.ColumnSalesRank});
             this.dataGridViewResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewResult.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewResult.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewResult.Name = "dataGridViewResult";
             this.dataGridViewResult.ReadOnly = true;
             this.dataGridViewResult.RowHeadersVisible = false;
-            this.tableLayoutPanel1.SetRowSpan(this.dataGridViewResult, 2);
             this.dataGridViewResult.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewResult.Size = new System.Drawing.Size(244, 391);
+            this.dataGridViewResult.Size = new System.Drawing.Size(220, 397);
             this.dataGridViewResult.TabIndex = 0;
             this.dataGridViewResult.SelectionChanged += new System.EventHandler(this.dataGridViewResult_SelectionChanged);
             // 
@@ -224,7 +202,7 @@
             // 
             this.ColumnAsin.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ColumnAsin.DataPropertyName = "ASIN";
-            this.ColumnAsin.HeaderText = "Asin";
+            this.ColumnAsin.HeaderText = "ASIN";
             this.ColumnAsin.Name = "ColumnAsin";
             this.ColumnAsin.ReadOnly = true;
             // 
@@ -235,34 +213,24 @@
             this.ColumnSalesRank.Name = "ColumnSalesRank";
             this.ColumnSalesRank.ReadOnly = true;
             // 
-            // propertyGridDetail
+            // userControlItem1
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.propertyGridDetail, 2);
-            this.propertyGridDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.propertyGridDetail.Location = new System.Drawing.Point(253, 3);
-            this.propertyGridDetail.Name = "propertyGridDetail";
-            this.propertyGridDetail.Size = new System.Drawing.Size(416, 232);
-            this.propertyGridDetail.TabIndex = 1;
+            this.userControlItem1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.userControlItem1.Name = "userControlItem1";
+            this.userControlItem1.Size = new System.Drawing.Size(630, 397);
+            this.userControlItem1.TabIndex = 0;
             // 
-            // pictureBox1
+            // tabPageXml
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(675, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(176, 232);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.textBoxXml);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(860, 403);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "XML";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPageXml.Controls.Add(this.textBoxXml);
+            this.tabPageXml.Location = new System.Drawing.Point(4, 22);
+            this.tabPageXml.Name = "tabPageXml";
+            this.tabPageXml.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageXml.Size = new System.Drawing.Size(860, 403);
+            this.tabPageXml.TabIndex = 1;
+            this.tabPageXml.Text = "XML";
+            this.tabPageXml.UseVisualStyleBackColor = true;
             // 
             // textBoxXml
             // 
@@ -288,12 +256,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tabPageCommon.ResumeLayout(false);
+            this.splitContainerItems.Panel1.ResumeLayout(false);
+            this.splitContainerItems.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerItems)).EndInit();
+            this.splitContainerItems.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.tabPageXml.ResumeLayout(false);
+            this.tabPageXml.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -308,17 +278,14 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.DataGridView dataGridViewResult;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.PropertyGrid propertyGridDetail;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPageCommon;
+        private System.Windows.Forms.TabPage tabPageXml;
+        private System.Windows.Forms.TextBox textBoxXml;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAsin;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesRank;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TextBox textBoxXml;
-        private System.Windows.Forms.PropertyGrid propertyGridCommon;
-        private System.Windows.Forms.PropertyGrid propertyGridItem;
+        private System.Windows.Forms.SplitContainer splitContainerItems;
+        private UserControlItem userControlItem1;
     }
 }
 
