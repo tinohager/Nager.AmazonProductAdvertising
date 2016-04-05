@@ -41,7 +41,7 @@
             this.dataGridViewResult = new System.Windows.Forms.DataGridView();
             this.ColumnAsin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesRank = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userControlItem1 = new Nager.AmazonProductAdvertising.Monitor.UserControlItem();
+            this.userControlItem = new Nager.AmazonProductAdvertising.Monitor.UserControlItem();
             this.tabPageXml = new System.Windows.Forms.TabPage();
             this.textBoxXml = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -173,7 +173,7 @@
             // 
             // splitContainerItems.Panel2
             // 
-            this.splitContainerItems.Panel2.Controls.Add(this.userControlItem1);
+            this.splitContainerItems.Panel2.Controls.Add(this.userControlItem);
             this.splitContainerItems.Size = new System.Drawing.Size(854, 397);
             this.splitContainerItems.SplitterDistance = 220;
             this.splitContainerItems.TabIndex = 1;
@@ -213,13 +213,13 @@
             this.ColumnSalesRank.Name = "ColumnSalesRank";
             this.ColumnSalesRank.ReadOnly = true;
             // 
-            // userControlItem1
+            // userControlItem
             // 
-            this.userControlItem1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.userControlItem1.Name = "userControlItem1";
-            this.userControlItem1.Size = new System.Drawing.Size(630, 397);
-            this.userControlItem1.TabIndex = 0;
+            this.userControlItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlItem.Location = new System.Drawing.Point(0, 0);
+            this.userControlItem.Name = "userControlItem";
+            this.userControlItem.Size = new System.Drawing.Size(630, 397);
+            this.userControlItem.TabIndex = 0;
             // 
             // tabPageXml
             // 
@@ -285,7 +285,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAsin;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesRank;
         private System.Windows.Forms.SplitContainer splitContainerItems;
-        private UserControlItem userControlItem1;
+        private UserControlItem userControlItem;
     }
 }
 

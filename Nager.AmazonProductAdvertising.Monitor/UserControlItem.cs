@@ -17,6 +17,10 @@ namespace Nager.AmazonProductAdvertising.Monitor
                 return;
             }
 
+            var simpleItem = new AmazonSimpleItem(item);
+            this.labelName.Text = simpleItem.Name;
+            this.labelPrice.Text = simpleItem.Price.ToString("000.00 €");
+
             this.propertyGridLevel1.SelectedObject = item;
 
             this.ShowImage(this.pictureBox1, item.LargeImage);

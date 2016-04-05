@@ -79,7 +79,10 @@ namespace Nager.AmazonProductAdvertising.Monitor
                 return;
             }
 
-            this.userControlItem1.ShowItem(item);
+
+
+
+            this.userControlItem.ShowItem(item);
         }
     }
 }

@@ -49,6 +49,7 @@
     <Compile Include="Model\AmazonSearchSort.cs" />
     <Compile Include="Model\AmazonSearchSortOrder.cs" />
     <Compile Include="Model\AmazonResult.cs" />
+    <Compile Include="Model\AmazonSimpleItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XmlHelper.cs" />
   </ItemGroup>

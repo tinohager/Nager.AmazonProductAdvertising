@@ -59,6 +59,7 @@
             this.textBoxSecretKey.Name = "textBoxSecretKey";
             this.textBoxSecretKey.Size = new System.Drawing.Size(410, 20);
             this.textBoxSecretKey.TabIndex = 6;
+            this.textBoxSecretKey.UseSystemPasswordChar = true;
             // 
             // textBoxAccessKey
             // 

@@ -32,21 +32,25 @@
             this.tabPageDetail = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.propertyGridLevel3 = new System.Windows.Forms.PropertyGrid();
             this.propertyGridLevel2 = new System.Windows.Forms.PropertyGrid();
             this.propertyGridLevel1 = new System.Windows.Forms.PropertyGrid();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.labelName = new System.Windows.Forms.Label();
+            this.labelPrice = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPageDetail.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -57,7 +61,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(769, 480);
+            this.tabControl1.Size = new System.Drawing.Size(822, 556);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPageDetail
@@ -66,7 +70,7 @@
             this.tabPageDetail.Location = new System.Drawing.Point(4, 22);
             this.tabPageDetail.Name = "tabPageDetail";
             this.tabPageDetail.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDetail.Size = new System.Drawing.Size(761, 454);
+            this.tabPageDetail.Size = new System.Drawing.Size(814, 530);
             this.tabPageDetail.TabIndex = 0;
             this.tabPageDetail.Text = "Detail";
             this.tabPageDetail.UseVisualStyleBackColor = true;
@@ -76,14 +80,15 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(755, 448);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(808, 524);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -91,15 +96,22 @@
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(380, 3);
+            this.panel1.Location = new System.Drawing.Point(407, 265);
             this.panel1.Name = "panel1";
-            this.tableLayoutPanel1.SetRowSpan(this.panel1, 2);
-            this.panel1.Size = new System.Drawing.Size(372, 442);
+            this.panel1.Size = new System.Drawing.Size(398, 256);
             this.panel1.TabIndex = 0;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(205, 110);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(96, 89);
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(27, 14);
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(196, 196);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -164,13 +176,35 @@
             this.propertyGridLevel1.TabIndex = 0;
             this.propertyGridLevel1.SelectedGridItemChanged += new System.Windows.Forms.SelectedGridItemChangedEventHandler(this.propertyGridLevel1_SelectedGridItemChanged);
             // 
-            // pictureBox2
+            // panel2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(27, 216);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(196, 203);
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
+            this.tableLayoutPanel1.SetColumnSpan(this.panel2, 2);
+            this.panel2.Controls.Add(this.labelPrice);
+            this.panel2.Controls.Add(this.labelName);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(802, 256);
+            this.panel2.TabIndex = 1;
+            // 
+            // labelName
+            // 
+            this.labelName.AutoSize = true;
+            this.labelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelName.Location = new System.Drawing.Point(3, 14);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(84, 17);
+            this.labelName.TabIndex = 0;
+            this.labelName.Text = "labelName";
+            // 
+            // labelPrice
+            // 
+            this.labelPrice.AutoSize = true;
+            this.labelPrice.Location = new System.Drawing.Point(3, 41);
+            this.labelPrice.Name = "labelPrice";
+            this.labelPrice.Size = new System.Drawing.Size(53, 13);
+            this.labelPrice.TabIndex = 1;
+            this.labelPrice.Text = "labelPrice";
             // 
             // UserControlItem
             // 
@@ -178,15 +212,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.tabControl1);
             this.Name = "UserControlItem";
-            this.Size = new System.Drawing.Size(769, 480);
+            this.Size = new System.Drawing.Size(822, 556);
             this.tabControl1.ResumeLayout(false);
             this.tabPageDetail.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -204,5 +240,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.PropertyGrid propertyGridLevel3;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label labelName;
+        private System.Windows.Forms.Label labelPrice;
     }
 }
