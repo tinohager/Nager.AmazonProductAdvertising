@@ -31,7 +31,6 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.buttonLookup = new System.Windows.Forms.Button();
             this.textBoxAsin = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
@@ -41,9 +40,17 @@
             this.dataGridViewResult = new System.Windows.Forms.DataGridView();
             this.ColumnAsin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesRank = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userControlItem = new Nager.AmazonProductAdvertising.Monitor.UserControlItem();
             this.tabPageXml = new System.Windows.Forms.TabPage();
             this.textBoxXml = new System.Windows.Forms.TextBox();
+            this.comboBoxEndpoint = new System.Windows.Forms.ComboBox();
+            this.comboBoxSearchIndex = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.userControlItem = new Nager.AmazonProductAdvertising.Monitor.UserControlItem();
+            this.comboBoxResponseGroup = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -56,6 +63,8 @@
             this.splitContainerItems.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).BeginInit();
             this.tabPageXml.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -69,23 +78,21 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.buttonLookup);
-            this.splitContainer1.Panel1.Controls.Add(this.textBoxAsin);
-            this.splitContainer1.Panel1.Controls.Add(this.label4);
-            this.splitContainer1.Panel1.Controls.Add(this.buttonSearch);
-            this.splitContainer1.Panel1.Controls.Add(this.label3);
-            this.splitContainer1.Panel1.Controls.Add(this.textBoxSearch);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.splitContainer1.Panel1.Controls.Add(this.comboBoxEndpoint);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
             this.splitContainer1.Size = new System.Drawing.Size(868, 536);
-            this.splitContainer1.SplitterDistance = 103;
+            this.splitContainer1.SplitterDistance = 150;
             this.splitContainer1.TabIndex = 0;
             // 
             // buttonLookup
             // 
-            this.buttonLookup.Location = new System.Drawing.Point(217, 52);
+            this.buttonLookup.Location = new System.Drawing.Point(5, 44);
             this.buttonLookup.Name = "buttonLookup";
             this.buttonLookup.Size = new System.Drawing.Size(75, 23);
             this.buttonLookup.TabIndex = 8;
@@ -95,24 +102,15 @@
             // 
             // textBoxAsin
             // 
-            this.textBoxAsin.Location = new System.Drawing.Point(68, 54);
+            this.textBoxAsin.Location = new System.Drawing.Point(6, 19);
             this.textBoxAsin.Name = "textBoxAsin";
             this.textBoxAsin.Size = new System.Drawing.Size(143, 20);
             this.textBoxAsin.TabIndex = 7;
             this.textBoxAsin.Text = "B00BYPW00I";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 57);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Lookup:";
-            // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(217, 26);
+            this.buttonSearch.Location = new System.Drawing.Point(103, 102);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(75, 23);
             this.buttonSearch.TabIndex = 5;
@@ -123,7 +121,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 31);
+            this.label3.Location = new System.Drawing.Point(54, 79);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 3;
@@ -131,9 +129,9 @@
             // 
             // textBoxSearch
             // 
-            this.textBoxSearch.Location = new System.Drawing.Point(68, 28);
+            this.textBoxSearch.Location = new System.Drawing.Point(104, 76);
             this.textBoxSearch.Name = "textBoxSearch";
-            this.textBoxSearch.Size = new System.Drawing.Size(143, 20);
+            this.textBoxSearch.Size = new System.Drawing.Size(205, 20);
             this.textBoxSearch.TabIndex = 3;
             this.textBoxSearch.Text = "canon eos";
             // 
@@ -145,7 +143,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(868, 429);
+            this.tabControl1.Size = new System.Drawing.Size(868, 382);
             this.tabControl1.TabIndex = 9;
             // 
             // tabPageCommon
@@ -154,7 +152,7 @@
             this.tabPageCommon.Location = new System.Drawing.Point(4, 22);
             this.tabPageCommon.Name = "tabPageCommon";
             this.tabPageCommon.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCommon.Size = new System.Drawing.Size(860, 403);
+            this.tabPageCommon.Size = new System.Drawing.Size(860, 356);
             this.tabPageCommon.TabIndex = 0;
             this.tabPageCommon.Text = "Common";
             this.tabPageCommon.UseVisualStyleBackColor = true;
@@ -174,7 +172,7 @@
             // splitContainerItems.Panel2
             // 
             this.splitContainerItems.Panel2.Controls.Add(this.userControlItem);
-            this.splitContainerItems.Size = new System.Drawing.Size(854, 397);
+            this.splitContainerItems.Size = new System.Drawing.Size(854, 350);
             this.splitContainerItems.SplitterDistance = 220;
             this.splitContainerItems.TabIndex = 1;
             // 
@@ -194,7 +192,7 @@
             this.dataGridViewResult.ReadOnly = true;
             this.dataGridViewResult.RowHeadersVisible = false;
             this.dataGridViewResult.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewResult.Size = new System.Drawing.Size(220, 397);
+            this.dataGridViewResult.Size = new System.Drawing.Size(220, 350);
             this.dataGridViewResult.TabIndex = 0;
             this.dataGridViewResult.SelectionChanged += new System.EventHandler(this.dataGridViewResult_SelectionChanged);
             // 
@@ -213,21 +211,13 @@
             this.ColumnSalesRank.Name = "ColumnSalesRank";
             this.ColumnSalesRank.ReadOnly = true;
             // 
-            // userControlItem
-            // 
-            this.userControlItem.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.userControlItem.Location = new System.Drawing.Point(0, 0);
-            this.userControlItem.Name = "userControlItem";
-            this.userControlItem.Size = new System.Drawing.Size(630, 397);
-            this.userControlItem.TabIndex = 0;
-            // 
             // tabPageXml
             // 
             this.tabPageXml.Controls.Add(this.textBoxXml);
             this.tabPageXml.Location = new System.Drawing.Point(4, 22);
             this.tabPageXml.Name = "tabPageXml";
             this.tabPageXml.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageXml.Size = new System.Drawing.Size(860, 403);
+            this.tabPageXml.Size = new System.Drawing.Size(860, 356);
             this.tabPageXml.TabIndex = 1;
             this.tabPageXml.Text = "XML";
             this.tabPageXml.UseVisualStyleBackColor = true;
@@ -239,8 +229,97 @@
             this.textBoxXml.Multiline = true;
             this.textBoxXml.Name = "textBoxXml";
             this.textBoxXml.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxXml.Size = new System.Drawing.Size(854, 397);
+            this.textBoxXml.Size = new System.Drawing.Size(854, 350);
             this.textBoxXml.TabIndex = 0;
+            // 
+            // comboBoxEndpoint
+            // 
+            this.comboBoxEndpoint.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEndpoint.FormattingEnabled = true;
+            this.comboBoxEndpoint.Location = new System.Drawing.Point(77, 12);
+            this.comboBoxEndpoint.Name = "comboBoxEndpoint";
+            this.comboBoxEndpoint.Size = new System.Drawing.Size(225, 21);
+            this.comboBoxEndpoint.TabIndex = 9;
+            // 
+            // comboBoxSearchIndex
+            // 
+            this.comboBoxSearchIndex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSearchIndex.FormattingEnabled = true;
+            this.comboBoxSearchIndex.Location = new System.Drawing.Point(104, 22);
+            this.comboBoxSearchIndex.Name = "comboBoxSearchIndex";
+            this.comboBoxSearchIndex.Size = new System.Drawing.Size(205, 21);
+            this.comboBoxSearchIndex.TabIndex = 10;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Endpoint:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(28, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "SearchIndex:";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.comboBoxResponseGroup);
+            this.groupBox1.Controls.Add(this.comboBoxSearchIndex);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.textBoxSearch);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.buttonSearch);
+            this.groupBox1.Location = new System.Drawing.Point(308, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(329, 135);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Search";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.textBoxAsin);
+            this.groupBox2.Controls.Add(this.buttonLookup);
+            this.groupBox2.Location = new System.Drawing.Point(643, 15);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(157, 132);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Lookup";
+            // 
+            // userControlItem
+            // 
+            this.userControlItem.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.userControlItem.Location = new System.Drawing.Point(0, 0);
+            this.userControlItem.Name = "userControlItem";
+            this.userControlItem.Size = new System.Drawing.Size(630, 350);
+            this.userControlItem.TabIndex = 0;
+            // 
+            // comboBoxResponseGroup
+            // 
+            this.comboBoxResponseGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxResponseGroup.FormattingEnabled = true;
+            this.comboBoxResponseGroup.Location = new System.Drawing.Point(104, 49);
+            this.comboBoxResponseGroup.Name = "comboBoxResponseGroup";
+            this.comboBoxResponseGroup.Size = new System.Drawing.Size(205, 21);
+            this.comboBoxResponseGroup.TabIndex = 13;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(11, 52);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(87, 13);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "ResponseGroup:";
             // 
             // Form1
             // 
@@ -264,6 +343,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).EndInit();
             this.tabPageXml.ResumeLayout(false);
             this.tabPageXml.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -273,7 +356,6 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button buttonLookup;
         private System.Windows.Forms.TextBox textBoxAsin;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxSearch;
@@ -286,6 +368,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesRank;
         private System.Windows.Forms.SplitContainer splitContainerItems;
         private UserControlItem userControlItem;
+        private System.Windows.Forms.ComboBox comboBoxEndpoint;
+        private System.Windows.Forms.ComboBox comboBoxSearchIndex;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBoxResponseGroup;
     }
 }
 

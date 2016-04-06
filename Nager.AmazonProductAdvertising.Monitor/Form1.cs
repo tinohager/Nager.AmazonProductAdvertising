@@ -15,10 +15,14 @@ namespace Nager.AmazonProductAdvertising.Monitor
             this.InitializeComponent();
             var dialog = new AuthenticationDialog();
             var dialogResult = dialog.ShowDialog(this);
-            if (dialogResult == System.Windows.Forms.DialogResult.OK)
+            if (dialogResult == DialogResult.OK)
             {
                 this._authentication = dialog.Authentication;
             }
+
+            this.comboBoxEndpoint.DataSource = Enum.GetValues(typeof(AmazonEndpoint));
+            this.comboBoxSearchIndex.DataSource = Enum.GetValues(typeof(AmazonSearchIndex));
+            this.comboBoxResponseGroup.DataSource = Enum.GetValues(typeof(AmazonResponseGroup));
 
             var version = Assembly.GetExecutingAssembly().GetName().Version;
             this.Text = String.Format("Nager - AmazonProductAdvertising {0}", version);
@@ -31,10 +35,13 @@ namespace Nager.AmazonProductAdvertising.Monitor
         private void buttonSearch_Click(object sender, EventArgs e)
         {
             var search = this.textBoxSearch.Text;
+            var endpoint = (AmazonEndpoint)this.comboBoxEndpoint.SelectedItem;
+            var searchIndex = (AmazonSearchIndex)this.comboBoxSearchIndex.SelectedItem;
+            var responseGroup = (AmazonResponseGroup)this.comboBoxResponseGroup.SelectedItem;
 
-            var wrapper = new AmazonWrapper(this._authentication, AmazonEndpoint.DE, "nagerat-21");
+            var wrapper = new AmazonWrapper(this._authentication, endpoint, "nagerat-21");
             wrapper.XmlReceived += XmlReceived;
-            var result = wrapper.Search(search, AmazonSearchIndex.All, AmazonResponseGroup.Large);
+            var result = wrapper.Search(search, searchIndex, responseGroup);
             wrapper.XmlReceived -= XmlReceived;
 
             if (result == null)
@@ -49,8 +56,9 @@ namespace Nager.AmazonProductAdvertising.Monitor
         private void buttonLookup_Click(object sender, EventArgs e)
         {
             var asin = this.textBoxAsin.Text;
+            var endpoint = (AmazonEndpoint)this.comboBoxEndpoint.SelectedItem;
 
-            var wrapper = new AmazonWrapper(this._authentication, AmazonEndpoint.DE, "nagerat-21");
+            var wrapper = new AmazonWrapper(this._authentication, endpoint, "nagerat-21");
             wrapper.XmlReceived += XmlReceived;
             var result = wrapper.Lookup(asin);
             wrapper.XmlReceived -= XmlReceived;

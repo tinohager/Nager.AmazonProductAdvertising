@@ -28,9 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageDetail = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.labelPrice = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -39,18 +43,18 @@
             this.propertyGridLevel3 = new System.Windows.Forms.PropertyGrid();
             this.propertyGridLevel2 = new System.Windows.Forms.PropertyGrid();
             this.propertyGridLevel1 = new System.Windows.Forms.PropertyGrid();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.labelName = new System.Windows.Forms.Label();
-            this.labelPrice = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ColumnDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPageDetail.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -80,25 +84,56 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(808, 524);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.panel2, 2);
+            this.panel2.Controls.Add(this.labelPrice);
+            this.panel2.Controls.Add(this.labelName);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(802, 94);
+            this.panel2.TabIndex = 1;
+            // 
+            // labelPrice
+            // 
+            this.labelPrice.AutoSize = true;
+            this.labelPrice.Location = new System.Drawing.Point(3, 53);
+            this.labelPrice.Name = "labelPrice";
+            this.labelPrice.Size = new System.Drawing.Size(53, 13);
+            this.labelPrice.TabIndex = 1;
+            this.labelPrice.Text = "labelPrice";
+            // 
+            // labelName
+            // 
+            this.labelName.AutoSize = true;
+            this.labelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelName.Location = new System.Drawing.Point(3, 14);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(84, 17);
+            this.labelName.TabIndex = 0;
+            this.labelName.Text = "labelName";
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(407, 265);
+            this.panel1.Location = new System.Drawing.Point(407, 103);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(398, 256);
+            this.panel1.Size = new System.Drawing.Size(398, 418);
             this.panel1.TabIndex = 0;
             // 
             // pictureBox2
@@ -124,7 +159,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(761, 454);
+            this.tabPage2.Size = new System.Drawing.Size(814, 530);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Debugging";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -144,25 +179,25 @@
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(755, 448);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(808, 524);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
             // propertyGridLevel3
             // 
             this.propertyGridLevel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.propertyGridLevel3.HelpVisible = false;
-            this.propertyGridLevel3.Location = new System.Drawing.Point(511, 3);
+            this.propertyGridLevel3.Location = new System.Drawing.Point(545, 3);
             this.propertyGridLevel3.Name = "propertyGridLevel3";
-            this.propertyGridLevel3.Size = new System.Drawing.Size(241, 442);
+            this.propertyGridLevel3.Size = new System.Drawing.Size(260, 518);
             this.propertyGridLevel3.TabIndex = 2;
             // 
             // propertyGridLevel2
             // 
             this.propertyGridLevel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.propertyGridLevel2.HelpVisible = false;
-            this.propertyGridLevel2.Location = new System.Drawing.Point(257, 3);
+            this.propertyGridLevel2.Location = new System.Drawing.Point(274, 3);
             this.propertyGridLevel2.Name = "propertyGridLevel2";
-            this.propertyGridLevel2.Size = new System.Drawing.Size(248, 442);
+            this.propertyGridLevel2.Size = new System.Drawing.Size(265, 518);
             this.propertyGridLevel2.TabIndex = 1;
             this.propertyGridLevel2.SelectedGridItemChanged += new System.Windows.Forms.SelectedGridItemChangedEventHandler(this.propertyGridLevel2_SelectedGridItemChanged);
             // 
@@ -172,39 +207,45 @@
             this.propertyGridLevel1.HelpVisible = false;
             this.propertyGridLevel1.Location = new System.Drawing.Point(3, 3);
             this.propertyGridLevel1.Name = "propertyGridLevel1";
-            this.propertyGridLevel1.Size = new System.Drawing.Size(248, 442);
+            this.propertyGridLevel1.Size = new System.Drawing.Size(265, 518);
             this.propertyGridLevel1.TabIndex = 0;
             this.propertyGridLevel1.SelectedGridItemChanged += new System.Windows.Forms.SelectedGridItemChangedEventHandler(this.propertyGridLevel1_SelectedGridItemChanged);
             // 
-            // panel2
+            // dataGridView1
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.panel2, 2);
-            this.panel2.Controls.Add(this.labelPrice);
-            this.panel2.Controls.Add(this.labelName);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(802, 256);
-            this.panel2.TabIndex = 1;
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ColumnHeadersVisible = false;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnDescription});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 103);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.Size = new System.Drawing.Size(398, 418);
+            this.dataGridView1.TabIndex = 3;
             // 
-            // labelName
+            // ColumnDescription
             // 
-            this.labelName.AutoSize = true;
-            this.labelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelName.Location = new System.Drawing.Point(3, 14);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(84, 17);
-            this.labelName.TabIndex = 0;
-            this.labelName.Text = "labelName";
-            // 
-            // labelPrice
-            // 
-            this.labelPrice.AutoSize = true;
-            this.labelPrice.Location = new System.Drawing.Point(3, 41);
-            this.labelPrice.Name = "labelPrice";
-            this.labelPrice.Size = new System.Drawing.Size(53, 13);
-            this.labelPrice.TabIndex = 1;
-            this.labelPrice.Text = "labelPrice";
+            this.ColumnDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnDescription.DataPropertyName = "Description";
+            this.ColumnDescription.HeaderText = "Description";
+            this.ColumnDescription.Name = "ColumnDescription";
+            this.ColumnDescription.ReadOnly = true;
             // 
             // UserControlItem
             // 
@@ -216,13 +257,14 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPageDetail.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -243,5 +285,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.Label labelPrice;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDescription;
     }
 }

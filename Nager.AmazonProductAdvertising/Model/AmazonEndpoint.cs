@@ -2,16 +2,16 @@
 {
     public enum AmazonEndpoint
     {
-        BR,
-        CN,
+        //BR,
+        //CN,
         CA,
         DE,
-        ES,
+        //ES,
         FR,
-        IN,
-        IT,
+        //IN,
+        //IT,
         JP,
-        MX,
+        //MX,
         UK,
         US,
     }

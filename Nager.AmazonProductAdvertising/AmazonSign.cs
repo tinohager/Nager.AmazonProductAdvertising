@@ -42,26 +42,26 @@ namespace Nager.AmazonProductAdvertising
         {
             switch (amazonEndpoint)
             {
-                case AmazonEndpoint.BR:
-                    return "webservices.amazon.br";
+                //case AmazonEndpoint.BR:
+                //    return "webservices.amazon.com.br";
                 case AmazonEndpoint.CA:
                     return "webservices.amazon.ca";
-                case AmazonEndpoint.CN:
-                    return "webservices.amazon.cn";
+                //case AmazonEndpoint.CN:
+                //    return "webservices.amazon.cn";
                 case AmazonEndpoint.DE:
                     return "webservices.amazon.de";
-                case AmazonEndpoint.ES:
-                    return "webservices.amazon.es";
+                //case AmazonEndpoint.ES:
+                //    return "webservices.amazon.es";
                 case AmazonEndpoint.FR:
                     return "webservices.amazon.fr";
-                case AmazonEndpoint.IN:
-                    return "webservices.amazon.in";
-                case AmazonEndpoint.IT:
-                    return "webservices.amazon.it";
+                //case AmazonEndpoint.IN:
+                //    return "webservices.amazon.in";
+                //case AmazonEndpoint.IT:
+                //    return "webservices.amazon.it";
                 case AmazonEndpoint.JP:
                     return "webservices.amazon.co.jp";
-                case AmazonEndpoint.MX:
-                    return "webservices.amazon.com.mx";
+                //case AmazonEndpoint.MX:
+                //    return "webservices.amazon.com.mx";
                 case AmazonEndpoint.UK:
                     return "webservices.amazon.co.uk";
                 case AmazonEndpoint.US:

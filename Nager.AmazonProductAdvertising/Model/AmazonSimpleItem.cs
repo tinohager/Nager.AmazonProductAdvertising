@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Nager.AmazonProductAdvertising.Model
+﻿namespace Nager.AmazonProductAdvertising.Model
 {
     public class AmazonSimpleItem
     {
@@ -17,12 +11,16 @@ namespace Nager.AmazonProductAdvertising.Model
         public AmazonSimpleItem(Item item)
         {
             this.SourceItem = item;
-            this.Name = item.ItemAttributes.Title;
+            if (item.ItemAttributes != null)
+            {
+                this.Name = item.ItemAttributes.Title;
+                this.Description = item.ItemAttributes.Feature;
+            }
+            
             if (item.LargeImage != null)
             {
                 this.ImageUrl = item.LargeImage.URL;
             }
-            this.Description = item.ItemAttributes.Feature;
 
             if (item.Offers != null)
             {
