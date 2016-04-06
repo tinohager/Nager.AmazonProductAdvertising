@@ -23,6 +23,7 @@ namespace Nager.AmazonProductAdvertising.Monitor
             this.comboBoxEndpoint.DataSource = Enum.GetValues(typeof(AmazonEndpoint));
             this.comboBoxSearchIndex.DataSource = Enum.GetValues(typeof(AmazonSearchIndex));
             this.comboBoxResponseGroup.DataSource = Enum.GetValues(typeof(AmazonResponseGroup));
+            this.comboBoxResponseGroup.SelectedItem = AmazonResponseGroup.Medium;
 
             var version = Assembly.GetExecutingAssembly().GetName().Version;
             this.Text = String.Format("Nager - AmazonProductAdvertising {0}", version);
