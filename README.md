@@ -33,7 +33,8 @@ authentication.SecretKey = "secretkey";
 
 var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE, "nagerat-21");
 var searchQuery = wrapper.ItemSearchOperation("canon eos", , AmazonSearchIndex.Electronics);
-searchQuery.Sort(AmazonSearchSort.Price, AmazonSearchSortOrder.Descending);
+searchQuery = searchQuery.Sort(AmazonSearchSort.Price, AmazonSearchSortOrder.Descending);
+searchQuery = searchQuery.ItemPage(2); //pagination
 var xml = wrapper.Request(searchQuery);
 
 var result = XmlHelper.ParseXml<ItemSearchResponse>(xml);
