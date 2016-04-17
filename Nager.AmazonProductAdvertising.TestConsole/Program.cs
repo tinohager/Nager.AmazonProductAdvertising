@@ -1,5 +1,4 @@
 ﻿using Nager.AmazonProductAdvertising.Model;
-using Nager.AmazonProductAdvertising.Extension;
 using System;
 
 namespace Nager.AmazonProductAdvertising.TestConsole
@@ -48,10 +47,10 @@ namespace Nager.AmazonProductAdvertising.TestConsole
         static void CustomRequest(AmazonAuthentication authentication)
         {
             var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
-            var searchQuery = wrapper.ItemSearchOperation("canon eos", AmazonSearchIndex.Electronics);
-            searchQuery = searchQuery.Sort(AmazonSearchSort.Price, AmazonSearchSortOrder.Descending);
-            searchQuery = searchQuery.ItemPage(11);
-            var xml = wrapper.Request(searchQuery);
+            var searchOperation = wrapper.ItemSearchOperation("canon eos", AmazonSearchIndex.Electronics);
+            searchOperation.Sort(AmazonSearchSort.Price, AmazonSearchSortOrder.Descending);
+            searchOperation.Skip(2);
+            var xml = wrapper.Request(searchOperation);
 
             var result = XmlHelper.ParseXml<ItemSearchResponse>(xml);
 

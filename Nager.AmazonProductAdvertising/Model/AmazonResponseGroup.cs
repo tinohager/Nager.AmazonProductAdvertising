@@ -23,19 +23,16 @@
         Reviews, //Operations->SimilarityLookup, ItemLookup, ItemSearch
         SalesRank, //Operations->SimilarityLookup, ItemLookup, ItemSearch
         SearchBins, //Operations->ItemSearch
-        Seller,
-        SellerListing,
         Similarities, //Operations->SimilarityLookup, ItemLookup, ItemSearch
-        Small,
+        Small, //Operations->SimilarityLookup, ItemLookup, ItemSearch
         Accessories, //Operations->SimilarityLookup, ItemLookup, ItemSearch
-        AlternateVersions,
+        AlternateVersions, //Operations->ItemLookup, ItemSearch
         //BrowseNodeInfo, //Operations->BrowseNodeLookup
         BrowseNodes, //Operations->SimilarityLookup, ItemLookup, ItemSearch
         //Cart, //Operations->CartAdd, CartCreate, CartModify, CartGet, CartClear
         //CartNewReleases, //Operations->CartAdd, CartCreate, CartModify, CartGet, CartClear
         //CartTopSellers, //Operations->CartAdd, CartCreate, CartModify, CartGet
         //CartSimilarities, //Operations->CartAdd, CartCreate, CartModify, CartGet
-        Collections,
         EditorialReview, //Operations->SimilarityLookup, ItemLookup, ItemSearch
         Images, //Operations->SimilarityLookup, ItemLookup, ItemSearch
         ItemAttributes, //Operations->SimilarityLookup, ItemLookup, ItemSearch

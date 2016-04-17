@@ -89,6 +89,11 @@ namespace Nager.AmazonProductAdvertising
             this.signer.Dispose();
         }
 
+        public string Sign(AmazonOperationBase amazonOperation)
+        {
+            return this.Sign(amazonOperation.ParameterDictionary);
+        }
+
         /*
          * Sign a request in the form of a Dictionary of name-value pairs.
          * 

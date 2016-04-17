@@ -1,6 +1,5 @@
 ﻿using Nager.AmazonProductAdvertising.Model;
 using System;
-using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -21,9 +20,10 @@ namespace Nager.AmazonProductAdvertising.Monitor
             }
 
             this.comboBoxEndpoint.DataSource = Enum.GetValues(typeof(AmazonEndpoint));
+            this.comboBoxEndpoint.SelectedItem = AmazonEndpoint.DE;
             this.comboBoxSearchIndex.DataSource = Enum.GetValues(typeof(AmazonSearchIndex));
             this.comboBoxResponseGroup.DataSource = Enum.GetValues(typeof(AmazonResponseGroup));
-            this.comboBoxResponseGroup.SelectedItem = AmazonResponseGroup.Medium;
+            this.comboBoxResponseGroup.SelectedItem = AmazonResponseGroup.Large;
 
             var version = Assembly.GetExecutingAssembly().GetName().Version;
             this.Text = String.Format("Nager - AmazonProductAdvertising {0}", version);
@@ -87,9 +87,6 @@ namespace Nager.AmazonProductAdvertising.Monitor
             {
                 return;
             }
-
-
-
 
             this.userControlItem.ShowItem(item);
         }

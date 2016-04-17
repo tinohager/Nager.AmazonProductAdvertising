@@ -1,7 +1,5 @@
-﻿using Nager.AmazonProductAdvertising.Extension;
-using Nager.AmazonProductAdvertising.Model;
+﻿using Nager.AmazonProductAdvertising.Model;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Net;
 
@@ -19,7 +17,7 @@ namespace Nager.AmazonProductAdvertising
         {
             this._authentication = authentication;
             this._endpoint = endpoint;
-            this._associateTag = associateTag;
+            this._associateTag = associateTag;     
         }
 
         public void SetEndpoint(AmazonEndpoint amazonEndpoint)
@@ -27,31 +25,25 @@ namespace Nager.AmazonProductAdvertising
             this._endpoint = amazonEndpoint;
         }
 
-        public IDictionary<string, string> ItemLookupOperation(string asin, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        public AmazonLookupOperation ItemLookupOperation(string asin, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
         {
-            var requestArgs = new Dictionary<string, string>
-            {
-                { "Operation", "ItemLookup" },
-                { "ResponseGroup", amazonResponseGroup.ToString() },
-                { "ItemId", asin },
-                { "AssociateTag", this._associateTag },
-            };
+            var operation = new AmazonLookupOperation();
+            operation.ResponseGroup(amazonResponseGroup);
+            operation.Get(asin);
+            operation.AssociateTag(this._associateTag);
 
-            return requestArgs;
+            return operation;
         }
 
-        public IDictionary<string, string> ItemSearchOperation(string search, AmazonSearchIndex amazonSearchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        public AmazonSearchOperation ItemSearchOperation(string search, AmazonSearchIndex amazonSearchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
         {
-            var requestArgs = new Dictionary<string, string>
-            {
-                { "Operation", "ItemSearch" },
-                { "ResponseGroup", amazonResponseGroup.ToString() },
-                { "Keywords", search },
-                { "SearchIndex", amazonSearchIndex.ToString() },
-                { "AssociateTag", this._associateTag },
-            };
+            var operation = new AmazonSearchOperation();
+            operation.ResponseGroup(amazonResponseGroup);
+            operation.Keywords(search);
+            operation.SearchIndex(amazonSearchIndex);
+            operation.AssociateTag(this._associateTag);
 
-            return requestArgs;
+            return operation;
         }
 
         public ItemLookupResponse Lookup(string asin, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
@@ -78,11 +70,11 @@ namespace Nager.AmazonProductAdvertising
             }
         }
 
-        public string Request(IDictionary<string, string> requestParams)
+        public string Request(AmazonOperationBase amazonOperation)
         {
             using (var amazonSign = new AmazonSign(this._authentication, this._endpoint))
             {
-                var requestUri = amazonSign.Sign(requestParams);
+                var requestUri = amazonSign.Sign(amazonOperation);
                 return SendRequest(requestUri);
             }
         }
@@ -99,10 +91,7 @@ namespace Nager.AmazonProductAdvertising
                     using (var streamReader = new StreamReader(response.GetResponseStream()))
                     {
                         var xml = streamReader.ReadToEnd();
-                        if (this.XmlReceived != null)
-                        {
-                            this.XmlReceived(xml);
-                        }
+                        this.XmlReceived?.Invoke(xml);
 
                         return xml;
                     }
