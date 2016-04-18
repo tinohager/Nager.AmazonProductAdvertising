@@ -1,4 +1,7 @@
-﻿namespace Nager.AmazonProductAdvertising.Model
+﻿using System;
+using System.Collections.Generic;
+
+namespace Nager.AmazonProductAdvertising.Model
 {
     public class AmazonLookupOperation : AmazonOperationBase
     {
@@ -17,6 +20,17 @@
             }
 
             base.ParameterDictionary.Add("ItemId", asin);
+        }
+
+        public void Get(IList<string> asins)
+        {
+            if (base.ParameterDictionary.ContainsKey("ItemId"))
+            {
+                base.ParameterDictionary["ItemId"] = String.Join(",", asins);
+                return;
+            }
+
+            base.ParameterDictionary.Add("ItemId", String.Join(",", asins));
         }
     }
 }

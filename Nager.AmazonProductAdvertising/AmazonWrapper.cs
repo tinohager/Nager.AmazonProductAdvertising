@@ -1,5 +1,6 @@
 ﻿using Nager.AmazonProductAdvertising.Model;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 
@@ -35,6 +36,16 @@ namespace Nager.AmazonProductAdvertising
             return operation;
         }
 
+        public AmazonLookupOperation ItemLookupOperation(IList<string> asins, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        {
+            var operation = new AmazonLookupOperation();
+            operation.ResponseGroup(amazonResponseGroup);
+            operation.Get(asins);
+            operation.AssociateTag(this._associateTag);
+
+            return operation;
+        }
+
         public AmazonSearchOperation ItemSearchOperation(string search, AmazonSearchIndex amazonSearchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
         {
             var operation = new AmazonSearchOperation();
@@ -49,6 +60,18 @@ namespace Nager.AmazonProductAdvertising
         public ItemLookupResponse Lookup(string asin, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
             var requestParams = ItemLookupOperation(asin, responseGroup);
+
+            using (var amazonSign = new AmazonSign(this._authentication, this._endpoint))
+            {
+                var requestUri = amazonSign.Sign(requestParams);
+                var xml = SendRequest(requestUri);
+                return XmlHelper.ParseXml<ItemLookupResponse>(xml);
+            }
+        }
+
+        public ItemLookupResponse Lookup(IList<string> asins, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
+        {
+            var requestParams = ItemLookupOperation(asins, responseGroup);
 
             using (var amazonSign = new AmazonSign(this._authentication, this._endpoint))
             {
