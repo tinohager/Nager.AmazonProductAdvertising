@@ -19,7 +19,7 @@ namespace Nager.AmazonProductAdvertising
         {
             this._authentication = authentication;
             this._endpoint = endpoint;
-            this._associateTag = associateTag;     
+            this._associateTag = associateTag;
         }
 
         public void SetEndpoint(AmazonEndpoint amazonEndpoint)
