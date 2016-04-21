@@ -18,7 +18,7 @@ namespace Nager.AmazonProductAdvertising
         {
             this._authentication = authentication;
             this._endpoint = endpoint;
-            this._associateTag = associateTag;     
+            this._associateTag = associateTag;
         }
 
         public void SetEndpoint(AmazonEndpoint amazonEndpoint)
@@ -27,6 +27,11 @@ namespace Nager.AmazonProductAdvertising
         }
 
         public AmazonLookupOperation ItemLookupOperation(string asin, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        {
+            return ItemLookupOperation(asin, new[] { amazonResponseGroup });
+        }
+
+        public AmazonLookupOperation ItemLookupOperation(string asin, params AmazonResponseGroup[] amazonResponseGroup)
         {
             var operation = new AmazonLookupOperation();
             operation.ResponseGroup(amazonResponseGroup);
@@ -37,6 +42,11 @@ namespace Nager.AmazonProductAdvertising
         }
 
         public AmazonLookupOperation ItemLookupOperation(IList<string> asins, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        {
+            return ItemLookupOperation(asins, new[] { amazonResponseGroup });
+        }
+
+        public AmazonLookupOperation ItemLookupOperation(IList<string> asins, params AmazonResponseGroup[] amazonResponseGroup)
         {
             var operation = new AmazonLookupOperation();
             operation.ResponseGroup(amazonResponseGroup);
@@ -59,6 +69,11 @@ namespace Nager.AmazonProductAdvertising
 
         public ItemLookupResponse Lookup(string asin, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
+            return Lookup(asin, new[] { responseGroup });
+        }
+
+        public ItemLookupResponse Lookup(string asin, params AmazonResponseGroup[] responseGroup)
+        {
             var requestParams = ItemLookupOperation(asin, responseGroup);
 
             using (var amazonSign = new AmazonSign(this._authentication, this._endpoint))
@@ -70,6 +85,11 @@ namespace Nager.AmazonProductAdvertising
         }
 
         public ItemLookupResponse Lookup(IList<string> asins, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
+        {
+            return Lookup(asins, new[] { responseGroup });
+        }
+
+        public ItemLookupResponse Lookup(IList<string> asins, params AmazonResponseGroup[] responseGroup)
         {
             var requestParams = ItemLookupOperation(asins, responseGroup);
 
