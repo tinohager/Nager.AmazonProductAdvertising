@@ -11,6 +11,7 @@ namespace Nager.AmazonProductAdvertising
         private AmazonAuthentication _authentication;
         private AmazonEndpoint _endpoint;
         private string _associateTag;
+        private string _userAgent = null;
 
         public event Action<string> XmlReceived;
 
@@ -24,6 +25,11 @@ namespace Nager.AmazonProductAdvertising
         public void SetEndpoint(AmazonEndpoint amazonEndpoint)
         {
             this._endpoint = amazonEndpoint;
+        }
+
+        public void SetUserAgent(string userAgent)
+        {
+            this._userAgent = userAgent;
         }
 
         public AmazonLookupOperation ItemLookupOperation(string asin, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
@@ -58,7 +64,7 @@ namespace Nager.AmazonProductAdvertising
 
         public AmazonSearchOperation ItemSearchOperation(string search, AmazonSearchIndex amazonSearchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
         {
-            return ItemSearchOperation(search, amazonSearchIndex, new[] {amazonResponseGroup});
+            return ItemSearchOperation(search, amazonSearchIndex, new[] { amazonResponseGroup });
         }
 
         public AmazonSearchOperation ItemSearchOperation(string search, AmazonSearchIndex amazonSearchIndex, params AmazonResponseGroup[] amazonResponseGroup)
@@ -118,7 +124,7 @@ namespace Nager.AmazonProductAdvertising
             }
         }
 
-        public ItemSearchResponse Search(string search, AmazonSearchIndex searchIndex, params AmazonResponseGroup[] amazonResponseGroup )
+        public ItemSearchResponse Search(string search, AmazonSearchIndex searchIndex, params AmazonResponseGroup[] amazonResponseGroup)
         {
             var requestParams = ItemSearchOperation(search, searchIndex, amazonResponseGroup);
 
@@ -142,7 +148,7 @@ namespace Nager.AmazonProductAdvertising
         private string SendRequest(string uri)
         {
             var request = (HttpWebRequest)WebRequest.Create(uri);
-            request.UserAgent = "Nager.AmazonProductAdvertising";
+            request.UserAgent = this._userAgent ?? "Nager.AmazonProductAdvertising";
 
             try
             {
