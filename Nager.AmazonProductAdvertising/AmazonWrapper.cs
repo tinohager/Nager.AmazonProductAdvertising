@@ -11,6 +11,7 @@ namespace Nager.AmazonProductAdvertising
         private AmazonAuthentication _authentication;
         private AmazonEndpoint _endpoint;
         private string _associateTag;
+        private string _userAgent = null;
 
         public event Action<string> XmlReceived;
 
@@ -18,7 +19,7 @@ namespace Nager.AmazonProductAdvertising
         {
             this._authentication = authentication;
             this._endpoint = endpoint;
-            this._associateTag = associateTag;     
+            this._associateTag = associateTag;
         }
 
         public void SetEndpoint(AmazonEndpoint amazonEndpoint)
@@ -26,7 +27,17 @@ namespace Nager.AmazonProductAdvertising
             this._endpoint = amazonEndpoint;
         }
 
+        public void SetUserAgent(string userAgent)
+        {
+            this._userAgent = userAgent;
+        }
+
         public AmazonLookupOperation ItemLookupOperation(string asin, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        {
+            return ItemLookupOperation(asin, new[] { amazonResponseGroup });
+        }
+
+        public AmazonLookupOperation ItemLookupOperation(string asin, params AmazonResponseGroup[] amazonResponseGroup)
         {
             var operation = new AmazonLookupOperation();
             operation.ResponseGroup(amazonResponseGroup);
@@ -38,6 +49,11 @@ namespace Nager.AmazonProductAdvertising
 
         public AmazonLookupOperation ItemLookupOperation(IList<string> asins, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
         {
+            return ItemLookupOperation(asins, new[] { amazonResponseGroup });
+        }
+
+        public AmazonLookupOperation ItemLookupOperation(IList<string> asins, params AmazonResponseGroup[] amazonResponseGroup)
+        {
             var operation = new AmazonLookupOperation();
             operation.ResponseGroup(amazonResponseGroup);
             operation.Get(asins);
@@ -47,6 +63,11 @@ namespace Nager.AmazonProductAdvertising
         }
 
         public AmazonSearchOperation ItemSearchOperation(string search, AmazonSearchIndex amazonSearchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        {
+            return ItemSearchOperation(search, amazonSearchIndex, new[] { amazonResponseGroup });
+        }
+
+        public AmazonSearchOperation ItemSearchOperation(string search, AmazonSearchIndex amazonSearchIndex, params AmazonResponseGroup[] amazonResponseGroup)
         {
             var operation = new AmazonSearchOperation();
             operation.ResponseGroup(amazonResponseGroup);
@@ -59,6 +80,11 @@ namespace Nager.AmazonProductAdvertising
 
         public ItemLookupResponse Lookup(string asin, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
+            return Lookup(asin, new[] { responseGroup });
+        }
+
+        public ItemLookupResponse Lookup(string asin, params AmazonResponseGroup[] responseGroup)
+        {
             var requestParams = ItemLookupOperation(asin, responseGroup);
 
             using (var amazonSign = new AmazonSign(this._authentication, this._endpoint))
@@ -70,6 +96,11 @@ namespace Nager.AmazonProductAdvertising
         }
 
         public ItemLookupResponse Lookup(IList<string> asins, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
+        {
+            return Lookup(asins, new[] { responseGroup });
+        }
+
+        public ItemLookupResponse Lookup(IList<string> asins, params AmazonResponseGroup[] responseGroup)
         {
             var requestParams = ItemLookupOperation(asins, responseGroup);
 
@@ -93,6 +124,18 @@ namespace Nager.AmazonProductAdvertising
             }
         }
 
+        public ItemSearchResponse Search(string search, AmazonSearchIndex searchIndex, params AmazonResponseGroup[] amazonResponseGroup)
+        {
+            var requestParams = ItemSearchOperation(search, searchIndex, amazonResponseGroup);
+
+            using (var amazonSign = new AmazonSign(this._authentication, this._endpoint))
+            {
+                var requestUri = amazonSign.Sign(requestParams);
+                var xml = SendRequest(requestUri);
+                return XmlHelper.ParseXml<ItemSearchResponse>(xml);
+            }
+        }
+
         public string Request(AmazonOperationBase amazonOperation)
         {
             using (var amazonSign = new AmazonSign(this._authentication, this._endpoint))
@@ -105,7 +148,7 @@ namespace Nager.AmazonProductAdvertising
         private string SendRequest(string uri)
         {
             var request = (HttpWebRequest)WebRequest.Create(uri);
-            request.UserAgent = "Nager.AmazonProductAdvertising";
+            request.UserAgent = this._userAgent ?? "Nager.AmazonProductAdvertising";
 
             try
             {

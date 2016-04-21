@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Nager.AmazonProductAdvertising.Model
 {
@@ -11,15 +12,15 @@ namespace Nager.AmazonProductAdvertising.Model
             ParameterDictionary = new Dictionary<string, string>();
         }
 
-        public void ResponseGroup(AmazonResponseGroup responseGroup)
+        public void ResponseGroup(params AmazonResponseGroup[] responseGroup)
         {
             if (this.ParameterDictionary.ContainsKey("ResponseGroup"))
             {
-                this.ParameterDictionary["ResponseGroup"] = responseGroup.ToString();
+                this.ParameterDictionary["ResponseGroup"] =  string.Join(",", responseGroup.Select(rg => rg.ToString()));
                 return;
             }
 
-            this.ParameterDictionary.Add("ResponseGroup", responseGroup.ToString());
+            this.ParameterDictionary.Add("ResponseGroup", string.Join(",", responseGroup.Select(rg => rg.ToString())));
         }
 
         public void AssociateTag(string associateTag)
