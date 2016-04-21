@@ -58,6 +58,11 @@ namespace Nager.AmazonProductAdvertising
 
         public AmazonSearchOperation ItemSearchOperation(string search, AmazonSearchIndex amazonSearchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
         {
+            return ItemSearchOperation(search, amazonSearchIndex, new[] {amazonResponseGroup});
+        }
+
+        public AmazonSearchOperation ItemSearchOperation(string search, AmazonSearchIndex amazonSearchIndex, params AmazonResponseGroup[] amazonResponseGroup)
+        {
             var operation = new AmazonSearchOperation();
             operation.ResponseGroup(amazonResponseGroup);
             operation.Keywords(search);
@@ -102,6 +107,18 @@ namespace Nager.AmazonProductAdvertising
         }
 
         public ItemSearchResponse Search(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        {
+            var requestParams = ItemSearchOperation(search, searchIndex, amazonResponseGroup);
+
+            using (var amazonSign = new AmazonSign(this._authentication, this._endpoint))
+            {
+                var requestUri = amazonSign.Sign(requestParams);
+                var xml = SendRequest(requestUri);
+                return XmlHelper.ParseXml<ItemSearchResponse>(xml);
+            }
+        }
+
+        public ItemSearchResponse Search(string search, AmazonSearchIndex searchIndex, params AmazonResponseGroup[] amazonResponseGroup )
         {
             var requestParams = ItemSearchOperation(search, searchIndex, amazonResponseGroup);
 
