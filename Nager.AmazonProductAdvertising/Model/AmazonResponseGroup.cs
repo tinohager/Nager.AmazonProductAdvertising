@@ -1,5 +1,8 @@
-﻿namespace Nager.AmazonProductAdvertising.Model
+﻿using System;
+
+namespace Nager.AmazonProductAdvertising.Model
 {
+    [Flags]
     public enum AmazonResponseGroup
     {
         Tracks, //Operations->SimilarityLookup, ItemLookup, ItemSearch

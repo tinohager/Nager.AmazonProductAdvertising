@@ -11,6 +11,7 @@ namespace Nager.AmazonProductAdvertising
         private AmazonAuthentication _authentication;
         private AmazonEndpoint _endpoint;
         private string _associateTag;
+        private string _userAgent = null;
 
         public event Action<string> XmlReceived;
 
@@ -26,7 +27,13 @@ namespace Nager.AmazonProductAdvertising
             this._endpoint = amazonEndpoint;
         }
 
-        public AmazonLookupOperation ItemLookupOperation(string asin, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        public void SetUserAgent(string userAgent)
+        {  
+            this._userAgent = userAgent;  
+        }
+
+
+    public AmazonLookupOperation ItemLookupOperation(string asin, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
         {
             var operation = new AmazonLookupOperation();
             operation.ResponseGroup(amazonResponseGroup);
@@ -105,7 +112,7 @@ namespace Nager.AmazonProductAdvertising
         private string SendRequest(string uri)
         {
             var request = (HttpWebRequest)WebRequest.Create(uri);
-            request.UserAgent = "Nager.AmazonProductAdvertising";
+            request.UserAgent = this._userAgent ?? "Nager.AmazonProductAdvertising";
 
             try
             {
