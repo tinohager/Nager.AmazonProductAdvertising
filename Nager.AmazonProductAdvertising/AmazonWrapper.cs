@@ -14,6 +14,7 @@ namespace Nager.AmazonProductAdvertising
         private string _userAgent = null;
 
         public event Action<string> XmlReceived;
+        public event Action<AmazonErrorResponse> ErrorReceived;
 
         public AmazonWrapper(AmazonAuthentication authentication, AmazonEndpoint endpoint, string associateTag = "nagerat-21")
         {
@@ -66,41 +67,46 @@ namespace Nager.AmazonProductAdvertising
 
         public ItemLookupResponse Lookup(string asin, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
-            var requestParams = ItemLookupOperation(asin, responseGroup);
-
-            using (var amazonSign = new AmazonSign(this._authentication, this._endpoint))
-            {
-                var requestUri = amazonSign.Sign(requestParams);
-                var xml = SendRequest(requestUri);
-                return XmlHelper.ParseXml<ItemLookupResponse>(xml);
-            }
+            return this.Lookup(new string[1] { asin }, responseGroup);
         }
 
         public ItemLookupResponse Lookup(IList<string> asins, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
             var requestParams = ItemLookupOperation(asins, responseGroup);
 
-            using (var amazonSign = new AmazonSign(this._authentication, this._endpoint))
+            var webResponse = this.Request(requestParams);
+            if (webResponse.StatusCode == HttpStatusCode.OK)
             {
-                var requestUri = amazonSign.Sign(requestParams);
-                var xml = SendRequest(requestUri);
-                return XmlHelper.ParseXml<ItemLookupResponse>(xml);
+                return XmlHelper.ParseXml<ItemLookupResponse>(webResponse.Content);
             }
+            else
+            {
+                var errorResponse = XmlHelper.ParseXml<ItemLookupErrorResponse>(webResponse.Content);
+                this.ErrorReceived?.Invoke(errorResponse);
+            }
+
+            return null;
         }
 
         public ItemSearchResponse Search(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
         {
             var requestParams = ItemSearchOperation(search, searchIndex, amazonResponseGroup);
 
-            using (var amazonSign = new AmazonSign(this._authentication, this._endpoint))
+            var webResponse = this.Request(requestParams);
+            if (webResponse.StatusCode == HttpStatusCode.OK)
             {
-                var requestUri = amazonSign.Sign(requestParams);
-                var xml = SendRequest(requestUri);
-                return XmlHelper.ParseXml<ItemSearchResponse>(xml);
+                return XmlHelper.ParseXml<ItemSearchResponse>(webResponse.Content);
             }
+            else
+            {
+                var errorResponse = XmlHelper.ParseXml<ItemSearchErrorResponse>(webResponse.Content);
+                this.ErrorReceived?.Invoke(errorResponse);
+            }
+
+            return null;
         }
 
-        public string Request(AmazonOperationBase amazonOperation)
+        public ExtendedWebResponse Request(AmazonOperationBase amazonOperation)
         {
             using (var amazonSign = new AmazonSign(this._authentication, this._endpoint))
             {
@@ -109,7 +115,7 @@ namespace Nager.AmazonProductAdvertising
             }
         }
 
-        private string SendRequest(string uri)
+        private ExtendedWebResponse SendRequest(string uri)
         {
             var request = (HttpWebRequest)WebRequest.Create(uri);
             request.UserAgent = this._userAgent ?? "Nager.AmazonProductAdvertising";
@@ -123,17 +129,26 @@ namespace Nager.AmazonProductAdvertising
                         var xml = streamReader.ReadToEnd();
                         this.XmlReceived?.Invoke(xml);
 
-                        return xml;
+                        return new ExtendedWebResponse(HttpStatusCode.OK, xml);
                     }
                 }
             }
             catch (WebException exception)
             {
-                return exception.Message;
+                using (var response = (HttpWebResponse)exception.Response)
+                {
+                    using (var streamReader = new StreamReader(response.GetResponseStream()))
+                    {
+                        var xml = streamReader.ReadToEnd();
+                        this.XmlReceived?.Invoke(xml);
+
+                        return new ExtendedWebResponse(response.StatusCode, xml);
+                    }
+                }
             }
             catch (Exception exception)
             {
-                return exception.Message;
+                return new ExtendedWebResponse(HttpStatusCode.SeeOther, exception.Message);
             }
         }
     }

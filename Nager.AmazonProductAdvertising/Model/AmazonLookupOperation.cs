@@ -8,6 +8,7 @@ namespace Nager.AmazonProductAdvertising.Model
         public AmazonLookupOperation()
         {
             base.ParameterDictionary.Add("Operation", "ItemLookup");
+            base.ParameterDictionary.Add("IdType", "ASIN"); //ASIN, SKU, UPC, EAN, ISBN
             base.ParameterDictionary.Add("ResponseGroup", AmazonResponseGroup.Large.ToString());
         }
 

@@ -47,6 +47,7 @@ namespace Nager.AmazonProductAdvertising.Monitor
 
             if (result == null)
             {
+                this.tabControl1.SelectedIndex = 1;
                 MessageBox.Show("Request error");
                 return;
             }

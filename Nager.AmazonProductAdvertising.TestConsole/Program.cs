@@ -74,9 +74,9 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             var searchOperation = wrapper.ItemSearchOperation("canon eos", AmazonSearchIndex.Electronics);
             searchOperation.Sort(AmazonSearchSort.Price, AmazonSearchSortOrder.Descending);
             searchOperation.Skip(2);
-            var xml = wrapper.Request(searchOperation);
+            var webResponse = wrapper.Request(searchOperation);
 
-            var result = XmlHelper.ParseXml<ItemSearchResponse>(xml);
+            var result = XmlHelper.ParseXml<ItemSearchResponse>(webResponse.Content);
 
             foreach (var item in result.Items.Item)
             {
