@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System.Web;
+using System.Xml.Serialization;
 
 namespace Nager.AmazonProductAdvertising.Model
 {
@@ -44,8 +45,14 @@ namespace Nager.AmazonProductAdvertising.Model
 
     public class ItemLink
     {
+        private string _url;
+
         public string Description { get; set; }
-        public string URL { get; set; }
+        public string URL
+        {
+            get { return this._url; }
+            set { this._url = HttpUtility.UrlDecode(value); }
+        }
 
         public override string ToString()
         {
@@ -377,9 +384,15 @@ namespace Nager.AmazonProductAdvertising.Model
 
     public class Item
     {
+        private string _detailPageURL;
+
         public string ASIN { get; set; }
         public string ParentASIN  { get; set; }
-        public string DetailPageURL  { get; set; }
+        public string DetailPageURL
+        {
+            get { return this._detailPageURL; }
+            set { this._detailPageURL = HttpUtility.UrlDecode(value); }
+        }
         [XmlArrayItem("ItemLink")]
         public ItemLink[] ItemLinks { get; set; }
         public string SalesRank { get; set; }

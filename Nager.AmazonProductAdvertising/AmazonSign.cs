@@ -38,42 +38,11 @@ namespace Nager.AmazonProductAdvertising
         private const string REQUEST_METHOD = "GET";
         private static readonly string[] UriRfc3986CharsToEscape = new[] { "!", "*", "'", "(", ")" };
 
-        private string GetDestination(AmazonEndpoint amazonEndpoint)
-        {
-            switch (amazonEndpoint)
-            {
-                case AmazonEndpoint.BR:
-                    return "webservices.amazon.com.br";
-                case AmazonEndpoint.CA:
-                    return "webservices.amazon.ca";
-                case AmazonEndpoint.CN:
-                    return "webservices.amazon.cn";
-                case AmazonEndpoint.DE:
-                    return "webservices.amazon.de";
-                case AmazonEndpoint.ES:
-                    return "webservices.amazon.es";
-                case AmazonEndpoint.FR:
-                    return "webservices.amazon.fr";
-                case AmazonEndpoint.IN:
-                    return "webservices.amazon.in";
-                case AmazonEndpoint.IT:
-                    return "webservices.amazon.it";
-                case AmazonEndpoint.JP:
-                    return "webservices.amazon.co.jp";
-                case AmazonEndpoint.MX:
-                    return "webservices.amazon.com.mx";
-                case AmazonEndpoint.UK:
-                    return "webservices.amazon.co.uk";
-                case AmazonEndpoint.US:
-                    return "webservices.amazon.com";
-                default:
-                    return "webservices.amazon.com";
-            }
-        }
-
         public AmazonSign(AmazonAuthentication amazonAuthentication, AmazonEndpoint amazonEndpoint)
         {
-            this.endPoint = this.GetDestination(amazonEndpoint);
+            var domain = AmazonDomain.GetDomain(amazonEndpoint);
+
+            this.endPoint = $"webservices.{domain}";
             this.akid = amazonAuthentication.AccessKey;
             var secret = Encoding.UTF8.GetBytes(amazonAuthentication.SecretKey);
             this.signer = new HMACSHA256(secret);

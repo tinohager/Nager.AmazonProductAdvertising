@@ -2,6 +2,7 @@
 {
     public class AmazonSimpleItem
     {
+        public string Asin { get; set; }
         public string Name { get; set; }
         public string ImageUrl { get; set; }
         public double Price { get; set; }
@@ -11,6 +12,8 @@
         public AmazonSimpleItem(Item item)
         {
             this.SourceItem = item;
+            this.Asin = item.ASIN;
+
             if (item.ItemAttributes != null)
             {
                 this.Name = item.ItemAttributes.Title;
@@ -37,6 +40,13 @@
                     }
                 }
             }
+        }
+
+        public string GetDetailPageUrl(AmazonEndpoint amazonEndpoint, string associateTag = "nagerat-21")
+        {
+            var domain = AmazonDomain.GetDomain(amazonEndpoint);
+
+            return $"https://www.{domain}/dp/{Asin}?tag={associateTag}";
         }
     }
 }

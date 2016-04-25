@@ -19,13 +19,20 @@ namespace Nager.AmazonProductAdvertising
 
         public static T ParseXml<T>(string xml)
         {
-            var serializer = new XmlSerializer(typeof(T));
-            using (var reader = new StringReader(xml))
+            try
             {
-                using (var xmlTextReader = new NamespaceIgnorantXmlTextReader(reader))
+                var serializer = new XmlSerializer(typeof(T));
+                using (var reader = new StringReader(xml))
                 {
-                    return (T)(serializer.Deserialize(xmlTextReader));
+                    using (var xmlTextReader = new NamespaceIgnorantXmlTextReader(reader))
+                    {
+                        return (T)(serializer.Deserialize(xmlTextReader));
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                return default(T);
             }
         }
     }

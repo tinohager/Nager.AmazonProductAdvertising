@@ -135,6 +135,11 @@ namespace Nager.AmazonProductAdvertising
             }
             catch (WebException exception)
             {
+                if (exception.Response == null)
+                {
+                    return new ExtendedWebResponse(HttpStatusCode.SeeOther, exception.Message);
+                }
+
                 using (var response = (HttpWebResponse)exception.Response)
                 {
                     using (var streamReader = new StreamReader(response.GetResponseStream()))
