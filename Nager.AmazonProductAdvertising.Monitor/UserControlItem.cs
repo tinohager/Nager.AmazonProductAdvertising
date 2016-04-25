@@ -1,5 +1,4 @@
 ﻿using Nager.AmazonProductAdvertising.Model;
-using System.Text;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -22,6 +21,8 @@ namespace Nager.AmazonProductAdvertising.Monitor
             var simpleItem = new AmazonSimpleItem(item);
             this.labelName.Text = simpleItem.Name;
             this.labelPrice.Text = simpleItem.Price.ToString("0.00 €");
+            this.textBoxLink.Text = simpleItem.GetDetailPageUrl(AmazonEndpoint.DE);
+
             if (simpleItem.Description == null)
             {
                 this.dataGridView1.DataSource = null;
