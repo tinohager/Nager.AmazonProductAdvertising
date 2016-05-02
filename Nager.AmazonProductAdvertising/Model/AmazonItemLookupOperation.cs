@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Nager.AmazonProductAdvertising.Model
 {
-    public class AmazonLookupOperation : AmazonOperationBase
+    public class AmazonItemLookupOperation : AmazonOperationBase
     {
-        public AmazonLookupOperation()
+        public AmazonItemLookupOperation()
         {
             base.ParameterDictionary.Add("Operation", "ItemLookup");
             base.ParameterDictionary.Add("IdType", "ASIN"); //ASIN, SKU, UPC, EAN, ISBN

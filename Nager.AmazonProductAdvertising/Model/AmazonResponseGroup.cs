@@ -6,16 +6,16 @@ namespace Nager.AmazonProductAdvertising.Model
     public enum AmazonResponseGroup
     {
         Tracks, //Operations->SimilarityLookup, ItemLookup, ItemSearch
-        //TopSellers, //Operations->BrowseNodeLookup
+        TopSellers, //Operations->BrowseNodeLookup
         Variations, //Operations->SimilarityLookup, ItemLookup, ItemSearch
         VariationImages, //Operations->ItemLookup
         VariationMatrix, //Operations->ItemLookup, ItemSearch
         VariationOffers, //Operations->ItemLookup, ItemSearch
         VariationSummary,
         Medium, //Operations->SimilarityLookup, ItemLookup, ItemSearch
-        //MostGifted, //Operations->BrowseNodeLookup
-        //MostWishedFor, //Operations->BrowseNodeLookup
-        //NewReleases,  //Operations->BrowseNodeLookup
+        MostGifted, //Operations->BrowseNodeLookup
+        MostWishedFor, //Operations->BrowseNodeLookup
+        NewReleases,  //Operations->BrowseNodeLookup
         OfferFull, //Operations->SimilarityLookup, ItemLookup, ItemSearch
         OfferListings, //Operations->SimilarityLookup, ItemLookup, ItemSearch
         Offers, //Operations->SimilarityLookup, ItemLookup, ItemSearch
@@ -30,7 +30,7 @@ namespace Nager.AmazonProductAdvertising.Model
         Small, //Operations->SimilarityLookup, ItemLookup, ItemSearch
         Accessories, //Operations->SimilarityLookup, ItemLookup, ItemSearch
         AlternateVersions, //Operations->ItemLookup, ItemSearch
-        //BrowseNodeInfo, //Operations->BrowseNodeLookup
+        BrowseNodeInfo, //Operations->BrowseNodeLookup
         BrowseNodes, //Operations->SimilarityLookup, ItemLookup, ItemSearch
         //Cart, //Operations->CartAdd, CartCreate, CartModify, CartGet, CartClear
         //CartNewReleases, //Operations->CartAdd, CartCreate, CartModify, CartGet, CartClear

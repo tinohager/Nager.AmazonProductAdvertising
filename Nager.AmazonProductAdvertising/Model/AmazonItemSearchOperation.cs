@@ -2,9 +2,9 @@
 
 namespace Nager.AmazonProductAdvertising.Model
 {
-    public class AmazonSearchOperation : AmazonOperationBase
+    public class AmazonItemSearchOperation : AmazonOperationBase
     {
-        public AmazonSearchOperation()
+        public AmazonItemSearchOperation()
         {
             base.ParameterDictionary.Add("Operation", "ItemSearch");
             base.ParameterDictionary.Add("ResponseGroup", AmazonResponseGroup.Large.ToString());

@@ -42,14 +42,15 @@
   <ItemGroup>
     <Compile Include="AmazonDomain.cs" />
     <Compile Include="Model\AmazonAuthentication.cs" />
+    <Compile Include="Model\AmazonBrowseNodeLookupOperation.cs" />
     <Compile Include="Model\AmazonEndpoint.cs" />
-    <Compile Include="Model\AmazonLookupOperation.cs" />
+    <Compile Include="Model\AmazonItemLookupOperation.cs" />
     <Compile Include="Model\AmazonOperationBase.cs" />
     <Compile Include="Model\AmazonResponseGroup.cs" />
     <Compile Include="Model\AmazonSearchIndex.cs" />
     <Compile Include="AmazonSign.cs" />
     <Compile Include="AmazonWrapper.cs" />
-    <Compile Include="Model\AmazonSearchOperation.cs" />
+    <Compile Include="Model\AmazonItemSearchOperation.cs" />
     <Compile Include="Model\AmazonSearchSort.cs" />
     <Compile Include="Model\AmazonSearchSortOrder.cs" />
     <Compile Include="Model\AmazonResult.cs" />

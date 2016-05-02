@@ -34,9 +34,9 @@ namespace Nager.AmazonProductAdvertising
         }
 
 
-    public AmazonLookupOperation ItemLookupOperation(string asin, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+    public AmazonItemLookupOperation ItemLookupOperation(string asin, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
         {
-            var operation = new AmazonLookupOperation();
+            var operation = new AmazonItemLookupOperation();
             operation.ResponseGroup(amazonResponseGroup);
             operation.Get(asin);
             operation.AssociateTag(this._associateTag);
@@ -44,9 +44,9 @@ namespace Nager.AmazonProductAdvertising
             return operation;
         }
 
-        public AmazonLookupOperation ItemLookupOperation(IList<string> asins, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        public AmazonItemLookupOperation ItemLookupOperation(IList<string> asins, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
         {
-            var operation = new AmazonLookupOperation();
+            var operation = new AmazonItemLookupOperation();
             operation.ResponseGroup(amazonResponseGroup);
             operation.Get(asins);
             operation.AssociateTag(this._associateTag);
@@ -54,12 +54,22 @@ namespace Nager.AmazonProductAdvertising
             return operation;
         }
 
-        public AmazonSearchOperation ItemSearchOperation(string search, AmazonSearchIndex amazonSearchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        public AmazonItemSearchOperation ItemSearchOperation(string search, AmazonSearchIndex amazonSearchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
         {
-            var operation = new AmazonSearchOperation();
+            var operation = new AmazonItemSearchOperation();
             operation.ResponseGroup(amazonResponseGroup);
             operation.Keywords(search);
             operation.SearchIndex(amazonSearchIndex);
+            operation.AssociateTag(this._associateTag);
+
+            return operation;
+        }
+
+        public AmazonBrowseNodeLookupOperation BrowseNodeLookupOperation(int browseNodeId, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.BrowseNodeInfo)
+        {
+            var operation = new AmazonBrowseNodeLookupOperation();
+            operation.ResponseGroup(amazonResponseGroup);
+            operation.BrowseNodeId(browseNodeId);
             operation.AssociateTag(this._associateTag);
 
             return operation;
