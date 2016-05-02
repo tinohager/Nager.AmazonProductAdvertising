@@ -18,34 +18,17 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             authentication.AccessKey = accessKey;
             authentication.SecretKey = secretKey;
 
-            SearchRequest(authentication);
-            LookupRequest(authentication);
-            CustomRequest(authentication);
+            ItemLookupRequest(authentication);
+            ItemSearchRequest(authentication);
+            CustomItemSearchRequest(authentication);
+            BrowseNodeLookupRequest(authentication);
 
             Console.ReadLine();
         }
 
-        static void SearchRequest(AmazonAuthentication authentication)
+        static void ItemLookupRequest(AmazonAuthentication authentication)
         {
-            Console.WriteLine("Search");
-            Console.WriteLine("------------------------------------------");
-
-            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
-            var result = wrapper.Search("canon eos", AmazonSearchIndex.Electronics, AmazonResponseGroup.Large);
-
-            foreach(var item in result.Items.Item)
-            {
-                Console.WriteLine(item.ItemAttributes.Title);
-            }
-
-            Console.WriteLine("found {0} items", result.Items.Item.Length);
-
-            Console.WriteLine("------------------------------------------");
-        }
-
-        static void LookupRequest(AmazonAuthentication authentication)
-        {
-            Console.WriteLine("Lookup");
+            Console.WriteLine("ItemLookup");
             Console.WriteLine("------------------------------------------");
 
             var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
@@ -65,7 +48,25 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             Console.WriteLine("------------------------------------------");
         }
 
-        static void CustomRequest(AmazonAuthentication authentication)
+        static void ItemSearchRequest(AmazonAuthentication authentication)
+        {
+            Console.WriteLine("ItemSearch");
+            Console.WriteLine("------------------------------------------");
+
+            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
+            var result = wrapper.Search("canon eos", AmazonSearchIndex.Electronics, AmazonResponseGroup.Large);
+
+            foreach(var item in result.Items.Item)
+            {
+                Console.WriteLine(item.ItemAttributes.Title);
+            }
+
+            Console.WriteLine("found {0} items", result.Items.Item.Length);
+
+            Console.WriteLine("------------------------------------------");
+        }
+
+        static void CustomItemSearchRequest(AmazonAuthentication authentication)
         {
             Console.WriteLine("Search with skip and sort");
             Console.WriteLine("------------------------------------------");
@@ -84,6 +85,29 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             }
 
             Console.WriteLine("found {0} items", result.Items.Item.Length);
+
+            Console.WriteLine("------------------------------------------");
+        }
+
+        static void BrowseNodeLookupRequest(AmazonAuthentication authentication)
+        {
+            //http://docs.aws.amazon.com/AWSECommerceService/latest/DG/localevalues.html
+
+            Console.WriteLine("BrowseNodeLookup");
+            Console.WriteLine("------------------------------------------");
+
+            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
+            var operation = wrapper.BrowseNodeLookupOperation(569604);
+            var webResponse = wrapper.Request(operation);
+
+            //var result = XmlHelper.ParseXml<ItemSearchResponse>(webResponse.Content);
+
+            //foreach (var item in result.Items.Item)
+            //{
+            //    Console.WriteLine(item.ItemAttributes.Title);
+            //}
+
+            //Console.WriteLine("found {0} items", result.Items.Item.Length);
 
             Console.WriteLine("------------------------------------------");
         }
