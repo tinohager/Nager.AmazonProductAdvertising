@@ -22,6 +22,17 @@ namespace Nager.AmazonProductAdvertising.Model
             this.ParameterDictionary.Add("ResponseGroup", responseGroup.ToString());
         }
 
+        public void SearchIndex(AmazonSearchIndex searchIndex)
+        {
+            if (this.ParameterDictionary.ContainsKey("SearchIndex"))
+            {
+                this.ParameterDictionary["SearchIndex"] = searchIndex.ToString();
+                return;
+            }
+
+            this.ParameterDictionary.Add("SearchIndex", searchIndex.ToString());
+        }
+
         public void AssociateTag(string associateTag)
         {
             if (this.ParameterDictionary.ContainsKey("AssociateTag"))

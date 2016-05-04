@@ -21,17 +21,6 @@ namespace Nager.AmazonProductAdvertising.Model
             base.ParameterDictionary.Add("Keywords", keywords);
         }
 
-        public void SearchIndex(AmazonSearchIndex searchIndex)
-        {
-            if (base.ParameterDictionary.ContainsKey("SearchIndex"))
-            {
-                base.ParameterDictionary["SearchIndex"] = searchIndex.ToString();
-                return;
-            }
-
-            base.ParameterDictionary.Add("SearchIndex", searchIndex.ToString());
-        }
-
         public void Skip(int value)
         {
             //http://docs.aws.amazon.com/AWSECommerceService/latest/DG/MaximumNumberofPages.html

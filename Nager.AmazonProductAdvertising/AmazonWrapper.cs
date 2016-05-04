@@ -33,22 +33,11 @@ namespace Nager.AmazonProductAdvertising
             this._userAgent = userAgent;  
         }
 
-
-    public AmazonItemLookupOperation ItemLookupOperation(string asin, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        public AmazonItemLookupOperation ItemLookupOperation(IList<string> articleNumbers, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
         {
             var operation = new AmazonItemLookupOperation();
             operation.ResponseGroup(amazonResponseGroup);
-            operation.Get(asin);
-            operation.AssociateTag(this._associateTag);
-
-            return operation;
-        }
-
-        public AmazonItemLookupOperation ItemLookupOperation(IList<string> asins, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
-        {
-            var operation = new AmazonItemLookupOperation();
-            operation.ResponseGroup(amazonResponseGroup);
-            operation.Get(asins);
+            operation.Get(articleNumbers);
             operation.AssociateTag(this._associateTag);
 
             return operation;
@@ -75,14 +64,20 @@ namespace Nager.AmazonProductAdvertising
             return operation;
         }
 
-        public ItemLookupResponse Lookup(string asin, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
+        /// <summary>
+        /// ItemLookup
+        /// </summary>
+        /// <param name="articleNumber">ASIN, EAN, GTIN, ISBN</param>
+        /// <param name="responseGroup"></param>
+        /// <returns></returns>
+        public ItemLookupResponse Lookup(string articleNumber, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
-            return this.Lookup(new string[1] { asin }, responseGroup);
+            return this.Lookup(new string[1] { articleNumber }, responseGroup);
         }
 
-        public ItemLookupResponse Lookup(IList<string> asins, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
+        public ItemLookupResponse Lookup(IList<string> articleNumbers, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
-            var requestParams = ItemLookupOperation(asins, responseGroup);
+            var requestParams = ItemLookupOperation(articleNumbers, responseGroup);
 
             var webResponse = this.Request(requestParams);
             if (webResponse.StatusCode == HttpStatusCode.OK)

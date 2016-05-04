@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nager.AmazonProductAdvertising.Helper;
+using System;
 using System.Collections.Generic;
 
 namespace Nager.AmazonProductAdvertising.Model
@@ -8,30 +9,46 @@ namespace Nager.AmazonProductAdvertising.Model
         public AmazonItemLookupOperation()
         {
             base.ParameterDictionary.Add("Operation", "ItemLookup");
-            base.ParameterDictionary.Add("IdType", "ASIN"); //ASIN, SKU, UPC, EAN, ISBN
             base.ParameterDictionary.Add("ResponseGroup", AmazonResponseGroup.Large.ToString());
         }
 
-        public void Get(string asin)
+        public void Get(IList<string> articelNumbers)
         {
-            if (base.ParameterDictionary.ContainsKey("ItemId"))
+            if (articelNumbers.Count == 0)
             {
-                base.ParameterDictionary["ItemId"] = asin;
                 return;
             }
 
-            base.ParameterDictionary.Add("ItemId", asin);
-        }
+            var articelNumberType = ArticleNumberHelper.GetArticleNumberType(articelNumbers[0]);
+            switch (articelNumberType)
+            {
+                case ArticleNumberType.EAN:
+                case ArticleNumberType.SKU:
+                case ArticleNumberType.UPC:
+                    base.SearchIndex(AmazonSearchIndex.All);
+                    break;
+                case ArticleNumberType.ISBN:
+                    base.SearchIndex(AmazonSearchIndex.Books);
+                    for (var i = 0; i< articelNumbers.Count; i++)
+                    {
+                        articelNumbers[i] = articelNumbers[i].Replace("-", "");
+                    }
+                    break;
+            }
 
-        public void Get(IList<string> asins)
-        {
+            if (articelNumberType != ArticleNumberType.EAN)
+            {
+                base.SearchIndex(AmazonSearchIndex.Books);
+            }
+
             if (base.ParameterDictionary.ContainsKey("ItemId"))
             {
-                base.ParameterDictionary["ItemId"] = String.Join(",", asins);
+                base.ParameterDictionary["ItemId"] = String.Join(",", articelNumbers);
                 return;
             }
 
-            base.ParameterDictionary.Add("ItemId", String.Join(",", asins));
+            base.ParameterDictionary.Add("IdType", articelNumberType.ToString());
+            base.ParameterDictionary.Add("ItemId", String.Join(",", articelNumbers));
         }
     }
 }
