@@ -6,10 +6,10 @@ namespace Nager.AmazonProductAdvertising.UnitTest
     [TestClass]
     public class AmazonTest
     {
-        [TestMethod]
-        public void TestMethod1()
-        {
+        //[TestMethod]
+        //public void TestMethod1()
+        //{
 
-        }
+        //}
     }
 }
