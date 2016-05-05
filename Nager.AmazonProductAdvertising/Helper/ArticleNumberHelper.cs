@@ -18,7 +18,7 @@ namespace Nager.AmazonProductAdvertising.Helper
             }
             if (IsValidGtin(articleNumber))
             {
-                return ArticleNumberType.EAN;
+                return ArticleNumberType.GTIN;
             }
             if (IsValidIsbn(articleNumber))
             {

@@ -22,7 +22,7 @@ namespace Nager.AmazonProductAdvertising.Model
             var articelNumberType = ArticleNumberHelper.GetArticleNumberType(articelNumbers[0]);
             switch (articelNumberType)
             {
-                case ArticleNumberType.EAN:
+                case ArticleNumberType.GTIN:
                 case ArticleNumberType.SKU:
                 case ArticleNumberType.UPC:
                     base.SearchIndex(AmazonSearchIndex.All);
@@ -34,11 +34,6 @@ namespace Nager.AmazonProductAdvertising.Model
                         articelNumbers[i] = articelNumbers[i].Replace("-", "");
                     }
                     break;
-            }
-
-            if (articelNumberType != ArticleNumberType.EAN)
-            {
-                base.SearchIndex(AmazonSearchIndex.Books);
             }
 
             if (base.ParameterDictionary.ContainsKey("ItemId"))

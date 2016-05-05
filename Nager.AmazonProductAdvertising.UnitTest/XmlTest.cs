@@ -71,5 +71,17 @@ namespace Nager.AmazonProductAdvertising.UnitTest
             Assert.AreNotEqual(result.Error.Code, null);
             Assert.AreNotEqual(result.Error.Message, null);
         }
+
+        [TestMethod]
+        public void ParseBrowseNodeLookupResponse()
+        {
+            var xml = File.ReadAllText("BrowseNodeLookupResponse.xml");
+            //var result = XmlHelper.ParseXml<ItemLookupErrorResponse>(xml);
+            //Assert.AreNotEqual(result, null);
+            //Assert.AreNotEqual(result.RequestId, null);
+            //Assert.AreNotEqual(result.Error.Code, null);
+            //Assert.AreNotEqual(result.Error.Message, null);
+        }
+        
     }
 }
