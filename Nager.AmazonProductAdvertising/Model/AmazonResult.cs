@@ -434,6 +434,10 @@ namespace Nager.AmazonProductAdvertising.Model
     public class ItemSearchResponse : AmazonResponse
     { }
 
+    [XmlRoot]
+    public class BrowseNodeLookupResponse : AmazonResponse
+    { }
+
     public class AmazonErrorResponse
     {
         public AmazonError Error { get; set; }

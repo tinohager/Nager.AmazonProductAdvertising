@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Nager.ArticleNumber, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Nager.ArticleNumber.1.0.1\lib\net45\Nager.ArticleNumber.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -41,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AmazonDomain.cs" />
-    <Compile Include="Helper\ArticleNumberHelper.cs" />
     <Compile Include="Model\AmazonAuthentication.cs" />
     <Compile Include="Model\AmazonBrowseNodeLookupOperation.cs" />
     <Compile Include="Model\AmazonEndpoint.cs" />
@@ -56,10 +59,12 @@
     <Compile Include="Model\AmazonSearchSortOrder.cs" />
     <Compile Include="Model\AmazonResult.cs" />
     <Compile Include="Model\AmazonSimpleItem.cs" />
-    <Compile Include="Model\ArticleNumberType.cs" />
     <Compile Include="Model\ExtendedWebResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="XmlHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,4 +1,4 @@
-﻿using Nager.AmazonProductAdvertising.Helper;
+﻿using Nager.ArticleNumber;
 using System;
 using System.Collections.Generic;
 
@@ -20,19 +20,27 @@ namespace Nager.AmazonProductAdvertising.Model
             }
 
             var articelNumberType = ArticleNumberHelper.GetArticleNumberType(articelNumbers[0]);
+            var idType = "ASIN";
             switch (articelNumberType)
             {
+                case ArticleNumberType.EAN8:
+                case ArticleNumberType.EAN13:
+                case ArticleNumberType.UPC:
                 case ArticleNumberType.GTIN:
                 case ArticleNumberType.SKU:
-                case ArticleNumberType.UPC:
+                    idType = "EAN";
                     base.SearchIndex(AmazonSearchIndex.All);
                     break;
-                case ArticleNumberType.ISBN:
+                case ArticleNumberType.ISBN10:
+                case ArticleNumberType.ISBN13:
+                    idType = "ISBN";
                     base.SearchIndex(AmazonSearchIndex.Books);
                     for (var i = 0; i< articelNumbers.Count; i++)
                     {
                         articelNumbers[i] = articelNumbers[i].Replace("-", "");
                     }
+                    break;
+                case ArticleNumberType.ASIN:
                     break;
             }
 
@@ -42,7 +50,7 @@ namespace Nager.AmazonProductAdvertising.Model
                 return;
             }
 
-            base.ParameterDictionary.Add("IdType", articelNumberType.ToString());
+            base.ParameterDictionary.Add("IdType", idType);
             base.ParameterDictionary.Add("ItemId", String.Join(",", articelNumbers));
         }
     }

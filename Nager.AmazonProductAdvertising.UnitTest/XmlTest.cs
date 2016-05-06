@@ -76,7 +76,7 @@ namespace Nager.AmazonProductAdvertising.UnitTest
         public void ParseBrowseNodeLookupResponse()
         {
             var xml = File.ReadAllText("BrowseNodeLookupResponse.xml");
-            //var result = XmlHelper.ParseXml<ItemLookupErrorResponse>(xml);
+            var result = XmlHelper.ParseXml<BrowseNodeLookupResponse>(xml);
             //Assert.AreNotEqual(result, null);
             //Assert.AreNotEqual(result.RequestId, null);
             //Assert.AreNotEqual(result.Error.Code, null);
