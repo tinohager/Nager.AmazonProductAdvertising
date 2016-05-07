@@ -3,6 +3,19 @@ using System.Xml.Serialization;
 
 namespace Nager.AmazonProductAdvertising.Model
 {
+    #region Common
+
+    public class AmazonResponse
+    {
+        public OperationRequest OperationRequest { get; set; }
+    }
+
+    public class AmazonErrorResponse
+    {
+        public AmazonError Error { get; set; }
+        public string RequestId { get; set; }
+    }
+
     public class AmazonError
     {
         public string Code { get; set; }
@@ -39,9 +52,35 @@ namespace Nager.AmazonProductAdvertising.Model
 
     public class Request
     {
+        public string IsValid { get; set; }
         [XmlArrayItem("Error")]
         public AmazonError[] Errors { get; set; }
     }
+
+    #endregion
+
+    #region ItemLookup / Item Search
+
+    public class AmazonItemResponse : AmazonResponse
+    {
+        public Items Items { get; set; }
+    }
+
+    [XmlRoot]
+    public class ItemLookupResponse : AmazonItemResponse
+    { }
+
+    [XmlRoot]
+    public class ItemSearchResponse : AmazonItemResponse
+    { }
+
+    [XmlRoot]
+    public class ItemLookupErrorResponse : AmazonErrorResponse
+    { }
+
+    [XmlRoot]
+    public class ItemSearchErrorResponse : AmazonErrorResponse
+    { }
 
     public class ItemLink
     {
@@ -128,9 +167,7 @@ namespace Nager.AmazonProductAdvertising.Model
         public CorrectedQuery CorrectedQuery { get; set; }
         public string Qid { get; set; }
         public string EngineQuery { get; set; }
-        //[XmlElement(DataType = "nonNegativeInteger")]
         public string TotalResults { get; set; }
-        //[XmlElement(DataType = "nonNegativeInteger")]
         public string TotalPages { get; set; }
         public string MoreSearchResultsUrl { get; set; }
         [XmlElement(IsNullable=true)]
@@ -420,35 +457,50 @@ namespace Nager.AmazonProductAdvertising.Model
         }
     }
 
-    public class AmazonResponse
-    {
-        public OperationRequest OperationRequest { get; set; }
-        public Items Items { get; set; }
-    }
+    #endregion
 
-    [XmlRoot]
-    public class ItemLookupResponse : AmazonResponse
-    { }
-
-    [XmlRoot]
-    public class ItemSearchResponse : AmazonResponse
-    { }
+    #region BrowseNodeLookupResponse
 
     [XmlRoot]
     public class BrowseNodeLookupResponse : AmazonResponse
-    { }
-
-    public class AmazonErrorResponse
     {
-        public AmazonError Error { get; set; }
-        public string RequestId { get; set; }
+        public BrowseNodes BrowseNodes { get; set; }
     }
 
     [XmlRoot]
-    public class ItemLookupErrorResponse : AmazonErrorResponse
-    { }
+    public class BrowseNodes
+    {
+        public BaseBrowseNodeLookupRequest Request { get; set; }
+        public BrowseNode BrowseNode { get; set; }
+    }
+
+    public class BaseBrowseNodeLookupRequest : Request
+    {
+        public BrowseNodeLookupRequest BrowseNodeLookupRequest { get; set; }
+    }
 
     [XmlRoot]
-    public class ItemSearchErrorResponse : AmazonErrorResponse
-    { }
+    public class BrowseNodeLookupRequest
+    {
+        public string BrowseNodeId { get; set; }
+        public string ResponseGroup { get; set; }
+    }
+
+    [XmlRoot]
+    public class BrowseNode
+    {
+        public string BrowseNodeId { get; set; }
+        public string Name { get; set; }
+        public int IsCategoryRoot { get; set; }
+        [XmlArrayItem("BrowseNode")]
+        public BrowseNode[] Children { get; set; }
+    }
+
+    [XmlRoot]
+    public class Ancestors
+    {
+        public BrowseNode BrowseNode { get; set; }
+    }
+
+    #endregion
 }

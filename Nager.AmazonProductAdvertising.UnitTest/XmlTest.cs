@@ -77,11 +77,11 @@ namespace Nager.AmazonProductAdvertising.UnitTest
         {
             var xml = File.ReadAllText("BrowseNodeLookupResponse.xml");
             var result = XmlHelper.ParseXml<BrowseNodeLookupResponse>(xml);
-            //Assert.AreNotEqual(result, null);
-            //Assert.AreNotEqual(result.RequestId, null);
-            //Assert.AreNotEqual(result.Error.Code, null);
-            //Assert.AreNotEqual(result.Error.Message, null);
+            Assert.AreNotEqual(result, null);
+            Assert.AreNotEqual(result.BrowseNodes, null);
+            Assert.AreNotEqual(result.BrowseNodes.BrowseNode, null);
+            Assert.AreNotEqual(result.BrowseNodes.BrowseNode.Children, null);
+            Assert.AreEqual(result.BrowseNodes.BrowseNode.Children.Length, 13);
         }
-        
     }
 }
