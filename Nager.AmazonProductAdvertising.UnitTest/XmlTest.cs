@@ -22,7 +22,7 @@ namespace Nager.AmazonProductAdvertising.UnitTest
             var xml = File.ReadAllText("ItemSearchResponseWithError.xml");
             var result = XmlHelper.ParseXml<ItemSearchResponse>(xml);
             Assert.AreNotEqual(result, null);
-            //Assert.AreEqual(result.Items.Request.Errors[0].Code, "AWS.RestrictedParameterValueCombination");
+            Assert.AreEqual(result.Items.Request.Errors[0].Code, "AWS.RestrictedParameterValueCombination");
         }
 
         [TestMethod]
@@ -82,6 +82,24 @@ namespace Nager.AmazonProductAdvertising.UnitTest
             Assert.AreNotEqual(result.BrowseNodes.BrowseNode, null);
             Assert.AreNotEqual(result.BrowseNodes.BrowseNode.Children, null);
             Assert.AreEqual(result.BrowseNodes.BrowseNode.Children.Length, 13);
+        }
+
+        [TestMethod]
+        public void ParseBrowseNodeLookupResponseWithError()
+        {
+            var xml = File.ReadAllText("BrowseNodeLookupResponseWithError.xml");
+            var result = XmlHelper.ParseXml<BrowseNodeLookupResponse>(xml);
+            Assert.AreNotEqual(result, null);
+            Assert.AreEqual(result.BrowseNodes.Request.Errors[0].Code, "AWS.InvalidParameterValue");
+        }
+
+        [TestMethod]
+        public void ParseBrowseNodeLookupErrorResponse()
+        {
+            var xml = File.ReadAllText("BrowseNodeLookupErrorResponse.xml");
+            var result = XmlHelper.ParseXml<BrowseNodeLookupErrorResponse>(xml);
+            Assert.AreNotEqual(result, null);
+            Assert.AreEqual(result.Error.Code, "MissingClientTokenId");
         }
     }
 }

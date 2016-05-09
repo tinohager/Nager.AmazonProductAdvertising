@@ -468,6 +468,10 @@ namespace Nager.AmazonProductAdvertising.Model
     }
 
     [XmlRoot]
+    public class BrowseNodeLookupErrorResponse : AmazonErrorResponse
+    { }
+
+    [XmlRoot]
     public class BrowseNodes
     {
         public BaseBrowseNodeLookupRequest Request { get; set; }

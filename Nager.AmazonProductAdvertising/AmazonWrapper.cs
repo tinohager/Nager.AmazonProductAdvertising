@@ -93,9 +93,9 @@ namespace Nager.AmazonProductAdvertising
             return null;
         }
 
-        public ItemSearchResponse Search(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        public ItemSearchResponse Search(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
-            var requestParams = ItemSearchOperation(search, searchIndex, amazonResponseGroup);
+            var requestParams = ItemSearchOperation(search, searchIndex, responseGroup);
 
             var webResponse = this.Request(requestParams);
             if (webResponse.StatusCode == HttpStatusCode.OK)
@@ -105,6 +105,24 @@ namespace Nager.AmazonProductAdvertising
             else
             {
                 var errorResponse = XmlHelper.ParseXml<ItemSearchErrorResponse>(webResponse.Content);
+                this.ErrorReceived?.Invoke(errorResponse);
+            }
+
+            return null;
+        }
+
+        public BrowseNodeLookupResponse BrowseNodeLookup(int browseNodeId, AmazonResponseGroup responseGroup = AmazonResponseGroup.BrowseNodeInfo)
+        {
+            var requestParams = BrowseNodeLookupOperation(browseNodeId, responseGroup);
+
+            var webResponse = this.Request(requestParams);
+            if (webResponse.StatusCode == HttpStatusCode.OK)
+            {
+                return XmlHelper.ParseXml<BrowseNodeLookupResponse>(webResponse.Content);
+            }
+            else
+            {
+                var errorResponse = XmlHelper.ParseXml<BrowseNodeLookupErrorResponse>(webResponse.Content);
                 this.ErrorReceived?.Invoke(errorResponse);
             }
 

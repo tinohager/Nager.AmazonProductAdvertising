@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" ?>
+<BrowseNodeLookupErrorResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2009-03-31">
+  <Error>
+    <Code>MissingClientTokenId</Code>
+    <Message>Request must contain AWSAccessKeyId or X.509 certificate.</Message>
+  </Error>
+  <RequestId>71d3eb4c-162a-11e6-8764-09b5e8357db8</RequestId>
+</BrowseNodeLookupErrorResponse>

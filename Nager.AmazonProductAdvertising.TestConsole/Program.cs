@@ -97,15 +97,12 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             Console.WriteLine("------------------------------------------");
 
             var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
-            var operation = wrapper.BrowseNodeLookupOperation(569604);
-            var webResponse = wrapper.Request(operation);
+            var result = wrapper.BrowseNodeLookup(569604, AmazonResponseGroup.Large);
 
-            //var result = XmlHelper.ParseXml<ItemSearchResponse>(webResponse.Content);
-
-            //foreach (var item in result.Items.Item)
-            //{
-            //    Console.WriteLine(item.ItemAttributes.Title);
-            //}
+            foreach (var item in result.BrowseNodes.BrowseNode.Children)
+            {
+                Console.WriteLine(item.BrowseNodeId);
+            }
 
             //Console.WriteLine("found {0} items", result.Items.Item.Length);
 

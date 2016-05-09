@@ -87,11 +87,11 @@ namespace Nager.AmazonProductAdvertising
 
             // now construct the complete URL and return to caller.
             var sb = new StringBuilder();
-            sb.Append("http://")
-                .Append(this.endPoint)
-                .Append(REQUEST_URI)
-                .AppendFormat("?{0}", canonicalQS)
-                .AppendFormat("&Signature={0}", this.EscapeUriDataStringRfc3986(signature));
+            sb.Append("http://");
+            sb.Append(this.endPoint);
+            sb.Append(REQUEST_URI);
+            sb.AppendFormat("?{0}", canonicalQS);
+            sb.AppendFormat("&Signature={0}", this.EscapeUriDataStringRfc3986(signature));
 
             return sb.ToString();
         }
@@ -101,8 +101,7 @@ namespace Nager.AmazonProductAdvertising
             var requestArgs = new Dictionary<string, string>();
             requestArgs["Service"] = "AWSECommerceService";
             requestArgs["Version"] = "2009-03-31";
-           // requestArgs["AssociateTag"] = this._config.AssociateTag;
-            foreach (string key in operationArguments.Keys)
+            foreach (var key in operationArguments.Keys)
             {
                 requestArgs[key] = operationArguments[key];
             }
