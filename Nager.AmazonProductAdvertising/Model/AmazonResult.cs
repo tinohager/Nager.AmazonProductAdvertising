@@ -333,6 +333,7 @@ namespace Nager.AmazonProductAdvertising.Model
         public string AspectRatio { get; set; }
         public string AudienceRating { get; set; }
         public string[] AudioFormat { get; set; }
+        [XmlElement("Author")]
         public string[] Author { get; set; }
         public string Binding { get; set; }
         public string Brand { get; set; }
