@@ -62,6 +62,34 @@ namespace Nager.AmazonProductAdvertising.UnitTest
         }
 
         [TestMethod]
+        public void ParseItemLookupResponse3()
+        {
+            var xml = File.ReadAllText("ItemLookupResponse3.xml");
+            var result = XmlHelper.ParseXml<ItemLookupResponse>(xml);
+            Assert.AreNotEqual(result, null);
+            Assert.AreEqual(result.Items.Item.Length, 1);
+            Assert.AreEqual(result.Items.Item[0].ASIN, "3955610977");
+            Assert.AreEqual(result.Items.Item[0].ItemAttributes.Title, "C# 5.0 - kurz & gut");
+            Assert.AreEqual(result.Items.Item[0].ItemAttributes.Author.Length, 2);
+        }
+
+        [TestMethod]
+        public void ParseItemLookupResponse4()
+        {
+            var xml = File.ReadAllText("ItemLookupResponse4.xml");
+            var result = XmlHelper.ParseXml<ItemLookupResponse>(xml);
+            Assert.AreNotEqual(result, null);
+            Assert.AreEqual(result.Items.Item.Length, 1);
+            Assert.AreEqual(result.Items.Item[0].ASIN, "B00189AYJY");
+            Assert.AreEqual(result.Items.Item[0].ItemAttributes.Title, "Iron Man [Blu-ray]");
+            Assert.AreEqual(result.Items.Item[0].ItemAttributes.Actor.Length, 5);
+            Assert.AreEqual(result.Items.Item[0].ItemAttributes.CatalogNumberList.Length, 3);
+            Assert.AreEqual(result.Items.Item[0].ItemAttributes.Creator.Length, 2);
+            Assert.AreEqual(result.Items.Item[0].ItemAttributes.Creator[0].Role, "Hauptdarsteller");
+            Assert.AreEqual(result.Items.Item[0].ItemAttributes.Creator[0].Name, "Robert Downey Jr.");
+        }
+
+        [TestMethod]
         public void ParseItemLookupErrorResponse()
         {
             var xml = File.ReadAllText("ItemLookupErrorResponse.xml");

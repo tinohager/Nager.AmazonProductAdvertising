@@ -322,13 +322,17 @@ namespace Nager.AmazonProductAdvertising.Model
 
     public class ItemAttributesCreator
     {
+        [XmlAttribute]
         public string Role { get; set; }
-        public string Value { get; set; }
+        [XmlText]
+        public string Name { get; set; }
     }
 
     public class ItemAttributes
     {
+        [XmlElement("Actor")]
         public string[] Actor { get; set; }
+        [XmlElement("Artist")]
         public string[] Artist { get; set; }
         public string AspectRatio { get; set; }
         public string AudienceRating { get; set; }
@@ -339,22 +343,27 @@ namespace Nager.AmazonProductAdvertising.Model
         public string Brand { get; set; }
         [XmlArrayItem("CatalogNumberListElement", IsNullable = false)]
         public string[] CatalogNumberList { get; set; }
+        [XmlElement("Category")]
         public string[] Category { get; set; }
         public string CEROAgeRating { get; set; }
         public string ClothingSize { get; set; }
         public string Color { get; set; }
+        [XmlElement("Creator")]
         public ItemAttributesCreator[] Creator { get; set; }
         public string Department { get; set; }
+        [XmlElement("Director")]
         public string[] Director { get; set; }
         public string EAN { get; set; }
         [XmlArrayItem("EANListElement", IsNullable = false)]
         public string[] EANList { get; set; }
         public string Edition { get; set; }
+        [XmlElement("EISBN")]
         public string[] EISBN { get; set; }
         public string EpisodeSequence { get; set; }
         public string ESRBAgeRating { get; set; }
         [XmlElement("Feature")]
         public string[] Feature { get; set; }
+        [XmlElement("Format")]
         public string[] Format { get; set; }
         public string Genre { get; set; }
         public string HardwarePlatform { get; set; }
@@ -394,6 +403,7 @@ namespace Nager.AmazonProductAdvertising.Model
         public ItemAttributesPackageDimensions PackageDimensions { get; set; }
         public string PackageQuantity { get; set; }
         public string PartNumber { get; set; }
+        [XmlElement("PictureFormat")]
         public string[] PictureFormat { get; set; }
         [XmlElement("Platform")]
         public string[] Platform { get; set; }
