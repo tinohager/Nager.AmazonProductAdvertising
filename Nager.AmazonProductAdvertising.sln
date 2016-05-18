@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.40629.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nager.AmazonProductAdvertising.TestConsole", "Nager.AmazonProductAdvertising.TestConsole\Nager.AmazonProductAdvertising.TestConsole.csproj", "{5B406042-6FC7-4655-8FC3-3528919468FB}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nager.AmazonProductAdvertising.Monitor", "Nager.AmazonProductAdvertising.Monitor\Nager.AmazonProductAdvertising.Monitor.csproj", "{C0046C9F-8B2A-4943-B010-DBA38B10EC8F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nager.AmazonProductAdvertising.UnitTest", "Nager.AmazonProductAdvertising.UnitTest\Nager.AmazonProductAdvertising.UnitTest.csproj", "{7F12AB6D-CCEA-41DA-B316-AFB5C80F83F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nager.AmazonProductAdvertising.Website", "Nager.AmazonProductAdvertising.Website\Nager.AmazonProductAdvertising.Website.csproj", "{B614D94D-6F56-4276-8D9C-270BD46387B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{7F12AB6D-CCEA-41DA-B316-AFB5C80F83F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F12AB6D-CCEA-41DA-B316-AFB5C80F83F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F12AB6D-CCEA-41DA-B316-AFB5C80F83F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B614D94D-6F56-4276-8D9C-270BD46387B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B614D94D-6F56-4276-8D9C-270BD46387B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B614D94D-6F56-4276-8D9C-270BD46387B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B614D94D-6F56-4276-8D9C-270BD46387B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
