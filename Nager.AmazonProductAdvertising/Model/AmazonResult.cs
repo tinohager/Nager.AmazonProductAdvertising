@@ -435,7 +435,7 @@ namespace Nager.AmazonProductAdvertising.Model
         private string _detailPageURL;
 
         public string ASIN { get; set; }
-        public string ParentASIN  { get; set; }
+        public string ParentASIN { get; set; }
         public string DetailPageURL
         {
             get { return this._detailPageURL; }
