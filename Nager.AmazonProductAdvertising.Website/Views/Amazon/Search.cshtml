@@ -1,0 +1,51 @@
+﻿@model Nager.AmazonProductAdvertising.Model.AmazonItemResponse
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="search">Search</label>
+                <input type="text" class="form-control" id="search" name="search" placeholder="search">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    @if (Model != null)
+            {
+                foreach (var item in Model.Items.Item)
+                {
+            <div class="col-xs-12 col-md-6">
+                <div class="row">
+                    <div class="col-xs-6 col-md-4">
+                        @if (item.LargeImage != null)
+                        {
+                            <img src="@item.LargeImage.URL" alt="@item.ItemAttributes.Title" class="img-thumbnail" />
+                        }
+                    </div>
+                    <div class="col-xs-6 col-md-8">
+                        <h4>@item.ItemAttributes.Title</h4>
+                        @if (item.ItemAttributes.Feature != null)
+                        {
+                            <ul>
+                                @foreach (var description in item.ItemAttributes.Feature)
+                                {
+                                    <li>@description</li>
+                                }
+                            </ul>
+                        }
+                        <a class="btn btn-primary" href="@item.DetailPageURL" role="button">Bei Amazon kaufen (@(item.OfferSummary?.LowestNewPrice?.FormattedPrice))</a><br />
+                        <span>@item.ASIN</span>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

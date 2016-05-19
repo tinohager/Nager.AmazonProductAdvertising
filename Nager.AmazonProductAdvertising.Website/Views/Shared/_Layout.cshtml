@@ -22,6 +22,8 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Lookup", "Lookup", "Amazon", new { articleNumber = "B007KKKJYK" }, null)</li>
+                    <li>@Html.ActionLink("Search", "Search", "Amazon", new { search = "Waschmaschinen" }, null)</li>
                 </ul>
             </div>
         </div>
