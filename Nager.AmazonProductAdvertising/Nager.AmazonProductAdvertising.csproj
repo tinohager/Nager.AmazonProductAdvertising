@@ -45,6 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AmazonDomain.cs" />
+    <Compile Include="AmazonWrapperAsync.cs" />
+    <Compile Include="IAmazonWrapper.cs" />
     <Compile Include="Model\AmazonAuthentication.cs" />
     <Compile Include="Model\AmazonBrowseNodeLookupOperation.cs" />
     <Compile Include="Model\AmazonEndpoint.cs" />

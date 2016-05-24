@@ -6,7 +6,7 @@ using System.Net;
 
 namespace Nager.AmazonProductAdvertising
 {
-    public class AmazonWrapper
+    public partial class AmazonWrapper : IAmazonWrapper
     {
         private AmazonAuthentication _authentication;
         private AmazonEndpoint _endpoint;
