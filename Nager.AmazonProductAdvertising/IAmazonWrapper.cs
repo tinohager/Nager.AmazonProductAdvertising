@@ -21,6 +21,8 @@ namespace Nager.AmazonProductAdvertising
 
         ItemSearchResponse Search(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large);
 
+        ExtendedWebResponse Request(AmazonOperationBase amazonOperation);
+
         #endregion
 
 
@@ -31,6 +33,8 @@ namespace Nager.AmazonProductAdvertising
         Task<ItemLookupResponse> LookupAsync(IList<string> articleNumbers, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large);
 
         Task<ItemSearchResponse> SearchAsync(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large);
+
+        Task<ExtendedWebResponse> RequestAsync(AmazonOperationBase amazonOperation);
 
         #endregion
     }
