@@ -70,12 +70,12 @@ namespace Nager.AmazonProductAdvertising
         /// <param name="articleNumber">ASIN, EAN, GTIN, ISBN</param>
         /// <param name="responseGroup"></param>
         /// <returns></returns>
-        public ItemLookupResponse Lookup(string articleNumber, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
+        public AmazonItemResponse Lookup(string articleNumber, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
             return this.Lookup(new string[1] { articleNumber }, responseGroup);
         }
 
-        public ItemLookupResponse Lookup(IList<string> articleNumbers, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
+        public AmazonItemResponse Lookup(IList<string> articleNumbers, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
             var requestParams = ItemLookupOperation(articleNumbers, responseGroup);
 
@@ -93,7 +93,7 @@ namespace Nager.AmazonProductAdvertising
             return null;
         }
 
-        public ItemSearchResponse Search(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
+        public AmazonItemResponse Search(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
             var requestParams = ItemSearchOperation(search, searchIndex, responseGroup);
 

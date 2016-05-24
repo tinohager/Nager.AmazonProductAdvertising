@@ -1,8 +1,21 @@
 Nager.AmazonProductAdvertising
 ==========
 
+#####Features
+* ItemLookup
+* ItemSeach
+* BrowseNodeLookup
+* Async support
+
+#####Demo Website (For donation shop over this website)
+http://amazonshop.azurewebsites.net/
+
 #####nuget
+The package is available on nuget
+https://www.nuget.org/packages/Nager.AmazonProductAdvertising/
+```
 install-package Nager.AmazonProductAdvertising
+```
 
 
 #####Example Item Search

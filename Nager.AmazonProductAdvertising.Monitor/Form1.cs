@@ -33,7 +33,7 @@ namespace Nager.AmazonProductAdvertising.Monitor
 
         #region Buttons
 
-        private void buttonSearch_Click(object sender, EventArgs e)
+        private async void buttonSearch_Click(object sender, EventArgs e)
         {
             var search = this.textBoxSearch.Text;
             var endpoint = (AmazonEndpoint)this.comboBoxEndpoint.SelectedItem;
@@ -42,7 +42,7 @@ namespace Nager.AmazonProductAdvertising.Monitor
 
             var wrapper = new AmazonWrapper(this._authentication, endpoint, "nagerat-21");
             wrapper.XmlReceived += XmlReceived;
-            var result = wrapper.Search(search, searchIndex, responseGroup);
+            var result = await wrapper.SearchAsync(search, searchIndex, responseGroup);
             wrapper.XmlReceived -= XmlReceived;
 
             if (result == null)

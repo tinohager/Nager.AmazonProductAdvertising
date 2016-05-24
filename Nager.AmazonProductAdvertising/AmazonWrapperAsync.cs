@@ -15,12 +15,12 @@ namespace Nager.AmazonProductAdvertising
         /// <param name="articleNumber">ASIN, EAN, GTIN, ISBN</param>
         /// <param name="responseGroup"></param>
         /// <returns></returns>
-        public Task<ItemLookupResponse> LookupAsync(string articleNumber, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
+        public Task<AmazonItemResponse> LookupAsync(string articleNumber, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
             return this.LookupAsync(new string[1] { articleNumber }, responseGroup);
         }
 
-        public async Task<ItemLookupResponse> LookupAsync(IList<string> articleNumbers, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
+        public async Task<AmazonItemResponse> LookupAsync(IList<string> articleNumbers, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
             var requestParams = ItemLookupOperation(articleNumbers, responseGroup);
 
@@ -38,7 +38,7 @@ namespace Nager.AmazonProductAdvertising
             return null;
         }
 
-        public async Task<ItemSearchResponse> SearchAsync(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
+        public async Task<AmazonItemResponse> SearchAsync(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
             var requestParams = ItemSearchOperation(search, searchIndex, responseGroup);
 
@@ -94,7 +94,7 @@ namespace Nager.AmazonProductAdvertising
                 {
                     using (var streamReader = new StreamReader(response.GetResponseStream()))
                     {
-                        var xml = streamReader.ReadToEnd();
+                        var xml = await streamReader.ReadToEndAsync();
                         this.XmlReceived?.Invoke(xml);
 
                         return new ExtendedWebResponse(response.StatusCode, xml);
