@@ -1,8 +1,5 @@
 ﻿using Nager.AmazonProductAdvertising.Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Nager.AmazonProductAdvertising
@@ -10,32 +7,18 @@ namespace Nager.AmazonProductAdvertising
     public interface IAmazonWrapper
     {
         void SetEndpoint(AmazonEndpoint amazonEndpoint);
-
         void SetUserAgent(string userAgent);
 
-        #region "Sync Support"
+        AmazonItemResponse Lookup(string articleNumber, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large);
+        Task<AmazonItemResponse> LookupAsync(string articleNumber, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large);
 
-        ItemLookupResponse Lookup(string articleNumber, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large);
+        AmazonItemResponse Lookup(IList<string> articleNumbers, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large);
+        Task<AmazonItemResponse> LookupAsync(IList<string> articleNumbers, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large);
 
-        ItemLookupResponse Lookup(IList<string> articleNumbers, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large);
+        AmazonItemResponse Search(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large);
+        Task<AmazonItemResponse> SearchAsync(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large);
 
-        ItemSearchResponse Search(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large);
-
-        ExtendedWebResponse Request(AmazonOperationBase amazonOperation);
-
-        #endregion
-
-
-        #region "Async Support"
-
-        Task<ItemLookupResponse> LookupAsync(string articleNumber, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large);
-
-        Task<ItemLookupResponse> LookupAsync(IList<string> articleNumbers, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large);
-
-        Task<ItemSearchResponse> SearchAsync(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large);
-
+        ExtendedWebResponse Request(AmazonOperationBase amazonOperation);  
         Task<ExtendedWebResponse> RequestAsync(AmazonOperationBase amazonOperation);
-
-        #endregion
     }
 }
