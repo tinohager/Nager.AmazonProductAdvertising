@@ -22,3 +22,8 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/* Set Carousel images center */
+.carousel-inner > .item > img {
+    margin: 0 auto;
+}

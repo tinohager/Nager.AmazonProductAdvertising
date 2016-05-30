@@ -1,0 +1,24 @@
+﻿@model Nager.AmazonProductAdvertising.Model.Item
+<div class="col-xs-12 col-md-6" style="height:250px;">
+    <div class="row">
+        <div class="col-xs-6 col-md-4">
+            <div class="thumbnail">
+                @if (Model.MediumImage != null)
+                {
+                    <img src="@Model.MediumImage.URL" alt="@Model.ItemAttributes.Title" />
+                }
+                <div class="caption">
+                    <span>ASIN: @Model.ASIN</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-8">
+            <h5>@Model.ItemAttributes.Title</h5>
+            <h3>@(Model.OfferSummary?.LowestNewPrice?.FormattedPrice)</h3>
+            <div class="btn-group" role="group" aria-label="...">
+                @Html.ActionLink("Details", "Detail", "Amazon", new { articleNumber = Model.ASIN }, new { Class = "btn btn-primary" })
+                <a class="btn btn-default" href="@Model.DetailPageURL" role="button">Bei Amazon kaufen</a>
+            </div>
+        </div>
+    </div>
+</div>

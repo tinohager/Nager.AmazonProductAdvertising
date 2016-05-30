@@ -47,9 +47,32 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
             var authentication = this.GetConfig();
 
             var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
-            var result = wrapper.Search(search);
+            var responseGroup = AmazonResponseGroup.ItemAttributes | AmazonResponseGroup.Images;
+            //var operation = wrapper.ItemSearchOperation(search, AmazonSearchIndex.Electronics, responseGroup);
+            //operation.Sort(AmazonSearchSort.Salesrank, AmazonSearchSortOrder.Descending);
+            //var webResponse = wrapper.Request(operation);
+            //var result = (AmazonItemResponse)XmlHelper.ParseXml<ItemSearchResponse>(webResponse.Content);
+
+            var result = wrapper.Search(search, AmazonSearchIndex.All, responseGroup);
 
             return View(result);
+        }
+
+        public ActionResult Detail(string articleNumber)
+        {
+            if (String.IsNullOrEmpty(articleNumber))
+            {
+                return View();
+            }
+
+            var authentication = this.GetConfig();
+
+            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
+            var result = wrapper.Lookup(articleNumber);
+
+            var item = result.Items?.Item.FirstOrDefault();
+
+            return View(item);
         }
     }
 }

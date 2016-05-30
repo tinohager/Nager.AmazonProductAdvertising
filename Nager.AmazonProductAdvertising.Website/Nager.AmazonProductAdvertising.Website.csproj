@@ -180,6 +180,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Amazon\Lookup.cshtml" />
     <Content Include="Views\Amazon\Search.cshtml" />
+    <Content Include="Views\Amazon\_ItemOverview.cshtml" />
+    <Content Include="Views\Amazon\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
