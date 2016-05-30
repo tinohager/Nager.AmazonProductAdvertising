@@ -59,10 +59,11 @@ namespace Nager.AmazonProductAdvertising.Monitor
         {
             var asin = this.textBoxAsin.Text;
             var endpoint = (AmazonEndpoint)this.comboBoxEndpoint.SelectedItem;
+            var responseGroup = (AmazonResponseGroup)this.comboBoxResponseGroup.SelectedItem;
 
             var wrapper = new AmazonWrapper(this._authentication, endpoint, "nagerat-21");
             wrapper.XmlReceived += XmlReceived;
-            var result = wrapper.Lookup(asin);
+            var result = wrapper.Lookup(asin, responseGroup);
             wrapper.XmlReceived -= XmlReceived;
 
             if (result == null)
