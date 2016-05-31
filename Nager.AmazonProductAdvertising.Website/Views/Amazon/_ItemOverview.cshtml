@@ -5,7 +5,7 @@
             <div class="thumbnail">
                 @if (Model.MediumImage != null)
                 {
-                    <img src="@Model.MediumImage.URL" alt="@Model.ItemAttributes.Title" />
+                    <a href="/Amazon/Detail?articleNumber=@Model.ASIN"><img src="@Model.MediumImage.URL" alt="@Model.ItemAttributes.Title" border="0" /></a>
                 }
                 <div class="caption">
                     <span>ASIN: @Model.ASIN</span>

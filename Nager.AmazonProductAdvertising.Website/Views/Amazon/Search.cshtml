@@ -11,7 +11,7 @@
         {
             <div class="form-group">
                 <label for="search">Search</label>
-                <input type="text" class="form-control" id="search" name="search" placeholder="search" value="@Model.OperationRequest.Arguments.Where(o=>o.Name == "Keywords").Select(o=>o.Value).FirstOrDefault()">
+                <input type="text" class="form-control" id="search" name="search" placeholder="search" value="@ViewBag.Search">
             </div>
             <button type="submit" class="btn btn-primary">Search</button>
         }

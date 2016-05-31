@@ -44,6 +44,8 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
                 return View();
             }
 
+            ViewBag.Search = search;
+
             var authentication = this.GetConfig();
 
             var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
