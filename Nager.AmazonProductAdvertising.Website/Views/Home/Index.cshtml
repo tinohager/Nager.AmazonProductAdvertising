@@ -2,10 +2,25 @@
     ViewBag.Title = "Home";
 }
 
-<h2>Features</h2>
-<ul class="list-group">
-    <li class="list-group-item">ItemLookup</li>
-    <li class="list-group-item">ItemSeach</li>
-    <li class="list-group-item">BrowseNodeLookup</li>
-    <li class="list-group-item">Async support</li>
-</ul>
+<h2>Search</h2>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        @using(Html.BeginForm("Search", "Amazon", FormMethod.Get, new { Class = "form-inline" }))
+        {
+            <div class="form-group">
+                <input type="text" class="form-control" id="search" name="search" placeholder="search">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        }
+    </div>
+</div>
+
+<div class="col-xs-6 list-group">
+    <a class="list-group-item" href="/Amazon/Search/?search=poliermittel"><i class="fa fa-car fa-fw fa-5x" aria-hidden="true"></i>&nbsp; Poliermittel</a>
+    <a class="list-group-item" href="/Amazon/Search/?search=fahrrad"><i class="fa fa-bicycle fa-fw fa-5x" aria-hidden="true"></i>&nbsp; Fahrrad</a>
+</div>
+<div class="col-xs-6 list-group">
+    <a class="list-group-item" href="/Amazon/Search/?search=schmuck"><i class="fa fa-diamond fa-fw fa-5x" aria-hidden="true"></i>&nbsp; Schmuck</a>
+    <a class="list-group-item" href="/Amazon/Search/?search=kaffee"><i class="fa fa-coffee fa-fw fa-5x" aria-hidden="true"></i>&nbsp; Kaffee</a>
+</div>

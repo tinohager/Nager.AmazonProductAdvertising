@@ -7,13 +7,14 @@
 
 <div class="panel panel-default">
     <div class="panel-body">
-        <form class="form-inline">
+        @using (Html.BeginForm("Search", "Amazon", FormMethod.Get, new { Class = "form-inline" }))
+        {
             <div class="form-group">
                 <label for="search">Search</label>
-                <input type="text" class="form-control" id="search" name="search" placeholder="search">
+                <input type="text" class="form-control" id="search" name="search" placeholder="search" value="@Model.OperationRequest.Arguments.Where(o=>o.Name == "Keywords").Select(o=>o.Value).FirstOrDefault()">
             </div>
             <button type="submit" class="btn btn-primary">Search</button>
-        </form>
+        }
     </div>
 </div>
 
