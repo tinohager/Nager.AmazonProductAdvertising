@@ -8,7 +8,7 @@
             base.ParameterDictionary.Add("ResponseGroup", AmazonResponseGroup.BrowseNodeInfo.ToString());
         }
 
-        public void BrowseNodeId(int browseNodeId)
+        public void BrowseNodeId(long browseNodeId)
         {
             if (base.ParameterDictionary.ContainsKey("BrowseNodeId"))
             {

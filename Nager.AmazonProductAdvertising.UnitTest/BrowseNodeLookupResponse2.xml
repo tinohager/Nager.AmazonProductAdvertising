@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" ?>
+<BrowseNodeLookupResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01">
+  <OperationRequest>
+    <HTTPHeaders>
+      <Header Name="UserAgent" Value="Nager.AmazonProductAdvertising"/>
+    </HTTPHeaders>
+    <RequestId>29da943a-2cd7-11e6-b2c9-81e788dc0bc8</RequestId>
+    <Arguments>
+      <Argument Name="AWSAccessKeyId" Value="AWSAccessKeyId"/>
+      <Argument Name="AssociateTag" Value="nagerat-21"/>
+      <Argument Name="BrowseNodeId" Value="3010076031"/>
+      <Argument Name="Operation" Value="BrowseNodeLookup"/>
+      <Argument Name="ResponseGroup" Value="TopSellers"/>
+      <Argument Name="Service" Value="AWSECommerceService"/>
+      <Argument Name="Signature" Value="GHt2LBIje6RJvkR3cOAJxwK+dUfHK2DRmm6cf1ZmL2Q="/>
+      <Argument Name="Timestamp" Value="2016-06-07T17:42:10Z"/>
+      <Argument Name="Version" Value="2009-03-31"/>
+    </Arguments>
+    <RequestProcessingTime>0.082691565</RequestProcessingTime>
+  </OperationRequest>
+  <BrowseNodes>
+    <Request>
+      <IsValid>True</IsValid>
+      <BrowseNodeLookupRequest>
+        <BrowseNodeId>3010076031</BrowseNodeId>
+        <ResponseGroup>TopSellers</ResponseGroup>
+      </BrowseNodeLookupRequest>
+    </Request>
+    <BrowseNode>
+      <BrowseNodeId>3010076031</BrowseNodeId>
+      <Name>Kategorien</Name>
+      <TopSellers>
+        <TopSeller>
+          <ASIN>B01FY5MQSO</ASIN>
+          <Title>Die Tür</Title>
+        </TopSeller>
+        <TopSeller>
+          <ASIN>B01AN69WV8</ASIN>
+          <Title>The Revenant - Der Rückkehrer</Title>
+        </TopSeller>
+        <TopSeller>
+          <ASIN>B019JG7NH8</ASIN>
+          <Title>Die Tribute von Panem - Mockingjay Teil 2</Title>
+        </TopSeller>
+        <TopSeller>
+          <ASIN>B01FET43JA</ASIN>
+          <Title>Die 5. Welle</Title>
+        </TopSeller>
+        <TopSeller>
+          <ASIN>B01CO5PSSM</ASIN>
+          <Title>Er ist wieder da</Title>
+        </TopSeller>
+        <TopSeller>
+          <ASIN>B01E7PZ52Q</ASIN>
+          <Title>Star Wars: Das Erwachen der Macht (zum Leihen)</Title>
+        </TopSeller>
+        <TopSeller>
+          <ASIN>B019PG4MFI</ASIN>
+          <Title>Die Vorsehung - Solace</Title>
+        </TopSeller>
+        <TopSeller>
+          <ASIN>B01AYN14Y8</ASIN>
+          <Title>Fack ju Göhte 2</Title>
+        </TopSeller>
+        <TopSeller>
+          <ASIN>B01EM1VYZW</ASIN>
+          <Title>CREED: Rocky's Legacy</Title>
+        </TopSeller>
+        <TopSeller>
+          <ASIN>B01AG99Q22</ASIN>
+          <Title>Legend</Title>
+        </TopSeller>
+      </TopSellers>
+      <TopItemSet>
+        <Type>TopSellers</Type>
+        <TopItem>
+          <ASIN>B01FY5MQSO</ASIN>
+          <Title>Die Tür</Title>
+          <DetailPageURL>http://www.amazon.de/Die-T%C3%BCr/dp/B01FY5MQSO%3FSubscriptionId%3DAKIAIFTU65GMJLFGZ5EQ%26tag%3Dnagerat-21%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB01FY5MQSO</DetailPageURL>
+          <ProductGroup>TV Series Episode Video on Demand</ProductGroup>
+        </TopItem>
+        <TopItem>
+          <ASIN>B01AN69WV8</ASIN>
+          <Title>The Revenant - Der Rückkehrer</Title>
+          <DetailPageURL>http://www.amazon.de/Revenant-R%C3%BCckkehrer-Leonardo-Dicaprio/dp/B01AN69WV8%3FSubscriptionId%3DAKIAIFTU65GMJLFGZ5EQ%26tag%3Dnagerat-21%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB01AN69WV8</DetailPageURL>
+          <ProductGroup>Movie</ProductGroup>
+          <Actor>Leonardo Dicaprio</Actor>
+          <Actor>Tom Hardy</Actor>
+          <Actor>Domhnall Gleeson</Actor>
+          <Actor>Will Poulter</Actor>
+        </TopItem>
+        <TopItem>
+          <ASIN>B019JG7NH8</ASIN>
+          <Title>Die Tribute von Panem - Mockingjay Teil 2</Title>
+          <DetailPageURL>http://www.amazon.de/Die-Tribute-von-Panem-Mockingjay/dp/B019JG7NH8%3FSubscriptionId%3DAKIAIFTU65GMJLFGZ5EQ%26tag%3Dnagerat-21%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB019JG7NH8</DetailPageURL>
+          <ProductGroup>Movie</ProductGroup>
+          <Actor>Jennifer Lawrence</Actor>
+          <Actor>Josh Hutcherson</Actor>
+          <Actor>Liam Hemsworth</Actor>
+          <Actor>Donald Sutherland</Actor>
+        </TopItem>
+        <TopItem>
+          <ASIN>B01FET43JA</ASIN>
+          <Title>Die 5. Welle</Title>
+          <DetailPageURL>http://www.amazon.de/Die-Welle-Chlo%C3%AB-Grace-Moretz/dp/B01FET43JA%3FSubscriptionId%3DAKIAIFTU65GMJLFGZ5EQ%26tag%3Dnagerat-21%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB01FET43JA</DetailPageURL>
+          <ProductGroup>Movie</ProductGroup>
+          <Actor>Chloë Grace Moretz</Actor>
+          <Actor>Nick Robinson</Actor>
+          <Actor>Ron Livingston</Actor>
+          <Actor>Maggie Siff</Actor>
+          <Actor>Alex Roe</Actor>
+          <Actor>Maria Bello</Actor>
+          <Actor>Maika Monroe</Actor>
+          <Actor>Zackary Arthur</Actor>
+          <Actor>Liev Schreiber</Actor>
+          <Actor>Tony Revolori</Actor>
+          <Actor>Talitha Bateman</Actor>
+          <Actor>Nadji Jeter</Actor>
+          <Actor>Alex MacNicoll</Actor>
+        </TopItem>
+        <TopItem>
+          <ASIN>B01CO5PSSM</ASIN>
+          <Title>Er ist wieder da</Title>
+          <DetailPageURL>http://www.amazon.de/Er-ist-wieder-Lorenzo-Izzo/dp/B01CO5PSSM%3FSubscriptionId%3DAKIAIFTU65GMJLFGZ5EQ%26tag%3Dnagerat-21%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB01CO5PSSM</DetailPageURL>
+          <ProductGroup>Movie</ProductGroup>
+          <Actor>Lorenzo Izzo</Actor>
+          <Actor>Ariel Levy</Actor>
+          <Actor>Daryl Sabara</Actor>
+          <Actor>Kirby Bliss</Actor>
+          <Actor>Sky Ferreira Magda Apanowicz</Actor>
+          <Actor>Aaron Burns</Actor>
+        </TopItem>
+        <TopItem>
+          <ASIN>B01E7PZ52Q</ASIN>
+          <Title>Star Wars: Das Erwachen der Macht (zum Leihen)</Title>
+          <DetailPageURL>http://www.amazon.de/Star-Wars-Erwachen-Macht-Leihen/dp/B01E7PZ52Q%3FSubscriptionId%3DAKIAIFTU65GMJLFGZ5EQ%26tag%3Dnagerat-21%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB01E7PZ52Q</DetailPageURL>
+          <ProductGroup>Movie</ProductGroup>
+          <Actor>Harrison Ford</Actor>
+          <Actor>Mark Hamill</Actor>
+          <Actor>Carrie Fisher</Actor>
+          <Actor>Adam Driver</Actor>
+          <Actor>Daisy Ridley</Actor>
+          <Actor>John Boyega</Actor>
+          <Actor>Oscar Isaac</Actor>
+          <Actor>Lupita Nyong'o</Actor>
+          <Actor>Andy Serkis</Actor>
+          <Actor>Domhnall Gleeson</Actor>
+          <Actor>Anthony Daniels</Actor>
+          <Actor>Max Von Sydow</Actor>
+          <Actor>Peter Mayhew</Actor>
+          <Actor>Gwendoline Christie</Actor>
+          <Actor>Ken Leung</Actor>
+          <Actor>Greg Grunberg</Actor>
+          <Actor>Joonas Suotamo</Actor>
+          <Actor>Pip Andersen</Actor>
+          <Actor>Simon Pegg</Actor>
+          <Actor>Kiran Shah</Actor>
+          <Actor>Sasha Frost</Actor>
+          <Actor>Pip Torrens</Actor>
+          <Actor>Andrew Jack</Actor>
+          <Actor>Rocky Marshall</Actor>
+          <Actor>Emun Elliott</Actor>
+          <Actor>Brian Vernel</Actor>
+          <Actor>Yayan Ruhian</Actor>
+          <Actor>Sebastian Armesto</Actor>
+          <Actor>Maisie Richardson-Sellers</Actor>
+          <Actor>Warwick Davis</Actor>
+        </TopItem>
+        <TopItem>
+          <ASIN>B019PG4MFI</ASIN>
+          <Title>Die Vorsehung - Solace</Title>
+          <DetailPageURL>http://www.amazon.de/Die-Vorsehung-Solace-Anthony-Hopkins/dp/B019PG4MFI%3FSubscriptionId%3DAKIAIFTU65GMJLFGZ5EQ%26tag%3Dnagerat-21%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB019PG4MFI</DetailPageURL>
+          <ProductGroup>Movie</ProductGroup>
+          <Actor>Anthony Hopkins</Actor>
+          <Actor>Colin Farrell</Actor>
+          <Actor>Abbie Cornish</Actor>
+          <Actor>Jeffrey Dean Morgan</Actor>
+          <Actor>Xander Berkeley</Actor>
+        </TopItem>
+        <TopItem>
+          <ASIN>B01AYN14Y8</ASIN>
+          <Title>Fack ju Göhte 2</Title>
+          <DetailPageURL>http://www.amazon.de/Fack-ju-G%C3%B6hte-Elyas-MBarek/dp/B01AYN14Y8%3FSubscriptionId%3DAKIAIFTU65GMJLFGZ5EQ%26tag%3Dnagerat-21%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB01AYN14Y8</DetailPageURL>
+          <ProductGroup>Movie</ProductGroup>
+          <Actor>Elyas M'Barek</Actor>
+          <Actor>Jella Haase</Actor>
+          <Actor>Karoline Herfurth</Actor>
+          <Actor>Katja Riemann</Actor>
+          <Actor>Volker Bruch</Actor>
+          <Actor>Max von der Groeben</Actor>
+          <Actor>Gizem Emre                                                                         Aram Arami                                                                       Anna-Lena Klenke                                                      Lucas Reiber                                                         Johannes Nussbaum                                               Alwara Höfels                                                                   Uschi Glas                                                                               Zsa Zsa Inci Bürkle</Actor>
+        </TopItem>
+        <TopItem>
+          <ASIN>B01EM1VYZW</ASIN>
+          <Title>CREED: Rocky's Legacy</Title>
+          <DetailPageURL>http://www.amazon.de/CREED-Rockys-Legacy-Anthony-Bellew/dp/B01EM1VYZW%3FSubscriptionId%3DAKIAIFTU65GMJLFGZ5EQ%26tag%3Dnagerat-21%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB01EM1VYZW</DetailPageURL>
+          <ProductGroup>Movie</ProductGroup>
+          <Actor>Anthony Bellew</Actor>
+          <Actor>Michael B Jordan</Actor>
+          <Actor>Phylicia Rashad</Actor>
+          <Actor>Sylvester Stallone</Actor>
+          <Actor>Tessa Thompson</Actor>
+        </TopItem>
+        <TopItem>
+          <ASIN>B01AG99Q22</ASIN>
+          <Title>Legend</Title>
+          <DetailPageURL>http://www.amazon.de/Legend-Tom-Hardy/dp/B01AG99Q22%3FSubscriptionId%3DAKIAIFTU65GMJLFGZ5EQ%26tag%3Dnagerat-21%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB01AG99Q22</DetailPageURL>
+          <ProductGroup>Movie</ProductGroup>
+          <Actor>Tom Hardy</Actor>
+          <Actor>Emily Browning</Actor>
+          <Actor>Chazz Palminteri</Actor>
+          <Actor>David Thewlis</Actor>
+        </TopItem>
+      </TopItemSet>
+    </BrowseNode>
+  </BrowseNodes>
+</BrowseNodeLookupResponse>

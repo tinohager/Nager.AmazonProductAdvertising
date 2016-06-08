@@ -54,7 +54,7 @@ namespace Nager.AmazonProductAdvertising
             return operation;
         }
 
-        public AmazonBrowseNodeLookupOperation BrowseNodeLookupOperation(int browseNodeId, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.BrowseNodeInfo)
+        public AmazonBrowseNodeLookupOperation BrowseNodeLookupOperation(long browseNodeId, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.BrowseNodeInfo)
         {
             var operation = new AmazonBrowseNodeLookupOperation();
             operation.ResponseGroup(amazonResponseGroup);
@@ -111,7 +111,7 @@ namespace Nager.AmazonProductAdvertising
             return null;
         }
 
-        public BrowseNodeLookupResponse BrowseNodeLookup(int browseNodeId, AmazonResponseGroup responseGroup = AmazonResponseGroup.BrowseNodeInfo)
+        public BrowseNodeLookupResponse BrowseNodeLookup(long browseNodeId, AmazonResponseGroup responseGroup = AmazonResponseGroup.BrowseNodeInfo)
         {
             var requestParams = BrowseNodeLookupOperation(browseNodeId, responseGroup);
 

@@ -65,10 +65,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BrowseNodeLookupResponse1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="BrowseNodeLookupResponseWithError.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="BrowseNodeLookupResponse.xml">
+    <Content Include="BrowseNodeLookupResponse2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ItemLookupErrorResponse.xml">

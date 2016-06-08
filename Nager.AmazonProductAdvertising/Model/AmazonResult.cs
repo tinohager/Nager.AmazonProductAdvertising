@@ -103,7 +103,7 @@ namespace Nager.AmazonProductAdvertising.Model
     {
         [XmlAttribute]
         public string Units { get; set; }
-        [XmlTextAttribute]
+        [XmlText]
         public decimal Value { get; set; }
 
         public override string ToString()
@@ -199,7 +199,7 @@ namespace Nager.AmazonProductAdvertising.Model
     public class NonNegativeIntegerWithUnits
     {
         public string Units { get; set; }
-        [XmlTextAttribute(DataType = "nonNegativeInteger")]
+        [XmlText(DataType = "nonNegativeInteger")]
         public string Value { get; set; }
     }
 
@@ -222,7 +222,6 @@ namespace Nager.AmazonProductAdvertising.Model
         [XmlElement(DataType = "nonNegativeInteger")]
         public string PercentageSaved { get; set; }
         public string Availability { get; set; }
-        //public OfferListingAvailabilityAttributes AvailabilityAttributes { get; set; }
         public bool IsEligibleForSuperSaverShipping { get; set; }
         public bool IsEligibleForPrime { get; set; }
     }
@@ -509,12 +508,47 @@ namespace Nager.AmazonProductAdvertising.Model
         public int IsCategoryRoot { get; set; }
         [XmlArrayItem("BrowseNode")]
         public BrowseNode[] Children { get; set; }
+        public TopSellers TopSellers { get; set; }
+        public TopItemSet TopItemSet { get; set; }
     }
 
     [XmlRoot]
     public class Ancestors
     {
         public BrowseNode BrowseNode { get; set; }
+    }
+
+    [XmlRoot]
+    public class TopSeller
+    {
+        public string ASIN { get; set; }
+        public string Title { get; set; }
+    }
+
+    [XmlRoot]
+    public class TopSellers
+    {
+        [XmlElement("TopSeller")]
+        public TopSeller[] TopSeller { get; set; }
+    }
+
+    [XmlRoot]
+    public class TopItem
+    {
+        public string ASIN { get; set; }
+        public string Title { get; set; }
+        public string DetailPageURL { get; set; }
+        public string ProductGroup { get; set; }
+        [XmlElement("Actor")]
+        public string[] Actor { get; set; }
+    }
+
+    [XmlRoot]
+    public class TopItemSet
+    {
+        public string Type { get; set; }
+        [XmlElement("TopItem")]
+        public TopItem[] TopItem { get; set; }
     }
 
     #endregion
