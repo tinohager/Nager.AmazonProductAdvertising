@@ -21,7 +21,8 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             ItemLookupRequest(authentication);
             ItemSearchRequest(authentication);
             CustomItemSearchRequest(authentication);
-            BrowseNodeLookupRequest(authentication);
+            BrowseNodeLookupRequest1(authentication);
+            BrowseNodeLookupRequest2(authentication);
 
             Console.ReadLine();
         }
@@ -89,22 +90,39 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             Console.WriteLine("------------------------------------------");
         }
 
-        static void BrowseNodeLookupRequest(AmazonAuthentication authentication)
+        static void BrowseNodeLookupRequest1(AmazonAuthentication authentication)
         {
-            //http://docs.aws.amazon.com/AWSECommerceService/latest/DG/localevalues.html
-
-            Console.WriteLine("BrowseNodeLookup");
+            Console.WriteLine("BrowseNodeLookup - TopSellers");
             Console.WriteLine("------------------------------------------");
 
             var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
-            var result = wrapper.BrowseNodeLookup(569604, AmazonResponseGroup.Large);
+            var result = wrapper.BrowseNodeLookup(78193031, AmazonResponseGroup.TopSellers);
+
+            foreach (var item in result.BrowseNodes.BrowseNode.TopSellers.TopSeller)
+            {
+                Console.WriteLine("{0} {1}", item.ASIN, item.Title);
+            }
+
+            foreach (var item in result.BrowseNodes.BrowseNode.TopItemSet.TopItem)
+            {
+                Console.WriteLine("{0} {1} {2}", item.ASIN, item.ProductGroup, item.Title);
+            }
+
+            Console.WriteLine("------------------------------------------");
+        }
+
+        static void BrowseNodeLookupRequest2(AmazonAuthentication authentication)
+        {
+            Console.WriteLine("BrowseNodeLookup - BrowseNodes");
+            Console.WriteLine("------------------------------------------");
+
+            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
+            var result = wrapper.BrowseNodeLookup(78193031, AmazonResponseGroup.BrowseNodeInfo);
 
             foreach (var item in result.BrowseNodes.BrowseNode.Children)
             {
                 Console.WriteLine(item.BrowseNodeId);
             }
-
-            //Console.WriteLine("found {0} items", result.Items.Item.Length);
 
             Console.WriteLine("------------------------------------------");
         }
