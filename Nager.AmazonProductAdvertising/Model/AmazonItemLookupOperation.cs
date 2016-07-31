@@ -25,10 +25,13 @@ namespace Nager.AmazonProductAdvertising.Model
             {
                 case ArticleNumberType.EAN8:
                 case ArticleNumberType.EAN13:
-                case ArticleNumberType.UPC:
                 case ArticleNumberType.GTIN:
                 case ArticleNumberType.SKU:
                     idType = "EAN";
+                    base.SearchIndex(AmazonSearchIndex.All);
+                    break;
+                case ArticleNumberType.UPC:
+                    idType = "UPC";
                     base.SearchIndex(AmazonSearchIndex.All);
                     break;
                 case ArticleNumberType.ISBN10:
