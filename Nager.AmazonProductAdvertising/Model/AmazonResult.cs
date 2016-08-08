@@ -510,6 +510,7 @@ namespace Nager.AmazonProductAdvertising.Model
         public BrowseNode[] Children { get; set; }
         public TopSellers TopSellers { get; set; }
         public TopItemSet TopItemSet { get; set; }
+        public BrowseNode[] Ancestors { get; set; }
     }
 
     [XmlRoot]
