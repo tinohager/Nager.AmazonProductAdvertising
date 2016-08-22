@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Nager.AmazonProductAdvertising</id>
-    <version>1.0.14</version>
+    <version>1.0.16</version>
     <authors>Tino Hager</authors>
     <owners>nager</owners>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
@@ -10,14 +10,10 @@
     <!-- <iconUrl></iconUrl> -->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Amazon Product Advertising API, Supports ItemSeach with ASIN, EAN, UPC and ISBN, ItemLookup and BrowseNodeLookup</description>
-    <releaseNotes>Bugfix ItemLookup with UPC</releaseNotes>
+    <releaseNotes>Bugfix nuget package wrong dll version</releaseNotes>
     <tags>Amazon Product Advertising API Amazon.Product.API</tags>
-    <dependencies>
-      <dependency id="Nager.ArticleNumber" version="1.0.1" />
-    </dependencies>
   </metadata>
   <files>
-    <file src="Nager.AmazonProductAdvertising\bin\release\*.dll" target="lib\net45" />
 	<file src="Install.ps1" target="tools\Install.ps1" />
   </files>
 </package>
