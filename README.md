@@ -58,7 +58,7 @@ var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE, "nagerat-21")
 var searchOperation = wrapper.ItemSearchOperation("canon eos", AmazonSearchIndex.Electronics);
 searchOperation.Sort(AmazonSearchSort.Price, AmazonSearchSortOrder.Descending);
 searchOperation.Skip(2);
-var xml = wrapper.Request(searchOperation);
+var xmlResponse = wrapper.Request(searchOperation);
 
-var result = XmlHelper.ParseXml<ItemSearchResponse>(xml);
+var result = XmlHelper.ParseXml<ItemSearchResponse>(xmlResponse.Content);
 ```
