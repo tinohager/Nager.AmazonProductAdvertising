@@ -62,3 +62,15 @@ var xmlResponse = wrapper.Request(searchOperation);
 
 var result = XmlHelper.ParseXml<ItemSearchResponse>(xmlResponse.Content);
 ```
+
+#####Example Debugging
+```cs
+var authentication = new AmazonAuthentication();
+authentication.AccessKey = "accesskey";
+authentication.SecretKey = "secretkey";
+
+var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE, "nagerat-21");
+wrapper.XmlReceived += (xml) => { System.Diagnostics.Debug.WriteLine(xml); };
+wrapper.ErrorReceived += (errorResonse) => { System.Diagnostics.Debug.WriteLine(errorResonse.Error.Message); };
+var result = wrapper.Lookup(new string[] { "B00BYPW00I", "B004MKNBJG" });
+```
