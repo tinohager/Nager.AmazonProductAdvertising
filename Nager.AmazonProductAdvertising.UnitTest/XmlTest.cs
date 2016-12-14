@@ -8,6 +8,7 @@ namespace Nager.AmazonProductAdvertising.UnitTest
     public class XmlTest
     {
         [TestMethod]
+        [DeploymentItem("ItemSearchResponse.xml")]
         public void ParseItemSearchResponse()
         {
             var xml = File.ReadAllText("ItemSearchResponse.xml");
@@ -17,6 +18,7 @@ namespace Nager.AmazonProductAdvertising.UnitTest
         }
 
         [TestMethod]
+        [DeploymentItem("ItemSearchResponseWithError.xml")]
         public void ParseItemSearchResponseWithError()
         {
             var xml = File.ReadAllText("ItemSearchResponseWithError.xml");
@@ -26,6 +28,7 @@ namespace Nager.AmazonProductAdvertising.UnitTest
         }
 
         [TestMethod]
+        [DeploymentItem("ItemSearchErrorResponse.xml")]
         public void ParseItemSearchErrorResponse()
         {
             var xml = File.ReadAllText("ItemSearchErrorResponse.xml");
@@ -37,6 +40,7 @@ namespace Nager.AmazonProductAdvertising.UnitTest
         }
 
         [TestMethod]
+        [DeploymentItem("ItemLookupResponse1.xml")]
         public void ParseItemLookupResponse1()
         {
             var xml = File.ReadAllText("ItemLookupResponse1.xml");
@@ -49,6 +53,7 @@ namespace Nager.AmazonProductAdvertising.UnitTest
         }
 
         [TestMethod]
+        [DeploymentItem("ItemLookupResponse2.xml")]
         public void ParseItemLookupResponse2()
         {
             var xml = File.ReadAllText("ItemLookupResponse2.xml");
@@ -62,6 +67,7 @@ namespace Nager.AmazonProductAdvertising.UnitTest
         }
 
         [TestMethod]
+        [DeploymentItem("ItemLookupResponse3.xml")]
         public void ParseItemLookupResponse3()
         {
             var xml = File.ReadAllText("ItemLookupResponse3.xml");
@@ -74,6 +80,7 @@ namespace Nager.AmazonProductAdvertising.UnitTest
         }
 
         [TestMethod]
+        [DeploymentItem("ItemLookupResponse4.xml")]
         public void ParseItemLookupResponse4()
         {
             var xml = File.ReadAllText("ItemLookupResponse4.xml");
@@ -90,6 +97,7 @@ namespace Nager.AmazonProductAdvertising.UnitTest
         }
 
         [TestMethod]
+        [DeploymentItem("ItemLookupErrorResponse.xml")]
         public void ParseItemLookupErrorResponse()
         {
             var xml = File.ReadAllText("ItemLookupErrorResponse.xml");
@@ -101,6 +109,7 @@ namespace Nager.AmazonProductAdvertising.UnitTest
         }
 
         [TestMethod]
+        [DeploymentItem("BrowseNodeLookupResponse1.xml")]
         public void ParseBrowseNodeLookupResponse1()
         {
             var xml = File.ReadAllText("BrowseNodeLookupResponse1.xml");
@@ -113,6 +122,7 @@ namespace Nager.AmazonProductAdvertising.UnitTest
         }
 
         [TestMethod]
+        [DeploymentItem("BrowseNodeLookupResponse2.xml")]
         public void ParseBrowseNodeLookupResponse2()
         {
             var xml = File.ReadAllText("BrowseNodeLookupResponse2.xml");
@@ -129,6 +139,7 @@ namespace Nager.AmazonProductAdvertising.UnitTest
         }
 
         [TestMethod]
+        [DeploymentItem("BrowseNodeLookupResponseWithError.xml")]
         public void ParseBrowseNodeLookupResponseWithError()
         {
             var xml = File.ReadAllText("BrowseNodeLookupResponseWithError.xml");
@@ -138,6 +149,7 @@ namespace Nager.AmazonProductAdvertising.UnitTest
         }
 
         [TestMethod]
+        [DeploymentItem("BrowseNodeLookupErrorResponse.xml")]
         public void ParseBrowseNodeLookupErrorResponse()
         {
             var xml = File.ReadAllText("BrowseNodeLookupErrorResponse.xml");
