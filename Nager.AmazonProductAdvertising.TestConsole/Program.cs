@@ -18,9 +18,10 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             authentication.AccessKey = accessKey;
             authentication.SecretKey = secretKey;
 
-            ItemLookupRequest(authentication);
-            ItemSearchRequest(authentication);
-            CustomItemSearchRequest(authentication);
+            //ItemLookupRequest(authentication);
+            //ItemSearchRequest(authentication);
+            //CustomItemSearchRequest1(authentication);
+            CustomItemSearchRequest2(authentication);
             BrowseNodeLookupRequest1(authentication);
             BrowseNodeLookupRequest2(authentication);
 
@@ -67,7 +68,7 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             Console.WriteLine("------------------------------------------");
         }
 
-        static void CustomItemSearchRequest(AmazonAuthentication authentication)
+        static void CustomItemSearchRequest1(AmazonAuthentication authentication)
         {
             Console.WriteLine("Search with skip and sort");
             Console.WriteLine("------------------------------------------");
@@ -77,6 +78,34 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             searchOperation.Sort(AmazonSearchSort.Price, AmazonSearchSortOrder.Descending);
             searchOperation.Skip(2);
             var webResponse = wrapper.Request(searchOperation);
+
+            var result = XmlHelper.ParseXml<ItemSearchResponse>(webResponse.Content);
+
+            foreach (var item in result.Items.Item)
+            {
+                Console.WriteLine(item.ItemAttributes.Title);
+            }
+
+            Console.WriteLine("found {0} items", result.Items.Item.Length);
+
+            Console.WriteLine("------------------------------------------");
+        }
+
+        static void CustomItemSearchRequest2(AmazonAuthentication authentication)
+        {
+            Console.WriteLine("Search with BrowseNode");
+            Console.WriteLine("------------------------------------------");
+
+            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
+            var customOperation = new AmazonOperationBase();
+            customOperation.ParameterDictionary.Add("Operation", "ItemSearch");
+            customOperation.ParameterDictionary.Add("Keywords", "tall");
+            customOperation.ParameterDictionary.Add("SearchIndex", "Apparel");
+            customOperation.ParameterDictionary.Add("BrowseNode", "78193031");
+            customOperation.ParameterDictionary.Add("AssociateTag", "nagerat-21");
+
+
+            var webResponse = wrapper.Request(customOperation);
 
             var result = XmlHelper.ParseXml<ItemSearchResponse>(webResponse.Content);
 

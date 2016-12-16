@@ -76,7 +76,7 @@ namespace Nager.AmazonProductAdvertising
                 {
                     using (var streamReader = new StreamReader(response.GetResponseStream()))
                     {
-                        var xml = streamReader.ReadToEnd();
+                        var xml = await streamReader.ReadToEndAsync();
                         this.XmlReceived?.Invoke(xml);
 
                         return new ExtendedWebResponse(HttpStatusCode.OK, xml);
