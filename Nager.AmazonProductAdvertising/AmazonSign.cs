@@ -78,7 +78,7 @@ namespace Nager.AmazonProductAdvertising
 
             var canonicalQS = this.ConstructCanonicalQueryString(request);
 
-            var signHeader = String.Format("{0}\n{1}\n{2}\n{3}", REQUEST_METHOD, this.endPoint, REQUEST_URI, canonicalQS);
+            var signHeader = string.Format("{0}\n{1}\n{2}\n{3}", REQUEST_METHOD, this.endPoint, REQUEST_URI, canonicalQS);
             var signHeaderBytes = Encoding.UTF8.GetBytes(signHeader);
 
             // Compute the signature and convert to Base64.
@@ -131,7 +131,7 @@ namespace Nager.AmazonProductAdvertising
         {
             if (request.Count == 0)
             {
-                return String.Empty;
+                return string.Empty;
             }
 
             var sb = new StringBuilder();
