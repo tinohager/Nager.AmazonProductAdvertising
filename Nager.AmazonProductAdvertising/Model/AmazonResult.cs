@@ -456,6 +456,9 @@ namespace Nager.AmazonProductAdvertising.Model
         [XmlArrayItem("SimilarProduct", IsNullable = false)]
         public SimilarProductsSimilarProduct[] SimilarProducts { get; set; }
 
+        [XmlArrayItem("BrowseNode", IsNullable = false)]
+        public BrowseNode[] BrowseNodes { get; set; }
+
         public override string ToString()
         {
             if (this.ItemAttributes != null)
