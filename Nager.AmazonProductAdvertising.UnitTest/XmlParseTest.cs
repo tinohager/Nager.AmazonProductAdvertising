@@ -5,7 +5,7 @@ using System.IO;
 namespace Nager.AmazonProductAdvertising.UnitTest
 {
     [TestClass]
-    public class XmlTest
+    public class XmlParseTest
     {
         [TestMethod]
         [DeploymentItem("ItemSearchResponse.xml")]
