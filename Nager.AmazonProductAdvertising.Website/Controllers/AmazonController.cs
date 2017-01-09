@@ -31,10 +31,25 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
 
             var authentication = this.GetConfig();
 
-            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
-            var result = wrapper.Lookup(articleNumber);
+            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US);
+            var result = wrapper.Lookup(articleNumber.Trim());
 
             return View(result);
+        }
+
+        public ActionResult Lookups(string[] articleNumbers)
+        {
+            if (articleNumbers == null)
+            {
+                return View();
+            }
+
+            var authentication = this.GetConfig();
+
+            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US);
+            var result = wrapper.Lookup(articleNumbers);
+
+            return View("Lookup", result);
         }
 
         public ActionResult Search(string search)
@@ -44,18 +59,14 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
                 return View();
             }
 
-            ViewBag.Search = search;
+            ViewBag.Search = search.Trim();
 
             var authentication = this.GetConfig();
 
-            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
+            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US);
             var responseGroup = AmazonResponseGroup.ItemAttributes | AmazonResponseGroup.Images;
-            //var operation = wrapper.ItemSearchOperation(search, AmazonSearchIndex.Electronics, responseGroup);
-            //operation.Sort(AmazonSearchSort.Salesrank, AmazonSearchSortOrder.Descending);
-            //var webResponse = wrapper.Request(operation);
-            //var result = (AmazonItemResponse)XmlHelper.ParseXml<ItemSearchResponse>(webResponse.Content);
 
-            var result = wrapper.Search(search, AmazonSearchIndex.All, responseGroup);
+            var result = wrapper.Search(search.Trim(), AmazonSearchIndex.All, responseGroup);
 
             return View(result);
         }
@@ -69,8 +80,8 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
 
             var authentication = this.GetConfig();
 
-            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
-            var result = wrapper.Lookup(articleNumber);
+            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US);
+            var result = wrapper.Lookup(articleNumber.Trim());
 
             var item = result.Items?.Item.FirstOrDefault();
 

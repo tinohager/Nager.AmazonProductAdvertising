@@ -27,3 +27,11 @@ textarea {
 .carousel-inner > .item > img {
     margin: 0 auto;
 }
+
+.product-groups a {
+    display: flex;
+}
+
+.product-groups a span {
+    padding-left: 8px;
+}

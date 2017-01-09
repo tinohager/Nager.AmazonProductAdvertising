@@ -14,20 +14,25 @@
                 {
                     <img src="@Model.LargeImage.URL" alt="@Model.ItemAttributes.Title" class="img-thumbnail" />
                 }
+                @if (Model.ItemAttributes.Feature != null)
+                {
+                    <h4>Features</h4>
+                    <ul class="list-group">
+                        @foreach (var feature in Model.ItemAttributes.Feature)
+                        {
+                            <li class="list-group-item">@feature</li>
+                        }
+                    </ul>
+                }
             </div>
             <div class="col-xs-12 col-sm-6 col-md-8">
 
                 <h3>@(Model.OfferSummary?.LowestNewPrice?.FormattedPrice)</h3>
                 <a class="btn btn-primary btn-lg" href="@Model.DetailPageURL" role="button">Buy at Amazon</a><br />
                 <br />
-                @if (Model.ItemAttributes.Feature != null)
+                @if (Model.EditorialReviews != null)
                 {
-                    <ul class="list-group">
-                        @foreach (var description in Model.ItemAttributes.Feature)
-                        {
-                            <li class="list-group-item">@description</li>
-                        }
-                    </ul>
+                    <span>@Html.Raw(Model.EditorialReviews?.Where(o => o.Source == "Product Description").Select(o => o.Content).FirstOrDefault())</span>
                 }
             </div>
         </div>
