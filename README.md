@@ -8,7 +8,7 @@ Nager.AmazonProductAdvertising
 * Async support
 
 #####Demo Website (For donation shop over this website)
-http://amazonshop.azurewebsites.net
+http://nagershop.azurewebsites.net
 
 #####nuget
 The package is available on nuget
