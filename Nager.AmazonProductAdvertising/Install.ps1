@@ -1,7 +1,7 @@
 param($installPath, $toolsPath, $package, $project)
 
 $lcid = (Get-Culture).LCID
-$url = "https://www.amazon.com/?tag=nagerat-20"
+$url = "https://www.amazon.com/?tag=nager-20"
 
 switch ($lcid) 
 {
