@@ -152,13 +152,14 @@
 
 
             </div>
+            @if (Model.ImageSets != null)
+            {
             <div class="col-xs-12 col-md-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Gallery</h3>
                     </div>
                     <div class="panel-body">
-
                         <div id="slideimages" class="carousel slide" data-ride="carousel">
                             <!-- Wrapper for slides -->
                             <div class="carousel-inner" role="listbox">
@@ -187,6 +188,7 @@
                     </div>
                 </div>
             </div>
+            }
         </div>
     </div>
 </div>
