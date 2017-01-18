@@ -17,7 +17,7 @@ install-package Nager.AmazonProductAdvertising
 ```
 
 ###Donation possibilities
-If this project help you reduce time to develop, you can give me a :beer: :) 
+If this project help you reduce time to develop, you can give me a beer :beer:
 - [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/nagerat/25)
 - BTC: 3PjuVRcAaKPv9yLLmrVUY9mqGngPDm3nPc (Bitcoin)
 
