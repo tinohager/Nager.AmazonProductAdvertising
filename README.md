@@ -7,15 +7,19 @@
 - [x] Async support
 - [ ] Card Operations (Add, Clear, Create, Get, Modify)
 
-###Demo Website (For donation shop over this website)
-http://nagershop.azurewebsites.net
+###Demo Shop
+[Visit the Nager Amazon Product Advertising Shop](http://nagershop.azurewebsites.net)
 
 ###nuget
-The package is available on nuget
-https://www.nuget.org/packages/Nager.AmazonProductAdvertising
+The package is available on [nuget](https://www.nuget.org/packages/Nager.AmazonProductAdvertising)
 ```
 install-package Nager.AmazonProductAdvertising
 ```
+
+###Donation possibilities
+If this project help you reduce time to develop, you can give me a :beer: :) 
+- [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/nagerat/25)
+- BTC: 3PjuVRcAaKPv9yLLmrVUY9mqGngPDm3nPc (Bitcoin)
 
 ###Exampels
 
