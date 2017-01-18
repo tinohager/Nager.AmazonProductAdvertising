@@ -13,7 +13,7 @@
 ###nuget
 The package is available on [nuget](https://www.nuget.org/packages/Nager.AmazonProductAdvertising)
 ```
-install-package Nager.AmazonProductAdvertising
+PM> install-package Nager.AmazonProductAdvertising
 ```
 
 ###Donation possibilities
