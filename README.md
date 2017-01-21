@@ -38,7 +38,7 @@ var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US, "nager-20");
 var result = wrapper.Search("canon eos", AmazonSearchIndex.Electronics, AmazonResponseGroup.Large);
 ```
 
-#####Example Item Lookup
+#####Item Lookup
 ```cs
 var authentication = new AmazonAuthentication();
 authentication.AccessKey = "accesskey";
