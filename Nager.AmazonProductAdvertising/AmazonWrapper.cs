@@ -179,5 +179,33 @@ namespace Nager.AmazonProductAdvertising
                 return new ExtendedWebResponse(HttpStatusCode.SeeOther, exception.Message);
             }
         }
+
+        public AmazonCreateCartResponse CreateCart(IList<AmazonCartItem> amazonCartItems)
+        {
+            var requestParams = new AmazonOperationBase();
+            requestParams.ParameterDictionary.Add("Operation", "CartCreate");
+            requestParams.AssociateTag(this._associateTag);
+
+            var i = 0;
+            foreach (var item in amazonCartItems)
+            {
+                requestParams.ParameterDictionary.Add($"Item.{i}.ASIN", item.Asin);
+                requestParams.ParameterDictionary.Add($"Item.{i}.Quantity", item.Quantity.ToString());
+                i++;
+            }
+
+            var webResponse = this.Request(requestParams);
+            if (webResponse.StatusCode == HttpStatusCode.OK)
+            {
+                return XmlHelper.ParseXml<AmazonCreateCartResponse>(webResponse.Content);
+            }
+            else
+            {
+                var errorResponse = XmlHelper.ParseXml<BrowseNodeLookupErrorResponse>(webResponse.Content);
+                this.ErrorReceived?.Invoke(errorResponse);
+            }
+
+            return null;
+        }
     }
 }

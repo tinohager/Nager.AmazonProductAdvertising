@@ -58,7 +58,7 @@ var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US, "nager-20");
 var result = wrapper.Lookup(new string[] { "B00BYPW00I", "B004MKNBJG" });
 ```
 
-#####CustomRequest
+#####CustomRequest with paging
 ```cs
 var authentication = new AmazonAuthentication();
 authentication.AccessKey = "accesskey";

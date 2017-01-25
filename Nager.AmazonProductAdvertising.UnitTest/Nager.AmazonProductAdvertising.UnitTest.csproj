@@ -74,6 +74,7 @@
     <Content Include="BrowseNodeLookupResponse2.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="CreateCartResponse1.xml" />
     <Content Include="ItemLookupErrorResponse.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

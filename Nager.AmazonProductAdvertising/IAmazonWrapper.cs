@@ -20,5 +20,7 @@ namespace Nager.AmazonProductAdvertising
 
         ExtendedWebResponse Request(AmazonOperationBase amazonOperation);  
         Task<ExtendedWebResponse> RequestAsync(AmazonOperationBase amazonOperation);
+
+        AmazonCreateCartResponse CreateCart(IList<AmazonCartItem> amazonCartItems);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Nager.AmazonProductAdvertising.Model;
 using System;
+using System.Collections.Generic;
 
 namespace Nager.AmazonProductAdvertising.TestConsole
 {
@@ -21,9 +22,10 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             //ItemLookupRequest(authentication);
             //ItemSearchRequest(authentication);
             //CustomItemSearchRequest1(authentication);
-            CustomItemSearchRequest2(authentication);
-            BrowseNodeLookupRequest1(authentication);
-            BrowseNodeLookupRequest2(authentication);
+            //CustomItemSearchRequest2(authentication);
+            //BrowseNodeLookupRequest1(authentication);
+            //BrowseNodeLookupRequest2(authentication);
+            CreateCart1(authentication);
 
             Console.ReadLine();
         }
@@ -152,6 +154,21 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             {
                 Console.WriteLine(item.BrowseNodeId);
             }
+
+            Console.WriteLine("------------------------------------------");
+        }
+
+        static void CreateCart1(AmazonAuthentication authentication)
+        {
+            Console.WriteLine("CreateCart1");
+            Console.WriteLine("------------------------------------------");
+
+            var items = new List<AmazonCartItem>();
+            items.Add(new AmazonCartItem("B00MH4QM1S"));
+            items.Add(new AmazonCartItem("B01EUHFAC6"));
+
+            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
+            var result = wrapper.CreateCart(items);
 
             Console.WriteLine("------------------------------------------");
         }
