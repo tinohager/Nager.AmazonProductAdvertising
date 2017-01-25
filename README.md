@@ -5,7 +5,12 @@
 - [x] ItemSeach
 - [x] BrowseNodeLookup
 - [x] Async support
-- [ ] Card Operations (Add, Clear, Create, Get, Modify)
+- [ ] Card Operations
+ - [ ] Create
+ - [ ] Add
+ - [ ] Get
+ - [ ] Clear
+ - [ ] Modify
 
 ###Demo Shop
 [Visit the Nager Amazon Product Advertising Shop](http://nagershop.azurewebsites.net)
