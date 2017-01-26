@@ -33,7 +33,7 @@
     <CartId>253-7176896-6873251</CartId>
     <HMAC>+yWSINhLogAKIW/JLUDav89bGUA=</HMAC>
     <URLEncodedHMAC>%2ByWSINhLogAKIW%2FJLUDav89bGUA%3D</URLEncodedHMAC>
-    <PurchaseURL>https://www.amazon.de/gp/cart/aws-merge.html?cart-id=253-7176896-6873251%26associate-id=nagerat-21%26hmac=%2ByWSINhLogAKIW%2FJLUDav89bGUA%3D%26SubscriptionId=AKIAIFTU65GMJLFGZ5EQ%26MergeCart=False</PurchaseURL>
+    <PurchaseURL>https://www.amazon.de/gp/cart/aws-merge.html?cart-id=253-7176896-6873251%26associate-id=nagerat-21%26hmac=%2ByWSINhLogAKIW%2FJLUDav89bGUA%3D%26SubscriptionId=AWSAccessKeyId%26MergeCart=False</PurchaseURL>
     <SubTotal>
       <Amount>2018</Amount>
       <CurrencyCode>EUR</CurrencyCode>

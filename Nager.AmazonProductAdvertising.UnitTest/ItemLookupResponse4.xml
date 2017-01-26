@@ -7,7 +7,7 @@
     </HTTPHeaders>
     <RequestId>123fca63-7359-48aa-b181-6d2a0f5053e1</RequestId>
     <Arguments>
-      <Argument Name="AWSAccessKeyId" Value="AKIAIFTU65GMJLFGZ5EQ">
+      <Argument Name="AWSAccessKeyId" Value="AWSAccessKeyId">
       </Argument>
       <Argument Name="AssociateTag" Value="nagerat-21">
       </Argument>
@@ -400,7 +400,7 @@
         </Offer>
       </Offers>
       <CustomerReviews>
-        <IFrameURL>http://www.amazon.de/reviews/iframe?akid=AKIAIFTU65GMJLFGZ5EQ&amp;alinkCode=xm2&amp;asin=B00189AYJY&amp;atag=nagerat-21&amp;exp=2016-05-12T17%3A26%3A23Z&amp;v=2&amp;sig=t1vfrvACYNrIzIHCbW1xNL38u%2Bpbs7U7QX7FWiW9bCg%3D</IFrameURL>
+        <IFrameURL>http://www.amazon.de/reviews/iframe?akid=AWSAccessKeyId&amp;alinkCode=xm2&amp;asin=B00189AYJY&amp;atag=nagerat-21&amp;exp=2016-05-12T17%3A26%3A23Z&amp;v=2&amp;sig=t1vfrvACYNrIzIHCbW1xNL38u%2Bpbs7U7QX7FWiW9bCg%3D</IFrameURL>
         <HasReviews>true</HasReviews>
       </CustomerReviews>
       <EditorialReviews>

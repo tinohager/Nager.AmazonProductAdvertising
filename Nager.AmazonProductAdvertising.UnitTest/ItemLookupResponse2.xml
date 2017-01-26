@@ -540,7 +540,7 @@
         </Offer>
       </Offers>
       <CustomerReviews>
-        <IFrameURL>http://www.amazon.de/reviews/iframe?akid=AKIAIFTU65GMJLFGZ5EQ&amp;alinkCode=xm2&amp;asin=B00BYPW00I&amp;atag=nagerat-21&amp;exp=2016-03-29T16%3A34%3A23Z&amp;v=2&amp;sig=LVJT3nyEDHPtrHIE2eZGjZzFOStcqrNh9b19BDlZS1g%3D</IFrameURL>
+        <IFrameURL>http://www.amazon.de/reviews/iframe?akid=AWSAccessKeyId&amp;alinkCode=xm2&amp;asin=B00BYPW00I&amp;atag=nagerat-21&amp;exp=2016-03-29T16%3A34%3A23Z&amp;v=2&amp;sig=LVJT3nyEDHPtrHIE2eZGjZzFOStcqrNh9b19BDlZS1g%3D</IFrameURL>
         <HasReviews>true</HasReviews>
       </CustomerReviews>
       <EditorialReviews>
