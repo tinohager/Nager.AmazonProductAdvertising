@@ -20,6 +20,26 @@ switch ($lcid)
 	{
 		$url = "https://www.amazon.de/?tag=nagerat-21"
 	}
+	#Spain
+	1034
+	{
+		$url = "https://www.amazon.es/?tag=nagerat-21"
+	}
+	#France
+	1036
+	{
+		$url = "https://www.amazon.fr/?tag=nagerat-21"
+	}
+	#United Kingdom
+	2057
+	{
+		$url = "https://www.amazon.co.uk/?tag=nagerat-21"
+	}
+	#Italy
+	1040
+	{
+		$url = "https://www.amazon.it/?tag=nagerat-21"
+	}
 }
 
 Start-Process -FilePath $url
