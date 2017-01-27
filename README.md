@@ -6,7 +6,7 @@
 - [x] BrowseNodeLookup
 - [x] Async support
 - [ ] Card Operations
- - [ ] Create
+ - [x] Create
  - [ ] Add
  - [ ] Get
  - [ ] Clear
