@@ -22,9 +22,9 @@ namespace Nager.AmazonProductAdvertising
 
         public async Task<AmazonItemResponse> LookupAsync(IList<string> articleNumbers, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
-            var requestParams = ItemLookupOperation(articleNumbers, responseGroup);
+            var operation = this.ItemLookupOperation(articleNumbers, responseGroup);
 
-            var webResponse = await this.RequestAsync(requestParams);
+            var webResponse = await this.RequestAsync(operation);
             if (webResponse.StatusCode == HttpStatusCode.OK)
             {
                 return XmlHelper.ParseXml<ItemLookupResponse>(webResponse.Content);
@@ -40,9 +40,9 @@ namespace Nager.AmazonProductAdvertising
 
         public async Task<AmazonItemResponse> SearchAsync(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
-            var requestParams = ItemSearchOperation(search, searchIndex, responseGroup);
+            var operation = this.ItemSearchOperation(search, searchIndex, responseGroup);
 
-            var webResponse = await this.RequestAsync(requestParams);
+            var webResponse = await this.RequestAsync(operation);
             if (webResponse.StatusCode == HttpStatusCode.OK)
             {
                 return XmlHelper.ParseXml<ItemSearchResponse>(webResponse.Content);
@@ -50,6 +50,42 @@ namespace Nager.AmazonProductAdvertising
             else
             {
                 var errorResponse = XmlHelper.ParseXml<ItemSearchErrorResponse>(webResponse.Content);
+                this.ErrorReceived?.Invoke(errorResponse);
+            }
+
+            return null;
+        }
+
+        public async Task<BrowseNodeLookupResponse> BrowseNodeLookupAsync(long browseNodeId, AmazonResponseGroup responseGroup = AmazonResponseGroup.BrowseNodeInfo)
+        {
+            var operation = this.BrowseNodeLookupOperation(browseNodeId, responseGroup);
+
+            var webResponse = await this.RequestAsync(operation);
+            if (webResponse.StatusCode == HttpStatusCode.OK)
+            {
+                return XmlHelper.ParseXml<BrowseNodeLookupResponse>(webResponse.Content);
+            }
+            else
+            {
+                var errorResponse = XmlHelper.ParseXml<BrowseNodeLookupErrorResponse>(webResponse.Content);
+                this.ErrorReceived?.Invoke(errorResponse);
+            }
+
+            return null;
+        }
+
+        public async Task<AmazonCartCreateResponse> CartCreateAsync(IList<AmazonCartItem> amazonCartItems)
+        {
+            var operation = this.CartCreateOperation(amazonCartItems);
+
+            var webResponse = await this.RequestAsync(operation);
+            if (webResponse.StatusCode == HttpStatusCode.OK)
+            {
+                return XmlHelper.ParseXml<AmazonCartCreateResponse>(webResponse.Content);
+            }
+            else
+            {
+                var errorResponse = XmlHelper.ParseXml<CartCreateErrorResponse>(webResponse.Content);
                 this.ErrorReceived?.Invoke(errorResponse);
             }
 

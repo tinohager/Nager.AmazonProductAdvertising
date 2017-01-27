@@ -2,7 +2,7 @@
 
 namespace Nager.AmazonProductAdvertising.Model
 {
-    public class ArgumentsArgument
+    public class Argument
     {
         [XmlAttribute]
         public string Name { get; set; }

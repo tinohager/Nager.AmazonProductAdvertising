@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" ?>
+<AmazonResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01">
+  <OperationRequest>
+    <HTTPHeaders>
+      <Header Name="UserAgent" Value="Nager.AmazonProductAdvertising"></Header>
+    </HTTPHeaders>
+    <RequestId>66a39e87-ffa2-424f-9bac-250309a172bf</RequestId>
+    <Arguments>
+      <Argument Name="AWSAccessKeyId" Value="AWSAccessKeyId"></Argument>
+      <Argument Name="AssociateTag" Value="nagerat-21"></Argument>
+      <Argument Name="Keywords" Value="canon eos"></Argument>
+      <Argument Name="Operation" Value="ItemSearch"></Argument>
+      <Argument Name="ResponseGroup" Value="Large"></Argument>
+      <Argument Name="SearchIndex" Value="All"></Argument>
+      <Argument Name="Service" Value="AWSECommerceService"></Argument>
+      <Argument Name="Timestamp" Value="2016-03-25T16:59:41Z"></Argument>
+      <Argument Name="Version" Value="2009-03-31"></Argument>
+      <Argument Name="Signature" Value="5S577OFutL+d09n06hinoc0d3Jb0rUou4x5CaWNvWXo="></Argument>
+    </Arguments>
+    <RequestProcessingTime>0.1549120000000000</RequestProcessingTime>
+  </OperationRequest>
+</AmazonResponse>

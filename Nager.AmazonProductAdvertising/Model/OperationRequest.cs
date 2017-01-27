@@ -7,9 +7,9 @@ namespace Nager.AmazonProductAdvertising.Model
         public string RequestId { get; set; }
         public float RequestProcessingTime { get; set; }
         [XmlArrayItem("Header")]
-        public HTTPHeadersHeader[] HTTPHeaders { get; set; }
+        public HttpHeader[] HTTPHeaders { get; set; }
         [XmlArrayItem("Argument")]
-        public ArgumentsArgument[] Arguments { get; set; }
+        public Argument[] Arguments { get; set; }
         [XmlArrayItem("Error")]
         public AmazonError[] Errors { get; set; }
     }

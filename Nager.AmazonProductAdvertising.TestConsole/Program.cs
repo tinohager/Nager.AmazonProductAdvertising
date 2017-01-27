@@ -168,7 +168,7 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             items.Add(new AmazonCartItem("B01EUHFAC6"));
 
             var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
-            var result = wrapper.CreateCart(items);
+            var result = wrapper.CartCreate(items);
 
             Console.WriteLine("------------------------------------------");
         }

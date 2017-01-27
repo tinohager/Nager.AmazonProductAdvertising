@@ -64,6 +64,14 @@ namespace Nager.AmazonProductAdvertising
             return operation;
         }
 
+        public AmazonCartCreateOperation CartCreateOperation(IList<AmazonCartItem> amazonCartItems)
+        {
+            var operation = new AmazonCartCreateOperation();
+            operation.AssociateTag(this._associateTag);
+            operation.AddArticles(amazonCartItems);
+            return operation;
+        }
+
         /// <summary>
         /// ItemLookup
         /// </summary>
@@ -77,9 +85,9 @@ namespace Nager.AmazonProductAdvertising
 
         public AmazonItemResponse Lookup(IList<string> articleNumbers, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
-            var requestParams = ItemLookupOperation(articleNumbers, responseGroup);
+            var operation = this.ItemLookupOperation(articleNumbers, responseGroup);
 
-            var webResponse = this.Request(requestParams);
+            var webResponse = this.Request(operation);
             if (webResponse.StatusCode == HttpStatusCode.OK)
             {
                 return XmlHelper.ParseXml<ItemLookupResponse>(webResponse.Content);
@@ -95,9 +103,9 @@ namespace Nager.AmazonProductAdvertising
 
         public AmazonItemResponse Search(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
-            var requestParams = ItemSearchOperation(search, searchIndex, responseGroup);
+            var operation = this.ItemSearchOperation(search, searchIndex, responseGroup);
 
-            var webResponse = this.Request(requestParams);
+            var webResponse = this.Request(operation);
             if (webResponse.StatusCode == HttpStatusCode.OK)
             {
                 return XmlHelper.ParseXml<ItemSearchResponse>(webResponse.Content);
@@ -113,9 +121,9 @@ namespace Nager.AmazonProductAdvertising
 
         public BrowseNodeLookupResponse BrowseNodeLookup(long browseNodeId, AmazonResponseGroup responseGroup = AmazonResponseGroup.BrowseNodeInfo)
         {
-            var requestParams = BrowseNodeLookupOperation(browseNodeId, responseGroup);
+            var operation = this.BrowseNodeLookupOperation(browseNodeId, responseGroup);
 
-            var webResponse = this.Request(requestParams);
+            var webResponse = this.Request(operation);
             if (webResponse.StatusCode == HttpStatusCode.OK)
             {
                 return XmlHelper.ParseXml<BrowseNodeLookupResponse>(webResponse.Content);
@@ -123,6 +131,24 @@ namespace Nager.AmazonProductAdvertising
             else
             {
                 var errorResponse = XmlHelper.ParseXml<BrowseNodeLookupErrorResponse>(webResponse.Content);
+                this.ErrorReceived?.Invoke(errorResponse);
+            }
+
+            return null;
+        }
+
+        public AmazonCartCreateResponse CartCreate(IList<AmazonCartItem> amazonCartItems)
+        {
+            var operation = this.CartCreateOperation(amazonCartItems);
+
+            var webResponse = this.Request(operation);
+            if (webResponse.StatusCode == HttpStatusCode.OK)
+            {
+                return XmlHelper.ParseXml<AmazonCartCreateResponse>(webResponse.Content);
+            }
+            else
+            {
+                var errorResponse = XmlHelper.ParseXml<CartCreateErrorResponse>(webResponse.Content);
                 this.ErrorReceived?.Invoke(errorResponse);
             }
 
@@ -178,34 +204,6 @@ namespace Nager.AmazonProductAdvertising
             {
                 return new ExtendedWebResponse(HttpStatusCode.SeeOther, exception.Message);
             }
-        }
-
-        public AmazonCreateCartResponse CreateCart(IList<AmazonCartItem> amazonCartItems)
-        {
-            var requestParams = new AmazonOperationBase();
-            requestParams.ParameterDictionary.Add("Operation", "CartCreate");
-            requestParams.AssociateTag(this._associateTag);
-
-            var i = 0;
-            foreach (var item in amazonCartItems)
-            {
-                requestParams.ParameterDictionary.Add($"Item.{i}.ASIN", item.Asin);
-                requestParams.ParameterDictionary.Add($"Item.{i}.Quantity", item.Quantity.ToString());
-                i++;
-            }
-
-            var webResponse = this.Request(requestParams);
-            if (webResponse.StatusCode == HttpStatusCode.OK)
-            {
-                return XmlHelper.ParseXml<AmazonCreateCartResponse>(webResponse.Content);
-            }
-            else
-            {
-                var errorResponse = XmlHelper.ParseXml<BrowseNodeLookupErrorResponse>(webResponse.Content);
-                this.ErrorReceived?.Invoke(errorResponse);
-            }
-
-            return null;
         }
     }
 }

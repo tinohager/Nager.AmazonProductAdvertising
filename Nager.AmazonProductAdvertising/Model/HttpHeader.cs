@@ -2,7 +2,7 @@
 
 namespace Nager.AmazonProductAdvertising.Model
 {
-    public class HTTPHeadersHeader
+    public class HttpHeader
     {
         [XmlAttribute]
         public string Name { get; set; }
