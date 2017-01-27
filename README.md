@@ -4,13 +4,13 @@
 - [x] ItemLookup
 - [x] ItemSeach
 - [x] BrowseNodeLookup
-- [x] Async support
-- [ ] Card Operations
+- [x] Card Operations
  - [x] Create
  - [ ] Add
  - [ ] Get
  - [ ] Clear
  - [ ] Modify
+- [x] Async support
 
 ###Demo Shop
 [Visit the Nager Amazon Product Advertising Shop](http://nagershop.azurewebsites.net)
