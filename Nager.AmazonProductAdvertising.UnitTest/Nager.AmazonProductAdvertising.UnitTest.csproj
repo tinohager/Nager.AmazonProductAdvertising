@@ -55,7 +55,11 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AmazonTest.cs" />
+    <Compile Include="XmlParseItemLookupTest.cs" />
+    <Compile Include="XmlParseBrowseNodeLookupTest.cs" />
+    <Compile Include="XmlParseCartCreateTest.cs" />
     <Compile Include="XmlParseTest.cs" />
+    <Compile Include="XmlParseItemSearchTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
