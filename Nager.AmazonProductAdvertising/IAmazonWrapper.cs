@@ -1,4 +1,5 @@
 ﻿using Nager.AmazonProductAdvertising.Model;
+using Nager.AmazonProductAdvertising.Operation;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -28,8 +29,8 @@ namespace Nager.AmazonProductAdvertising
 
         #region CartCreate
 
-        AmazonCartCreateResponse CartCreate(IList<AmazonCartItem> amazonCartItems);
-        Task<AmazonCartCreateResponse> CartCreateAsync(IList<AmazonCartItem> amazonCartItems);
+        CartCreateResponse CartCreate(IList<AmazonCartItem> amazonCartItems);
+        Task<CartCreateResponse> CartCreateAsync(IList<AmazonCartItem> amazonCartItems);
 
         #endregion
 

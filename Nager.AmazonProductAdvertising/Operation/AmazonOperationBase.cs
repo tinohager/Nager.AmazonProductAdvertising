@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Nager.AmazonProductAdvertising.Model;
+using System.Collections.Generic;
 
-namespace Nager.AmazonProductAdvertising.Model
+namespace Nager.AmazonProductAdvertising.Operation
 {
     public class AmazonOperationBase
     {
@@ -8,7 +9,7 @@ namespace Nager.AmazonProductAdvertising.Model
 
         public AmazonOperationBase()
         {
-            ParameterDictionary = new Dictionary<string, string>();
+            this.ParameterDictionary = new Dictionary<string, string>();
         }
 
         public void ResponseGroup(AmazonResponseGroup responseGroup)

@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Nager.AmazonProductAdvertising.Model;
+using System.Collections.Generic;
 
-namespace Nager.AmazonProductAdvertising.Model
+namespace Nager.AmazonProductAdvertising.Operation
 {
     public class AmazonCartCreateOperation : AmazonOperationBase
     {

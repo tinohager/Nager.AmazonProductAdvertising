@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Nager.AmazonProductAdvertising.Model;
+using System;
 
-namespace Nager.AmazonProductAdvertising.Model
+namespace Nager.AmazonProductAdvertising.Operation
 {
     public class AmazonItemSearchOperation : AmazonOperationBase
     {

@@ -1,4 +1,6 @@
-﻿namespace Nager.AmazonProductAdvertising.Model
+﻿using Nager.AmazonProductAdvertising.Model;
+
+namespace Nager.AmazonProductAdvertising.Operation
 {
     public class AmazonBrowseNodeLookupOperation : AmazonOperationBase
     {

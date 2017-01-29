@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Nager.AmazonProductAdvertising.Model;
 using System.IO;
-using System.Linq;
 
 namespace Nager.AmazonProductAdvertising.UnitTest
 {

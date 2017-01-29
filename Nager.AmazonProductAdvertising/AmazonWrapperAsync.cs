@@ -1,4 +1,5 @@
 ﻿using Nager.AmazonProductAdvertising.Model;
+using Nager.AmazonProductAdvertising.Operation;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -74,14 +75,14 @@ namespace Nager.AmazonProductAdvertising
             return null;
         }
 
-        public async Task<AmazonCartCreateResponse> CartCreateAsync(IList<AmazonCartItem> amazonCartItems)
+        public async Task<CartCreateResponse> CartCreateAsync(IList<AmazonCartItem> amazonCartItems)
         {
             var operation = this.CartCreateOperation(amazonCartItems);
 
             var webResponse = await this.RequestAsync(operation);
             if (webResponse.StatusCode == HttpStatusCode.OK)
             {
-                return XmlHelper.ParseXml<AmazonCartCreateResponse>(webResponse.Content);
+                return XmlHelper.ParseXml<CartCreateResponse>(webResponse.Content);
             }
             else
             {

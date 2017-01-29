@@ -1,4 +1,5 @@
 ﻿using Nager.AmazonProductAdvertising.Model;
+using Nager.AmazonProductAdvertising.Operation;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -137,14 +138,14 @@ namespace Nager.AmazonProductAdvertising
             return null;
         }
 
-        public AmazonCartCreateResponse CartCreate(IList<AmazonCartItem> amazonCartItems)
+        public CartCreateResponse CartCreate(IList<AmazonCartItem> amazonCartItems)
         {
             var operation = this.CartCreateOperation(amazonCartItems);
 
             var webResponse = this.Request(operation);
             if (webResponse.StatusCode == HttpStatusCode.OK)
             {
-                return XmlHelper.ParseXml<AmazonCartCreateResponse>(webResponse.Content);
+                return XmlHelper.ParseXml<CartCreateResponse>(webResponse.Content);
             }
             else
             {

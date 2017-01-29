@@ -1,8 +1,9 @@
-﻿using Nager.ArticleNumber;
+﻿using Nager.AmazonProductAdvertising.Model;
+using Nager.ArticleNumber;
 using System;
 using System.Collections.Generic;
 
-namespace Nager.AmazonProductAdvertising.Model
+namespace Nager.AmazonProductAdvertising.Operation
 {
     public class AmazonItemLookupOperation : AmazonOperationBase
     {
