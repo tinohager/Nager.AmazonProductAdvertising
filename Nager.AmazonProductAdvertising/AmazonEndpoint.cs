@@ -1,4 +1,4 @@
-﻿namespace Nager.AmazonProductAdvertising.Model
+﻿namespace Nager.AmazonProductAdvertising
 {
     public enum AmazonEndpoint
     {

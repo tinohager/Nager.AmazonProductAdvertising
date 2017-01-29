@@ -50,7 +50,7 @@
     <Compile Include="AmazonAuthentication.cs" />
     <Compile Include="Operation\AmazonBrowseNodeLookupOperation.cs" />
     <Compile Include="Operation\AmazonCartCreateOperation.cs" />
-    <Compile Include="Model\AmazonEndpoint.cs" />
+    <Compile Include="AmazonEndpoint.cs" />
     <Compile Include="Model\AmazonError.cs" />
     <Compile Include="Model\AmazonErrorResponse.cs" />
     <Compile Include="Operation\AmazonItemLookupOperation.cs" />
