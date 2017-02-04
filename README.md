@@ -28,7 +28,7 @@ If this project help you reduce time to develop, you can give me a beer :beer:
 
 ###Exampels
 
-Please check is the AmazonEndpoint correct for your Country.
+Please check the AmazonEndpoint is correct for your Country.
 - Amazon Germany use AmazonEndpoint.DE
 - Amazon Spain use AmazonEndpoint.ES
 - Amazon United Kingdom use AmazonEndpoint.UK
@@ -91,4 +91,4 @@ var result = wrapper.Lookup(new string[] { "B00OQVZDJM", "B00ZV9RDKK" });
 ```
 
 ###Amazon Documentation
-http://docs.aws.amazon.com/AWSECommerceService/latest/DG/CHAP_ApiReference.html
+[API Reference](http://docs.aws.amazon.com/AWSECommerceService/latest/DG/CHAP_ApiReference.html)
