@@ -23,22 +23,22 @@ switch ($lcid)
 	#Spain
 	1034
 	{
-		$url = "https://www.amazon.es/?tag=nagerat-21"
+		$url = "https://www.amazon.es/?tag=nageres-21"
 	}
 	#France
 	1036
 	{
-		$url = "https://www.amazon.fr/?tag=nagerat-21"
+		$url = "https://www.amazon.fr/?tag=nagerfr-21"
 	}
 	#United Kingdom
 	2057
 	{
-		$url = "https://www.amazon.co.uk/?tag=nagerat-21"
+		$url = "https://www.amazon.co.uk/?tag=nageruk-21"
 	}
 	#Italy
 	1040
 	{
-		$url = "https://www.amazon.it/?tag=nagerat-21"
+		$url = "https://www.amazon.it/?tag=nagerit-21"
 	}
 }
 

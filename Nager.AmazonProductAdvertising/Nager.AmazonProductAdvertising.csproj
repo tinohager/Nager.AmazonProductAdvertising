@@ -66,7 +66,6 @@
     <Compile Include="Model\AmazonResponse.cs" />
     <Compile Include="Model\AmazonSimpleItem.cs" />
     <Compile Include="Model\AmazonCartItem.cs" />
-    <Compile Include="Model\Ancestors.cs" />
     <Compile Include="Model\Argument.cs" />
     <Compile Include="Model\BaseBrowseNodeLookupRequest.cs" />
     <Compile Include="Model\BrowseNode.cs" />
@@ -112,7 +111,6 @@
     <Compile Include="Model\Promotion.cs" />
     <Compile Include="Model\PromotionSummary.cs" />
     <Compile Include="Model\Request.cs" />
-    <Compile Include="Model\SearchResultsMapSearchIndex.cs" />
     <Compile Include="Model\SimilarProductsSimilarProduct.cs" />
     <Compile Include="Model\TopItem.cs" />
     <Compile Include="Model\TopItemSet.cs" />
