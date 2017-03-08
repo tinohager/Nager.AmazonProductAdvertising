@@ -90,5 +90,19 @@ wrapper.ErrorReceived += (errorResonse) => { System.Diagnostics.Debug.WriteLine(
 var result = wrapper.Lookup(new string[] { "B00OQVZDJM", "B00ZV9RDKK" });
 ```
 
+#####Cart Create
+```cs
+var authentication = new AmazonAuthentication();
+authentication.AccessKey = "accesskey";
+authentication.SecretKey = "secretkey";
+
+var items = new List<AmazonCartItem>();
+items.Add(new AmazonCartItem("B00MH4QM1S"));
+items.Add(new AmazonCartItem("B01EUHFAC6"));
+
+var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US, "nager-20");
+var result = wrapper.CartCreate(items);
+```
+
 ###Amazon Documentation
 [API Reference](http://docs.aws.amazon.com/AWSECommerceService/latest/DG/CHAP_ApiReference.html)
