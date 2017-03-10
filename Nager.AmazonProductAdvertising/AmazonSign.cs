@@ -23,6 +23,7 @@ using Nager.AmazonProductAdvertising.Model;
 using Nager.AmazonProductAdvertising.Operation;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -64,6 +65,32 @@ namespace Nager.AmazonProductAdvertising
             return this.Sign(amazonOperation.ParameterDictionary);
         }
 
+        private String GetFormattedTimestamp(DateTime dt)
+        {
+            DateTime utcTime;
+            if (dt.Kind == DateTimeKind.Local)
+            {
+                utcTime = new DateTime(
+                    dt.Year,
+                    dt.Month,
+                    dt.Day,
+                    dt.Hour,
+                    dt.Minute,
+                    dt.Second,
+                    dt.Millisecond,
+                    DateTimeKind.Local).ToUniversalTime();
+            }
+            else
+            {
+                // If DateTimeKind.Unspecified, assume UTC.
+                utcTime = dt;
+
+            }
+
+            return utcTime.ToString("yyyy-MM-dd\\THH:mm:ss.fff\\Z",
+                CultureInfo.InvariantCulture);
+        }
+
         /*
          * Sign a request in the form of a Dictionary of name-value pairs.
          * 
@@ -73,8 +100,8 @@ namespace Nager.AmazonProductAdvertising
         public string Sign(IDictionary<string, string> request)
         {
             request.Add("AWSAccessKeyId", this.akid);
-            request.Add("Timestamp", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ"));
-
+            //request.Add("Timestamp", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            request.Add("Timestamp", GetFormattedTimestamp(DateTime.UtcNow));
             request = this.GetRequestArguments(request);
 
             var canonicalQS = this.ConstructCanonicalQueryString(request);
