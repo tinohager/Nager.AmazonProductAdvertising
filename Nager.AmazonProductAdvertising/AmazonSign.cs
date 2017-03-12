@@ -19,10 +19,10 @@
  *
  */
 
-using Nager.AmazonProductAdvertising.Model;
 using Nager.AmazonProductAdvertising.Operation;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -42,10 +42,10 @@ namespace Nager.AmazonProductAdvertising
         public AmazonSign(AmazonAuthentication amazonAuthentication, AmazonEndpoint amazonEndpoint)
         {
             var domain = AmazonDomain.GetDomain(amazonEndpoint);
+            var secret = Encoding.UTF8.GetBytes(amazonAuthentication.SecretKey);
 
             this.endPoint = $"webservices.{domain}";
             this.akid = amazonAuthentication.AccessKey;
-            var secret = Encoding.UTF8.GetBytes(amazonAuthentication.SecretKey);
             this.signer = new HMACSHA256(secret);
         }
 
@@ -73,7 +73,7 @@ namespace Nager.AmazonProductAdvertising
         public string Sign(IDictionary<string, string> request)
         {
             request.Add("AWSAccessKeyId", this.akid);
-            request.Add("Timestamp", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ"));
+            request.Add("Timestamp", DateTime.UtcNow.ToString("yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture));
 
             request = this.GetRequestArguments(request);
 
