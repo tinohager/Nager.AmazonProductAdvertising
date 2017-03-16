@@ -1,5 +1,6 @@
 ﻿using Nager.AmazonProductAdvertising.Model;
 using Nager.AmazonProductAdvertising.Operation;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -22,8 +23,8 @@ namespace Nager.AmazonProductAdvertising
 
         #region Search
 
-        AmazonItemResponse Search(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large);
-        Task<AmazonItemResponse> SearchAsync(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large);
+        AmazonItemResponse Search(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large, Action<AmazonItemSearchOperation> filter = null);
+        Task<AmazonItemResponse> SearchAsync(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large, Action<AmazonItemSearchOperation> filter = null);
 
         #endregion
 

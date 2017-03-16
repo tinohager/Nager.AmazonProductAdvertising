@@ -16,7 +16,7 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             var secretKey = Console.ReadLine();
             Console.WriteLine("------------------------------------------");
 
-            var authentication = new AmazonAuthentication();            
+            var authentication = new AmazonAuthentication();
             authentication.AccessKey = accessKey;
             authentication.SecretKey = secretKey;
 
@@ -24,9 +24,11 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             //ItemSearchRequest(authentication);
             //CustomItemSearchRequest1(authentication);
             //CustomItemSearchRequest2(authentication);
+            CustomItemSearchRequest3(authentication);
             //BrowseNodeLookupRequest1(authentication);
             //BrowseNodeLookupRequest2(authentication);
-            CreateCart1(authentication);
+            //BrowseNodeLookupRequest2(authentication);
+            //CreateCart1(authentication);
 
             Console.ReadLine();
         }
@@ -39,7 +41,7 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
             var result = wrapper.Search("canon eos", AmazonSearchIndex.Electronics, AmazonResponseGroup.Large);
 
-            foreach(var item in result.Items.Item)
+            foreach (var item in result.Items.Item)
             {
                 Console.WriteLine(item.ItemAttributes.Title);
             }
@@ -55,9 +57,11 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             Console.WriteLine("------------------------------------------");
 
             var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
-            var searchOperation = wrapper.ItemSearchOperation("canon eos", AmazonSearchIndex.Electronics);
-            searchOperation.Sort(AmazonSearchSort.Price, AmazonSearchSortOrder.Descending);
-            searchOperation.Skip(2);
+            var searchOperation = wrapper.ItemSearchOperation("canon eos", AmazonSearchIndex.Electronics, filter:x =>
+            {
+                x.Sort(AmazonSearchSort.Price, AmazonSearchSortOrder.Descending);
+                x.Skip(2);
+            });
             var webResponse = wrapper.Request(searchOperation);
 
             var result = XmlHelper.ParseXml<ItemSearchResponse>(webResponse.Content);
@@ -87,6 +91,28 @@ namespace Nager.AmazonProductAdvertising.TestConsole
 
 
             var webResponse = wrapper.Request(customOperation);
+
+            var result = XmlHelper.ParseXml<ItemSearchResponse>(webResponse.Content);
+
+            foreach (var item in result.Items.Item)
+            {
+                Console.WriteLine(item.ItemAttributes.Title);
+            }
+
+            Console.WriteLine("found {0} items", result.Items.Item.Length);
+
+            Console.WriteLine("------------------------------------------");
+        }
+
+        static void CustomItemSearchRequest3(AmazonAuthentication authentication)
+        {
+            Console.WriteLine("Search with additional filters (using chained syntax)");
+            Console.WriteLine("------------------------------------------");
+
+            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
+            var searchOperation = wrapper.ItemSearchOperation("canon eos", AmazonSearchIndex.Electronics,
+                filter:x => x.PriceBetween(1500, 3000).Condition(ItemCondition.Refurbished));
+            var webResponse = wrapper.Request(searchOperation);
 
             var result = XmlHelper.ParseXml<ItemSearchResponse>(webResponse.Content);
 

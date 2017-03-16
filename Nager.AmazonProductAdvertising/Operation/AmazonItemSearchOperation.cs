@@ -11,18 +11,9 @@ namespace Nager.AmazonProductAdvertising.Operation
             base.ParameterDictionary.Add("ResponseGroup", AmazonResponseGroup.Large.ToString());
         }
 
-        public void Keywords(string keywords)
-        {
-            if (base.ParameterDictionary.ContainsKey("Keywords"))
-            {
-                base.ParameterDictionary["Keywords"] = keywords;
-                return;
-            }
+        public AmazonItemSearchOperation Keywords(string keywords) => AddOrReplace("Keywords", keywords);
 
-            base.ParameterDictionary.Add("Keywords", keywords);
-        }
-
-        public void Skip(int value)
+        public AmazonItemSearchOperation Skip(int value)
         {
             //http://docs.aws.amazon.com/AWSECommerceService/latest/DG/MaximumNumberofPages.html
 
@@ -31,43 +22,38 @@ namespace Nager.AmazonProductAdvertising.Operation
                 throw new ArgumentOutOfRangeException("value", "value must be between 1 and 5");
             }
 
-            if (base.ParameterDictionary.ContainsKey("ItemPage"))
-            {
-                base.ParameterDictionary["ItemPage"] = value.ToString();
-                return;
-            }
-
-            base.ParameterDictionary.Add("ItemPage", value.ToString());
+            return AddOrReplace("ItemPage", value.ToString());
         }
 
-        public void Sort(AmazonSearchSort amazonSearchSort, AmazonSearchSortOrder amazonSearchSortOrder)
+        public AmazonItemSearchOperation Sort(AmazonSearchSort amazonSearchSort, AmazonSearchSortOrder amazonSearchSortOrder)
         {
             var order = String.Empty;
             if (amazonSearchSortOrder == AmazonSearchSortOrder.Descending)
             {
                 order = "-";
             }
-
             var value = String.Format("{1}{0}", amazonSearchSort.ToString().ToLower(), order);
-
-            if (base.ParameterDictionary.ContainsKey("Sort"))
-            {
-                base.ParameterDictionary["Sort"] = value.ToString();
-                return;
-            }
-
-            base.ParameterDictionary.Add("Sort", value.ToString());
+            return AddOrReplace("Sort", value.ToString());
         }
 
-        public void Available()
-        {
-            if (base.ParameterDictionary.ContainsKey("Availability"))
-            {
-                base.ParameterDictionary["Availability"] = "Available";
-                return;
-            }
+        public AmazonItemSearchOperation Available() => AddOrReplace("Availability", "Available");
 
-            base.ParameterDictionary.Add("Availability", "Available");
+        public AmazonItemSearchOperation Condition(ItemCondition condition) => AddOrReplace("Condition", condition);
+
+        public AmazonItemSearchOperation MaxPrice(int priceInLowestCurrencyDenomination) => AddOrReplace("MaximumPrice", priceInLowestCurrencyDenomination);
+        public AmazonItemSearchOperation MinPrice(int priceInLowestCurrencyDenomination) => AddOrReplace("MinimumPrice", priceInLowestCurrencyDenomination);
+
+        public AmazonItemSearchOperation PriceBetween(int maxPriceInLowestCurrencyDenomination, int minPriceInLowestCurrencyDenomination)
+        {
+            return MaxPrice(maxPriceInLowestCurrencyDenomination)
+                  .MinPrice(minPriceInLowestCurrencyDenomination);
+        }
+
+
+        private new AmazonItemSearchOperation AddOrReplace(string param, object value)
+        {
+            base.AddOrReplace(param, value);
+            return this;
         }
     }
 }

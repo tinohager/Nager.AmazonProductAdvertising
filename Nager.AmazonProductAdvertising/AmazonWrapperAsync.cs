@@ -39,9 +39,9 @@ namespace Nager.AmazonProductAdvertising
             return null;
         }
 
-        public async Task<AmazonItemResponse> SearchAsync(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
+        public async Task<AmazonItemResponse> SearchAsync(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large, Action<AmazonItemSearchOperation> filter = null)
         {
-            var operation = this.ItemSearchOperation(search, searchIndex, responseGroup);
+            var operation = this.ItemSearchOperation(search, searchIndex, responseGroup, filter);
 
             var webResponse = await this.RequestAsync(operation);
             if (webResponse.StatusCode == HttpStatusCode.OK)

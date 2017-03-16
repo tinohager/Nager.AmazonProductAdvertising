@@ -44,5 +44,17 @@ namespace Nager.AmazonProductAdvertising.Operation
 
             this.ParameterDictionary.Add("AssociateTag", associateTag);
         }
+
+        protected void AddOrReplace(string param, object value)
+        {
+            if (ParameterDictionary.ContainsKey(param))
+            {
+                ParameterDictionary[param] = value.ToString();
+            }
+            else
+            {
+                ParameterDictionary.Add(param, value.ToString());
+            }
+        }
     }
 }

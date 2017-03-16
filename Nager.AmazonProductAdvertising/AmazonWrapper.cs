@@ -44,14 +44,14 @@ namespace Nager.AmazonProductAdvertising
             return operation;
         }
 
-        public AmazonItemSearchOperation ItemSearchOperation(string search, AmazonSearchIndex amazonSearchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        public AmazonItemSearchOperation ItemSearchOperation(string search, AmazonSearchIndex amazonSearchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large, Action<AmazonItemSearchOperation> filter = null)
         {
             var operation = new AmazonItemSearchOperation();
             operation.ResponseGroup(amazonResponseGroup);
             operation.Keywords(search);
             operation.SearchIndex(amazonSearchIndex);
             operation.AssociateTag(this._associateTag);
-
+            filter?.Invoke(operation);
             return operation;
         }
 
@@ -102,9 +102,9 @@ namespace Nager.AmazonProductAdvertising
             return null;
         }
 
-        public AmazonItemResponse Search(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
+        public AmazonItemResponse Search(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large, Action<AmazonItemSearchOperation> filter = null)
         {
-            var operation = this.ItemSearchOperation(search, searchIndex, responseGroup);
+            var operation = this.ItemSearchOperation(search, searchIndex, responseGroup, filter);
 
             var webResponse = this.Request(operation);
             if (webResponse.StatusCode == HttpStatusCode.OK)
