@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Nager.AmazonProductAdvertising</id>
-    <version>1.0.23</version>
+    <version>1.0.24</version>
     <authors>Tino Hager</authors>
     <owners>nager</owners>
     <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
@@ -10,7 +10,7 @@
     <!-- <iconUrl></iconUrl> -->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Amazon Product Advertising API, Supports ItemSeach with ASIN, EAN, UPC and ISBN, ItemLookup and BrowseNodeLookup</description>
-    <releaseNotes>Bugfix sign timestamp</releaseNotes>
+    <releaseNotes>Bugfix skip, some improvements</releaseNotes>
     <tags>Amazon Product Advertising API Amazon.Product.API</tags>
     <dependencies>
       <dependency id="Nager.ArticleNumber" version="1.0.1" />
