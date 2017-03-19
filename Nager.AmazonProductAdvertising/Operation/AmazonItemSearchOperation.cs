@@ -11,29 +11,42 @@ namespace Nager.AmazonProductAdvertising.Operation
             base.ParameterDictionary.Add("ResponseGroup", AmazonResponseGroup.Large.ToString());
         }
 
-        public AmazonItemSearchOperation Keywords(string keywords) => AddOrReplace("Keywords", keywords);
+        public AmazonItemSearchOperation Keywords(string keywords)
+        {
+            return this.AddOrReplace("Keywords", keywords);
+        }
 
         public AmazonItemSearchOperation Skip(int value)
         {
             //http://docs.aws.amazon.com/AWSECommerceService/latest/DG/MaximumNumberofPages.html
 
-            if (value > 10)
+            var maxItems = 10;
+
+            if (base.ParameterDictionary.ContainsKey("SearchIndex"))
             {
-                throw new ArgumentOutOfRangeException("value", "value must be between 1 and 5");
+                if (base.ParameterDictionary["SearchIndex"] == AmazonSearchIndex.All.ToString())
+                {
+                    maxItems = 5;
+                }
             }
 
-            return AddOrReplace("ItemPage", value.ToString());
+            if (value > maxItems)
+            {
+                throw new ArgumentOutOfRangeException("value", $"value must be between 1 and {maxItems}");
+            }
+
+            return this.AddOrReplace("ItemPage", value.ToString());
         }
 
         public AmazonItemSearchOperation Sort(AmazonSearchSort amazonSearchSort, AmazonSearchSortOrder amazonSearchSortOrder)
         {
-            var order = String.Empty;
+            var order = string.Empty;
             if (amazonSearchSortOrder == AmazonSearchSortOrder.Descending)
             {
                 order = "-";
             }
-            var value = String.Format("{1}{0}", amazonSearchSort.ToString().ToLower(), order);
-            return AddOrReplace("Sort", value.ToString());
+            var value = string.Format("{1}{0}", amazonSearchSort.ToString().ToLower(), order);
+            return this.AddOrReplace("Sort", value.ToString());
         }
 
         public AmazonItemSearchOperation Available()
@@ -58,8 +71,8 @@ namespace Nager.AmazonProductAdvertising.Operation
 
         public AmazonItemSearchOperation PriceBetween(int maxPriceInLowestCurrencyDenomination, int minPriceInLowestCurrencyDenomination)
         {
-            return MaxPrice(maxPriceInLowestCurrencyDenomination)
-                  .MinPrice(minPriceInLowestCurrencyDenomination);
+            return this.MaxPrice(maxPriceInLowestCurrencyDenomination)
+                       .MinPrice(minPriceInLowestCurrencyDenomination);
         }
 
         private new AmazonItemSearchOperation AddOrReplace(string param, object value)
