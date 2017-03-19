@@ -15,8 +15,8 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             Console.WriteLine("Please insert secretkey");
             var secretKey = Console.ReadLine();
             Console.WriteLine("------------------------------------------");
-
-            var authentication = new AmazonAuthentication();            
+            
+            var authentication = new AmazonAuthentication();
             authentication.AccessKey = accessKey;
             authentication.SecretKey = secretKey;
 
@@ -26,7 +26,8 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             //CustomItemSearchRequest2(authentication);
             //BrowseNodeLookupRequest1(authentication);
             //BrowseNodeLookupRequest2(authentication);
-            CreateCart1(authentication);
+            //BrowseNodeLookupRequest2(authentication);
+            //CreateCart1(authentication);
 
             Console.ReadLine();
         }
@@ -39,7 +40,7 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
             var result = wrapper.Search("canon eos", AmazonSearchIndex.Electronics, AmazonResponseGroup.Large);
 
-            foreach(var item in result.Items.Item)
+            foreach (var item in result.Items.Item)
             {
                 Console.WriteLine(item.ItemAttributes.Title);
             }

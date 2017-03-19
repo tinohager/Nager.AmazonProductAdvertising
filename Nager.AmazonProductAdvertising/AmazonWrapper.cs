@@ -51,7 +51,6 @@ namespace Nager.AmazonProductAdvertising
             operation.Keywords(search);
             operation.SearchIndex(amazonSearchIndex);
             operation.AssociateTag(this._associateTag);
-
             return operation;
         }
 

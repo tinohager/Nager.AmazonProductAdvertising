@@ -1,5 +1,6 @@
 ﻿using Nager.AmazonProductAdvertising.Model;
 using Nager.AmazonProductAdvertising.Operation;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
