@@ -36,19 +36,31 @@ namespace Nager.AmazonProductAdvertising.Operation
             return AddOrReplace("Sort", value.ToString());
         }
 
-        public AmazonItemSearchOperation Available() => AddOrReplace("Availability", "Available");
+        public AmazonItemSearchOperation Available()
+        {
+            return this.AddOrReplace("Availability", "Available");
+        }
 
-        public AmazonItemSearchOperation Condition(ItemCondition condition) => AddOrReplace("Condition", condition);
+        public AmazonItemSearchOperation Condition(ItemCondition condition)
+        {
+            return this.AddOrReplace("Condition", condition);
+        }
 
-        public AmazonItemSearchOperation MaxPrice(int priceInLowestCurrencyDenomination) => AddOrReplace("MaximumPrice", priceInLowestCurrencyDenomination);
-        public AmazonItemSearchOperation MinPrice(int priceInLowestCurrencyDenomination) => AddOrReplace("MinimumPrice", priceInLowestCurrencyDenomination);
+        public AmazonItemSearchOperation MaxPrice(int priceInLowestCurrencyDenomination)
+        {
+            return this.AddOrReplace("MaximumPrice", priceInLowestCurrencyDenomination);
+        }
+
+        public AmazonItemSearchOperation MinPrice(int priceInLowestCurrencyDenomination)
+        {
+            return this.AddOrReplace("MinimumPrice", priceInLowestCurrencyDenomination);
+        }
 
         public AmazonItemSearchOperation PriceBetween(int maxPriceInLowestCurrencyDenomination, int minPriceInLowestCurrencyDenomination)
         {
             return MaxPrice(maxPriceInLowestCurrencyDenomination)
                   .MinPrice(minPriceInLowestCurrencyDenomination);
         }
-
 
         private new AmazonItemSearchOperation AddOrReplace(string param, object value)
         {

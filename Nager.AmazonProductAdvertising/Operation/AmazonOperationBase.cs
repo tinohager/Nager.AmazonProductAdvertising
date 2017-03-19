@@ -14,46 +14,28 @@ namespace Nager.AmazonProductAdvertising.Operation
 
         public void ResponseGroup(AmazonResponseGroup responseGroup)
         {
-            if (this.ParameterDictionary.ContainsKey("ResponseGroup"))
-            {
-                this.ParameterDictionary["ResponseGroup"] = responseGroup.ToString();
-                return;
-            }
-
-            this.ParameterDictionary.Add("ResponseGroup", responseGroup.ToString());
+            this.AddOrReplace("ResponseGroup", responseGroup.ToString());
         }
 
         public void SearchIndex(AmazonSearchIndex searchIndex)
         {
-            if (this.ParameterDictionary.ContainsKey("SearchIndex"))
-            {
-                this.ParameterDictionary["SearchIndex"] = searchIndex.ToString();
-                return;
-            }
-
-            this.ParameterDictionary.Add("SearchIndex", searchIndex.ToString());
+            this.AddOrReplace("SearchIndex", searchIndex.ToString());
         }
 
         public void AssociateTag(string associateTag)
         {
-            if (this.ParameterDictionary.ContainsKey("AssociateTag"))
-            {
-                this.ParameterDictionary["AssociateTag"] = associateTag;
-                return;
-            }
-
-            this.ParameterDictionary.Add("AssociateTag", associateTag);
+            this.AddOrReplace("AssociateTag", associateTag);
         }
 
         protected void AddOrReplace(string param, object value)
         {
-            if (ParameterDictionary.ContainsKey(param))
+            if (this.ParameterDictionary.ContainsKey(param))
             {
-                ParameterDictionary[param] = value.ToString();
+                this.ParameterDictionary[param] = value.ToString();
             }
             else
             {
-                ParameterDictionary.Add(param, value.ToString());
+                this.ParameterDictionary.Add(param, value.ToString());
             }
         }
     }
