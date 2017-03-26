@@ -1,6 +1,6 @@
-#Nager.AmazonProductAdvertising
+# Nager.AmazonProductAdvertising
 
-###Features
+### Features
 - [x] ItemLookup
 - [x] ItemSeach
 - [x] BrowseNodeLookup
@@ -12,28 +12,28 @@
  - [ ] Modify
 - [x] Async support
 
-###Demo Shop
+### Demo Shop
 [Visit the Nager Amazon Product Advertising Shop](http://nagershop.azurewebsites.net)
 
-###nuget
+### nuget
 The package is available on [nuget](https://www.nuget.org/packages/Nager.AmazonProductAdvertising)
 ```
 PM> install-package Nager.AmazonProductAdvertising
 ```
 
-###Donation possibilities
+### Donation possibilities
 If this project help you reduce time to develop, you can give me a beer :beer:
 - [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/nagerat/25)
 - BTC: 3PjuVRcAaKPv9yLLmrVUY9mqGngPDm3nPc (Bitcoin)
 
-###Exampels
+### Exampels
 
 Please check the AmazonEndpoint is correct for your Country.
 - Amazon Germany use AmazonEndpoint.DE
 - Amazon Spain use AmazonEndpoint.ES
 - Amazon United Kingdom use AmazonEndpoint.UK
 
-#####Item Search
+##### Item Search
 ```cs
 var authentication = new AmazonAuthentication();
 authentication.AccessKey = "accesskey";
@@ -43,7 +43,7 @@ var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US, "nager-20");
 var result = wrapper.Search("canon eos", AmazonSearchIndex.Electronics, AmazonResponseGroup.Large);
 ```
 
-#####Item Lookup
+##### Item Lookup
 ```cs
 var authentication = new AmazonAuthentication();
 authentication.AccessKey = "accesskey";
@@ -53,7 +53,7 @@ var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US, "nager-20");
 var result = wrapper.Lookup("B00BYPW00I");
 ```
 
-#####Multi Item Lookup
+##### Multi Item Lookup
 ```cs
 var authentication = new AmazonAuthentication();
 authentication.AccessKey = "accesskey";
@@ -63,7 +63,7 @@ var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US, "nager-20");
 var result = wrapper.Lookup(new string[] { "B00BYPW00I", "B004MKNBJG" });
 ```
 
-#####CustomRequest with paging
+##### CustomRequest with paging
 ```cs
 var authentication = new AmazonAuthentication();
 authentication.AccessKey = "accesskey";
@@ -78,7 +78,7 @@ var xmlResponse = wrapper.Request(searchOperation);
 var result = XmlHelper.ParseXml<ItemSearchResponse>(xmlResponse.Content);
 ```
 
-#####Debugging
+##### Debugging
 ```cs
 var authentication = new AmazonAuthentication();
 authentication.AccessKey = "accesskey";
@@ -90,7 +90,7 @@ wrapper.ErrorReceived += (errorResonse) => { System.Diagnostics.Debug.WriteLine(
 var result = wrapper.Lookup(new string[] { "B00OQVZDJM", "B00ZV9RDKK" });
 ```
 
-#####Cart Create
+##### Cart Create
 ```cs
 var authentication = new AmazonAuthentication();
 authentication.AccessKey = "accesskey";
@@ -104,5 +104,5 @@ var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US, "nager-20");
 var result = wrapper.CartCreate(items);
 ```
 
-###Amazon Documentation
+### Amazon Documentation
 [API Reference](http://docs.aws.amazon.com/AWSECommerceService/latest/DG/CHAP_ApiReference.html)
