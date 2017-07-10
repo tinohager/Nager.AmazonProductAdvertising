@@ -5,11 +5,11 @@
 - [x] ItemSeach
 - [x] BrowseNodeLookup
 - [x] Card Operations
- - [x] Create
- - [ ] Add
- - [ ] Get
- - [ ] Clear
- - [ ] Modify
+  - [x] Create
+  - [ ] Add
+  - [ ] Get
+  - [ ] Clear
+  - [ ] Modify
 - [x] Async support
 
 ### Demo Shop
