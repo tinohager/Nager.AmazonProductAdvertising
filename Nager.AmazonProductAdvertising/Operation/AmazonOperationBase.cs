@@ -14,7 +14,7 @@ namespace Nager.AmazonProductAdvertising.Operation
 
         public void ResponseGroup(AmazonResponseGroup responseGroup)
         {
-            this.AddOrReplace("ResponseGroup", responseGroup.ToString());
+            this.AddOrReplace("ResponseGroup", responseGroup.ToString().Replace(" ", ""));
         }
 
         public void SearchIndex(AmazonSearchIndex searchIndex)
