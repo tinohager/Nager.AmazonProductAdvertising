@@ -4,7 +4,7 @@
 - [x] ItemLookup
 - [x] ItemSeach
 - [x] BrowseNodeLookup
-- [x] Card Operations
+- [x] Cart Operations
   - [x] Create
   - [ ] Add
   - [ ] Get
