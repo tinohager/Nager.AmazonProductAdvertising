@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nager.AmazonProductAdvertising.TestConsole", "Nager.AmazonProductAdvertising.TestConsole\Nager.AmazonProductAdvertising.TestConsole.csproj", "{5B406042-6FC7-4655-8FC3-3528919468FB}"
 EndProject
@@ -42,5 +42,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {95840452-2201-4E09-BBF3-C93442DA83F3}
 	EndGlobalSection
 EndGlobal
