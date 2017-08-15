@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+	<TargetFrameworks>net45;net461;netstandard2.0</TargetFrameworks> 
     <Version>1.0.26</Version>
     <Authors>Tino Hager</Authors>
     <Company>nager.at</Company>

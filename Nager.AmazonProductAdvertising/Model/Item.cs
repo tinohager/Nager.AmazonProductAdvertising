@@ -1,4 +1,4 @@
-﻿using System.Web;
+﻿using System.Net;
 using System.Xml.Serialization;
 
 namespace Nager.AmazonProductAdvertising.Model
@@ -12,7 +12,7 @@ namespace Nager.AmazonProductAdvertising.Model
         public string DetailPageURL
         {
             get { return this._detailPageURL; }
-            set { this._detailPageURL = HttpUtility.UrlDecode(value); }
+            set { this._detailPageURL = WebUtility.UrlDecode(value); }
         }
         [XmlArrayItem("ItemLink")]
         public ItemLink[] ItemLinks { get; set; }
