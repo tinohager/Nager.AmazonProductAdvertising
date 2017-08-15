@@ -1,4 +1,4 @@
-﻿using System.Web;
+﻿using System.Net;
 
 namespace Nager.AmazonProductAdvertising.Model
 {
@@ -10,7 +10,7 @@ namespace Nager.AmazonProductAdvertising.Model
         public string URL
         {
             get { return this._url; }
-            set { this._url = HttpUtility.UrlDecode(value); }
+            set { this._url = WebUtility.UrlDecode(value); }
         }
 
         public override string ToString()

@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Nager.AmazonProductAdvertising.Monitor</RootNamespace>
     <AssemblyName>Nager.AmazonProductAdvertising.Monitor</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -78,6 +79,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UserControlItem.resx">
       <DependentUpon>UserControlItem.cs</DependentUpon>
@@ -97,7 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nager.AmazonProductAdvertising\Nager.AmazonProductAdvertising.csproj">
-      <Project>{52bc1bdb-2733-485d-bf61-ff22d7a5b98f}</Project>
+      <Project>{c07b7e25-c750-4340-8f56-c2992118ab78}</Project>
       <Name>Nager.AmazonProductAdvertising</Name>
     </ProjectReference>
   </ItemGroup>
