@@ -8,7 +8,7 @@
     <PackageProjectUrl>https://github.com/tinohager/Nager.AmazonProductAdvertising</PackageProjectUrl>
     <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
     <Copyright>Copyright ©  2017</Copyright>
-    <PackageReleaseNotes>Bugfix BrowseNodeLookup</PackageReleaseNotes>
+    <PackageReleaseNotes>add .netstandard 2.0 support</PackageReleaseNotes>
     <PackageTags>Amazon Product Advertising API Amazon.Product.API</PackageTags>
     <Description>Amazon Product Advertising API, Supports ItemSeach with ASIN, EAN, UPC and ISBN, ItemLookup and BrowseNodeLookup</Description>
     <AssemblyVersion>1.0.26</AssemblyVersion>
