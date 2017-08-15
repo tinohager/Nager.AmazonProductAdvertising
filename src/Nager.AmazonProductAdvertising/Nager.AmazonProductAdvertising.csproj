@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net45;net461;net461;netstandard2.0</TargetFrameworks>
+    <AssemblyVersion>1.0.26.0</AssemblyVersion>
+    <FileVersion>1.0.26.0</FileVersion>
+    <Description>Amazon Product Advertising API, Supports ItemSeach with ASIN, EAN, UPC and ISBN, ItemLookup and BrowseNodeLookup</Description>
+    <Copyright>Copyright ©  2017</Copyright>
+    <RepositoryUrl>https://github.com/tinohager/Nager.AmazonProductAdvertising</RepositoryUrl>
+    <PackageTags>Amazon Product Advertising API Amazon.Product.API</PackageTags>
+    <PackageProjectUrl>https://github.com/tinohager/Nager.AmazonProductAdvertising</PackageProjectUrl>
+    <PackageId>Nager.AmazonProductAdvertising</PackageId>
+    <Version>1.0.26</Version>
+    <Authors>Tino Hager</Authors>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <PackageReleaseNotes>Now with .Net Core 2.0 support</PackageReleaseNotes>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Company>Tino Hager</Company>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Nager.ArticleNumber" Version="1.0.2" NoWarn="NU1701" />
+  </ItemGroup>
+
+</Project>

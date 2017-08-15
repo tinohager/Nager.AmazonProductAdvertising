@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp2.0</TargetFrameworks>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB}</ProjectTypeGuids>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="AmazonResponse.xml" />
+    <None Remove="BrowseNodeLookupErrorResponse.xml" />
+    <None Remove="BrowseNodeLookupResponse1.xml" />
+    <None Remove="BrowseNodeLookupResponse2.xml" />
+    <None Remove="BrowseNodeLookupResponseWithError.xml" />
+    <None Remove="CartCreateResponse1.xml" />
+    <None Remove="ItemLookupErrorResponse.xml" />
+    <None Remove="ItemLookupResponse1.xml" />
+    <None Remove="ItemLookupResponse2.xml" />
+    <None Remove="ItemLookupResponse3.xml" />
+    <None Remove="ItemLookupResponse4.xml" />
+    <None Remove="ItemSearchErrorResponse.xml" />
+    <None Remove="ItemSearchResponse.xml" />
+    <None Remove="ItemSearchResponseWithError.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="AmazonResponse.xml" />
+    <EmbeddedResource Include="BrowseNodeLookupErrorResponse.xml" />
+    <EmbeddedResource Include="BrowseNodeLookupResponse1.xml" />
+    <EmbeddedResource Include="BrowseNodeLookupResponse2.xml" />
+    <EmbeddedResource Include="BrowseNodeLookupResponseWithError.xml" />
+    <EmbeddedResource Include="CartCreateResponse1.xml" />
+    <EmbeddedResource Include="ItemLookupErrorResponse.xml" />
+    <EmbeddedResource Include="ItemLookupResponse1.xml" />
+    <EmbeddedResource Include="ItemLookupResponse2.xml" />
+    <EmbeddedResource Include="ItemLookupResponse3.xml" />
+    <EmbeddedResource Include="ItemLookupResponse4.xml" />
+    <EmbeddedResource Include="ItemSearchErrorResponse.xml" />
+    <EmbeddedResource Include="ItemSearchResponse.xml" />
+    <EmbeddedResource Include="ItemSearchResponseWithError.xml" />
+  </ItemGroup>
+  <ItemGroup>
+
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0-preview-20170810-02" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.2.0-beta3" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.2.0-beta3" />
+
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Include="System.Runtime.Extensions" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Nager.AmazonProductAdvertising\Nager.AmazonProductAdvertising.csproj" />
+  </ItemGroup>
+</Project>
