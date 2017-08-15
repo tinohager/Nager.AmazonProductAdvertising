@@ -53,7 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Nager.AmazonProductAdvertising\Nager.AmazonProductAdvertising.csproj">
-      <Project>{52bc1bdb-2733-485d-bf61-ff22d7a5b98f}</Project>
+      <Project>{c07b7e25-c750-4340-8f56-c2992118ab78}</Project>
       <Name>Nager.AmazonProductAdvertising</Name>
     </ProjectReference>
   </ItemGroup>

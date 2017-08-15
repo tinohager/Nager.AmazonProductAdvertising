@@ -5,13 +5,13 @@ VisualStudioVersion = 15.0.26730.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nager.AmazonProductAdvertising.TestConsole", "Nager.AmazonProductAdvertising.TestConsole\Nager.AmazonProductAdvertising.TestConsole.csproj", "{5B406042-6FC7-4655-8FC3-3528919468FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nager.AmazonProductAdvertising", "Nager.AmazonProductAdvertising\Nager.AmazonProductAdvertising.csproj", "{52BC1BDB-2733-485D-BF61-FF22D7A5B98F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nager.AmazonProductAdvertising.Monitor", "Nager.AmazonProductAdvertising.Monitor\Nager.AmazonProductAdvertising.Monitor.csproj", "{C0046C9F-8B2A-4943-B010-DBA38B10EC8F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nager.AmazonProductAdvertising.UnitTest", "Nager.AmazonProductAdvertising.UnitTest\Nager.AmazonProductAdvertising.UnitTest.csproj", "{7F12AB6D-CCEA-41DA-B316-AFB5C80F83F6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nager.AmazonProductAdvertising.Website", "Nager.AmazonProductAdvertising.Website\Nager.AmazonProductAdvertising.Website.csproj", "{B614D94D-6F56-4276-8D9C-270BD46387B1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nager.AmazonProductAdvertising", "Nager.AmazonProductAdvertising\Nager.AmazonProductAdvertising.csproj", "{C07B7E25-C750-4340-8F56-C2992118AB78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,6 @@ Global
 		{5B406042-6FC7-4655-8FC3-3528919468FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B406042-6FC7-4655-8FC3-3528919468FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B406042-6FC7-4655-8FC3-3528919468FB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{52BC1BDB-2733-485D-BF61-FF22D7A5B98F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{52BC1BDB-2733-485D-BF61-FF22D7A5B98F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{52BC1BDB-2733-485D-BF61-FF22D7A5B98F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{52BC1BDB-2733-485D-BF61-FF22D7A5B98F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C0046C9F-8B2A-4943-B010-DBA38B10EC8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C0046C9F-8B2A-4943-B010-DBA38B10EC8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0046C9F-8B2A-4943-B010-DBA38B10EC8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{B614D94D-6F56-4276-8D9C-270BD46387B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B614D94D-6F56-4276-8D9C-270BD46387B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B614D94D-6F56-4276-8D9C-270BD46387B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C07B7E25-C750-4340-8F56-C2992118AB78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C07B7E25-C750-4340-8F56-C2992118AB78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C07B7E25-C750-4340-8F56-C2992118AB78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C07B7E25-C750-4340-8F56-C2992118AB78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

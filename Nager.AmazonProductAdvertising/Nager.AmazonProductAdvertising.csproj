@@ -1,136 +1,22 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{52BC1BDB-2733-485D-BF61-FF22D7A5B98F}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nager.AmazonProductAdvertising</RootNamespace>
-    <AssemblyName>Nager.AmazonProductAdvertising</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>1.0.26</Version>
+    <Authors>Tino Hager</Authors>
+    <Company>nager.at</Company>
+    <PackageProjectUrl>https://github.com/tinohager/Nager.AmazonProductAdvertising</PackageProjectUrl>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <Copyright>Copyright ©  2017</Copyright>
+    <PackageReleaseNotes>Bugfix BrowseNodeLookup</PackageReleaseNotes>
+    <PackageTags>Amazon Product Advertising API Amazon.Product.API</PackageTags>
+    <Description>Amazon Product Advertising API, Supports ItemSeach with ASIN, EAN, UPC and ISBN, ItemLookup and BrowseNodeLookup</Description>
+    <AssemblyVersion>1.0.26</AssemblyVersion>
+    <FileVersion>1.0.26</FileVersion>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Nager.ArticleNumber, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Nager.ArticleNumber.1.0.1\lib\net45\Nager.ArticleNumber.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Nager.ArticleNumber" Version="1.0.2" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AmazonDomain.cs" />
-    <Compile Include="AmazonWrapperAsync.cs" />
-    <Compile Include="IAmazonWrapper.cs" />
-    <Compile Include="AmazonAuthentication.cs" />
-    <Compile Include="Model\ItemCondition.cs" />
-    <Compile Include="Operation\AmazonBrowseNodeLookupOperation.cs" />
-    <Compile Include="Operation\AmazonCartCreateOperation.cs" />
-    <Compile Include="AmazonEndpoint.cs" />
-    <Compile Include="Model\AmazonError.cs" />
-    <Compile Include="Model\AmazonErrorResponse.cs" />
-    <Compile Include="Operation\AmazonItemLookupOperation.cs" />
-    <Compile Include="Model\AmazonItemResponse.cs" />
-    <Compile Include="Operation\AmazonOperationBase.cs" />
-    <Compile Include="Model\AmazonResponseGroup.cs" />
-    <Compile Include="Model\AmazonSearchIndex.cs" />
-    <Compile Include="AmazonSign.cs" />
-    <Compile Include="AmazonWrapper.cs" />
-    <Compile Include="Operation\AmazonItemSearchOperation.cs" />
-    <Compile Include="Model\AmazonSearchSort.cs" />
-    <Compile Include="Model\AmazonSearchSortOrder.cs" />
-    <Compile Include="Model\AmazonResponse.cs" />
-    <Compile Include="Model\AmazonSimpleItem.cs" />
-    <Compile Include="Model\AmazonCartItem.cs" />
-    <Compile Include="Model\Argument.cs" />
-    <Compile Include="Model\BaseBrowseNodeLookupRequest.cs" />
-    <Compile Include="Model\BrowseNode.cs" />
-    <Compile Include="Model\CartCreateErrorResponse.cs" />
-    <Compile Include="Model\BrowseNodeLookupErrorResponse.cs" />
-    <Compile Include="Model\BrowseNodeLookupRequest.cs" />
-    <Compile Include="Model\BrowseNodeLookupResponse.cs" />
-    <Compile Include="Model\BrowseNodes.cs" />
-    <Compile Include="Model\CartItem.cs" />
-    <Compile Include="Model\CartItems.cs" />
-    <Compile Include="Model\Cart.cs" />
-    <Compile Include="Model\CartCreateResponse.cs" />
-    <Compile Include="Model\HttpHeader.cs" />
-    <Compile Include="Model\CorrectedQuery.cs" />
-    <Compile Include="Model\CustomerReviews.cs" />
-    <Compile Include="Model\DecimalWithUnits.cs" />
-    <Compile Include="Model\EditorialReview.cs" />
-    <Compile Include="Model\ExtendedWebResponse.cs" />
-    <Compile Include="Model\Image.cs" />
-    <Compile Include="Model\ImageSet.cs" />
-    <Compile Include="Model\Item.cs" />
-    <Compile Include="Model\ItemAttributes.cs" />
-    <Compile Include="Model\ItemAttributesCreator.cs" />
-    <Compile Include="Model\ItemAttributesItemDimensions.cs" />
-    <Compile Include="Model\ItemAttributesLanguage.cs" />
-    <Compile Include="Model\ItemAttributesPackageDimensions.cs" />
-    <Compile Include="Model\ItemLink.cs" />
-    <Compile Include="Model\ItemLookupErrorResponse.cs" />
-    <Compile Include="Model\ItemLookupResponse.cs" />
-    <Compile Include="Model\Items.cs" />
-    <Compile Include="Model\ItemSearchErrorResponse.cs" />
-    <Compile Include="Model\ItemSearchResponse.cs" />
-    <Compile Include="Model\LoyaltyPoints.cs" />
-    <Compile Include="Model\Merchant.cs" />
-    <Compile Include="Model\NonNegativeIntegerWithUnits.cs" />
-    <Compile Include="Model\Offer.cs" />
-    <Compile Include="Model\OfferAttributes.cs" />
-    <Compile Include="Model\OfferListing.cs" />
-    <Compile Include="Model\Offers.cs" />
-    <Compile Include="Model\OfferSummary.cs" />
-    <Compile Include="Model\OperationRequest.cs" />
-    <Compile Include="Model\Price.cs" />
-    <Compile Include="Model\Promotion.cs" />
-    <Compile Include="Model\PromotionSummary.cs" />
-    <Compile Include="Model\Request.cs" />
-    <Compile Include="Model\SimilarProductsSimilarProduct.cs" />
-    <Compile Include="Model\TopItem.cs" />
-    <Compile Include="Model\TopItemSet.cs" />
-    <Compile Include="Model\TopSeller.cs" />
-    <Compile Include="Model\TopSellers.cs" />
-    <Compile Include="Model\VariationSummary.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XmlHelper.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
