@@ -1,6 +1,6 @@
 ﻿namespace Nager.AmazonProductAdvertising.Monitor
 {
-    partial class UserControlItem
+    partial class AmazonItemControl
     {
         /// <summary> 
         /// Required designer variable.

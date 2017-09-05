@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace Nager.AmazonProductAdvertising.Monitor
 {
-    public partial class UserControlItem : UserControl
+    public partial class AmazonItemControl : UserControl
     {
-        public UserControlItem()
+        public AmazonItemControl()
         {
             this.InitializeComponent();
         }
