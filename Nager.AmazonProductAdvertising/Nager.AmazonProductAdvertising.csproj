@@ -16,6 +16,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="install.ps1">
+      <PackagePath>tools\</PackagePath>
+    </Content>
     <PackageReference Include="Nager.ArticleNumber" Version="1.0.3" />
   </ItemGroup>
 
