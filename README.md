@@ -1,4 +1,5 @@
 # Nager.AmazonProductAdvertising
+Allow access to amazon products, you can search a product over the name or a keyword. Also it is possible to create a shopping cart.
 
 ### Features
 - [x] ItemLookup
