@@ -1,5 +1,11 @@
 # Nager.AmazonProductAdvertising
-Allow access to amazon products, you can search a product over the name or a keyword. Also it is possible to create a shopping cart.
+Allow access to amazon product advertising API, you can search a product over the name or a keyword. Also it is possible to create a shopping cart. You can visit a demo [here](http://nagershop.azurewebsites.net)
+
+### Support this project
+Nager.AmazonProductAdvertising is free for you to use, but donations are very welcome. If Nager.AmazonProductAdvertising has ever helped you out on a project or saved you time, please consider sending a donation. :moneybag:
+
+- [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/nagerat/25)
+- BTC: 3PjuVRcAaKPv9yLLmrVUY9mqGngPDm3nPc (Bitcoin)
 
 ### Features
 - [x] ItemLookup
@@ -12,22 +18,15 @@ Allow access to amazon products, you can search a product over the name or a key
   - [ ] Clear
   - [ ] Modify
 - [x] Async support
+- [x] Support multiple Amazon endpoints
 
-### Demo Shop
-[Visit the Nager Amazon Product Advertising Shop](http://nagershop.azurewebsites.net)
-
-### nuget
+### Installation
 The package is available on [nuget](https://www.nuget.org/packages/Nager.AmazonProductAdvertising)
 ```
 PM> install-package Nager.AmazonProductAdvertising
 ```
 
-### Donation possibilities
-If this project help you reduce time to develop, you can give me a beer :beer:
-- [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/nagerat/25)
-- BTC: 3PjuVRcAaKPv9yLLmrVUY9mqGngPDm3nPc (Bitcoin)
-
-### Exampels
+### Usage
 
 Please check the AmazonEndpoint is correct for your Country.
 - Amazon Germany use AmazonEndpoint.DE
