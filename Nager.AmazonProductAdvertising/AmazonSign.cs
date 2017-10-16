@@ -88,7 +88,7 @@ namespace Nager.AmazonProductAdvertising
 
             // now construct the complete URL and return to caller.
             var sb = new StringBuilder();
-            sb.Append("http://");
+            sb.Append("https://");
             sb.Append(this.endPoint);
             sb.Append(REQUEST_URI);
             sb.AppendFormat("?{0}", canonicalQS);
