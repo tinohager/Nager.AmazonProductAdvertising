@@ -29,7 +29,7 @@ namespace Nager.AmazonProductAdvertising.Model
         public VariationSummary VariationSummary { get; set; }
         [XmlArrayItem("SimilarProduct", IsNullable = false)]
         public SimilarProductsSimilarProduct[] SimilarProducts { get; set; }
-
+        public Tracks Tracks { get; set; }
         [XmlArrayItem("BrowseNode", IsNullable = false)]
         public BrowseNode[] BrowseNodes { get; set; }
         public Variations Variations { get; set; }
