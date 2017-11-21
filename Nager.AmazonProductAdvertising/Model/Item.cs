@@ -33,7 +33,7 @@ namespace Nager.AmazonProductAdvertising.Model
         [XmlArrayItem("BrowseNode", IsNullable = false)]
         public BrowseNode[] BrowseNodes { get; set; }
         public Variations Variations { get; set; }
-
+        public RelatedItems RelatedItems { get; set; }
         public override string ToString()
         {
             if (this.ItemAttributes != null)
