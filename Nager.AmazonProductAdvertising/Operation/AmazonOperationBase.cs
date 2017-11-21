@@ -22,9 +22,9 @@ namespace Nager.AmazonProductAdvertising.Operation
             }
         }
 
-        public void RelationshipType(AmazonRelationshipType responseGroup)
+        public void RelationshipType(AmazonRelationshipType relationshipType)
         {
-            this.AddOrReplace("RelationshipType", responseGroup.ToString());
+            this.AddOrReplace("RelationshipType", relationshipType.ToString());
         }
 
         public void SearchIndex(AmazonSearchIndex searchIndex)
