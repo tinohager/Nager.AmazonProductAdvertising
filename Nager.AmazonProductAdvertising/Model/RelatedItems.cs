@@ -1,4 +1,6 @@
-﻿namespace Nager.AmazonProductAdvertising.Model
+﻿using System.Xml.Serialization;
+
+namespace Nager.AmazonProductAdvertising.Model
 {
     public class RelatedItems
     {
@@ -12,6 +14,7 @@
 
         public byte RelatedItemPage { get; set; }
 
+        [XmlElement("RelatedItem")]
         public RelatedItemsRelatedItem[] RelatedItem { get; set; }
     }
 
