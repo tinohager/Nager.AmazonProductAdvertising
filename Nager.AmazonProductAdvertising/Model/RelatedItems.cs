@@ -2,127 +2,26 @@
 {
     public class RelatedItems
     {
+        public string Relationship { get; set; }
 
-        private string relationshipField;
+        public string RelationshipType { get; set; }
 
-        private string relationshipTypeField;
+        public byte RelatedItemCount { get; set; }
 
-        private byte relatedItemCountField;
+        public byte RelatedItemPageCount { get; set; }
 
-        private byte relatedItemPageCountField;
+        public byte RelatedItemPage { get; set; }
 
-        private byte relatedItemPageField;
-
-        private RelatedItemsRelatedItem[] relatedItemField;
-
-        public string Relationship
-        {
-            get
-            {
-                return this.relationshipField;
-            }
-            set
-            {
-                this.relationshipField = value;
-            }
-        }
-
-        public string RelationshipType
-        {
-            get
-            {
-                return this.relationshipTypeField;
-            }
-            set
-            {
-                this.relationshipTypeField = value;
-            }
-        }
-
-        public byte RelatedItemCount
-        {
-            get
-            {
-                return this.relatedItemCountField;
-            }
-            set
-            {
-                this.relatedItemCountField = value;
-            }
-        }
-
-        public byte RelatedItemPageCount
-        {
-            get
-            {
-                return this.relatedItemPageCountField;
-            }
-            set
-            {
-                this.relatedItemPageCountField = value;
-            }
-        }
-
-        public byte RelatedItemPage
-        {
-            get
-            {
-                return this.relatedItemPageField;
-            }
-            set
-            {
-                this.relatedItemPageField = value;
-            }
-        }
-
-        public RelatedItemsRelatedItem[] RelatedItem
-        {
-            get
-            {
-                return this.relatedItemField;
-            }
-            set
-            {
-                this.relatedItemField = value;
-            }
-        }
+        public RelatedItemsRelatedItem[] RelatedItem { get; set; }
     }
 
-    public partial class RelatedItemsRelatedItem
+    public class RelatedItemsRelatedItem
     {
-
-        private RelatedItemsRelatedItemItem itemField;
-
-        /// <remarks/>
-        public RelatedItemsRelatedItemItem Item
-        {
-            get
-            {
-                return this.itemField;
-            }
-            set
-            {
-                this.itemField = value;
-            }
-        }
+        public RelatedItemsRelatedItemItem Item { get; set; }
     }
 
-    public partial class RelatedItemsRelatedItemItem
+    public class RelatedItemsRelatedItemItem
     {
-        private string aSINField;
-
-        public string ASIN
-        {
-            get
-            {
-                return this.aSINField;
-            }
-            set
-            {
-                this.aSINField = value;
-            }
-        }
+        public string ASIN { get; set; }
     }
-
-
 }
