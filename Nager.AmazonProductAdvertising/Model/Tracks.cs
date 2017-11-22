@@ -2,84 +2,20 @@
 {
     public class Tracks
     {
-
-        private TracksDisc discField;
-
-        /// <remarks/>
-        public TracksDisc Disc
-        {
-            get
-            {
-                return this.discField;
-            }
-            set
-            {
-                this.discField = value;
-            }
-        }
+        public TracksDisc Disc { get; set; }
     }
 
     public class TracksDisc
     {
+        public TracksDiscTrack[] Track { get; set; }
 
-        private TracksDiscTrack[] trackField;
-
-        private byte numberField;
-
-        public TracksDiscTrack[] Track
-        {
-            get
-            {
-                return this.trackField;
-            }
-            set
-            {
-                this.trackField = value;
-            }
-        }
-
-        public byte Number
-        {
-            get
-            {
-                return this.numberField;
-            }
-            set
-            {
-                this.numberField = value;
-            }
-        }
+        public byte Number { get; set; }
     }
 
     public class TracksDiscTrack
     {
+        public byte Number { get; set; }
 
-        private byte numberField;
-
-        private string valueField;
-
-        public byte Number
-        {
-            get
-            {
-                return this.numberField;
-            }
-            set
-            {
-                this.numberField = value;
-            }
-        }
-
-        public string Value
-        {
-            get
-            {
-                return this.valueField;
-            }
-            set
-            {
-                this.valueField = value;
-            }
-        }
+        public string Value { get; set; }
     }
 }
