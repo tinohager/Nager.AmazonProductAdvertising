@@ -1,12 +1,6 @@
 ﻿namespace Nager.AmazonProductAdvertising.Model
 {
-
-    /// <remarks/>
-    [System.Serializable()]
-    [System.ComponentModel.DesignerCategory("code")]
-    [System.Xml.Serialization.XmlType(AnonymousType = true)]
-    [System.Xml.Serialization.XmlRoot(Namespace = "", IsNullable = false)]
-    public partial class RelatedItems
+    public class RelatedItems
     {
 
         private string relationshipField;
@@ -21,7 +15,6 @@
 
         private RelatedItemsRelatedItem[] relatedItemField;
 
-        /// <remarks/>
         public string Relationship
         {
             get
@@ -34,7 +27,6 @@
             }
         }
 
-        /// <remarks/>
         public string RelationshipType
         {
             get
@@ -47,7 +39,6 @@
             }
         }
 
-        /// <remarks/>
         public byte RelatedItemCount
         {
             get
@@ -60,7 +51,6 @@
             }
         }
 
-        /// <remarks/>
         public byte RelatedItemPageCount
         {
             get
@@ -73,7 +63,6 @@
             }
         }
 
-        /// <remarks/>
         public byte RelatedItemPage
         {
             get
@@ -86,8 +75,6 @@
             }
         }
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElement("RelatedItem")]
         public RelatedItemsRelatedItem[] RelatedItem
         {
             get
@@ -101,10 +88,6 @@
         }
     }
 
-    /// <remarks/>
-    [System.Serializable()]
-    [System.ComponentModel.DesignerCategory("code")]
-    [System.Xml.Serialization.XmlType(AnonymousType = true)]
     public partial class RelatedItemsRelatedItem
     {
 
@@ -124,16 +107,10 @@
         }
     }
 
-    /// <remarks/>
-    [System.Serializable()]
-    [System.ComponentModel.DesignerCategory("code")]
-    [System.Xml.Serialization.XmlType(AnonymousType = true)]
     public partial class RelatedItemsRelatedItemItem
     {
-
         private string aSINField;
 
-        /// <remarks/>
         public string ASIN
         {
             get
