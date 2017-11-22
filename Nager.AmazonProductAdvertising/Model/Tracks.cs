@@ -2,7 +2,7 @@
 
 namespace Nager.AmazonProductAdvertising.Model
 {
-    [XmlRoot(Namespace = "", IsNullable = false)]
+    [XmlRoot]
     public class Tracks
     {
         public TracksDisc Disc { get; set; }
@@ -13,16 +13,16 @@ namespace Nager.AmazonProductAdvertising.Model
         [XmlElement("Track")]
         public TracksDiscTrack[] Track { get; set; }
 
-        [XmlAttribute()]
+        [XmlAttribute]
         public byte Number { get; set; }
     }
 
     public class TracksDiscTrack
     {
-        [XmlAttribute()]
+        [XmlAttribute]
         public byte Number { get; set; }
 
-        [XmlText()]
+        [XmlText]
         public string Value { get; set; }
     }
 }
