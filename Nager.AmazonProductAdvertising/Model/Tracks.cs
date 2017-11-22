@@ -1,12 +1,6 @@
 ﻿namespace Nager.AmazonProductAdvertising.Model
 {
-
-    /// <remarks/>
-    [System.Serializable()]
-    [System.ComponentModel.DesignerCategory("code")]
-    [System.Xml.Serialization.XmlType(AnonymousType = true)]
-    [System.Xml.Serialization.XmlRoot(Namespace = "", IsNullable = false)]
-    public partial class Tracks
+    public class Tracks
     {
 
         private TracksDisc discField;
@@ -25,19 +19,13 @@
         }
     }
 
-    /// <remarks/>
-    [System.Serializable()]
-    [System.ComponentModel.DesignerCategory("code")]
-    [System.Xml.Serialization.XmlType(AnonymousType = true)]
-    public partial class TracksDisc
+    public class TracksDisc
     {
 
         private TracksDiscTrack[] trackField;
 
         private byte numberField;
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElement("Track")]
         public TracksDiscTrack[] Track
         {
             get
@@ -50,8 +38,6 @@
             }
         }
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttribute()]
         public byte Number
         {
             get
@@ -65,19 +51,13 @@
         }
     }
 
-    /// <remarks/>
-    [System.Serializable()]
-    [System.ComponentModel.DesignerCategory("code")]
-    [System.Xml.Serialization.XmlType(AnonymousType = true)]
-    public partial class TracksDiscTrack
+    public class TracksDiscTrack
     {
 
         private byte numberField;
 
         private string valueField;
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttribute()]
         public byte Number
         {
             get
@@ -90,8 +70,6 @@
             }
         }
 
-        /// <remarks/>
-        [System.Xml.Serialization.XmlText()]
         public string Value
         {
             get
