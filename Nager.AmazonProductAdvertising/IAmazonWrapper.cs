@@ -1,6 +1,5 @@
 ﻿using Nager.AmazonProductAdvertising.Model;
 using Nager.AmazonProductAdvertising.Operation;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -10,6 +9,9 @@ namespace Nager.AmazonProductAdvertising
     {
         void SetEndpoint(AmazonEndpoint amazonEndpoint);
         void SetUserAgent(string userAgent);
+
+        ExtendedWebResponse Request(AmazonOperationBase amazonOperation);
+        Task<ExtendedWebResponse> RequestAsync(AmazonOperationBase amazonOperation);
 
         #region Lookup
 
@@ -28,10 +30,19 @@ namespace Nager.AmazonProductAdvertising
 
         #endregion
 
-        #region CartCreate
+        #region Cart
 
         CartCreateResponse CartCreate(IList<AmazonCartItem> amazonCartItems);
         Task<CartCreateResponse> CartCreateAsync(IList<AmazonCartItem> amazonCartItems);
+
+        CartAddResponse CartAdd(AmazonCartItem item, string cartId, string Hmac);
+        Task<CartAddResponse> CartAddAsync(AmazonCartItem item, string cartId, string Hmac);
+
+        CartGetResponse CartGet(string cartId, string Hmac);
+        Task<CartGetResponse> CartGetAsync(string cartId, string Hmac);
+
+        CartClearResponse CartClear(string cartId, string Hmac);
+        Task<CartClearResponse> CartClearAsync(string cartId, string Hmac);
 
         #endregion
 
@@ -42,8 +53,5 @@ namespace Nager.AmazonProductAdvertising
         Task<BrowseNodeLookupResponse> BrowseNodeLookupAsync(long browseNodeId, AmazonResponseGroup responseGroup = AmazonResponseGroup.BrowseNodeInfo);
 
         #endregion
-
-        ExtendedWebResponse Request(AmazonOperationBase amazonOperation);  
-        Task<ExtendedWebResponse> RequestAsync(AmazonOperationBase amazonOperation);
     }
 }
