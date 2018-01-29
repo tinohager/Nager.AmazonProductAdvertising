@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Nager.AmazonProductAdvertising.Monitor.Properties {
+namespace Nager.AmazonProductAdvertising.TestUI.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
