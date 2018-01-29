@@ -72,6 +72,36 @@ namespace Nager.AmazonProductAdvertising
             return operation;
         }
 
+
+        public AmazonCartAddOperation CartAddOperation(AmazonCartItem amazonCartItem, Cart cart)
+
+        {
+            var operation = new AmazonCartAddOperation();
+            operation.AssociateTag(this._associateTag);
+            operation.AddItemToCart(amazonCartItem, cart);
+            return operation;
+
+        }
+
+        public AmazonCartGetOperation CartGetOperation(Cart cart)
+        {
+            var operation = new AmazonCartGetOperation();
+            operation.AssociateTag(this._associateTag);
+            operation.GetCart(cart);
+            return operation;
+        }
+
+
+        public AmazonCartClearOperation CartClearOperation(Cart cart)
+        {
+            var operation = new AmazonCartClearOperation();
+            operation.AssociateTag(this._associateTag);
+            operation.ParameterDictionary.Add("CartId", cart.CartId);
+            operation.ParameterDictionary.Add("HMAC", cart.HMAC);
+
+            return operation;
+        }
+
         /// <summary>
         /// ItemLookup
         /// </summary>
@@ -137,6 +167,9 @@ namespace Nager.AmazonProductAdvertising
             return null;
         }
 
+
+
+
         public CartCreateResponse CartCreate(IList<AmazonCartItem> amazonCartItems)
         {
             var operation = this.CartCreateOperation(amazonCartItems);
@@ -154,6 +187,71 @@ namespace Nager.AmazonProductAdvertising
 
             return null;
         }
+
+        public CartAddResponse CartAdd(AmazonCartItem item, string cartId, string Hmac)
+        {
+            Cart cart = new Cart() { CartId = cartId, HMAC = Hmac };
+
+            var operation = this.CartAddOperation(item, cart);
+            var webResponse = this.Request(operation);
+            if (webResponse.StatusCode == HttpStatusCode.OK)
+            {
+                return XmlHelper.ParseXml<CartAddResponse>(webResponse.Content);
+            }
+            else
+            {
+
+                var errorResponse = XmlHelper.ParseXml<CartAddErrorResponse>(webResponse.Content);
+                this.ErrorReceived?.Invoke(errorResponse);
+            }
+            return null;
+        }
+
+        public CartGetResponse CartGet(string cartId, string Hmac)
+        {
+            var cart = new Cart()
+            {
+                CartId = cartId,
+                HMAC = Hmac
+            };
+
+            var operation = this.CartGetOperation(cart);
+            var webResponse = this.Request(operation);
+            if (webResponse.StatusCode == HttpStatusCode.OK)
+            {
+                return XmlHelper.ParseXml<CartGetResponse>(webResponse.Content);
+            }
+            else
+            {
+
+                var errorResponse = XmlHelper.ParseXml<CartGetErrorResponse>(webResponse.Content);
+                this.ErrorReceived?.Invoke(errorResponse);
+            }
+            return null;
+        }
+
+        public CartClearResponse CartClear(string cartId, string Hmac)
+        {
+            var cart = new Cart()
+            {
+                CartId = cartId,
+                HMAC = Hmac
+            };
+            var operation = this.CartClearOperation(cart);
+            var webResponse = this.Request(operation);
+            if (webResponse.StatusCode == HttpStatusCode.OK)
+            {
+                return XmlHelper.ParseXml<CartClearResponse>(webResponse.Content);
+            }
+            else
+            {
+
+                var errorResponse = XmlHelper.ParseXml<CartClearErrorResponse>(webResponse.Content);
+                this.ErrorReceived?.Invoke(errorResponse);
+            }
+            return null;
+        }
+
 
         public ExtendedWebResponse Request(AmazonOperationBase amazonOperation)
         {
