@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Nager.AmazonProductAdvertising.Monitor
+namespace Nager.AmazonProductAdvertising.TestUI
 {
     public partial class AmazonItemControl : UserControl
     {

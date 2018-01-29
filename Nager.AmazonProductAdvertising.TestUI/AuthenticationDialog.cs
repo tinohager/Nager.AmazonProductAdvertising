@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Nager.AmazonProductAdvertising.Monitor
+namespace Nager.AmazonProductAdvertising.TestUI
 {
     public partial class AuthenticationDialog : Form
     {

@@ -1,4 +1,4 @@
-﻿namespace Nager.AmazonProductAdvertising.Monitor
+﻿namespace Nager.AmazonProductAdvertising.TestUI
 {
     partial class Main
     {
@@ -52,10 +52,10 @@
             this.dataGridViewResult = new System.Windows.Forms.DataGridView();
             this.ColumnAsin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesRank = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amazonItemControl = new Nager.AmazonProductAdvertising.Monitor.AmazonItemControl();
+            this.amazonItemControl = new Nager.AmazonProductAdvertising.TestUI.AmazonItemControl();
             this.tabPageXml = new System.Windows.Forms.TabPage();
             this.textBoxXml = new System.Windows.Forms.TextBox();
-            this.responseGroupControl1 = new Nager.AmazonProductAdvertising.Monitor.ResponseGroupControl();
+            this.responseGroupControl1 = new Nager.AmazonProductAdvertising.TestUI.ResponseGroupControl();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();

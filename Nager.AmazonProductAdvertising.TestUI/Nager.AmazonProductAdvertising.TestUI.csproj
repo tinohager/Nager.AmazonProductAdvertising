@@ -7,8 +7,8 @@
     <ProjectGuid>{C0046C9F-8B2A-4943-B010-DBA38B10EC8F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nager.AmazonProductAdvertising.Monitor</RootNamespace>
-    <AssemblyName>Nager.AmazonProductAdvertising.Monitor</AssemblyName>
+    <RootNamespace>Nager.AmazonProductAdvertising.TestUI</RootNamespace>
+    <AssemblyName>Nager.AmazonProductAdvertising.TestUI</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
