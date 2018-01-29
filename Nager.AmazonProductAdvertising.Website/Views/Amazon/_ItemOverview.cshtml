@@ -1,21 +1,26 @@
 ﻿@model Nager.AmazonProductAdvertising.Model.Item
-<div class="col-xs-12 col-sm-6 col-md-4" style="min-height:250px;">
+<div class="col-xs-12 col-sm-6 col-md-4 shoparticle">
     <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-6">
-            <div class="thumbnail">
-                @if (Model.MediumImage != null)
-                {
-                    <a href="/Amazon/Detail?articleNumber=@Model.ASIN"><img src="@Model.MediumImage.URL" alt="@Model.ItemAttributes.Title" border="0" /></a>
-                }
-                <div class="caption">
-                    <span>ASIN: @Model.ASIN</span>
+        <div class="col-xs-12">
+            <a href="/Amazon/Detail?articleNumber=@Model.ASIN">
+                <div class="overlay"><div class="text">Product Detail</div></div>
+                    @if (Model.MediumImage != null)
+                    {
+                        <img src="@Model.MediumImage.URL" alt="@Model.ItemAttributes.Title" title="@Model.ItemAttributes.Title" border="0" />        
+                    }
+                    else
+                    {
+                        <img src="http://via.placeholder.com/250x150/ffffff/000000/?text=No+Image+available" alt="no image available" title="no image available" />
+                    }
                 </div>
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-6">
-            <h5>@Model.ItemAttributes.Title</h5>
+            </a>
+        <div class="col-xs-12">
+            <h5>@if (Model.ItemAttributes.Title.Length > 70) { @Model.ItemAttributes.Title.Substring(0, 70)<text>...</text> } else { @Model.ItemAttributes.Title }</h5>
+            <div class="price">@(Model.OfferSummary?.LowestNewPrice?.FormattedPrice)</div>
+            @*<h5>@if (Model.ItemAttributes.Title.Length > 70) { @Model.ItemAttributes.Title.Substring(0, 70)<text>...</text> } else { @Model.ItemAttributes.Title }</h5>
             <h3>@(Model.OfferSummary?.LowestNewPrice?.FormattedPrice)</h3>
-            @Html.ActionLink("Details", "Detail", "Amazon", new { articleNumber = Model.ASIN }, new { Class = "btn btn-primary" })
+            @Html.ActionLink("Details", "Detail", "Amazon", new { articleNumber = Model.ASIN }, new { Class = "btn btn-primary" })*@
+            
         </div>
     </div>
     <div class="hidden-sm hidden-md hidden-lg"><hr /></div>

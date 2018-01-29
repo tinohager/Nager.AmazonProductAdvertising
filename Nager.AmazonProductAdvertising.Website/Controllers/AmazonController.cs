@@ -7,7 +7,14 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
 {
     public class AmazonController : Controller
     {
-        private const string AssociateTag = "nager-20";
+        private string _associateTag;
+        private AmazonEndpoint _amazonEndpoint;
+
+        public AmazonController()
+        {
+            this._associateTag = "nagerat-21";
+            this._amazonEndpoint = AmazonEndpoint.DE;
+        }
 
         private AmazonAuthentication GetConfig()
         {
@@ -30,7 +37,7 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
 
             var authentication = this.GetConfig();
 
-            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US, AssociateTag);
+            var wrapper = new AmazonWrapper(authentication, this._amazonEndpoint, this._associateTag);
             var result = wrapper.Lookup(articleNumber.Trim());
 
             return View(result);
@@ -45,7 +52,7 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
 
             var authentication = this.GetConfig();
 
-            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US, AssociateTag);
+            var wrapper = new AmazonWrapper(authentication, this._amazonEndpoint, this._associateTag);
             var result = wrapper.Lookup(articleNumbers);
 
             return View("Lookup", result);
@@ -62,8 +69,8 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
 
             var authentication = this.GetConfig();
 
-            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US, AssociateTag);
-            var responseGroup = AmazonResponseGroup.ItemAttributes | AmazonResponseGroup.Images;
+            var wrapper = new AmazonWrapper(authentication, this._amazonEndpoint, this._associateTag);
+            var responseGroup = AmazonResponseGroup.ItemAttributes | AmazonResponseGroup.Images | AmazonResponseGroup.OfferSummary;
 
             var result = wrapper.Search(search.Trim(), AmazonSearchIndex.All, responseGroup);
 
@@ -79,11 +86,15 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
 
             var authentication = this.GetConfig();
 
-            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US, AssociateTag);
+            var wrapper = new AmazonWrapper(authentication, this._amazonEndpoint, this._associateTag);
             var result = wrapper.Lookup(articleNumber.Trim());
 
-            var item = result.Items?.Item.FirstOrDefault();
+            if (result == null)
+            {
+                return null;
+            }
 
+            var item = result.Items?.Item?.FirstOrDefault();
             return View(item);
         }
     }
