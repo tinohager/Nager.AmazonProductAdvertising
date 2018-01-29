@@ -57,7 +57,7 @@
     <Compile Include="AmazonTest.cs" />
     <Compile Include="XmlParseItemLookupTest.cs" />
     <Compile Include="XmlParseBrowseNodeLookupTest.cs" />
-    <Compile Include="XmlParseCartCreateTest.cs" />
+    <Compile Include="XmlParseCartTest.cs" />
     <Compile Include="XmlParseTest.cs" />
     <Compile Include="XmlParseItemSearchTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,6 +73,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="CartCreateResponse1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CartGetResponse2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="CartGetResponse1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="ItemLookupErrorResponse.xml">

@@ -35,14 +35,14 @@ namespace Nager.AmazonProductAdvertising
         CartCreateResponse CartCreate(IList<AmazonCartItem> amazonCartItems);
         Task<CartCreateResponse> CartCreateAsync(IList<AmazonCartItem> amazonCartItems);
 
-        CartAddResponse CartAdd(AmazonCartItem item, string cartId, string Hmac);
-        Task<CartAddResponse> CartAddAsync(AmazonCartItem item, string cartId, string Hmac);
+        CartAddResponse CartAdd(AmazonCartItem item, string cartId, string hmac);
+        Task<CartAddResponse> CartAddAsync(AmazonCartItem item, string cartId, string hmac);
 
-        CartGetResponse CartGet(string cartId, string Hmac);
-        Task<CartGetResponse> CartGetAsync(string cartId, string Hmac);
+        CartGetResponse CartGet(string cartId, string hmac);
+        Task<CartGetResponse> CartGetAsync(string cartId, string hmac);
 
-        CartClearResponse CartClear(string cartId, string Hmac);
-        Task<CartClearResponse> CartClearAsync(string cartId, string Hmac);
+        CartClearResponse CartClear(string cartId, string hmac);
+        Task<CartClearResponse> CartClearAsync(string cartId, string hmac);
 
         #endregion
 

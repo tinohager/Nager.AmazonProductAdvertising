@@ -228,9 +228,9 @@ namespace Nager.AmazonProductAdvertising
             return null;
         }
 
-        public CartAddResponse CartAdd(AmazonCartItem item, string cartId, string Hmac)
+        public CartAddResponse CartAdd(AmazonCartItem item, string cartId, string hmac)
         {
-            var cart = new Cart { CartId = cartId, HMAC = Hmac };
+            var cart = new Cart { CartId = cartId, HMAC = hmac };
             var operation = this.CartAddOperation(item, cart);
 
             var webResponse = this.Request(operation);
@@ -247,9 +247,9 @@ namespace Nager.AmazonProductAdvertising
             return null;
         }
 
-        public CartGetResponse CartGet(string cartId, string Hmac)
+        public CartGetResponse CartGet(string cartId, string hmac)
         {
-            var cart = new Cart { CartId = cartId, HMAC = Hmac };
+            var cart = new Cart { CartId = cartId, HMAC = hmac };
             var operation = this.CartGetOperation(cart);
 
             var webResponse = this.Request(operation);
@@ -266,9 +266,9 @@ namespace Nager.AmazonProductAdvertising
             return null;
         }
 
-        public CartClearResponse CartClear(string cartId, string Hmac)
+        public CartClearResponse CartClear(string cartId, string hmac)
         {
-            var cart = new Cart { CartId = cartId, HMAC = Hmac };
+            var cart = new Cart { CartId = cartId, HMAC = hmac };
             var operation = this.CartClearOperation(cart);
 
             var webResponse = this.Request(operation);
