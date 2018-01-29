@@ -1,5 +1,3 @@
-
-
 using Nager.AmazonProductAdvertising.Model;
 
 namespace Nager.AmazonProductAdvertising.Operation
@@ -13,13 +11,8 @@ namespace Nager.AmazonProductAdvertising.Operation
 
         public void ClearCart(Cart cart)
         {
-          
             base.ParameterDictionary.Add($"CartId", cart.CartId);
-             base.ParameterDictionary.Add($"HMAC",cart.HMAC);
-                
+            base.ParameterDictionary.Add($"HMAC", cart.HMAC);
         }
-        
-
-
     }
 }

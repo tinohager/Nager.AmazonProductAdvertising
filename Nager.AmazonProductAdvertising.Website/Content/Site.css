@@ -137,11 +137,15 @@ footer {
     color: #ffffff;
 }
 
-    footer a {
-        color: #ffffff;
-        text-decoration: underline;
-    }
+footer a {
+    color: #ffffff;
+    text-decoration: underline;
+}
 
 .footer-col {
     text-align: left;
+}
+
+.fa-space {
+    padding-right: 10px;
 }
