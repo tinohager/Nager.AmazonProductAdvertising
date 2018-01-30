@@ -1,6 +1,6 @@
 ﻿@model Nager.AmazonProductAdvertising.Model.Cart
 @{
-    ViewBag.Title = $"{Model?.CartId} {Model?.SubTotal.FormattedPrice}";
+    ViewBag.Title = $"My Cart";
 }
 @if (Model != null)
 {
@@ -8,16 +8,15 @@
         <div class="col-xs-12">
             <div class="row">
                 <div class="col-xs-12">
-                    <h3>@Model.CartId <small>@Model.SubTotal.FormattedPrice</small></h3>
+                    <h3>My Cart <small>(@Model.CartItems.CartItem.Length)</small></h3>
                 </div>
             </div>
-            <table class="table table-bordered">
+            <table class="table table-bordered table-responsive">
                 <tr>
-                    <th>Id</th>
-                    <th>ASIN</th>
-                    <th>Title</th>
-                    <th>ProductGroup</th>
-                    <th>SellerNickname</th>
+                    <th>Product</th>
+                    <th class="hidden-xs">Title</th>
+                    <th class="hidden-xs">ProductGroup</th>
+                    <th class="hidden-xs">SellerNickname</th>
                     <th>Quantity</th>
                     <th class="text-right" width="100">Price</th>
 
@@ -25,22 +24,23 @@
                 @foreach (var item in Model?.CartItems.CartItem)
                 {
                 <tr>
-                    <td>@item.CartItemId</td>
-                    <td>@item.ASIN</td>
-                    <td>@item.Title</td>
-                    <td>@item.ProductGroup</td>
-                    <td>@item.SellerNickname</td>
+                    <td class="hidden-xs">@item.ASIN</td>
+                    <td class="hidden-xs">@item.Title</td>
+                    <td class="visible-xs">@item.Title<br /><br />@item.ASIN</td>
+                    <td class="hidden-xs">@item.ProductGroup</td>
+                    <td class="hidden-xs">@item.SellerNickname</td>
                     <td>@item.Quantity</td>
                     <td class="text-right">@item.Price.FormattedPrice</td>
                 </tr>
                 }
                 <tr>
-                    <td colspan="6"></td>
+                    <td colspan="5" class="visible-sm visible-md visible-lg"></td>
+                    <td colspan="2" class="visible-xs"></td>
                     <td class="text-right"><strong>@Model.SubTotal.FormattedPrice</strong></td>
                 </tr>
             </table>
 
-            <a class="btn btn-default" href="@Model.PurchaseURL">Go to Amazon</a>
+            <a class="btn btn-primary" href="@Model.PurchaseURL">Checkout on Amazon</a>
         </div>
     </div>
 }
