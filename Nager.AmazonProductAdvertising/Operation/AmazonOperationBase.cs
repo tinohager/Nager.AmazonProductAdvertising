@@ -1,5 +1,7 @@
 ﻿using Nager.AmazonProductAdvertising.Model;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Nager.AmazonProductAdvertising.Operation
 {
@@ -12,14 +14,12 @@ namespace Nager.AmazonProductAdvertising.Operation
             this.ParameterDictionary = new Dictionary<string, string>();
         }
 
-        public void ResponseGroup(AmazonResponseGroup responseGroup)
+        public void ResponseGroup(IList<AmazonResponseGroup> responseGroups)
         {
-            this.AddOrReplace("ResponseGroup", responseGroup.ToString().Replace(" ", ""));
+            this.AddOrReplace("ResponseGroup", String.Join(",", responseGroups.Select(s => s.ToString())));
 
-            if (responseGroup == AmazonResponseGroup.RelatedItems)
-            {
+            if (responseGroups.Contains(AmazonResponseGroup.RelatedItems))
                 RelationshipType(AmazonRelationshipType.Tracks);
-            }
         }
 
         public void RelationshipType(AmazonRelationshipType relationshipType)
