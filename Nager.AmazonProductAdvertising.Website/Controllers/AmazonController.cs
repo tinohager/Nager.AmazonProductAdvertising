@@ -73,7 +73,7 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
             var wrapper = new AmazonWrapper(authentication, this._amazonEndpoint, this._associateTag);
             var responseGroup = AmazonResponseGroup.ItemAttributes | AmazonResponseGroup.Images | AmazonResponseGroup.OfferSummary;
 
-            var result = wrapper.Search(search.Trim(), AmazonSearchIndex.All, responseGroup);
+            var result = wrapper.Search(search.Trim(), responseGroup, AmazonSearchIndex.All);
 
             return View(result);
         }

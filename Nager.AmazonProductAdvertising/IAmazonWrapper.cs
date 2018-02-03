@@ -25,8 +25,8 @@ namespace Nager.AmazonProductAdvertising
 
         #region Search
 
-        AmazonItemResponse Search(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large);
-        Task<AmazonItemResponse> SearchAsync(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large);
+        AmazonItemResponse Search(string search, IList<AmazonResponseGroup> responseGroups, AmazonSearchIndex searchIndex = AmazonSearchIndex.All);
+        Task<AmazonItemResponse> SearchAsync(string search, IList<AmazonResponseGroup> responseGroups , AmazonSearchIndex searchIndex = AmazonSearchIndex.All);
 
         #endregion
 
@@ -48,9 +48,9 @@ namespace Nager.AmazonProductAdvertising
 
         #region BrowseNode
 
-        BrowseNodeLookupResponse BrowseNodeLookup(long browseNodeId, AmazonResponseGroup responseGroup = AmazonResponseGroup.BrowseNodeInfo);
+        BrowseNodeLookupResponse BrowseNodeLookup(long browseNodeId, IList<AmazonResponseGroup> responseGroups);
 
-        Task<BrowseNodeLookupResponse> BrowseNodeLookupAsync(long browseNodeId, AmazonResponseGroup responseGroup = AmazonResponseGroup.BrowseNodeInfo);
+        Task<BrowseNodeLookupResponse> BrowseNodeLookupAsync(long browseNodeId, IList<AmazonResponseGroup> responseGroups);
 
         #endregion
     }

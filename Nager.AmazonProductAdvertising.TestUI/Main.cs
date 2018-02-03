@@ -45,7 +45,7 @@ namespace Nager.AmazonProductAdvertising.TestUI
 
             var wrapper = new AmazonWrapper(this._authentication, endpoint, "nagerat-21");
             wrapper.XmlReceived += XmlReceived;
-            var result = await wrapper.SearchAsync(search, searchIndex, responseGroup);
+            var result = await wrapper.SearchAsync(search, new[] { responseGroup }, searchIndex);
             wrapper.XmlReceived -= XmlReceived;
 
             if (result == null)

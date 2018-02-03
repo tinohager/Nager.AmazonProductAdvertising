@@ -71,12 +71,22 @@ namespace Nager.AmazonProductAdvertising
         /// <returns></returns>
         public Task<AmazonItemResponse> LookupAsync(string articleNumber, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
-            return this.LookupAsync(new string[1] { articleNumber }, responseGroup);
+            return this.LookupAsync(new string[1] { articleNumber }, new AmazonResponseGroup[1] { responseGroup });
         }
 
-        public async Task<AmazonItemResponse> LookupAsync(IList<string> articleNumbers, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
+        public Task<AmazonItemResponse> LookupAsync(IList<string> articleNumbers, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
-            var operation = this.ItemLookupOperation(articleNumbers, responseGroup);
+            return this.LookupAsync(articleNumbers, new AmazonResponseGroup[1] { responseGroup });
+        }
+
+        public Task<AmazonItemResponse> LookupAsync(string articleNumber, IList<AmazonResponseGroup> responseGroups)
+        {
+            return this.LookupAsync(new string[1] { articleNumber }, responseGroups);
+        }
+
+        public async Task<AmazonItemResponse> LookupAsync(IList<string> articleNumbers, IList<AmazonResponseGroup> responseGroups)
+        {
+            var operation = this.ItemLookupOperation(articleNumbers, responseGroups);
 
             var webResponse = await this.RequestAsync(operation);
             if (webResponse.StatusCode == HttpStatusCode.OK)
@@ -96,9 +106,9 @@ namespace Nager.AmazonProductAdvertising
 
         #region Search
 
-        public async Task<AmazonItemResponse> SearchAsync(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
+        public async Task<AmazonItemResponse> SearchAsync(string search, IList<AmazonResponseGroup> responseGroups, AmazonSearchIndex searchIndex = AmazonSearchIndex.All)
         {
-            var operation = this.ItemSearchOperation(search, searchIndex, responseGroup);
+            var operation = this.ItemSearchOperation(search, responseGroups, searchIndex);
 
             var webResponse = await this.RequestAsync(operation);
             if (webResponse.StatusCode == HttpStatusCode.OK)
@@ -197,9 +207,9 @@ namespace Nager.AmazonProductAdvertising
 
         #region BrowseNode
 
-        public async Task<BrowseNodeLookupResponse> BrowseNodeLookupAsync(long browseNodeId, AmazonResponseGroup responseGroup = AmazonResponseGroup.BrowseNodeInfo)
+        public async Task<BrowseNodeLookupResponse> BrowseNodeLookupAsync(long browseNodeId, IList<AmazonResponseGroup> responseGroups)
         {
-            var operation = this.BrowseNodeLookupOperation(browseNodeId, responseGroup);
+            var operation = this.BrowseNodeLookupOperation(browseNodeId, responseGroups);
 
             var webResponse = await this.RequestAsync(operation);
             if (webResponse.StatusCode == HttpStatusCode.OK)

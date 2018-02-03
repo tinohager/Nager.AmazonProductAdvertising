@@ -15,19 +15,19 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             Console.WriteLine("Please insert secretkey");
             var secretKey = Console.ReadLine();
             Console.WriteLine("------------------------------------------");
-            
+
             var authentication = new AmazonAuthentication();
             authentication.AccessKey = accessKey;
             authentication.SecretKey = secretKey;
 
-            //LookupCheck.ItemLookupRequest(authentication);
-            //ItemSearchRequest(authentication);
-            //CustomItemSearchRequest1(authentication);
-            //CustomItemSearchRequest2(authentication);
-            //BrowseNodeLookupRequest1(authentication);
-            //BrowseNodeLookupRequest2(authentication);
-            //BrowseNodeLookupRequest2(authentication);
-            //CreateCart1(authentication);
+            LookupCheck.ItemLookupRequest(authentication);
+            ItemSearchRequest(authentication);
+            CustomItemSearchRequest1(authentication);
+            CustomItemSearchRequest2(authentication);
+            BrowseNodeLookupRequest1(authentication);
+            BrowseNodeLookupRequest2(authentication);
+            BrowseNodeLookupRequest2(authentication);
+            CreateCart1(authentication);
 
             Console.ReadLine();
         }
@@ -38,7 +38,7 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             Console.WriteLine("------------------------------------------");
 
             var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
-            var result = wrapper.Search("canon eos", AmazonSearchIndex.Electronics, AmazonResponseGroup.Large);
+            var result = wrapper.Search("canon eos", new[] { AmazonResponseGroup.Large }, AmazonSearchIndex.Electronics);
 
             foreach (var item in result.Items.Item)
             {
@@ -56,7 +56,7 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             Console.WriteLine("------------------------------------------");
 
             var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
-            var searchOperation = wrapper.ItemSearchOperation("canon eos", AmazonSearchIndex.Electronics);
+            var searchOperation = wrapper.ItemSearchOperation("canon eos", new AmazonResponseGroup[] { AmazonResponseGroup.Small }, AmazonSearchIndex.Electronics);
             searchOperation.Sort(AmazonSearchSort.Price, AmazonSearchSortOrder.Descending);
             searchOperation.Skip(2);
             var webResponse = wrapper.Request(searchOperation);
@@ -107,7 +107,7 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             Console.WriteLine("------------------------------------------");
 
             var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
-            var result = wrapper.BrowseNodeLookup(78193031, AmazonResponseGroup.TopSellers);
+            var result = wrapper.BrowseNodeLookup(78193031, new[] { AmazonResponseGroup.TopSellers });
 
             foreach (var item in result.BrowseNodes.BrowseNode.TopSellers.TopSeller)
             {
@@ -128,7 +128,7 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             Console.WriteLine("------------------------------------------");
 
             var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
-            var result = wrapper.BrowseNodeLookup(78193031, AmazonResponseGroup.BrowseNodeInfo);
+            var result = wrapper.BrowseNodeLookup(78193031, new[] { AmazonResponseGroup.BrowseNodeInfo });
 
             foreach (var item in result.BrowseNodes.BrowseNode.Children)
             {

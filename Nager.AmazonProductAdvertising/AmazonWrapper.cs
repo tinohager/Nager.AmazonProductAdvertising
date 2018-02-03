@@ -72,8 +72,8 @@ namespace Nager.AmazonProductAdvertising
         }
 
         public void SetUserAgent(string userAgent)
-        {  
-            this._userAgent = userAgent;  
+        {
+            this._userAgent = userAgent;
         }
 
         public ExtendedWebResponse Request(AmazonOperationBase amazonOperation)
@@ -87,30 +87,30 @@ namespace Nager.AmazonProductAdvertising
 
         #region Operations
 
-        public AmazonItemLookupOperation ItemLookupOperation(IList<string> articleNumbers, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        public AmazonItemLookupOperation ItemLookupOperation(IList<string> articleNumbers, IList<AmazonResponseGroup> amazonResponseGroups)
         {
             var operation = new AmazonItemLookupOperation();
-            operation.ResponseGroup(amazonResponseGroup);
+            operation.ResponseGroup(amazonResponseGroups);
             operation.Get(articleNumbers);
             operation.AssociateTag(this._associateTag);
 
             return operation;
         }
 
-        public AmazonItemSearchOperation ItemSearchOperation(string search, AmazonSearchIndex amazonSearchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        public AmazonItemSearchOperation ItemSearchOperation(string search, IList<AmazonResponseGroup> amazonResponseGroups, AmazonSearchIndex amazonSearchIndex = AmazonSearchIndex.All)
         {
             var operation = new AmazonItemSearchOperation();
-            operation.ResponseGroup(amazonResponseGroup);
+            operation.ResponseGroup(amazonResponseGroups);
             operation.Keywords(search);
             operation.SearchIndex(amazonSearchIndex);
             operation.AssociateTag(this._associateTag);
             return operation;
         }
 
-        public AmazonBrowseNodeLookupOperation BrowseNodeLookupOperation(long browseNodeId, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.BrowseNodeInfo)
+        public AmazonBrowseNodeLookupOperation BrowseNodeLookupOperation(long browseNodeId, IList<AmazonResponseGroup> amazonResponseGroups)
         {
             var operation = new AmazonBrowseNodeLookupOperation();
-            operation.ResponseGroup(amazonResponseGroup);
+            operation.ResponseGroup(amazonResponseGroups);
             operation.BrowseNodeId(browseNodeId);
             operation.AssociateTag(this._associateTag);
 
@@ -163,12 +163,22 @@ namespace Nager.AmazonProductAdvertising
         /// <returns></returns>
         public AmazonItemResponse Lookup(string articleNumber, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
-            return this.Lookup(new string[1] { articleNumber }, responseGroup);
+            return this.Lookup(new string[1] { articleNumber }, new AmazonResponseGroup[1] { responseGroup });
         }
 
         public AmazonItemResponse Lookup(IList<string> articleNumbers, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
-            var operation = this.ItemLookupOperation(articleNumbers, responseGroup);
+            return this.Lookup(articleNumbers, new AmazonResponseGroup[1] { responseGroup });
+        }
+
+        public AmazonItemResponse Lookup(string articleNumber, IList<AmazonResponseGroup> responseGroups)
+        {
+            return this.Lookup(new string[1] { articleNumber }, responseGroups);
+        }
+
+        public AmazonItemResponse Lookup(IList<string> articleNumbers, IList<AmazonResponseGroup> responseGroups)
+        {
+            var operation = this.ItemLookupOperation(articleNumbers, responseGroups);
 
             var webResponse = this.Request(operation);
             if (webResponse.StatusCode == HttpStatusCode.OK)
@@ -188,9 +198,9 @@ namespace Nager.AmazonProductAdvertising
 
         #region Search
 
-        public AmazonItemResponse Search(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
+        public AmazonItemResponse Search(string search, IList<AmazonResponseGroup> responseGroups, AmazonSearchIndex searchIndex = AmazonSearchIndex.All)
         {
-            var operation = this.ItemSearchOperation(search, searchIndex, responseGroup);
+            var operation = this.ItemSearchOperation(search, responseGroups, searchIndex);
 
             var webResponse = this.Request(operation);
             if (webResponse.StatusCode == HttpStatusCode.OK)
@@ -204,6 +214,11 @@ namespace Nager.AmazonProductAdvertising
             }
 
             return null;
+        }
+
+        public AmazonItemResponse Search(string search, AmazonResponseGroup responseGroup, AmazonSearchIndex searchIndex = AmazonSearchIndex.All)
+        {
+            return Search(search, new AmazonResponseGroup[] { responseGroup }, searchIndex);
         }
 
         #endregion
@@ -289,9 +304,9 @@ namespace Nager.AmazonProductAdvertising
 
         #region BrowseNode
 
-        public BrowseNodeLookupResponse BrowseNodeLookup(long browseNodeId, AmazonResponseGroup responseGroup = AmazonResponseGroup.BrowseNodeInfo)
+        public BrowseNodeLookupResponse BrowseNodeLookup(long browseNodeId, IList<AmazonResponseGroup> responseGroups)
         {
-            var operation = this.BrowseNodeLookupOperation(browseNodeId, responseGroup);
+            var operation = this.BrowseNodeLookupOperation(browseNodeId, responseGroups);
 
             var webResponse = this.Request(operation);
             if (webResponse.StatusCode == HttpStatusCode.OK)
