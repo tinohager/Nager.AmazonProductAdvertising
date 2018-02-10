@@ -2,17 +2,17 @@
 
   <PropertyGroup>
 	<TargetFrameworks>net45;net461;netstandard2.0</TargetFrameworks>
-    <Version>1.0.30</Version>
+    <Version>1.1.0</Version>
     <Authors>Tino Hager</Authors>
     <Company>nager.at</Company>
     <PackageProjectUrl>https://github.com/tinohager/Nager.AmazonProductAdvertising</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/tinohager/Nager.AmazonProductAdvertising/blob/master/Licence.txt</PackageLicenseUrl>
     <Copyright>Copyright ©  2017</Copyright>
-    <PackageReleaseNotes>optimize cart support, thanks to @umarch06</PackageReleaseNotes>
+    <PackageReleaseNotes>optimize cart support, thanks to @mohammedwed</PackageReleaseNotes>
     <PackageTags>Amazon Product Advertising API Amazon.Product.API</PackageTags>
     <Description>Amazon Product Advertising API, Supports ItemSeach with ASIN, EAN, UPC and ISBN, ItemLookup and BrowseNodeLookup</Description>
-    <AssemblyVersion>1.0.30</AssemblyVersion>
-    <FileVersion>1.0.30</FileVersion>
+    <AssemblyVersion>1.1.0</AssemblyVersion>
+    <FileVersion>1.1.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
