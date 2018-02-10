@@ -21,7 +21,8 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             authentication.SecretKey = secretKey;
 
             //LookupCheck.ItemLookupRequest(authentication);
-            //ItemSearchRequest(authentication);
+            ItemSearchRequest1(authentication);
+            ItemSearchRequest2(authentication);
             //CustomItemSearchRequest1(authentication);
             //CustomItemSearchRequest2(authentication);
             //BrowseNodeLookupRequest1(authentication);
@@ -32,13 +33,31 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             Console.ReadLine();
         }
 
-        static void ItemSearchRequest(AmazonAuthentication authentication)
+        static void ItemSearchRequest1(AmazonAuthentication authentication)
         {
             Console.WriteLine("ItemSearch");
             Console.WriteLine("------------------------------------------");
 
             var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
-            var result = wrapper.Search("canon eos", AmazonSearchIndex.Electronics, AmazonResponseGroup.Large);
+            var result = wrapper.Search("canon eos", AmazonSearchIndex.Electronics, AmazonResponseGroup.Small | AmazonResponseGroup.TopSellers);
+
+            foreach (var item in result.Items.Item)
+            {
+                Console.WriteLine(item.ItemAttributes.Title);
+            }
+
+            Console.WriteLine("found {0} items", result.Items.Item.Length);
+
+            Console.WriteLine("------------------------------------------");
+        }
+
+        static void ItemSearchRequest2(AmazonAuthentication authentication)
+        {
+            Console.WriteLine("ItemSearch");
+            Console.WriteLine("------------------------------------------");
+
+            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
+            var result = wrapper.Search("canon eos", AmazonSearchIndex.Electronics, AmazonResponseGroup.Small | AmazonResponseGroup.Accessories);
 
             foreach (var item in result.Items.Item)
             {

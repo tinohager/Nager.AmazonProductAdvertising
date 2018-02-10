@@ -13,9 +13,9 @@ Nager.AmazonProductAdvertising is free for you to use, but donations are very we
 - [x] BrowseNodeLookup
 - [x] Cart Operations
   - [x] Create
-  - [ ] Add
-  - [ ] Get
-  - [ ] Clear
+  - [x] Add
+  - [x] Get
+  - [x] Clear
   - [ ] Modify
 - [x] Async support
 - [x] Support multiple Amazon endpoints
@@ -41,6 +41,16 @@ authentication.SecretKey = "secretkey";
 
 var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US, "nager-20");
 var result = wrapper.Search("canon eos", AmazonSearchIndex.Electronics, AmazonResponseGroup.Large);
+```
+
+##### Item Search with multiple response groups
+```cs
+var authentication = new AmazonAuthentication();
+authentication.AccessKey = "accesskey";
+authentication.SecretKey = "secretkey";
+
+var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US, "nager-20");
+var result = wrapper.Search("canon eos", AmazonSearchIndex.Electronics, AmazonResponseGroup.Small | AmazonResponseGroup.TopSellers);
 ```
 
 ##### Item Lookup
@@ -78,7 +88,7 @@ var xmlResponse = wrapper.Request(searchOperation);
 var result = XmlHelper.ParseXml<ItemSearchResponse>(xmlResponse.Content);
 ```
 
-##### Debugging
+##### Debugging (find a problem)
 ```cs
 var authentication = new AmazonAuthentication();
 authentication.AccessKey = "accesskey";
