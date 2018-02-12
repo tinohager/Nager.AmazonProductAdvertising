@@ -4,7 +4,7 @@ namespace Nager.AmazonProductAdvertising.TestConsole
 {
     public static class LookupCheck
     {
-        static void ItemLookupRequest(AmazonAuthentication authentication)
+        public static void ItemLookupRequest(AmazonAuthentication authentication)
         {
             Console.WriteLine("ItemLookup");
             Console.WriteLine("------------------------------------------");
