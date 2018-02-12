@@ -20,15 +20,15 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             authentication.AccessKey = accessKey;
             authentication.SecretKey = secretKey;
 
-            //LookupCheck.ItemLookupRequest(authentication);
+            LookupCheck.ItemLookupRequest(authentication);
             ItemSearchRequest1(authentication);
             ItemSearchRequest2(authentication);
-            //CustomItemSearchRequest1(authentication);
-            //CustomItemSearchRequest2(authentication);
-            //BrowseNodeLookupRequest1(authentication);
-            //BrowseNodeLookupRequest2(authentication);
-            //BrowseNodeLookupRequest2(authentication);
-            //CreateCart1(authentication);
+            CustomItemSearchRequest1(authentication);
+            CustomItemSearchRequest2(authentication);
+            BrowseNodeLookupRequest1(authentication);
+            BrowseNodeLookupRequest2(authentication);
+            BrowseNodeLookupRequest2(authentication);
+            CreateCart1(authentication);
 
             Console.ReadLine();
         }
@@ -39,7 +39,7 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             Console.WriteLine("------------------------------------------");
 
             var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
-            var result = wrapper.Search("canon eos", AmazonSearchIndex.Electronics, AmazonResponseGroup.Small | AmazonResponseGroup.TopSellers);
+            var result = wrapper.Search("canon eos", AmazonSearchIndex.Electronics, AmazonResponseGroup.Large);
 
             foreach (var item in result.Items.Item)
             {
@@ -57,11 +57,11 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             Console.WriteLine("------------------------------------------");
 
             var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
-            var result = wrapper.Search("canon eos", AmazonSearchIndex.Electronics, AmazonResponseGroup.Small | AmazonResponseGroup.Accessories);
+            var result = wrapper.Search("canon eos", AmazonSearchIndex.Electronics, AmazonResponseGroup.Images | AmazonResponseGroup.Similarities);
 
             foreach (var item in result.Items.Item)
             {
-                Console.WriteLine(item.ItemAttributes.Title);
+                Console.WriteLine($"ASIN:{item.ASIN}, SimilarCount:{item.SimilarProducts.Length}");
             }
 
             Console.WriteLine("found {0} items", result.Items.Item.Length);
