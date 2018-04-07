@@ -44,11 +44,14 @@ namespace Nager.AmazonProductAdvertising
             return operation;
         }
 
-        public AmazonItemSearchOperation ItemSearchOperation(string search, AmazonSearchIndex amazonSearchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        public AmazonItemSearchOperation ItemSearchOperation(string search, short ItemPage = 0, AmazonSearchIndex amazonSearchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+
         {
+
             var operation = new AmazonItemSearchOperation();
             operation.ResponseGroup(amazonResponseGroup);
             operation.Keywords(search);
+            operation.ItemPage(ItemPage);
             operation.SearchIndex(amazonSearchIndex);
             operation.AssociateTag(this._associateTag);
             return operation;
@@ -131,22 +134,26 @@ namespace Nager.AmazonProductAdvertising
             return null;
         }
 
-        public AmazonItemResponse Search(string search, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
+        public AmazonItemResponse Search(string search, short PageNum, AmazonSearchIndex searchIndex = AmazonSearchIndex.All, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
-            var operation = this.ItemSearchOperation(search, searchIndex, responseGroup);
-
+            var operation = this.ItemSearchOperation(search, PageNum, searchIndex, responseGroup);
             var webResponse = this.Request(operation);
             if (webResponse.StatusCode == HttpStatusCode.OK)
             {
                 return XmlHelper.ParseXml<ItemSearchResponse>(webResponse.Content);
             }
+
             else
             {
                 var errorResponse = XmlHelper.ParseXml<ItemSearchErrorResponse>(webResponse.Content);
                 this.ErrorReceived?.Invoke(errorResponse);
+
             }
 
+
+
             return null;
+
         }
 
         public BrowseNodeLookupResponse BrowseNodeLookup(long browseNodeId, AmazonResponseGroup responseGroup = AmazonResponseGroup.BrowseNodeInfo)

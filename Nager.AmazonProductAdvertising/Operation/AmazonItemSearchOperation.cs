@@ -16,6 +16,11 @@ namespace Nager.AmazonProductAdvertising.Operation
             return this.AddOrReplace("Keywords", keywords);
         }
 
+        public AmazonItemSearchOperation ItemPage(short ItemPage)
+        {
+            return this.AddOrReplace("ItemPage", ItemPage);
+        }
+
         public AmazonItemSearchOperation Skip(int value)
         {
             //http://docs.aws.amazon.com/AWSECommerceService/latest/DG/MaximumNumberofPages.html
