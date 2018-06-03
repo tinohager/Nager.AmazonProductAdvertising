@@ -116,3 +116,8 @@ var result = wrapper.CartCreate(items);
 
 ### Amazon Documentation
 [API Reference](http://docs.aws.amazon.com/AWSECommerceService/latest/DG/CHAP_ApiReference.html)
+
+### Alternative projects
+| Language | Project |
+| ------------- | ------------- |
+| Phyton | [bottlenose](https://github.com/lionheart/bottlenose) |
