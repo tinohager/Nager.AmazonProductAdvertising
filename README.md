@@ -4,8 +4,7 @@ Allow access to amazon product advertising API, you can search a product over th
 ### Support this project
 Nager.AmazonProductAdvertising is free for you to use, but donations are very welcome. If Nager.AmazonProductAdvertising has ever helped you out on a project or saved you time, please consider sending a donation. :moneybag:
 
-- [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/nagerat/25)
-- BTC: 3PjuVRcAaKPv9yLLmrVUY9mqGngPDm3nPc (Bitcoin)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/nagerat/25)
 
 ### Features
 - [x] ItemLookup
