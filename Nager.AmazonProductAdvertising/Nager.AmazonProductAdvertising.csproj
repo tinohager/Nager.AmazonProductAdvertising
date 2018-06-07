@@ -2,7 +2,7 @@
 
   <PropertyGroup>
 	<TargetFrameworks>net45;net461;netstandard2.0</TargetFrameworks>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
     <Authors>Tino Hager</Authors>
     <Company>nager.at</Company>
     <PackageProjectUrl>https://github.com/tinohager/Nager.AmazonProductAdvertising</PackageProjectUrl>
@@ -11,7 +11,7 @@
     <PackageReleaseNotes>add australia support, thanks to @andreigec</PackageReleaseNotes>
     <PackageTags>Amazon Product Advertising API Amazon.Product.API</PackageTags>
     <Description>Amazon Product Advertising API, Supports ItemSeach with ASIN, EAN, UPC and ISBN, ItemLookup and BrowseNodeLookup</Description>
-    <AssemblyVersion>1.2.0</AssemblyVersion>
+    <AssemblyVersion>1.2.1</AssemblyVersion>
     <FileVersion>1.1.0</FileVersion>
   </PropertyGroup>
 
