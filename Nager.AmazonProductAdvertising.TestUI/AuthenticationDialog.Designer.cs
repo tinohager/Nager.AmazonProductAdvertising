@@ -1,4 +1,4 @@
-﻿namespace Nager.AmazonProductAdvertising.Monitor
+﻿namespace Nager.AmazonProductAdvertising.TestUI
 {
     partial class AuthenticationDialog
     {

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Nager.AmazonProductAdvertising.Monitor.Properties {
+namespace Nager.AmazonProductAdvertising.TestUI.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Nager.AmazonProductAdvertising.Monitor.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Nager.AmazonProductAdvertising.Monitor.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Nager.AmazonProductAdvertising.TestUI.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

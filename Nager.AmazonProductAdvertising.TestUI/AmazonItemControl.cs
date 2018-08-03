@@ -2,11 +2,11 @@
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Nager.AmazonProductAdvertising.Monitor
+namespace Nager.AmazonProductAdvertising.TestUI
 {
-    public partial class UserControlItem : UserControl
+    public partial class AmazonItemControl : UserControl
     {
-        public UserControlItem()
+        public AmazonItemControl()
         {
             this.InitializeComponent();
         }

@@ -15,6 +15,16 @@ namespace Nager.AmazonProductAdvertising.Operation
         public void ResponseGroup(AmazonResponseGroup responseGroup)
         {
             this.AddOrReplace("ResponseGroup", responseGroup.ToString().Replace(" ", ""));
+
+            if (responseGroup == AmazonResponseGroup.RelatedItems)
+            {
+                RelationshipType(AmazonRelationshipType.Tracks);
+            }
+        }
+
+        public void RelationshipType(AmazonRelationshipType relationshipType)
+        {
+            this.AddOrReplace("RelationshipType", relationshipType.ToString());
         }
 
         public void SearchIndex(AmazonSearchIndex searchIndex)

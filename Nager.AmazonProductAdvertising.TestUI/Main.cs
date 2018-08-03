@@ -1,15 +1,17 @@
 ﻿using Nager.AmazonProductAdvertising.Model;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace Nager.AmazonProductAdvertising.Monitor
+namespace Nager.AmazonProductAdvertising.TestUI
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
         private AmazonAuthentication _authentication;
 
-        public Form1()
+        public Main()
         {
             this.InitializeComponent();
             var dialog = new AuthenticationDialog();
@@ -22,6 +24,7 @@ namespace Nager.AmazonProductAdvertising.Monitor
             this.comboBoxEndpoint.DataSource = Enum.GetValues(typeof(AmazonEndpoint));
             this.comboBoxEndpoint.SelectedItem = AmazonEndpoint.DE;
             this.comboBoxSearchIndex.DataSource = Enum.GetValues(typeof(AmazonSearchIndex));
+
             this.comboBoxResponseGroup.DataSource = Enum.GetValues(typeof(AmazonResponseGroup));
             this.comboBoxResponseGroup.SelectedItem = AmazonResponseGroup.Large;
 
@@ -59,7 +62,7 @@ namespace Nager.AmazonProductAdvertising.Monitor
         {
             var asin = this.textBoxAsin.Text;
             var endpoint = (AmazonEndpoint)this.comboBoxEndpoint.SelectedItem;
-            var responseGroup = (AmazonResponseGroup)this.comboBoxResponseGroup.SelectedItem;
+            var responseGroup = this.responseGroupControl1.GetResponseGroup();
 
             var wrapper = new AmazonWrapper(this._authentication, endpoint, "nagerat-21");
             wrapper.XmlReceived += XmlReceived;
@@ -90,7 +93,7 @@ namespace Nager.AmazonProductAdvertising.Monitor
                 return;
             }
 
-            this.userControlItem.ShowItem(item);
+            this.amazonItemControl.ShowItem(item);
         }
     }
 }

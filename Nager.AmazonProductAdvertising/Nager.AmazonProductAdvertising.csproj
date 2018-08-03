@@ -2,20 +2,23 @@
 
   <PropertyGroup>
 	<TargetFrameworks>net45;net461;netstandard2.0</TargetFrameworks>
-    <Version>1.0.26</Version>
+    <Version>1.2.2</Version>
     <Authors>Tino Hager</Authors>
     <Company>nager.at</Company>
     <PackageProjectUrl>https://github.com/tinohager/Nager.AmazonProductAdvertising</PackageProjectUrl>
-    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
-    <Copyright>Copyright ©  2017</Copyright>
-    <PackageReleaseNotes>add .netstandard 2.0 support</PackageReleaseNotes>
+    <PackageLicenseUrl>https://github.com/tinohager/Nager.AmazonProductAdvertising/blob/master/Licence.txt</PackageLicenseUrl>
+    <Copyright>Copyright ©  2018</Copyright>
+    <PackageReleaseNotes>Add additional search indexes to support the US endpoint.</PackageReleaseNotes>
     <PackageTags>Amazon Product Advertising API Amazon.Product.API</PackageTags>
     <Description>Amazon Product Advertising API, Supports ItemSeach with ASIN, EAN, UPC and ISBN, ItemLookup and BrowseNodeLookup</Description>
-    <AssemblyVersion>1.0.26</AssemblyVersion>
-    <FileVersion>1.0.26</FileVersion>
+    <AssemblyVersion>1.2.2</AssemblyVersion>
+    <FileVersion>1.1.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="install.ps1">
+      <PackagePath>tools\</PackagePath>
+    </Content>
     <PackageReference Include="Nager.ArticleNumber" Version="1.0.3" />
   </ItemGroup>
 

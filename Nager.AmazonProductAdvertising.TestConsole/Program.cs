@@ -20,19 +20,20 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             authentication.AccessKey = accessKey;
             authentication.SecretKey = secretKey;
 
-            //LookupCheck.ItemLookupRequest(authentication);
-            //ItemSearchRequest(authentication);
-            //CustomItemSearchRequest1(authentication);
-            //CustomItemSearchRequest2(authentication);
-            //BrowseNodeLookupRequest1(authentication);
-            //BrowseNodeLookupRequest2(authentication);
-            //BrowseNodeLookupRequest2(authentication);
-            //CreateCart1(authentication);
+            LookupCheck.ItemLookupRequest(authentication);
+            ItemSearchRequest1(authentication);
+            ItemSearchRequest2(authentication);
+            CustomItemSearchRequest1(authentication);
+            CustomItemSearchRequest2(authentication);
+            BrowseNodeLookupRequest1(authentication);
+            BrowseNodeLookupRequest2(authentication);
+            BrowseNodeLookupRequest2(authentication);
+            CreateCart1(authentication);
 
             Console.ReadLine();
         }
 
-        static void ItemSearchRequest(AmazonAuthentication authentication)
+        static void ItemSearchRequest1(AmazonAuthentication authentication)
         {
             Console.WriteLine("ItemSearch");
             Console.WriteLine("------------------------------------------");
@@ -43,6 +44,24 @@ namespace Nager.AmazonProductAdvertising.TestConsole
             foreach (var item in result.Items.Item)
             {
                 Console.WriteLine(item.ItemAttributes.Title);
+            }
+
+            Console.WriteLine("found {0} items", result.Items.Item.Length);
+
+            Console.WriteLine("------------------------------------------");
+        }
+
+        static void ItemSearchRequest2(AmazonAuthentication authentication)
+        {
+            Console.WriteLine("ItemSearch");
+            Console.WriteLine("------------------------------------------");
+
+            var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.DE);
+            var result = wrapper.Search("canon eos", AmazonSearchIndex.Electronics, AmazonResponseGroup.Images | AmazonResponseGroup.Similarities);
+
+            foreach (var item in result.Items.Item)
+            {
+                Console.WriteLine($"ASIN:{item.ASIN}, SimilarCount:{item.SimilarProducts.Length}");
             }
 
             Console.WriteLine("found {0} items", result.Items.Item.Length);

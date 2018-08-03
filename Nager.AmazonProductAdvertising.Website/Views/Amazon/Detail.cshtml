@@ -1,6 +1,6 @@
 ﻿@model Nager.AmazonProductAdvertising.Model.Item
 @{
-    ViewBag.Title = "Detail";
+    ViewBag.Title = $"{Model.ItemAttributes.Title} {Model.ASIN}";
 }
 
 <div class="row">
@@ -28,7 +28,7 @@
             <div class="col-xs-12 col-sm-6 col-md-8">
 
                 <h3>@(Model.OfferSummary?.LowestNewPrice?.FormattedPrice)</h3>
-                <a class="btn btn-primary btn-lg" href="@Model.DetailPageURL" role="button">Buy at Amazon</a><br />
+                <a class="btn btn-primary btn-lg" href="@Model.DetailPageURL" role="button">Buy at Amazon</a> <a id="cart" class="btn btn-primary btn-lg" onclick="AddToCart('@Model.ASIN')" role="button">Add to cart</a><br />
                 <br />
                 @if (Model.EditorialReviews != null)
                 {
@@ -192,3 +192,17 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    function AddToCart(asin) {
+        $.ajax({
+            url: './AddCart?asin=' + asin,
+            method: 'GET',
+            success: function (msg) {
+                  $("#cart").css("background-color", "green");
+            }
+        });
+    }
+
+</script>

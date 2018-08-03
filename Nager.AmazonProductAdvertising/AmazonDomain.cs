@@ -32,6 +32,8 @@ namespace Nager.AmazonProductAdvertising
                     return "amazon.co.uk";
                 case AmazonEndpoint.US:
                     return "amazon.com";
+                case AmazonEndpoint.AU:
+                    return "amazon.com.au";
                 default:
                     return "amazon.com";
             }

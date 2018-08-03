@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Nager.AmazonProductAdvertising.Monitor
+namespace Nager.AmazonProductAdvertising.TestUI
 {
     static class Program
     {
@@ -13,7 +13,7 @@ namespace Nager.AmazonProductAdvertising.Monitor
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Main());
         }
     }
 }

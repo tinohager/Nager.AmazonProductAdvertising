@@ -20,9 +20,20 @@
 <div class="row">
     @if (Model != null)
     {
-        foreach (var item in Model.Items.Item)
+        if (Model.Items.Request.Errors?.Length > 0)
         {
-            @Html.Partial("_ItemOverview", item)
+            foreach (var error in Model.Items.Request.Errors)
+            {
+                <div class="alert alert-danger" role="alert"><strong>@error.Code</strong><br />@error.Message</div>
+            }
+        }
+
+        if (Model.Items.Item != null)
+        {
+            foreach (var item in Model.Items.Item)
+            {
+                @Html.Partial("_ItemOverview", item)
+            }
         }
     }
 </div>

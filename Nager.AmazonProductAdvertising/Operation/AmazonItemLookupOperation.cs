@@ -13,16 +13,16 @@ namespace Nager.AmazonProductAdvertising.Operation
             base.ParameterDictionary.Add("ResponseGroup", AmazonResponseGroup.Large.ToString());
         }
 
-        public void Get(IList<string> articelNumbers)
+        public void Get(IList<string> articleNumbers)
         {
-            if (articelNumbers.Count == 0)
+            if (articleNumbers.Count == 0)
             {
                 return;
             }
 
-            var articelNumberType = ArticleNumberHelper.GetArticleNumberType(articelNumbers[0]);
+            var articleNumberType = ArticleNumberHelper.GetArticleNumberType(articleNumbers[0]);
             var idType = "ASIN";
-            switch (articelNumberType)
+            switch (articleNumberType)
             {
                 case ArticleNumberType.EAN8:
                 case ArticleNumberType.EAN13:
@@ -39,9 +39,9 @@ namespace Nager.AmazonProductAdvertising.Operation
                 case ArticleNumberType.ISBN13:
                     idType = "ISBN";
                     base.SearchIndex(AmazonSearchIndex.Books);
-                    for (var i = 0; i< articelNumbers.Count; i++)
+                    for (var i = 0; i< articleNumbers.Count; i++)
                     {
-                        articelNumbers[i] = articelNumbers[i].Replace("-", "");
+                        articleNumbers[i] = articleNumbers[i].Replace("-", "");
                     }
                     break;
                 case ArticleNumberType.ASIN:
@@ -50,12 +50,12 @@ namespace Nager.AmazonProductAdvertising.Operation
 
             if (base.ParameterDictionary.ContainsKey("ItemId"))
             {
-                base.ParameterDictionary["ItemId"] = String.Join(",", articelNumbers);
+                base.ParameterDictionary["ItemId"] = String.Join(",", articleNumbers);
                 return;
             }
 
             base.ParameterDictionary.Add("IdType", idType);
-            base.ParameterDictionary.Add("ItemId", String.Join(",", articelNumbers));
+            base.ParameterDictionary.Add("ItemId", String.Join(",", articleNumbers));
         }
     }
 }
