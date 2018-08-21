@@ -1,5 +1,5 @@
 # Nager.AmazonProductAdvertising
-Allow access to amazon product advertising API, you can search a product over the name or a keyword. Also it is possible to create a shopping cart. You can visit a demo [here](http://nagershop.azurewebsites.net)
+Allow access to amazon product advertising API, you can search a product over the name or a keyword. Also it is possible to create a shopping cart. You can visit a demo [here](https://shop.nager.at)
 
 ### Support this project
 Nager.AmazonProductAdvertising is free for you to use, but donations are very welcome. If Nager.AmazonProductAdvertising has ever helped you out on a project or saved you time, please consider sending a donation. :moneybag:
