@@ -113,6 +113,19 @@ var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US, "nager-20");
 var result = wrapper.CartCreate(items);
 ```
 
+##### Adding a Proxy
+```cs
+var authentication = new AmazonAuthentication();
+authentication.AccessKey = "accesskey";
+authentication.SecretKey = "secretkey";
+
+WebProxy wp = new WebProxy("address:port");
+authentication.Proxy = wp;
+
+var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US, "nager-20");
+var result = wrapper.Lookup("B00BYPW00I");
+```
+
 ### Amazon Documentation
 [API Reference](http://docs.aws.amazon.com/AWSECommerceService/latest/DG/CHAP_ApiReference.html)
 

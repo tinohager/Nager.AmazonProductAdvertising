@@ -28,6 +28,7 @@ namespace Nager.AmazonProductAdvertising
         {
             var request = (HttpWebRequest)WebRequest.Create(uri);
             request.UserAgent = this._userAgent ?? "Nager.AmazonProductAdvertising";
+            request.Proxy = this._authentication.Proxy ?? null;
 
             try
             {
