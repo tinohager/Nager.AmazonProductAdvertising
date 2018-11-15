@@ -72,7 +72,7 @@ var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US, "nager-20");
 var result = wrapper.Lookup(new string[] { "B00BYPW00I", "B004MKNBJG" });
 ```
 
-##### CustomRequest with paging
+##### Custom Item Search with paging
 ```cs
 var authentication = new AmazonAuthentication();
 authentication.AccessKey = "accesskey";
@@ -82,6 +82,20 @@ var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US, "nager-20");
 var searchOperation = wrapper.ItemSearchOperation("canon eos", AmazonSearchIndex.Electronics);
 searchOperation.Sort(AmazonSearchSort.Price, AmazonSearchSortOrder.Descending);
 searchOperation.Skip(2);
+var xmlResponse = wrapper.Request(searchOperation);
+
+var result = XmlHelper.ParseXml<ItemSearchResponse>(xmlResponse.Content);
+```
+
+##### Custom Item Search with minimum price
+```cs
+var authentication = new AmazonAuthentication();
+authentication.AccessKey = "accesskey";
+authentication.SecretKey = "secretkey";
+
+var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US, "nager-20");
+var searchOperation = wrapper.ItemSearchOperation("canon eos", AmazonSearchIndex.Electronics);
+searchOperation.MinPrice(200000); //2000 USD
 var xmlResponse = wrapper.Request(searchOperation);
 
 var result = XmlHelper.ParseXml<ItemSearchResponse>(xmlResponse.Content);
