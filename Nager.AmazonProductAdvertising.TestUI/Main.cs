@@ -98,9 +98,9 @@ namespace Nager.AmazonProductAdvertising.TestUI
 
         private void SearchXml(int startIndex)
         {
-            var search = this.textBoxSearch.Text;
+            var search = this.textBoxXmlSearch.Text;
 
-            var indexOf = this.textBoxXml.Text.IndexOf(textBoxSearch.Text, startIndex, StringComparison.OrdinalIgnoreCase);
+            var indexOf = this.textBoxXml.Text.IndexOf(search, startIndex, StringComparison.OrdinalIgnoreCase);
             if (indexOf == -1)
             {
                 return;
@@ -123,7 +123,7 @@ namespace Nager.AmazonProductAdvertising.TestUI
                 return;
             }
 
-            var startIndex = this.textBoxXml.SelectionLength;
+            var startIndex = this.textBoxXml.SelectionStart + this.textBoxXml.SelectionLength;
             this.SearchXml(startIndex);
         }
     }
