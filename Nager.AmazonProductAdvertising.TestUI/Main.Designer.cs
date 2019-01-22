@@ -52,10 +52,13 @@
             this.dataGridViewResult = new System.Windows.Forms.DataGridView();
             this.ColumnAsin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesRank = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.amazonItemControl = new Nager.AmazonProductAdvertising.TestUI.AmazonItemControl();
             this.tabPageXml = new System.Windows.Forms.TabPage();
             this.textBoxXml = new System.Windows.Forms.TextBox();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.textBoxXmlSearch = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.responseGroupControl1 = new Nager.AmazonProductAdvertising.TestUI.ResponseGroupControl();
+            this.amazonItemControl = new Nager.AmazonProductAdvertising.TestUI.AmazonItemControl();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -72,6 +75,10 @@
             this.splitContainerItems.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).BeginInit();
             this.tabPageXml.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -341,17 +348,9 @@
             this.ColumnSalesRank.Name = "ColumnSalesRank";
             this.ColumnSalesRank.ReadOnly = true;
             // 
-            // amazonItemControl
-            // 
-            this.amazonItemControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.amazonItemControl.Location = new System.Drawing.Point(0, 0);
-            this.amazonItemControl.Name = "amazonItemControl";
-            this.amazonItemControl.Size = new System.Drawing.Size(767, 354);
-            this.amazonItemControl.TabIndex = 0;
-            // 
             // tabPageXml
             // 
-            this.tabPageXml.Controls.Add(this.textBoxXml);
+            this.tabPageXml.Controls.Add(this.splitContainer2);
             this.tabPageXml.Location = new System.Drawing.Point(4, 22);
             this.tabPageXml.Name = "tabPageXml";
             this.tabPageXml.Padding = new System.Windows.Forms.Padding(3);
@@ -363,12 +362,51 @@
             // textBoxXml
             // 
             this.textBoxXml.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxXml.Location = new System.Drawing.Point(3, 3);
+            this.textBoxXml.HideSelection = false;
+            this.textBoxXml.Location = new System.Drawing.Point(0, 0);
             this.textBoxXml.Multiline = true;
             this.textBoxXml.Name = "textBoxXml";
             this.textBoxXml.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxXml.Size = new System.Drawing.Size(991, 354);
+            this.textBoxXml.Size = new System.Drawing.Size(991, 323);
             this.textBoxXml.TabIndex = 0;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer2.IsSplitterFixed = true;
+            this.splitContainer2.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.label7);
+            this.splitContainer2.Panel1.Controls.Add(this.textBoxXmlSearch);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.textBoxXml);
+            this.splitContainer2.Size = new System.Drawing.Size(991, 354);
+            this.splitContainer2.SplitterDistance = 27;
+            this.splitContainer2.TabIndex = 1;
+            // 
+            // textBoxXmlSearch
+            // 
+            this.textBoxXmlSearch.Location = new System.Drawing.Point(53, 3);
+            this.textBoxXmlSearch.Name = "textBoxXmlSearch";
+            this.textBoxXmlSearch.Size = new System.Drawing.Size(198, 20);
+            this.textBoxXmlSearch.TabIndex = 0;
+            this.textBoxXmlSearch.TextChanged += new System.EventHandler(this.textBoxXmlSearch_TextChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 6);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(44, 13);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Search:";
             // 
             // responseGroupControl1
             // 
@@ -377,13 +415,21 @@
             this.responseGroupControl1.Size = new System.Drawing.Size(336, 117);
             this.responseGroupControl1.TabIndex = 17;
             // 
-            // Form1
+            // amazonItemControl
+            // 
+            this.amazonItemControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.amazonItemControl.Location = new System.Drawing.Point(0, 0);
+            this.amazonItemControl.Name = "amazonItemControl";
+            this.amazonItemControl.Size = new System.Drawing.Size(767, 354);
+            this.amazonItemControl.TabIndex = 0;
+            // 
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1005, 640);
             this.Controls.Add(this.splitContainer1);
-            this.Name = "Form1";
+            this.Name = "Main";
             this.Text = "change by code";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -404,7 +450,12 @@
             this.splitContainerItems.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).EndInit();
             this.tabPageXml.ResumeLayout(false);
-            this.tabPageXml.PerformLayout();
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel1.PerformLayout();
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            this.splitContainer2.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -439,6 +490,9 @@
         private System.Windows.Forms.Panel panelEndpoint;
         private System.Windows.Forms.Label label6;
         private ResponseGroupControl responseGroupControl1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBoxXmlSearch;
     }
 }
 
