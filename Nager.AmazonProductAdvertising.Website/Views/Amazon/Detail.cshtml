@@ -133,76 +133,103 @@
                     </div>
                 </div>
 
-                @if (Model.SimilarProducts != null)
-                {
+            </div>
+            @if (Model.ImageSets != null)
+            {
+                <div class="col-xs-12 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Gallery</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div id="slideimages" class="carousel slide" data-ride="carousel">
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner" role="listbox">
+                                    @{
+                                        var myClass = "active";
+                                        foreach (var image in Model.ImageSets.OrderByDescending(o => o.Category == "primary"))
+                                        {
+                                            <div class="item @myClass">
+                                                <img src="@image.LargeImage.URL" alt="@Model.ItemAttributes.Title" style="text-align:center;" />
+                                            </div>
+                                            myClass = "";
+                                        }
+                                    }
+                                </div>
+
+                                <!-- Controls -->
+                                <a class="left carousel-control" href="#slideimages" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#slideimages" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Similar Products</h3>
                     </div>
                     <div class="panel-body">
-                        <ul class="list-group">
-                            @foreach (var product in Model.SimilarProducts)
-                            {
-                                <li class="list-group-item"><a href="/Amazon/Detail?articleNumber=@product.ASIN">@product.Title</a></li>
-                            }
-                        </ul>
-                    </div>
-                </div>
-                }
-
-
-            </div>
-            @if (Model.ImageSets != null)
-            {
-            <div class="col-xs-12 col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Gallery</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div id="slideimages" class="carousel slide" data-ride="carousel">
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner" role="listbox">
-                                @{
-                                    var myClass = "active";
-                                    foreach (var image in Model.ImageSets.OrderByDescending(o => o.Category == "primary"))
-                                    {
-                                        <div class="item @myClass">
-                                            <img src="@image.LargeImage.URL" alt="@Model.ItemAttributes.Title" style="text-align:center;" />
-                                        </div>
-                                        myClass = "";
-                                    }
-                                }
+                        <div id="app" class="row">
+                            <div class="col-xs-6 col-md-2 shoparticle text-center" v-for="item in data">
+                                <a :href="'/Amazon/Detail?articleNumber=' + item.Asin">
+                                    <div class="overlay"><div class="text">Product Detail</div></div>
+                                    <img :src="item.Image" :alt="item.Name" :title="item.Name" />
+                                </a>
                             </div>
-
-                            <!-- Controls -->
-                            <a class="left carousel-control" href="#slideimages" role="button" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="right carousel-control" href="#slideimages" role="button" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-            }
         </div>
+
     </div>
 </div>
 
-
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 <script>
     function AddToCart(asin) {
         $.ajax({
             url: './AddCart?asin=' + asin,
             method: 'GET',
             success: function (msg) {
-                  $("#cart").css("background-color", "green");
+                $("#cart").css("background-color", "green");
             }
         });
     }
-
 </script>
+
+@if (Model.SimilarProducts != null)
+{
+    <script>
+var app = new Vue({
+    el: '#app',
+    data: {
+        message: ['@Html.Raw(string.Join("','", Model.SimilarProducts.Select(o=>o.ASIN)))'],
+        data: null
+    },
+    created: function () {
+        var self = this;
+        axios.get('/Amazon/LookupsJson/?articleNumbers=@Html.Raw(string.Join("&articleNumbers=", Model.SimilarProducts.Select(o => o.ASIN)))')
+            .then(function (response) {
+                console.log(response);
+                self.data = response.data;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+})
+    </script>
+}
