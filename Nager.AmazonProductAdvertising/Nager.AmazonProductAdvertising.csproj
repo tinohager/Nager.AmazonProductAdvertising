@@ -8,11 +8,11 @@
     <PackageProjectUrl>https://github.com/tinohager/Nager.AmazonProductAdvertising</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/tinohager/Nager.AmazonProductAdvertising/blob/master/Licence.txt</PackageLicenseUrl>
     <Copyright>Copyright ©  2018</Copyright>
-    <PackageReleaseNotes>Add additional search indexes to support the US endpoint.</PackageReleaseNotes>
+    <PackageReleaseNotes>Add AvailabilityAttributes on OfferListing</PackageReleaseNotes>
     <PackageTags>Amazon Product Advertising API Amazon.Product.API</PackageTags>
     <Description>Amazon Product Advertising API, Supports ItemSeach with ASIN, EAN, UPC and ISBN, ItemLookup and BrowseNodeLookup</Description>
     <AssemblyVersion>1.2.2</AssemblyVersion>
-    <FileVersion>1.1.0</FileVersion>
+    <FileVersion>1.2.2</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
