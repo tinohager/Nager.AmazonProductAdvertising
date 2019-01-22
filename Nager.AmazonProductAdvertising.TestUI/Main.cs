@@ -82,7 +82,7 @@ namespace Nager.AmazonProductAdvertising.TestUI
 
         private void XmlReceived(string xml)
         {
-            this.textBoxXml.Text = xml.Replace("><", ">\r\n<");
+            this.textBoxXml.Text = System.Xml.Linq.XDocument.Parse(xml).ToString();
         }
 
         private void dataGridViewResult_SelectionChanged(object sender, EventArgs e)
@@ -94,6 +94,25 @@ namespace Nager.AmazonProductAdvertising.TestUI
             }
 
             this.amazonItemControl.ShowItem(item);
+        }
+
+        private void textBoxXmlSearch_TextChanged(object sender, EventArgs e)
+        {
+            var textBoxSearch = sender as TextBox;
+            if (textBoxSearch == null)
+            {
+                return;
+            }
+
+            var indexOf = this.textBoxXml.Text.IndexOf(textBoxSearch.Text, StringComparison.OrdinalIgnoreCase);
+            if (indexOf == -1)
+            {
+                return;
+            }
+
+            this.textBoxXml.SelectionStart = indexOf;
+            this.textBoxXml.SelectionLength = textBoxSearch.Text.Length;
+            this.textBoxXml.ScrollToCaret();
         }
     }
 }
