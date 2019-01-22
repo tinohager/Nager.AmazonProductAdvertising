@@ -33,7 +33,7 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
         {
             if (string.IsNullOrEmpty(articleNumber))
             {
-                return RedirectPermanent("/");
+                return View();
             }
 
             var authentication = this.GetConfig();
