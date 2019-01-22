@@ -8,8 +8,8 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
 {
     public class AmazonController : Controller
     {
-        private string _associateTag;
-        private AmazonEndpoint _amazonEndpoint;
+        private readonly string _associateTag;
+        private readonly AmazonEndpoint _amazonEndpoint;
 
         public AmazonController()
         {
@@ -33,7 +33,7 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
         {
             if (string.IsNullOrEmpty(articleNumber))
             {
-                return View();
+                return RedirectPermanent("/");
             }
 
             var authentication = this.GetConfig();
@@ -48,7 +48,7 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
         {
             if (articleNumbers == null)
             {
-                return View();
+                return RedirectPermanent("/");
             }
 
             var authentication = this.GetConfig();
@@ -59,11 +59,39 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
             return View("Lookup", result);
         }
 
+        public ActionResult LookupsJson(string[] articleNumbers)
+        {
+            if (articleNumbers == null)
+            {
+                return HttpNotFound();
+            }
+
+            var authentication = this.GetConfig();
+
+            var wrapper = new AmazonWrapper(authentication, this._amazonEndpoint, this._associateTag);
+            var result = wrapper.Lookup(articleNumbers, AmazonResponseGroup.Images | AmazonResponseGroup.ItemAttributes);
+
+            var items = result?.Items?.Item;
+            if (items == null)
+            {
+                return HttpNotFound();
+            }
+
+            var smallObjects = items.Select(o => new
+            {
+                Name = o.ItemAttributes?.Title,
+                Image = o.MediumImage?.URL,
+                Asin = o.ASIN
+            }).Where(o=>!string.IsNullOrEmpty(o.Image));
+
+            return Json(smallObjects, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Search(string search)
         {
             if (string.IsNullOrEmpty(search))
             {
-                return View();
+                return RedirectPermanent("/");
             }
 
             ViewBag.Search = search.Trim();
@@ -82,7 +110,7 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
         {
             if (string.IsNullOrEmpty(articleNumber))
             {
-                return View();
+                return RedirectPermanent("/");
             }
 
             var authentication = this.GetConfig();
@@ -90,9 +118,14 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
             var wrapper = new AmazonWrapper(authentication, this._amazonEndpoint, this._associateTag);
             var result = wrapper.Lookup(articleNumber.Trim());
 
-            if (result == null)
+            if (result == null || result.Items == null)
             {
-                return null;
+                return new HttpStatusCodeResult(429);
+            }
+
+            if (result.Items.Request?.Errors != null && result.Items.Request.Errors.Any())
+            {
+                return RedirectPermanent("/");
             }
 
             var item = result.Items?.Item?.FirstOrDefault();
