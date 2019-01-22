@@ -96,23 +96,35 @@ namespace Nager.AmazonProductAdvertising.TestUI
             this.amazonItemControl.ShowItem(item);
         }
 
-        private void textBoxXmlSearch_TextChanged(object sender, EventArgs e)
+        private void SearchXml(int startIndex)
         {
-            var textBoxSearch = sender as TextBox;
-            if (textBoxSearch == null)
-            {
-                return;
-            }
+            var search = this.textBoxSearch.Text;
 
-            var indexOf = this.textBoxXml.Text.IndexOf(textBoxSearch.Text, StringComparison.OrdinalIgnoreCase);
+            var indexOf = this.textBoxXml.Text.IndexOf(textBoxSearch.Text, startIndex, StringComparison.OrdinalIgnoreCase);
             if (indexOf == -1)
             {
                 return;
             }
 
             this.textBoxXml.SelectionStart = indexOf;
-            this.textBoxXml.SelectionLength = textBoxSearch.Text.Length;
+            this.textBoxXml.SelectionLength = search.Length;
             this.textBoxXml.ScrollToCaret();
+        }
+
+        private void textBoxXmlSearch_TextChanged(object sender, EventArgs e)
+        {
+            this.SearchXml(0);
+        }
+
+        private void textBoxXmlSearch_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode != Keys.Enter)
+            {
+                return;
+            }
+
+            var startIndex = this.textBoxXml.SelectionLength;
+            this.SearchXml(startIndex);
         }
     }
 }
