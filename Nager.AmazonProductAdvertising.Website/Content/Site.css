@@ -115,7 +115,7 @@ h1, h2, h3, h4 {
     -ms-transform: translate(-50%, -50%);
 }
 
-.shoparticle .row:hover .overlay {
+.shoparticle:hover .overlay {
     opacity: 0.9;
     cursor: pointer;
 }
