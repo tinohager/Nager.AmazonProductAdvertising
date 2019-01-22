@@ -11,6 +11,7 @@ namespace Nager.AmazonProductAdvertising.Model
         [XmlElement(DataType = "nonNegativeInteger")]
         public string PercentageSaved { get; set; }
         public string Availability { get; set; }
+        public AvailabilityAttributes AvailabilityAttributes { get; set; }
         public bool IsEligibleForSuperSaverShipping { get; set; }
         public bool IsEligibleForPrime { get; set; }
     }
