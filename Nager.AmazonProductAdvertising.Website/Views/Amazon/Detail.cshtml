@@ -28,7 +28,7 @@
             <div class="col-xs-12 col-sm-6 col-md-8">
 
                 <h3>@(Model.OfferSummary?.LowestNewPrice?.FormattedPrice)</h3>
-                <a class="btn btn-primary btn-lg" href="@Model.DetailPageURL" role="button">Buy at Amazon</a> <a id="cart" class="btn btn-primary btn-lg" onclick="AddToCart('@Model.ASIN')" role="button">Add to cart</a><br />
+                <a class="btn btn-primary btn-lg" href="@Model.DetailPageURL" role="button"><i class="fa fa-cart-plus" aria-hidden="true"></i> Buy at Amazon.de</a> <a id="cart" class="btn btn-primary btn-lg" onclick="AddToCart('@Model.ASIN')" role="button">Add to cart</a><br />
                 <br />
                 @if (Model.EditorialReviews != null)
                 {

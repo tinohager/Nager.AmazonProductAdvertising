@@ -69,10 +69,12 @@ h1, h2, h3, h4 {
     border: 1px solid #222;
     border-left: 10px solid #222;
     border-radius: 0px;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.3);
 }
 
 .btn:hover {
-    background-color: #333;
+    color: #333;
+    background-color: #f7d240;
     border: 1px solid #222;
     border-left: 10px solid #141314;
 }
