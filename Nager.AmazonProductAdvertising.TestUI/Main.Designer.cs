@@ -39,6 +39,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.responseGroupControl1 = new Nager.AmazonProductAdvertising.TestUI.ResponseGroupControl();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxAsin = new System.Windows.Forms.TextBox();
@@ -52,13 +53,12 @@
             this.dataGridViewResult = new System.Windows.Forms.DataGridView();
             this.ColumnAsin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesRank = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPageXml = new System.Windows.Forms.TabPage();
-            this.textBoxXml = new System.Windows.Forms.TextBox();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.textBoxXmlSearch = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.responseGroupControl1 = new Nager.AmazonProductAdvertising.TestUI.ResponseGroupControl();
             this.amazonItemControl = new Nager.AmazonProductAdvertising.TestUI.AmazonItemControl();
+            this.tabPageXml = new System.Windows.Forms.TabPage();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxXmlSearch = new System.Windows.Forms.TextBox();
+            this.textBoxXml = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -208,6 +208,13 @@
             this.tabPage2.Text = "Lookup";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // responseGroupControl1
+            // 
+            this.responseGroupControl1.Location = new System.Drawing.Point(101, 35);
+            this.responseGroupControl1.Name = "responseGroupControl1";
+            this.responseGroupControl1.Size = new System.Drawing.Size(336, 117);
+            this.responseGroupControl1.TabIndex = 17;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -348,6 +355,14 @@
             this.ColumnSalesRank.Name = "ColumnSalesRank";
             this.ColumnSalesRank.ReadOnly = true;
             // 
+            // amazonItemControl
+            // 
+            this.amazonItemControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.amazonItemControl.Location = new System.Drawing.Point(0, 0);
+            this.amazonItemControl.Name = "amazonItemControl";
+            this.amazonItemControl.Size = new System.Drawing.Size(767, 354);
+            this.amazonItemControl.TabIndex = 0;
+            // 
             // tabPageXml
             // 
             this.tabPageXml.Controls.Add(this.splitContainer2);
@@ -358,17 +373,6 @@
             this.tabPageXml.TabIndex = 1;
             this.tabPageXml.Text = "XML";
             this.tabPageXml.UseVisualStyleBackColor = true;
-            // 
-            // textBoxXml
-            // 
-            this.textBoxXml.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxXml.HideSelection = false;
-            this.textBoxXml.Location = new System.Drawing.Point(0, 0);
-            this.textBoxXml.Multiline = true;
-            this.textBoxXml.Name = "textBoxXml";
-            this.textBoxXml.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxXml.Size = new System.Drawing.Size(991, 323);
-            this.textBoxXml.TabIndex = 0;
             // 
             // splitContainer2
             // 
@@ -391,14 +395,6 @@
             this.splitContainer2.SplitterDistance = 27;
             this.splitContainer2.TabIndex = 1;
             // 
-            // textBoxXmlSearch
-            // 
-            this.textBoxXmlSearch.Location = new System.Drawing.Point(53, 3);
-            this.textBoxXmlSearch.Name = "textBoxXmlSearch";
-            this.textBoxXmlSearch.Size = new System.Drawing.Size(198, 20);
-            this.textBoxXmlSearch.TabIndex = 0;
-            this.textBoxXmlSearch.TextChanged += new System.EventHandler(this.textBoxXmlSearch_TextChanged);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -408,20 +404,25 @@
             this.label7.TabIndex = 15;
             this.label7.Text = "Search:";
             // 
-            // responseGroupControl1
+            // textBoxXmlSearch
             // 
-            this.responseGroupControl1.Location = new System.Drawing.Point(101, 35);
-            this.responseGroupControl1.Name = "responseGroupControl1";
-            this.responseGroupControl1.Size = new System.Drawing.Size(336, 117);
-            this.responseGroupControl1.TabIndex = 17;
+            this.textBoxXmlSearch.Location = new System.Drawing.Point(53, 3);
+            this.textBoxXmlSearch.Name = "textBoxXmlSearch";
+            this.textBoxXmlSearch.Size = new System.Drawing.Size(198, 20);
+            this.textBoxXmlSearch.TabIndex = 0;
+            this.textBoxXmlSearch.TextChanged += new System.EventHandler(this.textBoxXmlSearch_TextChanged);
+            this.textBoxXmlSearch.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxXmlSearch_KeyUp);
             // 
-            // amazonItemControl
+            // textBoxXml
             // 
-            this.amazonItemControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.amazonItemControl.Location = new System.Drawing.Point(0, 0);
-            this.amazonItemControl.Name = "amazonItemControl";
-            this.amazonItemControl.Size = new System.Drawing.Size(767, 354);
-            this.amazonItemControl.TabIndex = 0;
+            this.textBoxXml.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxXml.HideSelection = false;
+            this.textBoxXml.Location = new System.Drawing.Point(0, 0);
+            this.textBoxXml.Multiline = true;
+            this.textBoxXml.Name = "textBoxXml";
+            this.textBoxXml.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxXml.Size = new System.Drawing.Size(991, 323);
+            this.textBoxXml.TabIndex = 0;
             // 
             // Main
             // 
