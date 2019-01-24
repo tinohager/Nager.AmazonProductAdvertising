@@ -14,7 +14,7 @@ namespace Nager.AmazonProductAdvertising.UnitTest
             var xml = File.ReadAllText("ItemSearchResponse.xml");
             var result = XmlHelper.ParseXml<ItemSearchResponse>(xml);
             Assert.AreNotEqual(null, result);
-            Assert.AreEqual(10, result.Items.Item.Length);
+            Assert.AreEqual(10, result.Items[0].Item.Length);
         }
 
         [TestMethod]
@@ -24,7 +24,7 @@ namespace Nager.AmazonProductAdvertising.UnitTest
             var xml = File.ReadAllText("ItemSearchResponseWithError.xml");
             var result = XmlHelper.ParseXml<ItemSearchResponse>(xml);
             Assert.AreNotEqual(null, result);
-            Assert.AreEqual("AWS.RestrictedParameterValueCombination", result.Items.Request.Errors[0].Code);
+            Assert.AreEqual("AWS.RestrictedParameterValueCombination", result.Items[0].Request.Errors[0].Code);
         }
 
         [TestMethod]

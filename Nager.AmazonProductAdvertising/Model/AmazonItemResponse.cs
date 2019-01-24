@@ -1,7 +1,11 @@
-﻿namespace Nager.AmazonProductAdvertising.Model
+﻿using System.Xml.Serialization;
+
+namespace Nager.AmazonProductAdvertising.Model
 {
     public class AmazonItemResponse : AmazonResponse
-    {
-        public Items Items { get; set; }
+    { 
+
+        [XmlElement("Items")]
+        public Items[] Items { get; set; }
     }
 }

@@ -96,6 +96,15 @@ namespace Nager.AmazonProductAdvertising
 
             return operation;
         }
+        public AmazonBatchItemLookupOperation BatchItemLookupOperation(IList<string> articleNumbers, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
+        {
+            var operation = new AmazonBatchItemLookupOperation();
+            //operation.ResponseGroup(amazonResponseGroup);
+            operation.Get(articleNumbers);
+            operation.AssociateTag(this._associateTag);
+
+            return operation;
+        }
 
         public AmazonItemSearchOperation ItemSearchOperation(string search, AmazonSearchIndex amazonSearchIndex = AmazonSearchIndex.All, AmazonResponseGroup amazonResponseGroup = AmazonResponseGroup.Large)
         {
@@ -164,6 +173,23 @@ namespace Nager.AmazonProductAdvertising
         public AmazonItemResponse Lookup(string articleNumber, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
         {
             return this.Lookup(new string[1] { articleNumber }, responseGroup);
+        }
+
+        public AmazonItemResponse BatchLookup(IList<string> articleNumbers)
+        {
+            var operation = this.BatchItemLookupOperation(articleNumbers);
+            var webResponse = this.Request(operation);
+            if (webResponse.StatusCode == HttpStatusCode.OK)
+            {
+                return XmlHelper.ParseXml<ItemLookupResponse>(webResponse.Content);
+            }
+            else
+            {
+                var errorResponse = XmlHelper.ParseXml<ItemLookupErrorResponse>(webResponse.Content);
+                this.ErrorReceived?.Invoke(errorResponse);
+            }
+
+            return null;
         }
 
         public AmazonItemResponse Lookup(IList<string> articleNumbers, AmazonResponseGroup responseGroup = AmazonResponseGroup.Large)
