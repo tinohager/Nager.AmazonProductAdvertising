@@ -57,6 +57,7 @@ textarea {
 h1, h2, h3, h4 {
     font-family: 'Raleway', sans-serif;
     font-weight: 400;
+    word-break: break-all;
 }
 
 .wf-loading body {
@@ -77,6 +78,12 @@ h1, h2, h3, h4 {
     background-color: #f7d240;
     border: 1px solid #222;
     border-left: 10px solid #141314;
+}
+
+@media screen and (max-width: 980px) {
+    .btn {
+        margin-bottom: 10px;
+    }
 }
 
 .shoparticle .row {
