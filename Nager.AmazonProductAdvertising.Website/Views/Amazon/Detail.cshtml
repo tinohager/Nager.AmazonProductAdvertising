@@ -12,7 +12,7 @@
             <div class="col-xs-12 col-sm-6 col-md-4">
                 @if (Model.LargeImage != null)
                 {
-                    <img src="@Model.LargeImage.URL" alt="@Model.ItemAttributes.Title" class="img-thumbnail" />
+                    <img src="@Model.LargeImage.URL" alt="@Model.ItemAttributes.Title" title="@Model.ItemAttributes.Title" class="img-thumbnail" />
                 }
                 @if (Model.ItemAttributes.Feature != null)
                 {
@@ -28,7 +28,7 @@
             <div class="col-xs-12 col-sm-6 col-md-8">
 
                 <h3>@(Model.OfferSummary?.LowestNewPrice?.FormattedPrice)</h3>
-                <a class="btn btn-primary btn-lg" href="@Model.DetailPageURL" role="button"><i class="fa fa-cart-plus" aria-hidden="true"></i> Buy at Amazon.de</a> <a id="cart" class="btn btn-primary btn-lg" onclick="AddToCart('@Model.ASIN')" role="button">Add to cart</a><br />
+                <a class="btn btn-primary btn-lg" href="@Model.DetailPageURL" role="button"><i class="fa fa-amazon" aria-hidden="true"></i> Buy at Amazon.de</a> <a id="cart" class="btn btn-primary btn-lg" onclick="AddToCart('@Model.ASIN')" role="button"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Add to cart</a><br />
                 <br />
                 @if (Model.EditorialReviews != null)
                 {
@@ -212,7 +212,7 @@
 
 @if (Model.SimilarProducts != null)
 {
-    <script>
+<script>
 var app = new Vue({
     el: '#app',
     data: {
@@ -231,5 +231,5 @@ var app = new Vue({
             });
     }
 })
-    </script>
+</script>
 }
