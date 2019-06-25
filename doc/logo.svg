@@ -1,0 +1,23 @@
+<svg width="128" height="128" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path id="svg_1" fill="#6f7475" d="m95.84,41.06l-9.21,0.97l4.02,-19.64c1.99,-4.485 8.265,-8.635 10.92,-8.945l14.49,-4.185c3.67,-1.1 7.37,1.64 7.37,5.48l0,0c0,3.61 -3.59,6.13 -6.98,4.9l-2.57,-0.58c-3.45333,1.02333 -6.90667,2.04667 -10.36,3.07c-2.05,0.61 -2.72294,0.15706 -4.13,4.34l-3.55,14.59z"/>
+  <polygon id="svg_2" fill="#6f7475" points="86.29,82.75 79.88,110 72.09,107.25 76.89,82.75 "/>
+  <polygon id="svg_3" fill="#6f7475" points="81.76,102 18.84,102 18.84,110.33 80.34,110.33 "/>
+  <circle id="svg_5" fill="#2F2F2F" r="11" cy="106.33" cx="75.54"/>
+  <circle id="svg_6" fill="#ffa724" r="5.13" cy="106.33" cx="75.54"/>
+  <circle id="svg_7" fill="#2F2F2F" r="11" cy="106.33" cx="22.7"/>
+  <circle stroke="#ffa724" stroke-opacity="0" id="svg_8" fill="#ffa724" r="5.13" cy="106.33" cx="22.7"/>
+  <circle id="svg_9" fill="#ffa724" r="7.41" cy="16.25" cx="118.59"/>
+  <path id="svg_13" d="m21.687501,49.374994" opacity="0.5" fill-opacity="null" stroke-opacity="0" stroke-width="NaN" stroke="#ffa724" fill="#ffa724"/>
+  <path id="svg_14" d="m46.937498,39.999995" opacity="0.5" fill-opacity="null" stroke-opacity="0" stroke-width="NaN" stroke="#ffa724" fill="#ffa724"/>
+  <path id="svg_16" d="m97.812492,41.874995" opacity="0.5" stroke-opacity="0" stroke-width="null" stroke="#ffa724" fill="#ffa724"/>
+  <path id="svg_17" d="m96.062492,41.124995c0,0 -9.749999,42.124995 -9.749999,42.124995" opacity="0.5" stroke-opacity="0" stroke-width="null" stroke="#ffa724" fill="#ffa724"/>
+  <path id="svg_19" d="m95.812492,40.999995c0,0 -66.749992,5.124999 -66.812495,5.000001c0.062503,0.124998 -9.312496,29.624995 -9.374999,29.499998c0.062503,0.124997 15.687501,9.374996 15.624999,9.249999c0.062502,0.124997 34.812498,-1.750003 34.749997,-1.875c0.062501,0.124997 16.312499,0.124997 16.249999,0c0.0625,0.124997 9.562499,-41.874998 9.562499,-41.874998z" fill-opacity="null" stroke-opacity="0" stroke-width="null" stroke="#ffa724" fill="#ffa724"/>
+ </g>
+</svg>
