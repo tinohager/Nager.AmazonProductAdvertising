@@ -1,0 +1,266 @@
+﻿@model Nager.AmazonProductAdvertising.Model.Item
+@{
+    ViewBag.Title = $"{Model.ItemAttributes.Title} {Model.ASIN}";
+
+    var features = string.Empty;
+    if (Model.ItemAttributes.Feature != null)
+    {
+        features = string.Join(" ", Model.ItemAttributes.Feature);
+    }
+
+    if (!string.IsNullOrEmpty(Model.ItemAttributes.Manufacturer))
+    {
+        ViewBag.MetaDescription = $"{Model.ItemAttributes.Manufacturer} - {features}";
+    }
+    else
+    {
+        ViewBag.MetaDescription = $"{features}";
+    }
+}
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3>@Model.ItemAttributes.Title <small>@Model.ASIN</small></h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                @if (Model.LargeImage != null)
+                {
+                    <img src="@Model.LargeImage.URL" alt="@Model.ItemAttributes.Title" title="@Model.ItemAttributes.Title" class="img-thumbnail" />
+                }
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-8 col-lg-5">
+
+                <h3>@(Model.OfferSummary?.LowestNewPrice?.FormattedPrice)</h3>
+                <a class="btn btn-primary btn-lg" href="@Model.DetailPageURL" role="button"><i class="fa fa-amazon" aria-hidden="true"></i> Bei Amazon.de kaufen</a>
+                <a id="cart" class="btn btn-primary btn-lg hidden-xs" onclick="AddToCart('@Model.ASIN')" role="button"><i class="fa fa-shopping-cart" aria-hidden="true"></i> In den Warenkorb</a><br />
+                <br />
+                @if (Model.EditorialReviews != null)
+                {
+                    <span>@Html.Raw(Model.EditorialReviews?.Where(o => o.Source == "Product Description" || o.Source == "Kurzbeschreibung").Select(o => o.Content).FirstOrDefault())</span>
+                }
+
+            </div>
+
+            <div class="col-xs-12 col-md-12 col-lg-4">
+                @if (Model.ItemAttributes.Feature != null)
+                {
+                    <h4>Features</h4>
+                    <ul class="list-group">
+                        @foreach (var feature in Model.ItemAttributes.Feature)
+                        {
+                            <li class="list-group-item">@feature</li>
+                        }
+                    </ul>
+                }
+            </div>
+        </div>
+        <br />
+        <div class="row">
+
+            @if (Model.ImageSets != null)
+            {
+                <div class="col-xs-12 col-md-6">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Gallery</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div id="slideimages" class="carousel slide" data-ride="carousel">
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner" role="listbox">
+                                    @{
+                                        var myClass = "active";
+                                        foreach (var image in Model.ImageSets.OrderByDescending(o => o.Category == "primary"))
+                                        {
+                                            <div class="item @myClass">
+                                                <img src="@image.LargeImage.URL" alt="@Model.ItemAttributes.Title" style="text-align:center;" />
+                                            </div>
+                                            myClass = "";
+                                        }
+                                    }
+                                </div>
+
+                                <!-- Controls -->
+                                <a class="left carousel-control" href="#slideimages" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#slideimages" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="col-xs-12 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Similar Products</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div id="app" class="row">
+                            <div class="col-xs-6 col-md-6 col-lg-4 shoparticle text-center" v-for="item in data">
+                                <div>
+                                    <a :href="'/Amazon/Detail?articleNumber=' + item.Asin">
+                                        <div class="overlay"><div class="text"><h4>Mehr Details</h4></small></div></div>
+                                        <img :src="item.Image" :alt="item.Name" :title="item.Name" />
+                                    </a>
+                                </div>
+                                {{item.Name | truncate(30, '...') }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Product Details</h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table">
+                            @if (!String.IsNullOrEmpty(Model.ItemAttributes.Manufacturer))
+                            {
+                                <tr>
+                                    <th>Manufacturer</th>
+                                    <td>@Model.ItemAttributes.Manufacturer</td>
+                                </tr>
+                            }
+                            @if (!String.IsNullOrEmpty(Model.ItemAttributes.Model))
+                            {
+                                <tr>
+                                    <th>Model</th>
+                                    <td>@Model.ItemAttributes.Model</td>
+                                </tr>
+                            }
+                            @if (!String.IsNullOrEmpty(Model.ItemAttributes.ModelYear))
+                            {
+                                <tr>
+                                    <th>ModelYear</th>
+                                    <td>@Model.ItemAttributes.ModelYear</td>
+                                </tr>
+                            }
+                            @if (!String.IsNullOrEmpty(Model.ItemAttributes.Color))
+                            {
+                                <tr>
+                                    <th>Color</th>
+                                    <td>@Model.ItemAttributes.Color</td>
+                                </tr>
+                            }
+                            @if (!String.IsNullOrEmpty(Model.ItemAttributes.ItemPartNumber))
+                            {
+                                <tr>
+                                    <th>ItemPartNumber</th>
+                                    <td>@Model.ItemAttributes.ItemPartNumber</td>
+                                </tr>
+                            }
+                            @if (!String.IsNullOrEmpty(Model.ItemAttributes.EAN))
+                            {
+                                <tr>
+                                    <th>EAN</th>
+                                    <td>@Model.ItemAttributes.EAN</td>
+                                </tr>
+                            }
+                            @if (!String.IsNullOrEmpty(Model.ItemAttributes.ProductGroup))
+                            {
+                                <tr>
+                                    <th>ProductGroup</th>
+                                    <td>@Model.ItemAttributes.ProductGroup</td>
+                                </tr>
+                            }
+                            @if (!String.IsNullOrEmpty(Model.ItemAttributes.PublicationDate))
+                            {
+                                <tr>
+                                    <th>PublicationDate</th>
+                                    <td>@Model.ItemAttributes.PublicationDate</td>
+                                </tr>
+                            }
+                            @if (!String.IsNullOrEmpty(Model.ItemAttributes.ReleaseDate))
+                            {
+                                <tr>
+                                    <th>ReleaseDate</th>
+                                    <td>@Model.ItemAttributes.ReleaseDate</td>
+                                </tr>
+                            }
+                            @if (!String.IsNullOrEmpty(Model.ItemAttributes.Warranty))
+                            {
+                                <tr>
+                                    <th>Warranty</th>
+                                    <td>@Model.ItemAttributes.Warranty</td>
+                                </tr>
+                            }
+                            @if (!String.IsNullOrEmpty(Model.ItemAttributes.LegalDisclaimer))
+                            {
+                                <tr>
+                                    <th>LegalDisclaimer</th>
+                                    <td>@Model.ItemAttributes.LegalDisclaimer</td>
+                                </tr>
+                            }
+                            @if (!String.IsNullOrEmpty(@Model.SalesRank))
+                            {
+                                <tr>
+                                    <th>SalesRank</th>
+                                    <td><span class="glyphicon glyphicon-star" style="color:#ffd800; font-size:15px;" aria-hidden="true"></span> @Model.SalesRank</td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+<script>
+    function AddToCart(asin) {
+        $.ajax({
+            url: './AddCart?asin=' + asin,
+            method: 'GET',
+            success: function (msg) {
+                $("#cart").css("background-color", "green");
+            }
+        });
+    }
+</script>
+
+@if (Model.SimilarProducts != null)
+{
+<script>
+var app = new Vue({
+    el: '#app',
+    data: {
+        message: ['@Html.Raw(string.Join("','", Model.SimilarProducts.Select(o=>o.ASIN)))'],
+        data: null
+    },
+    created: function () {
+        var self = this;
+        axios.get('/Amazon/LookupsJson/?articleNumbers=@Html.Raw(string.Join("&articleNumbers=", Model.SimilarProducts.Select(o => o.ASIN)))')
+            .then(function (response) {
+                console.log(response);
+                self.data = response.data;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    },
+    filters: {
+        truncate: function (text, length, suffix) {
+            return text.substring(0, length) + suffix;
+        },
+    }
+})
+</script>
+}
