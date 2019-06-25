@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Home";
+    ViewBag.MetaDescription = $"Nager.AmazonProductAdvertising - Amazon Product Advertising API Demo Shop";
+}
+
+<h2>Overview</h2>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        @using (Html.BeginForm("Search", "Amazon", FormMethod.Get, new { Class = "form-inline" }))
+        {
+            <div class="form-group">
+                <input type="text" class="form-control" id="search" name="search" placeholder="search">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        }
+    </div>
+</div>
+
+<div class="product-groups">
+    @*<div class="col-xs-12 col-sm-12 col-md-6 list-group">
+            <a class="list-group-item" href="/Amazon/Lookups/?articleNumbers=B014OWGRQU&articleNumbers=B01IK9GEQG&articleNumbers=B009OVGKTQ&articleNumbers=B018JO5BRK&articleNumbers=B00ALNJN72&articleNumbers=B01LYYC4MW"><i class="fa fa-wifi fa-fw fa-5x" aria-hidden="true"></i>&nbsp; <span><h4>ESP8266</h4>Ultra-low-Power-32-Bit-Microcontroller with WLAN</span></a>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 list-group">
+            <a class="list-group-item" href="/Amazon/Lookups/?articleNumbers=B01FU5Z6JO&articleNumbers=B01BHIBGBA&articleNumbers=B015OHXQAO&articleNumbers=B0157G4GEM&articleNumbers=B01MRFE0HZ"><i class="fa fa-bicycle fa-fw fa-5x" aria-hidden="true"></i>&nbsp; <span><h4>E-Bike</h4>Battery powered bike</span></a>
+        </div>*@
+    <div class="col-xs-12 col-sm-6 col-md-4 list-group">
+        <a class="list-group-item" href="/Amazon/Search/?search=Sommer Kleid"><i class="fa fa-female fa-fw fa-5x" aria-hidden="true"></i>&nbsp; Damenmode</a>
+        <a class="list-group-item" href="/Amazon/Search/?search=Hemd"><i class="fa fa-male fa-fw fa-5x" aria-hidden="true"></i>&nbsp; Herren Hemden</a>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 list-group">
+        <a class="list-group-item" href="/Amazon/Search/?search=Damen Schmuck"><i class="fa fa-diamond fa-fw fa-5x" aria-hidden="true"></i>&nbsp; Damenschmuck</a>
+        <a class="list-group-item" href="/Amazon/Search/?search=Kaffee"><i class="fa fa-coffee fa-fw fa-5x" aria-hidden="true"></i>&nbsp; Kaffee</a>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 list-group">
+        <a class="list-group-item" href="/Amazon/Search/?search=Duschgel"><i class="fa fa-bath fa-fw fa-5x" aria-hidden="true"></i>&nbsp; Duschgel</a>
+        <a class="list-group-item" href="/Amazon/Search/?search=Romane"><i class="fa fa-book fa-fw fa-5x" aria-hidden="true"></i>&nbsp; Romane</a>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 list-group">
+        <a class="list-group-item" href="/Amazon/Search/?search=Eheringe"><i class="fa fa-heart fa-fw fa-5x" aria-hidden="true"></i>&nbsp; Eheringe</a>
+        <a class="list-group-item" href="/Amazon/Search/?search=Damentop"><i class="fa fa-female fa-fw fa-5x" aria-hidden="true"></i>&nbsp; Damentop</a>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 list-group">
+        <a class="list-group-item" href="/Amazon/Search/?search=Fachbücher"><i class="fa fa-book fa-fw fa-5x" aria-hidden="true"></i>&nbsp; Fachbücher</a>
+        <a class="list-group-item" href="/Amazon/Search/?search=Bürobedarf"><i class="fa fa-scissors fa-fw fa-5x" aria-hidden="true"></i>&nbsp; Bürobedarf</a>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 list-group">
+        <a class="list-group-item" href="/Amazon/Search/?search=CPU"><i class="fa fa-microchip fa-fw fa-5x" aria-hidden="true"></i>&nbsp; CPU</a>
+        <a class="list-group-item" href="/Amazon/Search/?search=carport"><i class="fa fa-car fa-fw fa-5x" aria-hidden="true"></i>&nbsp; Carport</a>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 list-group">
+        <a class="list-group-item" href="/Amazon/Search/?search=Waschmaschine"><i class="fa fa-eraser fa-fw fa-5x" aria-hidden="true"></i>&nbsp; Waschmaschinen</a>
+        <a class="list-group-item" href="/Amazon/Search/?search=Besteckset"><i class="fa fa-cutlery fa-fw fa-5x" aria-hidden="true"></i>&nbsp; Besteckset</a>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-4 list-group">
+        <a class="list-group-item" href="/Amazon/Search/?search=gaming+headset"><i class="fa fa-gamepad fa-fw fa-5x" aria-hidden="true"></i>&nbsp; Gaming Headset</a>
+        <a class="list-group-item" href="/Amazon/Search/?search=ereader"><i class="fa fa-book fa-fw fa-5x" aria-hidden="true"></i>&nbsp; eReader</a>
+    </div>
+</div>
