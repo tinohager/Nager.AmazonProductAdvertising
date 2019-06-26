@@ -1,3 +1,7 @@
+# Ignore all of my files in the web project folder 
+src/Nager.AmazonProductAdvertising.Website/Content/* linguist-vendored
+src/Nager.AmazonProductAdvertising.Website/Scripts/* linguist-vendored
+
 # Auto detect text files and perform LF normalization
 * text=auto
 
