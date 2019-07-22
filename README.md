@@ -23,9 +23,9 @@ PM> install-package Nager.AmazonProductAdvertising
 ### Usage
 
 Please check the AmazonEndpoint is correct for your Country.
-- Amazon Germany use AmazonEndpoint.DE
-- Amazon Spain use AmazonEndpoint.ES
-- Amazon United Kingdom use AmazonEndpoint.UK
+- Amazon Germany use `AmazonEndpoint.DE`
+- Amazon Spain use `AmazonEndpoint.ES`
+- Amazon United Kingdom use `AmazonEndpoint.UK`
 
 ##### Item Search
 ```cs
