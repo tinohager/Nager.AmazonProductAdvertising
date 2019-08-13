@@ -75,6 +75,18 @@ namespace Nager.AmazonProductAdvertising.Operation
                        .MinPrice(minPriceInLowestCurrencyDenomination);
         }
 
+        /// <summary>
+        /// An optional parameter that can be used to filter search results and offer listings to include only items sold by Amazon.
+        /// By default, the API returns items sold by various merchants including Amazon.
+        /// If the value "Amazon" is supplied, only items sold by Amazon are included in the response.
+        /// </summary>
+        /// <param name="merchantId"></param>
+        /// <returns></returns>
+        public AmazonItemSearchOperation MerchantId(string merchantId)
+        {
+            return this.AddOrReplace("MerchantId", merchantId);
+        }
+
         private new AmazonItemSearchOperation AddOrReplace(string param, object value)
         {
             base.AddOrReplace(param, value);
