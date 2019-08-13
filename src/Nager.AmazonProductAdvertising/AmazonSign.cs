@@ -101,7 +101,7 @@ namespace Nager.AmazonProductAdvertising
         {
             var requestArgs = new Dictionary<string, string>();
             requestArgs["Service"] = "AWSECommerceService";
-            requestArgs["Version"] = "2009-03-31";
+            requestArgs["Version"] = "2013-08-01";
             foreach (var key in operationArguments.Keys)
             {
                 requestArgs[key] = operationArguments[key];
