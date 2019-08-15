@@ -124,6 +124,8 @@ var result = wrapper.CartCreate(items);
 
 ### Amazon Documentation
 [API Reference](http://docs.aws.amazon.com/AWSECommerceService/latest/DG/CHAP_ApiReference.html)
+[Scratchpad](https://webservices.amazon.com/scratchpad/index.html)
+
 
 ### Alternative projects
 | Language | Project |
