@@ -123,11 +123,6 @@ var result = wrapper.CartCreate(items);
 ```
 
 ### Amazon Documentation
-- [API Reference](http://docs.aws.amazon.com/AWSECommerceService/latest/DG/CHAP_ApiReference.html)
-- [Product Advertising API Scratchpad](https://webservices.amazon.com/scratchpad/index.html)
+- [API Reference](https://webservices.amazon.com/paapi5/documentation/)
+- [Product Advertising API Scratchpad](https://webservices.amazon.com/paapi5/documentation/play-around-using-scratchpad.html)
 
-
-### Alternative projects
-| Language | Project |
-| ------------- | ------------- |
-| Phyton | [bottlenose](https://github.com/lionheart/bottlenose) |
