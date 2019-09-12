@@ -1,6 +1,6 @@
 # Important
 Amazon rolled out a new API version `paapi5` currently i am working on the migration to the new API.
-On 31 October 2019 current API will be shut down. [Read more](https://dev.to/skatkov/new-amazon-product-advertising-api-is-here-and-you-need-to-migrate-fast-3545)
+On **31 October 2019** current API will be shut down. [Read more](https://dev.to/skatkov/new-amazon-product-advertising-api-is-here-and-you-need-to-migrate-fast-3545)
 
 
 # Nager.AmazonProductAdvertising
