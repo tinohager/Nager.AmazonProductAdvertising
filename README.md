@@ -2,6 +2,8 @@
 Amazon rolled out a new API version `paapi5` currently i am working on the migration to the new API.
 On **31 October 2019** current API will be shut down. [Read more](https://dev.to/skatkov/new-amazon-product-advertising-api-is-here-and-you-need-to-migrate-fast-3545)
 
+- Cart Operations are removed from `paapi5`
+
 
 # Nager.AmazonProductAdvertising
 Allow access to amazon product advertising API, you can search a product over the name or a keyword. Also it is possible to create a shopping cart. You can visit a demo [here](https://shop.nager.at)
