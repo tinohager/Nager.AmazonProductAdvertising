@@ -4,7 +4,7 @@ On **31 October 2019** old API will be shut down. [Read more](https://dev.to/ska
 
 
 # Nager.AmazonProductAdvertising
-Allow access to amazon product advertising API (`paapi5`), you can search a product over the name or a keyword. Also it is possible to create a shopping cart. You can visit a demo [here](https://shop.nager.at)
+Allow access to amazon product advertising API (`paapi5`), you can search a product over the name or a keyword. You can visit a demo [here](https://shop.nager.at)
 
 
 ### Installation
