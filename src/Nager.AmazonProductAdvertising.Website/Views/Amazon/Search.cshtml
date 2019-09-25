@@ -1,4 +1,4 @@
-﻿@model Nager.AmazonProductAdvertising.Model.AmazonItemResponse
+﻿@model Nager.AmazonProductAdvertising.Model.SearchItemResponse
 @{
     ViewBag.Title = $"{ViewBag.Search} search";
 }
@@ -21,9 +21,9 @@
 <div class="row">
     @if (Model != null)
     {
-        if (Model.Items != null && Model.Items.Item != null)
+        if (Model.SearchResult != null)
         {
-            foreach (var item in Model.Items.Item)
+            foreach (var item in Model.SearchResult.Items)
             {
                 @Html.Partial("_ItemOverview", item)
             }

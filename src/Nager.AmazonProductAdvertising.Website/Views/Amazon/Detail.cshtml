@@ -1,56 +1,32 @@
-﻿@model Nager.AmazonProductAdvertising.Model.Item
+﻿@model Nager.AmazonProductAdvertising.Model.Paapi.Item
 @{
-    ViewBag.Title = $"{Model.ItemAttributes.Title} {Model.ASIN}";
-
-    var features = string.Empty;
-    if (Model.ItemAttributes.Feature != null)
-    {
-        features = string.Join(" ", Model.ItemAttributes.Feature);
-    }
-
-    if (!string.IsNullOrEmpty(Model.ItemAttributes.Manufacturer))
-    {
-        ViewBag.MetaDescription = $"{Model.ItemAttributes.Manufacturer} - {features}";
-    }
-    else
-    {
-        ViewBag.MetaDescription = $"{features}";
-    }
+    ViewBag.Title = $"{Model.ItemInfo.Title.DisplayValue} {Model.ASIN}";
 }
 
 <div class="row">
     <div class="col-xs-12">
         <div class="row">
             <div class="col-xs-12">
-                <h3>@Model.ItemAttributes.Title <small>@Model.ASIN</small></h3>
+                <h3>@Model.ItemInfo.Title.DisplayValue <small>@Model.ASIN</small></h3>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                @if (Model.LargeImage != null)
+                @if (Model.Images.Primary.Medium != null)
                 {
-                    <img src="@Model.LargeImage.URL" alt="@Model.ItemAttributes.Title" title="@Model.ItemAttributes.Title" class="img-thumbnail" />
+                    <img src="@Model.Images.Primary.Large.URL" alt="@Model.ItemInfo.Title.DisplayValue" title="@Model.ItemInfo.Title.DisplayValue" class="img-thumbnail" />
                 }
             </div>
             <div class="col-xs-12 col-sm-6 col-md-8 col-lg-5">
-
-                <h3>@(Model.OfferSummary?.LowestNewPrice?.FormattedPrice)</h3>
+                <h3>@(Model.Offers?.Listings?.FirstOrDefault()?.Price?.DisplayAmount)</h3>
                 <a class="btn btn-primary btn-lg" href="@Model.DetailPageURL" role="button"><i class="fa fa-amazon" aria-hidden="true"></i> Bei Amazon.de kaufen</a>
-                <a id="cart" class="btn btn-primary btn-lg hidden-xs" onclick="AddToCart('@Model.ASIN')" role="button"><i class="fa fa-shopping-cart" aria-hidden="true"></i> In den Warenkorb</a><br />
-                <br />
-                @if (Model.EditorialReviews != null)
-                {
-                    <span>@Html.Raw(Model.EditorialReviews?.Where(o => o.Source == "Product Description" || o.Source == "Kurzbeschreibung").Select(o => o.Content).FirstOrDefault())</span>
-                }
-
             </div>
-
             <div class="col-xs-12 col-md-12 col-lg-4">
-                @if (Model.ItemAttributes.Feature != null)
+                @if (Model.ItemInfo.Features != null)
                 {
                     <h4>Features</h4>
                     <ul class="list-group">
-                        @foreach (var feature in Model.ItemAttributes.Feature)
+                        @foreach (var feature in Model.ItemInfo.Features.DisplayValues)
                         {
                             <li class="list-group-item">@feature</li>
                         }
@@ -58,10 +34,11 @@
                 }
             </div>
         </div>
+
         <br />
         <div class="row">
 
-            @if (Model.ImageSets != null)
+            @if (Model.Images?.Variants != null)
             {
                 <div class="col-xs-12 col-md-6">
 
@@ -75,10 +52,10 @@
                                 <div class="carousel-inner" role="listbox">
                                     @{
                                         var myClass = "active";
-                                        foreach (var image in Model.ImageSets.OrderByDescending(o => o.Category == "primary"))
+                                        foreach (var image in Model.Images.Variants.Select(o => o.Large))
                                         {
                                             <div class="item @myClass">
-                                                <img src="@image.LargeImage.URL" alt="@Model.ItemAttributes.Title" style="text-align:center;" />
+                                                <img src="@image.URL" alt="@Model.ItemInfo.Title.DisplayValue" style="text-align:center;" />
                                             </div>
                                             myClass = "";
                                         }
@@ -99,26 +76,6 @@
                     </div>
                 </div>
             }
-            <div class="col-xs-12 col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Similar Products</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div id="app" class="row">
-                            <div class="col-xs-6 col-md-6 col-lg-4 shoparticle text-center" v-for="item in data">
-                                <div>
-                                    <a :href="'/Amazon/Detail?articleNumber=' + item.Asin">
-                                        <div class="overlay"><div class="text"><h4>Mehr Details</h4></small></div></div>
-                                        <img :src="item.Image" :alt="item.Name" :title="item.Name" />
-                                    </a>
-                                </div>
-                                {{item.Name | truncate(30, '...') }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="row">
             <div class="col-xs-12 col-md-6">
@@ -128,89 +85,77 @@
                     </div>
                     <div class="panel-body">
                         <table class="table">
-                            @if (!String.IsNullOrEmpty(Model.ItemAttributes.Manufacturer))
+                            @if (!String.IsNullOrEmpty(Model.ItemInfo.ByLineInfo?.Manufacturer?.DisplayValue))
                             {
                                 <tr>
                                     <th>Manufacturer</th>
-                                    <td>@Model.ItemAttributes.Manufacturer</td>
+                                    <td>@Model.ItemInfo.ByLineInfo.Manufacturer.DisplayValue</td>
                                 </tr>
                             }
-                            @if (!String.IsNullOrEmpty(Model.ItemAttributes.Model))
+                            @if (!String.IsNullOrEmpty(Model.ItemInfo.ByLineInfo?.Brand?.DisplayValue))
                             {
                                 <tr>
-                                    <th>Model</th>
-                                    <td>@Model.ItemAttributes.Model</td>
+                                    <th>Brand</th>
+                                    <td>@Model.ItemInfo.ByLineInfo.Brand.DisplayValue</td>
                                 </tr>
                             }
-                            @if (!String.IsNullOrEmpty(Model.ItemAttributes.ModelYear))
-                            {
-                                <tr>
-                                    <th>ModelYear</th>
-                                    <td>@Model.ItemAttributes.ModelYear</td>
-                                </tr>
-                            }
-                            @if (!String.IsNullOrEmpty(Model.ItemAttributes.Color))
-                            {
-                                <tr>
-                                    <th>Color</th>
-                                    <td>@Model.ItemAttributes.Color</td>
-                                </tr>
-                            }
-                            @if (!String.IsNullOrEmpty(Model.ItemAttributes.ItemPartNumber))
-                            {
-                                <tr>
-                                    <th>ItemPartNumber</th>
-                                    <td>@Model.ItemAttributes.ItemPartNumber</td>
-                                </tr>
-                            }
-                            @if (!String.IsNullOrEmpty(Model.ItemAttributes.EAN))
-                            {
-                                <tr>
-                                    <th>EAN</th>
-                                    <td>@Model.ItemAttributes.EAN</td>
-                                </tr>
-                            }
-                            @if (!String.IsNullOrEmpty(Model.ItemAttributes.ProductGroup))
+                            @if (!String.IsNullOrEmpty(Model.ItemInfo.Classifications?.ProductGroup?.DisplayValue))
                             {
                                 <tr>
                                     <th>ProductGroup</th>
-                                    <td>@Model.ItemAttributes.ProductGroup</td>
+                                    <td>@Model.ItemInfo.Classifications.ProductGroup.DisplayValue</td>
                                 </tr>
                             }
-                            @if (!String.IsNullOrEmpty(Model.ItemAttributes.PublicationDate))
+                            @if (!String.IsNullOrEmpty(Model.ItemInfo.Classifications?.Binding?.DisplayValue))
                             {
                                 <tr>
-                                    <th>PublicationDate</th>
-                                    <td>@Model.ItemAttributes.PublicationDate</td>
+                                    <th>Binding</th>
+                                    <td>@Model.ItemInfo.Classifications.Binding.DisplayValue</td>
                                 </tr>
                             }
-                            @if (!String.IsNullOrEmpty(Model.ItemAttributes.ReleaseDate))
+                            @if (!String.IsNullOrEmpty(Model.ItemInfo.ProductInfo?.Color?.DisplayValue))
                             {
                                 <tr>
-                                    <th>ReleaseDate</th>
-                                    <td>@Model.ItemAttributes.ReleaseDate</td>
+                                    <th>Color</th>
+                                    <td>@Model.ItemInfo.ProductInfo.Color.DisplayValue</td>
                                 </tr>
                             }
-                            @if (!String.IsNullOrEmpty(Model.ItemAttributes.Warranty))
+                            @if (!String.IsNullOrEmpty(Model.ItemInfo.ProductInfo?.Size?.DisplayValue))
                             {
                                 <tr>
-                                    <th>Warranty</th>
-                                    <td>@Model.ItemAttributes.Warranty</td>
+                                    <th>Size</th>
+                                    <td>@Model.ItemInfo.ProductInfo.Size.DisplayValue</td>
                                 </tr>
                             }
-                            @if (!String.IsNullOrEmpty(Model.ItemAttributes.LegalDisclaimer))
+                            @if (Model.ItemInfo.ExternalIds?.EANs?.DisplayValues != null)
                             {
-                                <tr>
-                                    <th>LegalDisclaimer</th>
-                                    <td>@Model.ItemAttributes.LegalDisclaimer</td>
-                                </tr>
+                                foreach (var item in Model.ItemInfo.ExternalIds.EANs.DisplayValues)
+                                {
+                                    <tr>
+                                        <th>EAN</th>
+                                        <td>@item</td>
+                                    </tr>
+                                }
                             }
-                            @if (!String.IsNullOrEmpty(@Model.SalesRank))
+                            @if (Model.ItemInfo.ExternalIds?.UPCs?.DisplayValues != null)
                             {
-                                <tr>
-                                    <th>SalesRank</th>
-                                    <td><span class="glyphicon glyphicon-star" style="color:#ffd800; font-size:15px;" aria-hidden="true"></span> @Model.SalesRank</td>
-                                </tr>
+                                foreach (var item in Model.ItemInfo.ExternalIds.UPCs.DisplayValues)
+                                {
+                                    <tr>
+                                        <th>UPC</th>
+                                        <td>@item</td>
+                                    </tr>
+                                }
+                            }
+                            @if (Model.ItemInfo.ExternalIds?.ISBNs?.DisplayValues != null)
+                            {
+                                foreach (var item in Model.ItemInfo.ExternalIds.ISBNs.DisplayValues)
+                                {
+                                    <tr>
+                                        <th>ISBN</th>
+                                        <td>@item</td>
+                                    </tr>
+                                }
                             }
                         </table>
                     </div>
@@ -222,45 +167,3 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
-<script>
-    function AddToCart(asin) {
-        $.ajax({
-            url: './AddCart?asin=' + asin,
-            method: 'GET',
-            success: function (msg) {
-                $("#cart").css("background-color", "green");
-            }
-        });
-    }
-</script>
-
-@if (Model.SimilarProducts != null)
-{
-<script>
-var app = new Vue({
-    el: '#app',
-    data: {
-        message: ['@Html.Raw(string.Join("','", Model.SimilarProducts.Select(o=>o.ASIN)))'],
-        data: null
-    },
-    created: function () {
-        var self = this;
-        axios.get('/Amazon/LookupsJson/?articleNumbers=@Html.Raw(string.Join("&articleNumbers=", Model.SimilarProducts.Select(o => o.ASIN)))')
-            .then(function (response) {
-                console.log(response);
-                self.data = response.data;
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    },
-    filters: {
-        truncate: function (text, length, suffix) {
-            return text.substring(0, length) + suffix;
-        },
-    }
-})
-</script>
-}

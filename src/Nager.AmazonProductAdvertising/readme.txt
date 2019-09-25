@@ -1,15 +1,12 @@
 Thank you for using the Nager.AmazonProductAdvertising package (https://github.com/tinohager/Nager.AmazonProductAdvertising)
 ----------------------------------------------------------------
-Please support this project with the award of a GitHub Star (★)
-
+Please support this project with the awarding of a GitHub Star (★)
+The update to the new api was very intensive and I would be happy about a sponsoring. :)
 
 Examples:
 ----------------------------------------------------------------
 
 //Item Search
-var authentication = new AmazonAuthentication();
-authentication.AccessKey = "accesskey";
-authentication.SecretKey = "secretkey";
-
-var wrapper = new AmazonWrapper(authentication, AmazonEndpoint.US, "nager-20");
-var result = wrapper.Search("canon eos", AmazonSearchIndex.Electronics, AmazonResponseGroup.Large);
+var authentication = new AmazonAuthentication("accesskey", "secretkey");
+var client = new AmazonProductAdvertisingClient(authentication, AmazonEndpoint.US, "nager-20");
+var result = await client.SearchItemsAsync("canon eos");

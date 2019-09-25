@@ -1,5 +1,4 @@
-﻿using System.Web.Optimization;
-using System.Web.Routing;
+﻿using System.Web.Routing;
 
 namespace Nager.AmazonProductAdvertising.Website
 {
@@ -8,7 +7,6 @@ namespace Nager.AmazonProductAdvertising.Website
         protected void Application_Start()
         {
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
 }

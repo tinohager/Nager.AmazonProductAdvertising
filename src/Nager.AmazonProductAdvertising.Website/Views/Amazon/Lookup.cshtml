@@ -1,4 +1,4 @@
-﻿@model Nager.AmazonProductAdvertising.Model.AmazonItemResponse
+﻿@model Nager.AmazonProductAdvertising.Model.GetItemsResponse
 @{
     ViewBag.Title = "Lookup";
 }
@@ -20,17 +20,9 @@
 <div class="row">
     @if (Model != null)
     {
-        if (Model.Items.Request.Errors?.Length > 0)
+        if (Model?.ItemsResult?.Items != null)
         {
-            foreach (var error in Model.Items.Request.Errors)
-            {
-                <div class="alert alert-danger" role="alert"><strong>@error.Code</strong><br />@error.Message</div>
-            }
-        }
-
-        if (Model.Items.Item != null)
-        {
-            foreach (var item in Model.Items.Item)
+            foreach (var item in Model.ItemsResult.Items)
             {
                 @Html.Partial("_ItemOverview", item)
             }
