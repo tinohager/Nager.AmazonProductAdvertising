@@ -6,10 +6,9 @@
     <title>@ViewBag.Title - Nager Shop</title>
     <meta name="description" content="@ViewBag.MetaDescription">
     <link href="https://fonts.googleapis.com/css?family=Raleway:400" rel="stylesheet" type="text/css">
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.css" />
-    <script defer src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.1.0/cookieconsent.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -26,7 +25,6 @@
                 <ul class="nav navbar-nav">
                     <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-home fa-space" aria-hidden="true"></i> Home</a></li>
                     <li><a href="@Url.Action("Lookup", "Amazon")"><i class="fa fa-bullseye fa-space" aria-hidden="true"></i> Lookup</a></li>
-                    <li><a href="@Url.Action("Cart", "Amazon")"><i class="fa fa-shopping-cart fa-space" aria-hidden="true"></i> My Cart</a></li>
                 </ul>
             </div>
         </div>
@@ -65,35 +63,9 @@
         </div>
     </footer>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
     @RenderSection("scripts", required: false)
 
-    <!-- Global Site Tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106595536-2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments) };
-        gtag('js', new Date());
-
-        gtag('config', 'UA-106595536-2');
-    </script>
-
-    <script>
-        window.addEventListener("load", function () {
-            window.cookieconsent.initialise({
-                "palette": {
-                    "popup": {
-                        "background": "#eeeeee"
-                    },
-                    "button": {
-                        "background": "#346cb0"
-                    }
-                },
-                "position": "bottom"
-            })
-        });
-    </script>
-
-</body >
+</body>
 </html >

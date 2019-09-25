@@ -2,6 +2,6 @@
 {
     public class AmazonResponse
     {
-        public OperationRequest OperationRequest { get; set; }
+        public bool Successful { get; set; }
     }
 }

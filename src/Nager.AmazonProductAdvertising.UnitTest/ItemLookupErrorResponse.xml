@@ -1,8 +1,0 @@
-﻿<?xml version="1.0"?>
-<ItemLookupErrorResponse xmlns="http://ecs.amazonaws.com/doc/2009-03-31/">
-  <Error>
-    <Code>SignatureDoesNotMatch</Code>
-    <Message>The request signature we calculated does not match the signature you provided. Check your AWS Secret Access Key and signing method. Consult the service documentation for details.</Message>
-  </Error>
-  <RequestId>49592081-33d3-4f66-8c89-573d2f7ea392</RequestId>
-</ItemLookupErrorResponse>
