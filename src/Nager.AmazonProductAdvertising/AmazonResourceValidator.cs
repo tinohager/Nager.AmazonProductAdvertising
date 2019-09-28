@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Nager.AmazonProductAdvertising
@@ -91,6 +92,16 @@ namespace Nager.AmazonProductAdvertising
         /// <returns></returns>
         public bool IsResourcesValid(string[] resources, string operation)
         {
+            if (string.IsNullOrEmpty(operation))
+            {
+                throw new ArgumentNullException(nameof(operation));
+            }
+
+            if (resources == null)
+            {
+                return false;
+            }
+
             var items = this._resources.Count(resource => 
                 resources.Any(x => resource.Key.Equals(x, System.StringComparison.OrdinalIgnoreCase) && 
                 resource.Value.Any(y => y.Equals(operation, System.StringComparison.OrdinalIgnoreCase)))
