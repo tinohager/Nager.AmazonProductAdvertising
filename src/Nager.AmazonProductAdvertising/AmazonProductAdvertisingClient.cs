@@ -127,7 +127,7 @@ namespace Nager.AmazonProductAdvertising
         {
             if (!this._amazonResourceValidator.IsResourcesValid(searchRequest.Resources, "SearchItems"))
             {
-                return new SearchItemResponse { Successful = false };
+                return new SearchItemResponse { Successful = false, ErrorMessage = "Resources has wrong values" };
             }
 
             var searchItemRequest = new SearchItemRequest
@@ -145,13 +145,13 @@ namespace Nager.AmazonProductAdvertising
             var json = JsonConvert.SerializeObject(searchItemRequest, this._jsonSerializerSettingsRequest);
             if (string.IsNullOrEmpty(json))
             {
-                return new SearchItemResponse { Successful = false };
+                return new SearchItemResponse { Successful = false, ErrorMessage = "Cannot serialize object" };
             }
 
             var response = await this.RequestAsync("SearchItems", json);
             if (!response.Successful)
             {
-                return new SearchItemResponse { Successful = false };
+                return new SearchItemResponse { Successful = false, ErrorMessage = $"API request failure {response.StatusCode} {response.Content}" };
             }
 
             var amazonResponse = JsonConvert.DeserializeObject<SearchItemResponse>(response.Content, this._jsonSerializerSettingsResponse);
@@ -228,6 +228,11 @@ namespace Nager.AmazonProductAdvertising
         /// <returns></returns>
         public async Task<GetItemsResponse> GetItemsAsync(ItemsRequest itemsRequest)
         {
+            if (!this._amazonResourceValidator.IsResourcesValid(itemsRequest.Resources, "GetItems"))
+            {
+                return new GetItemsResponse { Successful = false, ErrorMessage = "Resources has wrong values" };
+            }
+
             var request = new GetItemsRequest
             {
                 ItemIds = itemsRequest.ItemIds,
@@ -238,16 +243,15 @@ namespace Nager.AmazonProductAdvertising
             };
 
             var json = JsonConvert.SerializeObject(request, this._jsonSerializerSettingsRequest);
-
-            if (!this._amazonResourceValidator.IsResourcesValid(request.Resources, "GetItems"))
+            if (string.IsNullOrEmpty(json))
             {
-                return new GetItemsResponse { Successful = false };
+                return new GetItemsResponse { Successful = false, ErrorMessage = "Cannot serialize object" };
             }
 
             var response = await this.RequestAsync("GetItems", json);
             if (!response.Successful)
             {
-                return new GetItemsResponse { Successful = false };
+                return new GetItemsResponse { Successful = false, ErrorMessage = $"API request failure {response.StatusCode} {response.Content}" };
             }
 
             var amazonResponse = JsonConvert.DeserializeObject<GetItemsResponse>(response.Content, this._jsonSerializerSettingsResponse);
@@ -282,17 +286,21 @@ namespace Nager.AmazonProductAdvertising
                 }
             };
 
-            var json = JsonConvert.SerializeObject(request, this._jsonSerializerSettingsRequest);
-
             if (!this._amazonResourceValidator.IsResourcesValid(request.Resources, "GetVariations"))
             {
-                return new GetVariationsResponse { Successful = false };
+                return new GetVariationsResponse { Successful = false, ErrorMessage = "Resources has wrong values" };
+            }
+
+            var json = JsonConvert.SerializeObject(request, this._jsonSerializerSettingsRequest);
+            if (string.IsNullOrEmpty(json))
+            {
+                return new GetVariationsResponse { Successful = false, ErrorMessage = "Cannot serialize object" };
             }
 
             var response = await this.RequestAsync("GetVariations", json);
             if (!response.Successful)
             {
-                return new GetVariationsResponse { Successful = false };
+                return new GetVariationsResponse { Successful = false, ErrorMessage = $"API request failure {response.StatusCode} {response.Content}" };
             }
 
             var amazonResponse = JsonConvert.DeserializeObject<GetVariationsResponse>(response.Content, this._jsonSerializerSettingsResponse);
