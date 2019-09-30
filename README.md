@@ -35,7 +35,7 @@ var searchRequest = new SearchRequest
 {
     Keywords = "canon eos",
     ItemPage = 2,
-    Resources = new[]
+    Resources = new []
     {
         //https://webservices.amazon.com/paapi5/documentation/search-items.html#resources-parameter
         "Images.Primary.Large",
