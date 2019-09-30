@@ -20,11 +20,30 @@ Please check the AmazonEndpoint is correct for your Country.
 - Amazon Spain use `AmazonEndpoint.ES`
 - Amazon United Kingdom use `AmazonEndpoint.UK`
 
-##### Item Search
+##### Item Search (simple)
 ```cs
 var authentication = new AmazonAuthentication("accesskey", "secretkey");
 var client = new AmazonProductAdvertisingClient(authentication, AmazonEndpoint.US, "nager-20");
 var result = await client.SearchItemsAsync("canon eos");
+```
+
+##### Item Search (advanced)
+```cs
+var authentication = new AmazonAuthentication("accesskey", "secretkey");
+var client = new AmazonProductAdvertisingClient(authentication, AmazonEndpoint.US, "nager-20");
+var searchRequest = new SearchRequest
+{
+    Keywords = keyword,
+    ItemPage = skip,
+    Resources = new[]
+    {
+        //https://webservices.amazon.com/paapi5/documentation/search-items.html#resources-parameter
+        "Images.Primary.Large",
+        "ItemInfo.Title",
+        "ItemInfo.Features"
+    }
+};
+var result = await client.SearchItemsAsync(searchRequest);
 ```
 
 ##### Item Lookup
