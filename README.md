@@ -33,8 +33,8 @@ var authentication = new AmazonAuthentication("accesskey", "secretkey");
 var client = new AmazonProductAdvertisingClient(authentication, AmazonEndpoint.US, "nager-20");
 var searchRequest = new SearchRequest
 {
-    Keywords = keyword,
-    ItemPage = skip,
+    Keywords = "canon eos",
+    ItemPage = 2,
     Resources = new[]
     {
         //https://webservices.amazon.com/paapi5/documentation/search-items.html#resources-parameter
