@@ -22,6 +22,10 @@ namespace Nager.AmazonProductAdvertising.UnitTest
         [DataRow("Kleider")]
         [DataRow("Schuhe")]
         [DataRow("Staubsauger")]
+        [DataRow("Teller")]
+        [DataRow("Sonnenbrille")]
+        [DataRow("Wasserkocher")]
+        [DataRow("Nussknacker")]
         public async Task SearchItemsTest1(string keyword)
         {
             var response = await this._client.SearchItemsAsync(keyword);
@@ -29,9 +33,21 @@ namespace Nager.AmazonProductAdvertising.UnitTest
             Assert.AreEqual(10, response.SearchResult.Items.Length);
         }
 
+        [DataTestMethod]
+        [DataRow("aefsefwdfd")]
+        [DataRow("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")]
+        [DataRow("")]
+        [DataRow(null)]
+        public async Task SearchItemsTest2(string keyword)
+        {
+            var response = await this._client.SearchItemsAsync(keyword);
+            //Assert.IsTrue(response.Successful);
+            //Assert.AreEqual(10, response.SearchResult.Items.Length);
+        }
+
         [TestMethod]
 
-        public async Task SearchItemsTest2()
+        public async Task SearchItemsTest3()
         {
             var request = new SearchRequest
             {
