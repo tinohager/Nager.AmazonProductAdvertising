@@ -4,6 +4,7 @@ using Nager.AmazonProductAdvertising.Model.Paapi;
 using Nager.AmazonProductAdvertising.Model.Request;
 using Newtonsoft.Json;
 using System;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -155,7 +156,11 @@ namespace Nager.AmazonProductAdvertising
             }
 
             var amazonResponse = JsonConvert.DeserializeObject<SearchItemResponse>(response.Content, this._jsonSerializerSettingsResponse);
-            amazonResponse.Successful = true;
+            amazonResponse.Successful = (amazonResponse.SearchResult != null && amazonResponse.Errors == null);
+
+            if (amazonResponse.Errors != null)
+                amazonResponse.ErrorMessage = String.Join("\n", amazonResponse.Errors.Select(x => x.Message));
+
             return amazonResponse;
         }
 
