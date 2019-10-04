@@ -4,6 +4,7 @@ using Nager.AmazonProductAdvertising.Model.Paapi;
 using Nager.AmazonProductAdvertising.Model.Request;
 using Newtonsoft.Json;
 using System;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -149,14 +150,7 @@ namespace Nager.AmazonProductAdvertising
             }
 
             var response = await this.RequestAsync("SearchItems", json);
-            if (!response.Successful)
-            {
-                return new SearchItemResponse { Successful = false, ErrorMessage = $"API request failure {response.StatusCode} {response.Content}" };
-            }
-
-            var amazonResponse = JsonConvert.DeserializeObject<SearchItemResponse>(response.Content, this._jsonSerializerSettingsResponse);
-            amazonResponse.Successful = true;
-            return amazonResponse;
+            return this.DeserializeObject<SearchItemResponse>(response);
         }
 
         /// <summary>
@@ -249,14 +243,7 @@ namespace Nager.AmazonProductAdvertising
             }
 
             var response = await this.RequestAsync("GetItems", json);
-            if (!response.Successful)
-            {
-                return new GetItemsResponse { Successful = false, ErrorMessage = $"API request failure {response.StatusCode} {response.Content}" };
-            }
-
-            var amazonResponse = JsonConvert.DeserializeObject<GetItemsResponse>(response.Content, this._jsonSerializerSettingsResponse);
-            amazonResponse.Successful = true;
-            return amazonResponse;
+            return this.DeserializeObject<GetItemsResponse>(response);
         }
 
         /// <summary>
@@ -298,13 +285,19 @@ namespace Nager.AmazonProductAdvertising
             }
 
             var response = await this.RequestAsync("GetVariations", json);
-            if (!response.Successful)
+            return this.DeserializeObject<GetVariationsResponse>(response);
+        }
+
+        private T DeserializeObject<T>(HttpResponse response) where T : AmazonResponse
+        {
+            var amazonResponse = JsonConvert.DeserializeObject<T>(response.Content, this._jsonSerializerSettingsResponse);
+            amazonResponse.Successful = response.Successful;
+            if (amazonResponse.Errors != null)
             {
-                return new GetVariationsResponse { Successful = false, ErrorMessage = $"API request failure {response.StatusCode} {response.Content}" };
+                amazonResponse.Successful = false;
+                amazonResponse.ErrorMessage = string.Join(Environment.NewLine, amazonResponse.Errors.Select(o => o.Message));
             }
 
-            var amazonResponse = JsonConvert.DeserializeObject<GetVariationsResponse>(response.Content, this._jsonSerializerSettingsResponse);
-            amazonResponse.Successful = true;
             return amazonResponse;
         }
 
@@ -321,18 +314,16 @@ namespace Nager.AmazonProductAdvertising
                 RequestUri = new Uri(requestUri),
                 Content = new StringContent(json, Encoding.UTF8, "application/json")
             };
+
             request.Content.Headers.ContentEncoding.Add("amz-1.0");
             request.Headers.Add("x-amz-target", amzTarget);
 
-            var result = await this._httpClient.SendAsync(request, this._amazonEndpointConfig.Region, serviceName, this._credentials);
-            if (!result.IsSuccessStatusCode)
+            using (var responseMessage = await this._httpClient.SendAsync(request, this._amazonEndpointConfig.Region, serviceName, this._credentials))
             {
-                var errorContent = await result.Content.ReadAsStringAsync();
-                return new HttpResponse { Successful = false, StatusCode = result.StatusCode, Content = errorContent };
+                var content = await responseMessage.Content.ReadAsStringAsync();
+                //System.IO.File.WriteAllText($"{DateTime.Now:hhmmssfff}.json", content);
+                return new HttpResponse { Successful = responseMessage.IsSuccessStatusCode, StatusCode = responseMessage.StatusCode, Content = content };
             }
-
-            var content = await result.Content.ReadAsStringAsync();
-            return new HttpResponse { Successful = true, Content = content };
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -7,13 +8,19 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
 {
     public class AmazonController : Controller
     {
-        private readonly string _associateTag;
+        private readonly string _partnerTag;
         private readonly AmazonEndpoint _amazonEndpoint;
 
         public AmazonController()
         {
-            this._associateTag = "nagerat-21";
-            this._amazonEndpoint = AmazonEndpoint.DE;
+            var partnerTag = ConfigurationManager.AppSettings["AmazonPartnerTag"];
+            var amazonEndpoint = ConfigurationManager.AppSettings["AmazonEndpoint"];
+
+            this._partnerTag = partnerTag;
+            if (Enum.TryParse(amazonEndpoint, out AmazonEndpoint endpoint))
+            {
+                this._amazonEndpoint = endpoint;
+            }
         }
 
         private AmazonAuthentication GetConfig()
@@ -21,11 +28,11 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
             var accessKey = ConfigurationManager.AppSettings["AmazonAccessKey"];
             var secretKey = ConfigurationManager.AppSettings["AmazonSecretKey"];
 
-            var authentication = new AmazonAuthentication();
-            authentication.AccessKey = accessKey;
-            authentication.SecretKey = secretKey;
-
-            return authentication;
+            return new AmazonAuthentication
+            {
+                AccessKey = accessKey,
+                SecretKey = secretKey
+            };
         }
 
         public async Task<ActionResult> Lookup(string articleNumber)
@@ -37,8 +44,12 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
 
             var authentication = this.GetConfig();
 
-            var client = new AmazonProductAdvertisingClient(authentication, this._amazonEndpoint, this._associateTag);
+            var client = new AmazonProductAdvertisingClient(authentication, this._amazonEndpoint, this._partnerTag);
             var result = await client.GetItemsAsync(articleNumber.Trim());
+            if (!result.Successful)
+            {
+                return View("Error", result);
+            }
 
             return View(result);
         }
@@ -54,8 +65,12 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
 
             var authentication = this.GetConfig();
 
-            var client = new AmazonProductAdvertisingClient(authentication, this._amazonEndpoint, this._associateTag);
+            var client = new AmazonProductAdvertisingClient(authentication, this._amazonEndpoint, this._partnerTag);
             var result = await client.SearchItemsAsync(search.Trim());
+            if (!result.Successful)
+            {
+                return View("Error", result);
+            }
 
             return View(result);
         }
@@ -69,8 +84,12 @@ namespace Nager.AmazonProductAdvertising.Website.Controllers
 
             var authentication = this.GetConfig();
 
-            var client = new AmazonProductAdvertisingClient(authentication, this._amazonEndpoint, this._associateTag);
+            var client = new AmazonProductAdvertisingClient(authentication, this._amazonEndpoint, this._partnerTag);
             var result = await client.GetItemsAsync(articleNumber.Trim());
+            if (!result.Successful)
+            {
+                return View("Error", result);
+            }
 
             return View(result.ItemsResult.Items.FirstOrDefault());
         }
