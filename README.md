@@ -37,6 +37,7 @@ var searchRequest = new SearchRequest
     ItemPage = 2,
     Resources = new []
     {
+        //You can found all available Resources in the documentation
         //https://webservices.amazon.com/paapi5/documentation/search-items.html#resources-parameter
         "Images.Primary.Large",
         "ItemInfo.Title",
