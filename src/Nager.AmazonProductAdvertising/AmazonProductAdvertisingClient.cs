@@ -183,6 +183,7 @@ namespace Nager.AmazonProductAdvertising
                     "ItemInfo.ContentRating",
                     "ItemInfo.ExternalIds",
                     "ItemInfo.Features",
+                    "ItemInfo.ManufactureInfo",
                     "ItemInfo.ProductInfo",
                     "ItemInfo.TechnicalInfo",
                     "ItemInfo.Title",
