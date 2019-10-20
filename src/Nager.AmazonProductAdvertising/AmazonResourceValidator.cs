@@ -38,7 +38,7 @@ namespace Nager.AmazonProductAdvertising
                 { "ItemInfo.Classifications", new [] { "SearchItems", "GetItems", "GetVariations" } },
                 { "ItemInfo.ExternalIds", new [] { "SearchItems", "GetItems", "GetVariations" } },
                 { "ItemInfo.Features", new [] { "SearchItems", "GetItems", "GetVariations" } },
-                { "ItemInfo.ManufacturerInfo", new [] { "SearchItems", "GetItems", "GetVariations" } }, //<-- Error
+                { "ItemInfo.ManufactureInfo", new [] { "SearchItems", "GetItems", "GetVariations" } },
                 { "ItemInfo.ProductInfo", new [] { "SearchItems", "GetItems", "GetVariations" } },
                 { "ItemInfo.TechnicalInfo", new [] { "SearchItems", "GetItems", "GetVariations" } },
                 { "ItemInfo.Title", new [] { "SearchItems", "GetItems", "GetVariations" } },

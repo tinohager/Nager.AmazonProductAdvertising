@@ -11,5 +11,6 @@
         public ContentInfo ContentInfo { get; set; }
         public ContentRating ContentRating { get; set; }
         public TechnicalInfo TechnicalInfo { get; set; }
+        public ManufactureInfo ManufactureInfo { get; set; }
     }
 }
