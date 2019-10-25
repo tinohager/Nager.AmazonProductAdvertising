@@ -254,14 +254,13 @@ namespace Nager.AmazonProductAdvertising
         /// <returns></returns>
         public async Task<GetVariationsResponse> GetVariationsAsync(string asin)
         {
-            var request = new GetVariationsRequest
+            var request = new VariationsRequest
             {
-                ASIN = asin,
-                PartnerTag = this._partnerTag,
-                PartnerType = "Associates",
-                Marketplace = $"www.{this._amazonEndpointConfig.Host}",
+                Asin = asin,
                 Resources = new[]
                 {
+                    "ItemInfo.Title",
+
                     "VariationSummary.VariationDimension",
 
                     "Images.Primary.Small",
@@ -272,6 +271,25 @@ namespace Nager.AmazonProductAdvertising
                     "Images.Variants.Medium",
                     "Images.Variants.Large",
                 }
+            };
+
+            return await this.GetVariationsAsync(request);
+        }
+
+        /// <summary>
+        /// Get variations via asin
+        /// </summary>
+        /// <param name="variationsRequest"></param>
+        /// <returns></returns>
+        public async Task<GetVariationsResponse> GetVariationsAsync(VariationsRequest variationsRequest)
+        {
+            var request = new GetVariationsRequest
+            {
+                ASIN = variationsRequest.Asin,
+                PartnerTag = this._partnerTag,
+                PartnerType = "Associates",
+                Marketplace = $"www.{this._amazonEndpointConfig.Host}",
+                Resources = variationsRequest.Resources
             };
 
             if (!this._amazonResourceValidator.IsResourcesValid(request.Resources, "GetVariations"))
