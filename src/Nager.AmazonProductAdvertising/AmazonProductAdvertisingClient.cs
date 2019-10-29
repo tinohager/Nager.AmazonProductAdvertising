@@ -131,19 +131,20 @@ namespace Nager.AmazonProductAdvertising
                 return new SearchItemResponse { Successful = false, ErrorMessage = "Resources has wrong values" };
             }
 
-            var searchItemRequest = new SearchItemRequest
+            var request = new SearchItemRequest
             {
                 Keywords = searchRequest.Keywords,
                 Resources = searchRequest.Resources,
                 ItemPage = searchRequest.ItemPage,
                 SortBy = searchRequest.SortBy,
                 BrowseNodeId = searchRequest.BrowseNodeId,
+                Merchant = searchRequest.Merchant,
                 PartnerTag = this._partnerTag,
                 PartnerType = "Associates",
                 Marketplace = $"www.{this._amazonEndpointConfig.Host}"
             };
 
-            var json = JsonConvert.SerializeObject(searchItemRequest, this._jsonSerializerSettingsRequest);
+            var json = JsonConvert.SerializeObject(request, this._jsonSerializerSettingsRequest);
             if (string.IsNullOrEmpty(json))
             {
                 return new SearchItemResponse { Successful = false, ErrorMessage = "Cannot serialize object" };
@@ -232,6 +233,7 @@ namespace Nager.AmazonProductAdvertising
             {
                 ItemIds = itemsRequest.ItemIds,
                 Resources = itemsRequest.Resources,
+                Merchant = itemsRequest.Merchant,
                 PartnerTag = this._partnerTag,
                 PartnerType = "Associates",
                 Marketplace = $"www.{this._amazonEndpointConfig.Host}",
@@ -286,6 +288,7 @@ namespace Nager.AmazonProductAdvertising
             var request = new GetVariationsRequest
             {
                 ASIN = variationsRequest.Asin,
+                Merchant = variationsRequest.Merchant,
                 PartnerTag = this._partnerTag,
                 PartnerType = "Associates",
                 Marketplace = $"www.{this._amazonEndpointConfig.Host}",

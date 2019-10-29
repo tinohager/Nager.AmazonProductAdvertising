@@ -6,5 +6,6 @@
         public string PartnerType { get; internal set; }
         public string Marketplace { get; internal set; }
         public string[] Resources { get; set; }
+        public Merchant? Merchant { get; set; }
     }
 }
