@@ -13,8 +13,13 @@ namespace Nager.AmazonProductAdvertising.UnitTest
         [TestInitialize]
         public void TestInitialize()
         {
-            var amazonAuthentication = new AmazonAuthentication("accessKey", "secretKey");
-            this._client = new AmazonProductAdvertisingClient(amazonAuthentication, AmazonEndpoint.DE, "partnerTag", strictJsonMapping: true);
+            var accessKey = "";
+            var secretKey = "";
+            var parnterTag = "";
+            var endpoint = AmazonEndpoint.DE;
+
+            var amazonAuthentication = new AmazonAuthentication(accessKey, secretKey);
+            this._client = new AmazonProductAdvertisingClient(amazonAuthentication, endpoint, parnterTag, strictJsonMapping: true);
         }
 
         [DataTestMethod]
@@ -59,6 +64,26 @@ namespace Nager.AmazonProductAdvertising.UnitTest
                     "Images.Primary.Small",
                     "ItemInfo.Title",
                 },
+            };
+
+            var response = await this._client.SearchItemsAsync(request);
+            Assert.IsTrue(response.Successful);
+            Assert.AreEqual(10, response.SearchResult.Items.Length);
+        }
+
+        [TestMethod]
+        public async Task SearchItemsTest4()
+        {
+            var request = new SearchRequest
+            {
+                SortBy = SortBy.AvgCustomerReviews,
+                Keywords = "iPhone",
+                Resources = new[]
+                {
+                    "Images.Primary.Small",
+                    "ItemInfo.Title",
+                },
+                Merchant = Merchant.All
             };
 
             var response = await this._client.SearchItemsAsync(request);
