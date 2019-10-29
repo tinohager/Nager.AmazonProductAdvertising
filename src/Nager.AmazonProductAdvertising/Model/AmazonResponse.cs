@@ -8,6 +8,7 @@ namespace Nager.AmazonProductAdvertising.Model
         public string Type { get; set; }
         public bool Successful { get; set; }
         public string ErrorMessage { get; set; }
+        public string Message { get; set; }
         public AmazonResponseError[] Errors { get; set; }
     }
 }
