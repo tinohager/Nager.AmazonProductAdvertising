@@ -4,7 +4,7 @@
         <div class="col-xs-12">
             <a href="/Amazon/Detail?articleNumber=@Model.ASIN">
                 <div class="overlay"><div class="text">Product Detail</div></div>
-                    @if (Model.Images != null)
+                    @if (Model.Images?.Primary?.Medium != null)
                     {
                         <img src="@Model.Images.Primary.Medium.URL" alt="@Model.ItemInfo.Title.DisplayValue" title="@Model.ItemInfo.Title.DisplayValue" border="0" />        
                     }
