@@ -7,5 +7,6 @@
         public SortBy? SortBy { get; set; }
         public string BrowseNodeId { get; set; }
         public string[] Resources { get; set; }
+        public Merchant? Merchant { get; set; }
     }
 }

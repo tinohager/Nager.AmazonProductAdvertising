@@ -2,18 +2,18 @@
 
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
-    <Version>2.0.4</Version>
+    <Version>2.0.5</Version>
     <Authors>Tino Hager</Authors>
     <Company>nager.at</Company>
     <PackageProjectUrl>https://github.com/tinohager/Nager.AmazonProductAdvertising</PackageProjectUrl>
     <RepositoryUrl>https://github.com/tinohager/Nager.AmazonProductAdvertising</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Copyright>Copyright ©  2018</Copyright>
-    <PackageReleaseNotes>Add new method for GetVariations</PackageReleaseNotes>
+    <Copyright>Copyright © nager.at</Copyright>
+    <PackageReleaseNotes>Add Merchant</PackageReleaseNotes>
     <PackageTags>ProductAdvertisingAPI AmazonProductAdvertising paapi5 product search amazon</PackageTags>
     <Description>Amazon Product Advertising API, Supports ItemSeach with ASIN, EAN, UPC and ISBN, ItemLookup and BrowseNodeLookup</Description>
-    <AssemblyVersion>2.0.4</AssemblyVersion>
-    <FileVersion>2.0.4</FileVersion>
+    <AssemblyVersion>2.0.5</AssemblyVersion>
+    <FileVersion>2.0.5</FileVersion>
     <PackageIconUrl>https://raw.githubusercontent.com/tinohager/Nager.AmazonProductAdvertising/master/doc/logo.png</PackageIconUrl>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <IncludeSymbols>true</IncludeSymbols>
