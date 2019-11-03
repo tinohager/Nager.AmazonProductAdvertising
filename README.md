@@ -1,8 +1,3 @@
-# Important
-Amazon rolled out a new API version `paapi5`. Only `Nager.AmazonProductAdvertising` Version `2.0.0` or above support new `paapi5`.
-On **31 October 2019** old API will be shut down. [Read more](https://dev.to/skatkov/new-amazon-product-advertising-api-is-here-and-you-need-to-migrate-fast-3545)
-
-
 # Nager.AmazonProductAdvertising
 Allow access to amazon product advertising API (`paapi5`), you can search a product over the name or a keyword. You can visit a demo [here](https://shop.nager.at)
 
