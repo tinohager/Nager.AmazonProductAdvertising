@@ -134,6 +134,8 @@ namespace Nager.AmazonProductAdvertising
             var request = new SearchItemRequest
             {
                 Keywords = searchRequest.Keywords,
+                Brand = searchRequest.Brand,
+                Title = searchRequest.Title,
                 Resources = searchRequest.Resources,
                 ItemPage = searchRequest.ItemPage,
                 SortBy = searchRequest.SortBy,
