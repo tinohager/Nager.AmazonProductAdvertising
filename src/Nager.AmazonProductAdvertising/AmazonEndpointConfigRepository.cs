@@ -16,7 +16,7 @@ namespace Nager.AmazonProductAdvertising
         {
             this._configs = new Dictionary<AmazonEndpoint, AmazonEndpointConfig>
             {
-                { AmazonEndpoint.AU, new AmazonEndpointConfig { Host = "amazon.com.au", Region = "eu-west-2" } },
+                { AmazonEndpoint.AU, new AmazonEndpointConfig { Host = "amazon.com.au", Region = "us-west-2" } },
                 { AmazonEndpoint.BR, new AmazonEndpointConfig { Host = "amazon.com.br", Region = "us-east-1" } },
                 { AmazonEndpoint.CA, new AmazonEndpointConfig { Host = "amazon.ca", Region = "us-east-1" } },
                 { AmazonEndpoint.FR, new AmazonEndpointConfig { Host = "amazon.fr", Region = "eu-west-1" } },
