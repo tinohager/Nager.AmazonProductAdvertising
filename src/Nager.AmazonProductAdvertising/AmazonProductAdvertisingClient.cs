@@ -236,6 +236,7 @@ namespace Nager.AmazonProductAdvertising
                 ItemIds = itemsRequest.ItemIds,
                 Resources = itemsRequest.Resources,
                 Merchant = itemsRequest.Merchant,
+                Condition = itemsRequest.Condition,
                 PartnerTag = this._partnerTag,
                 PartnerType = "Associates",
                 Marketplace = $"www.{this._amazonEndpointConfig.Host}",

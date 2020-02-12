@@ -111,5 +111,24 @@ namespace Nager.AmazonProductAdvertising.UnitTest
             Assert.IsTrue(response.Successful);
             Assert.AreEqual(10, response.VariationsResult.Items.Length);
         }
+
+        [TestMethod]
+        public async Task GetItemsWithConditionTest()
+        {
+            var request = new ItemsRequest
+            {
+                ItemIds = new string[] { "B000NM8SEA" },
+                Condition = Condition.Used,
+                Resources = new string[] {
+                    "Offers.Listings.Condition",
+                    "Offers.Listings.Price"
+                }
+            };
+
+            var response = await this._client.GetItemsAsync(request);
+            Assert.IsTrue(response.Successful);
+            Assert.AreEqual(Condition.Used.ToString(), response.ItemsResult.Items[0].Offers.Listings[0].Condition.Value);
+            Assert.AreEqual(1.69, response.ItemsResult.Items[0].Offers.Listings[0].Price.Amount);
+        }
     }
 }
