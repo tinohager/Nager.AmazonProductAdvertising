@@ -12,5 +12,7 @@ namespace Nager.AmazonProductAdvertising.Model.Request
         [JsonConverter(typeof(StringEnumConverter))]
         public SortBy? SortBy { get; set; }
         public string BrowseNodeId { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public SearchIndex? SearchIndex { get; set; }
     }
 }

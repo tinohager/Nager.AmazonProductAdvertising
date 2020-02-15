@@ -141,9 +141,10 @@ namespace Nager.AmazonProductAdvertising
                 SortBy = searchRequest.SortBy,
                 BrowseNodeId = searchRequest.BrowseNodeId,
                 Merchant = searchRequest.Merchant,
+                SearchIndex = searchRequest.SearchIndex,
                 PartnerTag = this._partnerTag,
                 PartnerType = "Associates",
-                Marketplace = $"www.{this._amazonEndpointConfig.Host}"
+                Marketplace = $"www.{this._amazonEndpointConfig.Host}"      
             };
 
             var json = JsonConvert.SerializeObject(request, this._jsonSerializerSettingsRequest);
