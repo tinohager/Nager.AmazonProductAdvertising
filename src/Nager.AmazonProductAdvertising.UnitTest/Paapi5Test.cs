@@ -128,7 +128,6 @@ namespace Nager.AmazonProductAdvertising.UnitTest
             var response = await this._client.GetItemsAsync(request);
             Assert.IsTrue(response.Successful);
             Assert.AreEqual(Condition.Used.ToString(), response.ItemsResult.Items[0].Offers.Listings[0].Condition.Value);
-            Assert.AreEqual(1.69, response.ItemsResult.Items[0].Offers.Listings[0].Price.Amount);
         }
     }
 }
