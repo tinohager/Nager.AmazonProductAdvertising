@@ -39,50 +39,36 @@ namespace Nager.AmazonProductAdvertising.UnitTest
             Assert.AreEqual(10, response.SearchResult.Items.Length);
         }
 
-
         [DataTestMethod]
         [DataRow("Harry Potter")]
-        public async Task SearchItemsSearchIndexISBNs(string keyword)
+        public async Task SearchItemsWithSearchIndex(string keyword)
         {
-            var response = await this._client.SearchItemsAsync(new SearchRequest()
+            var responseDefaultSearch = await this._client.SearchItemsAsync(new SearchRequest
+            {
+                Keywords = keyword,
+                Resources = new[]
+                {
+                    "ItemInfo.Title",
+                },
+            });
+
+            var responseWithSearchIndex = await this._client.SearchItemsAsync(new SearchRequest
             {
                 Keywords = keyword,
                 SearchIndex = SearchIndex.Books,
                 Resources = new[]
                 {
-                    "Images.Primary.Large",
                     "ItemInfo.Title",
-                    "ItemInfo.ExternalIds",
                 },
             });
 
-            var bookItems = response.SearchResult?.Items.Where(x => !string.IsNullOrEmpty(x.ItemInfo?.ExternalIds?.ISBNs?.DisplayValues.ToString())).ToList();
+            Assert.IsTrue(responseDefaultSearch.Successful);
+            Assert.IsTrue(responseWithSearchIndex.Successful);
 
-            Assert.IsTrue(response.Successful);
-            Assert.AreEqual(10, response.SearchResult.Items.Length);
-            Assert.AreEqual(10, bookItems.Count);
-        }
+            var asins1 = responseDefaultSearch.SearchResult?.Items.Select(o => o.ASIN).ToArray();
+            var asins2 = responseWithSearchIndex.SearchResult?.Items.Select(o => o.ASIN).ToArray();
 
-        [DataTestMethod]
-        [DataRow("Harry Potter")]
-        public async Task SearchItemsSearchIndexNotAllISBNs(string keyword)
-        {
-            var response = await this._client.SearchItemsAsync(new SearchRequest()
-            {
-                Keywords = keyword,
-                Resources = new[]
-                {
-                    "Images.Primary.Large",
-                    "ItemInfo.Title",
-                    "ItemInfo.ExternalIds",
-                },
-            });
-
-            var bookItems = response.SearchResult?.Items.Where(x => !string.IsNullOrEmpty(x.ItemInfo?.ExternalIds?.ISBNs?.DisplayValues.ToString())).ToList();
-
-            Assert.IsTrue(response.Successful);
-            Assert.AreEqual(10, response.SearchResult.Items.Length);
-            Assert.AreNotEqual(10, bookItems.Count);
+            CollectionAssert.AreNotEqual(asins1, asins2);
         }
 
         [DataTestMethod]

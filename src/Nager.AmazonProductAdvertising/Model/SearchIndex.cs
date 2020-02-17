@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Nager.AmazonProductAdvertising.Model
+﻿namespace Nager.AmazonProductAdvertising.Model
 {
     /// <summary>
-    /// Search Indexes, more information located https://docs.aws.amazon.com/AWSECommerceService/latest/DG/localevalues.html
+    /// Search Indexes, more information located
+    /// https://webservices.amazon.com/paapi5/documentation/use-cases/organization-of-items-on-amazon/search-index.html
     /// </summary>
     public enum SearchIndex
     {
