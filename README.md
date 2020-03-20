@@ -53,7 +53,7 @@ var result = await client.GetItemsAsync("B00BYPW00I");
 ```cs
 var authentication = new AmazonAuthentication("accesskey", "secretkey");
 var client = new AmazonProductAdvertisingClient(authentication, AmazonEndpoint.US, "nager-20");
-var result = client.GetItemsAsync(new string[] { "B00BYPW00I", "B004MKNBJG" });
+var result = await client.GetItemsAsync(new string[] { "B00BYPW00I", "B004MKNBJG" });
 ```
 
 ### Amazon Documentation
