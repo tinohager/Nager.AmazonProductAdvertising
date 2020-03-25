@@ -61,5 +61,13 @@
         /// United States
         /// </summary>
         US,
+        /// <summary>
+        /// Netherlands
+        /// </summary>
+        NL,  
+        /// <summary>
+        /// Singapore
+        /// </summary>
+        SG, 
     }
 }

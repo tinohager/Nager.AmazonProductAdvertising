@@ -23,6 +23,8 @@ namespace Nager.AmazonProductAdvertising
         private readonly JsonSerializerSettings _jsonSerializerSettingsRequest;
         private readonly AmazonEndpointConfig _amazonEndpointConfig;
         private readonly AmazonResourceValidator _amazonResourceValidator;
+        private readonly AmazonLanguageValidator _amazonLanguageValidator;
+        private readonly AmazonEndpoint _amazonEndpoint;
 
         /// <summary>
         /// Amazon Product Advertising Client
@@ -38,6 +40,7 @@ namespace Nager.AmazonProductAdvertising
             this._httpClient.DefaultRequestHeaders.UserAgent.ParseAdd(userAgent ?? "Nager.AmazonProductAdvertising");
 
             this._credentials = new ImmutableCredentials(amazonAuthentication.AccessKey, amazonAuthentication.SecretKey, null);
+            this._amazonEndpoint = amazonEndpoint;
             this._partnerTag = partnerTag;
 
             this._jsonSerializerSettingsRequest = new JsonSerializerSettings
@@ -54,6 +57,7 @@ namespace Nager.AmazonProductAdvertising
             this._amazonEndpointConfig = amazonConfigEndpointConfigRepository.Get(amazonEndpoint);
 
             this._amazonResourceValidator = new AmazonResourceValidator();
+            this._amazonLanguageValidator = new AmazonLanguageValidator();
         }
 
         /// <summary>
@@ -312,6 +316,63 @@ namespace Nager.AmazonProductAdvertising
 
             var response = await this.RequestAsync("GetVariations", json);
             return this.DeserializeObject<GetVariationsResponse>(response);
+        }
+
+        /// <summary>
+        /// Get browseNodes via browseNodeIds
+        /// </summary>
+        /// <param name="browseNodeIds"></param>
+        /// <returns>GetBrowseNodesResponse</returns>
+        public async Task<GetBrowseNodesResponse> GetBrowseNodesAsync(string[] browseNodeIds)
+        {
+            var request = new BrowseNodesRequest
+            {
+                BrowseNodeIds = browseNodeIds,   
+                Resources = new[]
+                {
+                    "BrowseNodes.Ancestor",
+                    "BrowseNodes.Children",
+                }
+            };
+
+            return await this.GetBrowseNodesAsync(request);
+        }
+
+        /// <summary>
+        /// Get browseNode with a browseNodesRequest
+        /// </summary>
+        /// <param name="browseNodesRequest"></param>
+        /// <returns>GetBrowseNodesResponse</returns>
+        public async Task<GetBrowseNodesResponse> GetBrowseNodesAsync(BrowseNodesRequest browseNodesRequest)
+        {
+            var request = new GetBrowseNodesRequest
+            {
+                BrowseNodeIds = browseNodesRequest.BrowseNodeIds,
+                LanguagesOfPreference = browseNodesRequest.LanguagesOfPreference,
+                PartnerTag = this._partnerTag,
+                PartnerType = "Associates",
+                Marketplace = $"www.{this._amazonEndpointConfig.Host}",
+                Resources = browseNodesRequest.Resources
+            };
+
+            if (!this._amazonResourceValidator.IsResourcesValid(request.Resources, "GetBrowseNodes"))
+            {
+                return new GetBrowseNodesResponse { Successful = false, ErrorMessage = "Resources has wrong values" };
+            }
+
+            if (!this._amazonLanguageValidator.IsLanguageValid(request.LanguagesOfPreference, this._amazonEndpoint))
+            {
+                return new GetBrowseNodesResponse { Successful = false, ErrorMessage = "LanguagesOfPreference contains a language that is not available for this endpoint" };
+            }
+
+            var json = JsonConvert.SerializeObject(request, this._jsonSerializerSettingsRequest);
+            if (string.IsNullOrEmpty(json))
+            {
+                return new GetBrowseNodesResponse { Successful = false, ErrorMessage = "Cannot serialize object" };
+            }
+
+            var response = await this.RequestAsync("GetBrowseNodes", json);
+            return this.DeserializeObject<GetBrowseNodesResponse>(response);
         }
 
         private T DeserializeObject<T>(HttpResponse response) where T : AmazonResponse
