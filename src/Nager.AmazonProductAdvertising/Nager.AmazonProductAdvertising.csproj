@@ -2,22 +2,30 @@
 
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
-    <Version>2.0.7</Version>
+    <Version>2.1.0</Version>
     <Authors>Tino Hager</Authors>
     <Company>nager.at</Company>
     <PackageProjectUrl>https://github.com/tinohager/Nager.AmazonProductAdvertising</PackageProjectUrl>
     <RepositoryUrl>https://github.com/tinohager/Nager.AmazonProductAdvertising</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright © nager.at</Copyright>
-    <PackageReleaseNotes>Add Condition and SearchIndex</PackageReleaseNotes>
+    <PackageReleaseNotes>Add WebsiteSalesRank, add Netherlands support add Singapore support</PackageReleaseNotes>
     <PackageTags>ProductAdvertisingAPI AmazonProductAdvertising paapi5 product search amazon</PackageTags>
     <Description>Amazon Product Advertising API, Supports ItemSeach with ASIN, EAN, UPC and ISBN, ItemLookup and BrowseNodeLookup</Description>
-    <AssemblyVersion>2.0.7</AssemblyVersion>
-    <FileVersion>2.0.7</FileVersion>
+    <AssemblyVersion>2.1.0</AssemblyVersion>
+    <FileVersion>2.1.0</FileVersion>
     <PackageIconUrl>https://raw.githubusercontent.com/tinohager/Nager.AmazonProductAdvertising/master/doc/logo.png</PackageIconUrl>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net461|AnyCPU'">
+    <NoWarn>1701;1702:1591</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net461|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

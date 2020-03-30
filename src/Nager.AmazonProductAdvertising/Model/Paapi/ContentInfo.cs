@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Nager.AmazonProductAdvertising.Model.Paapi
+﻿namespace Nager.AmazonProductAdvertising.Model.Paapi
 {
     public class ContentInfo
     {
