@@ -46,7 +46,7 @@ namespace Nager.AmazonProductAdvertising.UnitTest
             var responseDefaultSearch = await this._client.SearchItemsAsync(new SearchRequest
             {
                 Keywords = keyword,
-                Resources = new[]
+                Resources = new []
                 {
                     "ItemInfo.Title",
                 },
@@ -56,7 +56,7 @@ namespace Nager.AmazonProductAdvertising.UnitTest
             {
                 Keywords = keyword,
                 SearchIndex = SearchIndex.Books,
-                Resources = new[]
+                Resources = new []
                 {
                     "ItemInfo.Title",
                 },
@@ -92,7 +92,7 @@ namespace Nager.AmazonProductAdvertising.UnitTest
                 BrowseNodeId = "84230031",
                 SortBy = SortBy.AvgCustomerReviews,
                 Keywords = "*",
-                Resources = new[]
+                Resources = new []
                 {
                     "Images.Primary.Small",
                     "ItemInfo.Title",
@@ -111,7 +111,7 @@ namespace Nager.AmazonProductAdvertising.UnitTest
             {
                 SortBy = SortBy.AvgCustomerReviews,
                 Keywords = "iPhone",
-                Resources = new[]
+                Resources = new []
                 {
                     "Images.Primary.Small",
                     "ItemInfo.Title",
@@ -152,7 +152,8 @@ namespace Nager.AmazonProductAdvertising.UnitTest
             {
                 ItemIds = new string[] { "B000NM8SEA" },
                 Condition = Condition.Used,
-                Resources = new string[] {
+                Resources = new []
+                {
                     "Offers.Listings.Condition",
                     "Offers.Listings.Price"
                 }
@@ -161,6 +162,34 @@ namespace Nager.AmazonProductAdvertising.UnitTest
             var response = await this._client.GetItemsAsync(request);
             Assert.IsTrue(response.Successful);
             Assert.AreEqual(Condition.Used.ToString(), response.ItemsResult.Items[0].Offers.Listings[0].Condition.Value);
+        }
+
+        [TestMethod]
+        public async Task WebsiteSalesRankTest()
+        {
+            var request = new SearchRequest
+            {
+                Keywords = "9780060004873",
+                SearchIndex = SearchIndex.All,
+                Resources = new []
+                {
+                    "Images.Primary.Medium",
+                    "BrowseNodeInfo.BrowseNodes",
+                    "BrowseNodeInfo.WebsiteSalesRank",
+                    "ItemInfo.ExternalIds",
+                    "ItemInfo.Title",
+                    "ItemInfo.ByLineInfo",
+                    "ItemInfo.ManufactureInfo",
+                    "ItemInfo.ProductInfo",
+                    "ItemInfo.Classifications",
+                    "Offers.Listings.Price",
+                    "Offers.Listings.MerchantInfo"
+                }
+            };
+
+            var response = await this._client.SearchItemsAsync(request);
+            Assert.IsTrue(response.Successful);
+            Assert.IsNotNull(response.SearchResult.Items[0].BrowseNodeInfo.WebsiteSalesRank);
         }
     }
 }
