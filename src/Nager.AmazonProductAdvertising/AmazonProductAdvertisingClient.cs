@@ -144,6 +144,7 @@ namespace Nager.AmazonProductAdvertising
                 SearchIndex = searchRequest.SearchIndex,
                 PartnerTag = this._partnerTag,
                 PartnerType = "Associates",
+                Condition = searchRequest.Condition,
                 Marketplace = $"www.{this._amazonEndpointConfig.Host}"
             };
 
