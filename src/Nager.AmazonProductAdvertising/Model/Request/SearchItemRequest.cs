@@ -14,5 +14,7 @@ namespace Nager.AmazonProductAdvertising.Model.Request
         public string BrowseNodeId { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public SearchIndex? SearchIndex { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public Condition? Condition { get; set; }
     }
 }
