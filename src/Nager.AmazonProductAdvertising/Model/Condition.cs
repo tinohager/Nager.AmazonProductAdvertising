@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace Nager.AmazonProductAdvertising.Model
+﻿namespace Nager.AmazonProductAdvertising.Model
 {
     public enum Condition
     {

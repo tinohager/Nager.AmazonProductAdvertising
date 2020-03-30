@@ -7,7 +7,7 @@ namespace Nager.AmazonProductAdvertising
     /// </summary>
     public class AmazonEndpointConfigRepository
     {
-        private readonly Dictionary<AmazonEndpoint, AmazonEndpointConfig> _configs = new Dictionary<AmazonEndpoint, AmazonEndpointConfig>();
+        private readonly Dictionary<AmazonEndpoint, AmazonEndpointConfig> _configs;
 
         /// <summary>
         /// Amazon Endpoint Config Repository

@@ -11,5 +11,6 @@
         public string[] Resources { get; set; }
         public Merchant? Merchant { get; set; }
         public SearchIndex? SearchIndex { get; set; }
+        public Condition? Condition { get; set; }
     }
 }

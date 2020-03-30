@@ -142,6 +142,7 @@ namespace Nager.AmazonProductAdvertising
                 BrowseNodeId = searchRequest.BrowseNodeId,
                 Merchant = searchRequest.Merchant,
                 SearchIndex = searchRequest.SearchIndex,
+                Condition = searchRequest.Condition,
                 PartnerTag = this._partnerTag,
                 PartnerType = "Associates",
                 Marketplace = $"www.{this._amazonEndpointConfig.Host}"
