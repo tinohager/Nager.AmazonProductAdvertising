@@ -53,7 +53,7 @@ namespace Nager.AmazonProductAdvertising
                 { "Offers.Listings.DeliveryInfo.IsFreeShippingEligible", new [] { "SearchItems", "GetItems", "GetVariations" } },
                 { "Offers.Listings.DeliveryInfo.IsPrimeEligible", new [] { "SearchItems", "GetItems", "GetVariations" } },
                 { "Offers.Listings.DeliveryInfo.ShippingCharges", new [] { "SearchItems", "GetItems", "GetVariations" } },
-                { "Offers.Listings.IsBoxBoxWinner", new [] { "SearchItems", "GetItems", "GetVariations" } }, //<-- Error
+                { "Offers.Listings.IsBuyBoxWinner", new [] { "SearchItems", "GetItems", "GetVariations" } }, //<-- Error
                 { "Offers.Listings.LoyaltyPoints.Points", new [] { "SearchItems", "GetItems", "GetVariations" } },
                 { "Offers.Listings.MerchantInfo", new [] { "SearchItems", "GetItems", "GetVariations" } },
                 { "Offers.Listings.Price", new [] { "SearchItems", "GetItems", "GetVariations" } },
