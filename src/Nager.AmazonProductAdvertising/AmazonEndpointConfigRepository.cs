@@ -25,6 +25,7 @@ namespace Nager.AmazonProductAdvertising
                 { AmazonEndpoint.IT, new AmazonEndpointConfig { Host = "amazon.it", Region = "eu-west-1" } },
                 { AmazonEndpoint.JP, new AmazonEndpointConfig { Host = "amazon.co.jp", Region = "us-west-2" } },
                 { AmazonEndpoint.MX, new AmazonEndpointConfig { Host = "amazon.com.mx", Region = "us-east-1" } },
+                { AmazonEndpoint.SG, new AmazonEndpointConfig { Host = "amazon.sg", Region = "us-west-2" } },
                 { AmazonEndpoint.ES, new AmazonEndpointConfig { Host = "amazon.es", Region = "eu-west-1" } },
                 { AmazonEndpoint.TR, new AmazonEndpointConfig { Host = "amazon.com.tr", Region = "eu-west-1" } },
                 { AmazonEndpoint.AE, new AmazonEndpointConfig { Host = "amazon.ae", Region = "eu-west-1" } },
