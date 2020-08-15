@@ -16,5 +16,7 @@ namespace Nager.AmazonProductAdvertising.Model.Request
         public SearchIndex? SearchIndex { get; set; }
         [JsonConverter(typeof(StringEnumConverter))]
         public Condition? Condition { get; set; }
+        public long? MaxPrice { get; set; }
+        public long? MinPrice { get; set; }
     }
 }

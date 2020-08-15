@@ -12,5 +12,7 @@
         public Merchant? Merchant { get; set; }
         public SearchIndex? SearchIndex { get; set; }
         public Condition? Condition { get; set; }
+        public long? MaxPrice { get; set; }
+        public long? MinPrice { get; set; }
     }
 }

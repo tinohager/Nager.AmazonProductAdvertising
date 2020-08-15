@@ -191,5 +191,43 @@ namespace Nager.AmazonProductAdvertising.UnitTest
             Assert.IsTrue(response.Successful);
             Assert.IsNotNull(response.SearchResult.Items[0].BrowseNodeInfo.WebsiteSalesRank);
         }
+
+        [TestMethod]
+        public async Task SearchItemsWithMaxPriceTest()
+        {
+            var request = new SearchRequest
+            {
+                MaxPrice = 100,
+                BrowseNodeId = "3041064031",
+                SortBy = SortBy.PriceHighToLow,
+                Resources = new[]
+                {
+                    "Offers.Listings.Price"
+                }
+            };
+
+            var response = await this._client.SearchItemsAsync(request);
+            Assert.IsTrue(response.Successful);
+            Assert.AreEqual(response.SearchResult.Items.Count(), response.SearchResult.Items.Where(it => it.Offers.Listings.Any(lis => lis.Price.Amount <= 1.0)).Count());
+        }
+
+        [TestMethod]
+        public async Task SearchItemsWithMinPriceTest()
+        {
+            var request = new SearchRequest
+            {
+                MinPrice = 100,
+                BrowseNodeId = "3041064031",
+                SortBy = SortBy.PriceLowToHigh,
+                Resources = new[]
+                {
+                    "Offers.Listings.Price"
+                }
+            };
+
+            var response = await this._client.SearchItemsAsync(request);
+            Assert.IsTrue(response.Successful);
+            Assert.AreEqual(response.SearchResult.Items.Count(), response.SearchResult.Items.Where(it => it.Offers.Listings.Any(lis => lis.Price.Amount >= 1.0)).Count());
+        }
     }
 }

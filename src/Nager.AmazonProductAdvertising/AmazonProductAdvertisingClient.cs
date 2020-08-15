@@ -147,6 +147,8 @@ namespace Nager.AmazonProductAdvertising
                 Merchant = searchRequest.Merchant,
                 SearchIndex = searchRequest.SearchIndex,
                 Condition = searchRequest.Condition,
+                MaxPrice = searchRequest.MaxPrice,
+                MinPrice = searchRequest.MinPrice,
                 PartnerTag = this._partnerTag,
                 PartnerType = "Associates",
                 Marketplace = $"www.{this._amazonEndpointConfig.Host}"
