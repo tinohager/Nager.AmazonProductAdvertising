@@ -104,6 +104,7 @@ namespace Nager.AmazonProductAdvertising
                     "Offers.Listings.DeliveryInfo.IsAmazonFulfilled",
                     "Offers.Listings.DeliveryInfo.IsFreeShippingEligible",
                     "Offers.Listings.DeliveryInfo.IsPrimeEligible",
+                    "Offers.Listings.IsBuyBoxWinner",
                     "Offers.Listings.LoyaltyPoints.Points",
                     "Offers.Listings.MerchantInfo",
                     "Offers.Listings.Price",

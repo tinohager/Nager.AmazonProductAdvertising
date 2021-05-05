@@ -12,5 +12,6 @@
         public bool ViolatesMAP { get; set; }
         public SavingBasis SavingBasis { get; set; }
         public Promotion[] Promotions { get; set; }
+        public bool IsBuyBoxWinner { get; set; }
     }
 }
