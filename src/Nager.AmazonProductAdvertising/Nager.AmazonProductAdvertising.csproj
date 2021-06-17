@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
-    <Version>2.1.2</Version>
+    <Version>2.2.0</Version>
     <Authors>Tino Hager</Authors>
     <Company>nager.at</Company>
     <PackageProjectUrl>https://github.com/nager/Nager.AmazonProductAdvertising</PackageProjectUrl>
     <RepositoryUrl>https://github.com/nager/Nager.AmazonProductAdvertising</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Copyright>Copyright © nager.at</Copyright>
-    <PackageReleaseNotes>Add FeedbackCount and FeedbackRating to MerchantInfo</PackageReleaseNotes>
+    <PackageReleaseNotes>Update nuget dependencies</PackageReleaseNotes>
     <PackageTags>ProductAdvertisingAPI AmazonProductAdvertising paapi5 product search amazon</PackageTags>
     <Description>Amazon Product Advertising API, Supports ItemSeach with ASIN, EAN, UPC and ISBN, ItemLookup and BrowseNodeLookup</Description>
     <PackageIconUrl>https://raw.githubusercontent.com/nager/Nager.AmazonProductAdvertising/master/doc/logo.png</PackageIconUrl>

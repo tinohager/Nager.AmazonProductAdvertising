@@ -124,6 +124,37 @@ namespace Nager.AmazonProductAdvertising.UnitTest
             Assert.AreEqual(10, response.SearchResult.Items.Length);
         }
 
+        [TestMethod]
+        public async Task SearchItemsTest5()
+        {
+            var request = new SearchRequest
+            {
+                Keywords = "iPhone",
+                Resources = new[]
+                {
+                    "SearchRefinements"
+                }
+            };
+
+            var response = await this._client.SearchItemsAsync(request);
+            Assert.IsTrue(response.Successful);
+            Assert.AreEqual(10, response.SearchResult.Items.Length);
+        }
+
+        [TestMethod]
+        public async Task GetBrowseNodesAsyncTest1()
+        {
+            var request = new BrowseNodesRequest
+            {
+                BrowseNodeIds = new[] { "1981019031" },
+                Resources = new[] { "BrowseNodes.Ancestor", "BrowseNodes.Children" },
+                LanguagesOfPreference = new[] { "de_DE" }
+            };
+
+            var response = await this._client.GetBrowseNodesAsync(request);
+            Assert.IsTrue(response.Successful);
+        }
+
         [DataTestMethod]
         [DataRow("B00IYD5QUO")] //shower gel
         [DataRow("B07CJPSNX8")] //clothes, dress
