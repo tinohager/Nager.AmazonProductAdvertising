@@ -1,6 +1,6 @@
 ﻿namespace Nager.AmazonProductAdvertising.Model.Paapi
 {
-    public class SearchIndex
+    public class SearchRefinement
     {
         public Bin[] Bins { get; set; }
         public string DisplayName { get; set; }

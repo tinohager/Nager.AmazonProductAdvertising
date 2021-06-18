@@ -142,6 +142,66 @@ namespace Nager.AmazonProductAdvertising.UnitTest
         }
 
         [TestMethod]
+        public async Task SearchItemsTest6()
+        {
+            var request = new SearchRequest
+            {
+                SearchIndex = SearchIndex.Books,
+                Resources = new[]
+                {
+                    "BrowseNodeInfo.BrowseNodes",
+                    "BrowseNodeInfo.BrowseNodes.Ancestor",
+                    "BrowseNodeInfo.BrowseNodes.SalesRank",
+                    "Images.Primary.Small",
+                    "Images.Primary.Medium",
+                    "Images.Primary.Large",
+
+                    "Images.Variants.Small",
+                    "Images.Variants.Medium",
+                    "Images.Variants.Large",
+
+                    "ItemInfo.ByLineInfo",
+                    "ItemInfo.Classifications",
+                    "ItemInfo.ContentInfo",
+                    "ItemInfo.ContentRating",
+                    "ItemInfo.ExternalIds",
+                    "ItemInfo.Features",
+                    "ItemInfo.ProductInfo",
+                    "ItemInfo.TechnicalInfo",
+                    "ItemInfo.Title",
+                    "ItemInfo.TradeInInfo",
+
+                    "Offers.Listings.Availability.MinOrderQuantity",
+                    "Offers.Listings.Availability.MaxOrderQuantity",
+                    "Offers.Listings.Availability.Message",
+                    "Offers.Listings.Availability.Type",
+                    "Offers.Listings.Condition",
+                    "Offers.Listings.Condition.SubCondition",
+                    "Offers.Listings.DeliveryInfo.IsAmazonFulfilled",
+                    "Offers.Listings.DeliveryInfo.IsFreeShippingEligible",
+                    "Offers.Listings.DeliveryInfo.IsPrimeEligible",
+                    "Offers.Listings.LoyaltyPoints.Points",
+                    "Offers.Listings.MerchantInfo",
+                    "Offers.Listings.Price",
+                    "Offers.Listings.ProgramEligibility.IsPrimeExclusive",
+                    "Offers.Listings.ProgramEligibility.IsPrimePantry",
+                    "Offers.Listings.Promotions",
+                    "Offers.Listings.SavingBasis",
+                    "Offers.Summaries.HighestPrice",
+                    "Offers.Summaries.LowestPrice",
+                    "Offers.Summaries.OfferCount",
+
+                    "ParentASIN",
+                    "SearchRefinements"
+                }
+            };
+
+            var response = await this._client.SearchItemsAsync(request);
+            Assert.IsTrue(response.Successful);
+            Assert.AreEqual(10, response.SearchResult.Items.Length);
+        }
+
+        [TestMethod]
         public async Task GetBrowseNodesAsyncTest1()
         {
             var request = new BrowseNodesRequest
