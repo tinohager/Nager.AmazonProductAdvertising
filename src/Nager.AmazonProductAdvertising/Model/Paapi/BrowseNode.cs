@@ -8,5 +8,6 @@
         public string DisplayName { get; set; }
         public AncestorInfo Ancestor { get; set; }
         public int SalesRank { get; set; }
+        public Bin[] Bins { get; set; }
     }
 }
