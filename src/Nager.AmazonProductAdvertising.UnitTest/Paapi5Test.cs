@@ -180,6 +180,7 @@ namespace Nager.AmazonProductAdvertising.UnitTest
                     "Offers.Listings.DeliveryInfo.IsAmazonFulfilled",
                     "Offers.Listings.DeliveryInfo.IsFreeShippingEligible",
                     "Offers.Listings.DeliveryInfo.IsPrimeEligible",
+                    "Offers.Listings.IsBuyBoxWinner",
                     "Offers.Listings.LoyaltyPoints.Points",
                     "Offers.Listings.MerchantInfo",
                     "Offers.Listings.Price",
@@ -200,6 +201,25 @@ namespace Nager.AmazonProductAdvertising.UnitTest
             Assert.IsTrue(response.Successful);
             Assert.AreEqual(10, response.SearchResult.Items.Length);
         }
+
+        [TestMethod]
+        public async Task SearchItemsTest7()
+        {
+            var request = new SearchRequest
+            {
+                SearchIndex = SearchIndex.Books,
+                Resources = new[]
+                {
+                    "Offers.Listings.IsBuyBoxWinner",
+                }
+            };
+
+            var response = await this._client.SearchItemsAsync(request);
+            Assert.IsTrue(response.Successful);
+            Assert.AreEqual(10, response.SearchResult.Items.Length);
+            Assert.IsTrue(response.SearchResult.Items.Any(item => item.Offers.Listings.Any(l => l.IsBuyBoxWinner)));
+        }
+
 
         [TestMethod]
         public async Task GetBrowseNodesAsyncTest1()
